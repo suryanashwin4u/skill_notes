@@ -1,0 +1,161 @@
+				angular notes
+--------------------------------------------------
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+-------------------------------------------------
+ng-app => defines an AngularJS application.
+ng-model => binds the value of (input, select, textarea) to application data.
+ng-bind  => binds application data to the HTML view.
+ng-init =>initializes AngularJS application variables.
+-------------------------------------------------
+<div ng-app="">
+  <p>Name: <input type="text" ng-model="name"></p>
+  <p ng-bind="name"></p>
+</div>
+-------------------------------------------------
+<div ng-app="" ng-init="firstName='John'">
+<p>The name is <span ng-bind="firstName"></span></p>
+</div>
+-------------------------------------------------
+<div ng-app="">
+  <p>My first expression: {{ 5 + 5 }}</p>
+</div>
+-------------------------------------------------
+<div ng-app="">
+  <p>Name: <input type="text" ng-model="name"></p>
+  <p>{{name}}</p>
+</div>
+-------------------------------------------------
+<div ng-app="myApp" ng-controller="myCtrl">
+First Name: <input type="text" ng-model="firstName"><br>
+Last Name: <input type="text" ng-model="lastName"><br>
+<br>
+Full Name: {{firstName + " " + lastName}}
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+  $scope.firstName= "John";
+  $scope.lastName= "Doe";
+});
+</script>
+-------------------------------------------------
+<div>
+  <p>My first expression: {{ 5 + 5 }}</p>
+</div>
+-------------------------------------------------
+<div ng-app="" ng-init="myCol='lightblue'">
+<input style="background-color:{{myCol}}" ng-model="myCol">
+</div>
+-------------------------------------------------
+<div ng-app="" ng-init="quantity=1;cost=5">
+<p>Total in dollar: {{ quantity * cost }}</p>
+</div>
+------------------------------------------------
+<div ng-app="" ng-init="quantity=1;cost=5">
+<p>Total in dollar: <span ng-bind="quantity * cost"></span></p>
+</div>
+------------------------------------------------
+<div ng-app="" ng-init="firstName='John';lastName='Doe'">
+<p>The name is {{ firstName + " " + lastName }}</p>
+<p>The name is <span ng-bind="firstName + ' ' + lastName"></span></p>
+</div>
+------------------------------------------------
+<div ng-app="" ng-init="person={firstName:'John',lastName:'Doe'}">
+<p>The name is {{ person.lastName }}</p>
+<p>The name is <span ng-bind="person.lastName"></span></p>
+</div>
+------------------------------------------------
+<div ng-app="" ng-init="points=[1,15,19,2,40]">
+<p>The third result is {{ points[2] }}</p>
+<p>The third result is <span ng-bind="points[2]"></span></p>
+</div>
+------------------------------------------------
+<div ng-app="myApp">...</div>
+<script>
+var app = angular.module("myApp", []);
+</script>
+------------------------------------------------
+<div ng-app="myApp" ng-controller="myCtrl">
+{{ firstName + " " + lastName }}
+</div>
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+  $scope.firstName = "John";
+  $scope.lastName = "Doe";
+});
+</script>
+------------------------------------------------
+<div ng-app="myApp" w3-test-directive></div>
+<script>
+var app = angular.module("myApp", []);
+app.directive("w3TestDirective", function(){
+  return {
+    template : "I was made in a directive constructor!"
+  };
+});
+</script>
+------------------------------------------------
+<div ng-app="myApp" ng-controller="myCtrl">
+{{ firstName + " " + lastName }}
+</div>
+<script src="myApp.js"></script>
+<script src="myCtrl.js"></script>
+------------------------------------------------
+<div ng-app="" ng-init="names=['Jani','Hege','Kai']">
+  <ul>
+    <li ng-repeat="x in names">
+      {{ x }}
+    </li>
+  </ul>
+</div>
+------------------------------------------------
+<div ng-app="" ng-init="names=[{name:'Jani',country:'Norway'},{name:'Hege',country:'Sweden'},{name:'Kai',country:'Denmark'}]">
+<ul>
+  <li ng-repeat="x in names">
+    {{ x.name + ', ' + x.country }}
+  </li>
+</ul>
+</div>
+------------------------------------------------
+
+<body ng-app="myApp">
+<w3-test-directive></w3-test-directive>
+<div w3-test-directive></div>
+<div class="w3-test-directive"></div>
+<!-- directive: w3-test-directive -->
+<script>
+var app = angular.module("myApp", []);
+app.directive("w3TestDirective", function() {
+  return {
+  	restrict : "A",								 
+    template : "<h1>Made by a directive!</h1>"
+	// E for Element name
+	// A for Attribute
+	// C for Class
+	// M for Comment
+	// By default the value is EA
+  };
+});
+</script>
+</body>
+-----------------------------------------------
+//validate email
+<form ng-app="" name="myForm">
+  Email:<input type="email" name="myAddress" ng-model="text">
+  <span ng-show="myForm.myAddress.$error.email">Not a valid e-mail address</span>
+</form>
+-----------------------------------------------
+<form ng-app="" name="myForm" ng-init="myText = 'post@myweb.com'">
+  Email:
+  <input type="email" name="myAddress" ng-model="myText" required>
+  <h1>Status</h1>
+  {{myForm.myAddress.$valid}}
+  {{myForm.myAddress.$dirty}}
+  {{myForm.myAddress.$touched}}
+</form>
+-----------------------------------------------
+
+
+
+

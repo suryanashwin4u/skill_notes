@@ -1,0 +1,44 @@
+                   sass	notes
+--------------------------------------------------
+Sass files has the ".scss" file extension.
+--------------------------------------------------
+//declaring values outside
+
+
+$primary_1: #a2b9bc;
+
+.main-header {
+  background-color: $primary_1;
+}
+
+--------------------------------------------------
+//declaring inner values for inside things
+
+
+$myColor: red;
+
+h1 {
+  $myColor: green;
+  color: $myColor;
+}
+
+p {
+  color: $myColor;
+}
+
+--------------------------------------------------
+//global variable
+
+$myColor: red;
+
+h1 {
+  $myColor: green !global;
+  color: $myColor;
+}
+
+p {
+  color: $myColor;
+}
+
+-------------------------------------------------
+//

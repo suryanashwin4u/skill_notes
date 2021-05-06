@@ -1,0 +1,1072 @@
+   					CSS Notes
+---------------------------------------------------
+
+color can be anyone from the following:
+1.color_name,
+2.rgba(0-255,0-255,0-255,0-1),
+3.#hexcode,
+4.hsla(0-360,0-100%,0-100%,0.0-1.0) 
+
+---------------------------------------------------
+/*add fonts using links*/
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
+
+---------------------------------------------------
+/*add google fonts and effects using link and produce using class names*/
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=fire">
+<h1 class="font-effect-fire">Sofia on Fire</h1>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+<h1 class="font-effect-neon">Neon Effect</h1>
+<h1 class="font-effect-outline">Outline Effect</h1>
+<h1 class="font-effect-emboss">Emboss Effect</h1>
+<h1 class="font-effect-shadow-multiple">Multiple Shadow Effect</h1>
+
+----------------------------------------------------
+/*include fontawesome script and use class names to produce results*/
+<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+<i class="fas fa-cloud"></i>
+<i class="fas fa-heart"></i>
+<i class="fas fa-car"></i>
+<i class="fas fa-file"></i>
+<i class="fas fa-bars"></i>
+
+----------------------------------------------------
+
+/*include online bootstrap icons*/
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<i class="glyphicon glyphicon-cloud"></i>
+<i class="glyphicon glyphicon-remove"></i>
+<i class="glyphicon glyphicon-user"></i>
+<i class="glyphicon glyphicon-envelope"></i>
+<i class="glyphicon glyphicon-thumbs-up"></i>
+
+----------------------------------------------------
+
+/*google icons link*/
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<i class="material-icons">cloud</i>
+<i class="material-icons">favorite</i>
+<i class="material-icons">attachment</i>
+<i class="material-icons">computer</i>
+<i class="material-icons">traffic</i>
+
+---------------------------------------------------
+/*to produce transparent effect*/
+
+opacity:0.0-1.0;
+
+---------------------------------------------------
+
+/*text color*/
+color: color_name;
+
+/*text alignments*/
+text-align: center/left/right/justify;
+
+/*align contents*/
+justify-content: left/center/right;
+
+/*writing style right to left or left to right*/
+direction: rtl/ltr;
+unicode-bidi: bidi-override;
+
+/*align items vertically*/
+vertical-align: top/middle/bottom;
+
+/*decorate text*/
+text-decoration: none/overline/line-through/underline;
+
+/*transform text*/
+text-transform: uppercase/lowercase/capitalize;
+
+/*spaces between text*/
+text-indent: 50px;
+
+/*space between individual letters*/
+letter-spacing: 3px/-3px;
+
+/*height between text lines*/
+line-height: 0.8;
+
+/*space between words*/
+word-spacing: 10px/-10px;
+
+/*to wrap or nowrap the lengthy text*/
+white-space: nowrap/wrap;
+
+/*break word while wrapping text*/
+word-wrap: break-word;
+
+/*do not break word from middle while wrapping*/
+word-break: keep-all;
+
+/*break word from middle*/
+word-break: break-all;
+
+/*write vertically or horizontally*/
+writing-mode: horizontal-tb;
+writing-mode: vertical-rl; 
+
+/*import font-family and use in css*/
+@font-face {
+   font-family: myFirstFont;
+   src: url(sansation_light.woff);
+}
+{
+	font-family: myFirstFont
+}
+
+/*use 2 different fonts*/
+@font-face {
+   font-family: myFirstFont;
+   src: url(sansation_light.woff);}
+@font-face {
+   font-family: myFirstFont;
+   src: url(sansation_bold.woff);
+   font-weight: bold;}
+* {
+   font-family: myFirstFont;
+}
+
+text-shadow: 2px 2px;
+text-shadow: 2px 2px red;
+text-shadow: 2px 2px 5px red;
+text-shadow: 3px 3px 3px #ababab;
+text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+
+/*double quotes for spaced font-family and many font-families is used for backup*/
+font-family: "Lucida Console", "Courier New", monospace;
+
+
+font-style: normal/italic/oblique;
+
+font-weight: normal/bold;
+
+font-variant: normal/small-caps;
+
+font-size: 40px/2.5em/100%/10vw;
+
+font: 20px Arial, sans-serif;
+
+/*fontsize/lineheight*/
+font: italic small-caps bold 12px/30px Georgia, serif;
+
+--------------------------------------------------
+
+background: color_name image_path repeat_xy position;
+background: url(img_man.jpg) no-repeat center fixed; 
+background-size: 1500px 80px;
+
+/*fix the image fullly inside the box*/
+background-size: contain/cover;
+
+/*3 bgsizes of images*/
+background-size: 50px, 130px, auto;
+background-color: transparent/currentcolor;
+
+
+background-color:color_name;
+background-image:url("./image.jpg");
+
+/*top to down color change*/
+background-image: linear-gradient(red, yellow);
+background-image: linear-gradient(to right, red , yellow);
+background-image: linear-gradient(to bottom right, red, yellow);
+background-image: linear-gradient(180deg, red, yellow);
+background-image: linear-gradient(red, yellow, green);
+background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+background-image: repeating-linear-gradient(red, yellow 10%, green 20%);
+background-image: repeating-linear-gradient(45deg,red,yellow 7%,green 10%);
+background-image: repeating-linear-gradient(190deg,red,yellow 7%,green 10%);
+background-image: repeating-linear-gradient(90deg,red,yellow 7%,green 10%);
+
+background-image: radial-gradient(red, yellow, green);
+background-image: radial-gradient(red 5%, yellow 15%, green 60%);
+background-image: radial-gradient(circle, red, yellow, green);
+background-image: radial-gradient(closest-side at 60% 55%, red, yellow, black);
+background-image: radial-gradient(farthest-side at 70% 55%, red, yellow, black);
+background-image: radial-gradient(closest-corner at 60% 55%, red, yellow, black);
+background-image: radial-gradient(farthest-corner at 60% 55%, red, yellow, black);
+
+background-image: repeating-radial-gradient(red, yellow 10%, green 15%);
+
+
+background-repeat:repeat-x/repeat-y/no-repeat;
+background-position:top left/bottom right;
+background-attachment:fixed/scroll;
+
+/*background starts from 
+ or content*/
+background-origin:
+-box/content-box;
+
+background-clip:content-box/padding-box/
+-box;
+
+
+/*for multiple background images*/
+background-image: url(img_flwr.gif), url(paper.gif);
+background-position: right bottom, left top;
+background-repeat: no-repeat, repeat;
+
+
+
+/*multiple images shortcut*/
+background: url(img_flwr.gif) right bottom no-repeat, url(paper.gif) left top repeat;
+background: url(img_tree.gif) left top no-repeat, url(img_flwr.gif) right bottom no-repeat, url(paper.gif) left top repeat;
+
+-------------------------------------------------
+
+border-top-left-radius: 5px;
+
+border-bottom-left-radius: 5px;
+
+border-top-right-radius: 5px;
+ 
+border-bottom-right-radius: 5px;
+
+border-style: dotted/dashed/solid/double/groove/ridge/inset/outset/none/hidden;
+
+border-style: dotted dashed solid double;
+
+border-style: dotted solid double;
+
+border-style: dotted solid;
+
+border-style: dotted;
+
+
+border-width: 0-1000px/thin/medium/thick;
+
+border-width: 5px 20px; 				
+
+border-width: 25px 10px 4px 35px; 		
+
+
+border-color: color_name;				
+
+border-color: red green blue yellow; 	
+
+border-color: hsl(0, 100%, 50%);
+
+border-color: rgb(255, 0, 0);
+
+border-color: #ff0000;
+
+
+border-top-style: dotted;
+
+border-right-style: solid;
+
+border-bottom-style: dotted;
+
+border-left-style: solid;
+
+
+border: 5px solid red;
+
+border: 10px solid transparent;
+
+border: 5px solid currentcolor;
+
+border: inherit;
+
+
+border-top: 6px solid red;
+
+border-right: 6px solid red;
+
+border-left: 6px solid red;
+
+border-bottom: 6px solid red;
+
+
+border-collapse: collapse;
+
+
+border-radius: 5px/%;
+
+border-radius: 15px 50px 30px 5px;
+
+border-radius: 15px 50px 30px;
+
+border-radius: 15px 50px;
+
+border-radius: 15px;
+
+/*elliptical*/
+
+border-radius: 50px / 15px;
+
+border-radius: 15px / 50px;
+
+border-radius: 50%;
+
+
+border-image: url(
+	.png) 30 round;
+
+border-image: url(
+	.png) 30 stretch;
+
+border-image: url(
+	.png) 50 round;
+
+border-image: url(
+	.png) 20% round;
+
+-----------------------------------------------
+
+margin-top: 150px/%/auto/inherit
+margin-bottom: 150px/%/auto/inherit;
+margin-right: 150px/%/auto/inherit;
+margin-left: 80px/%/auto/inherit;
+
+margin: 25px 50px 75px 100px/%;
+margin: 25px 50px 75px/%;
+margin: 25px 50px/%;
+margin: 25px/%;
+margin: auto;
+
+------------------------------------------------
+padding-top: 50px/%;
+padding-right: 30px/%;
+padding-bottom: 50px/%;
+padding-left: 80px/%;
+
+padding: 25px 50px 75px 100px/%;
+padding: 25px 50px 75px/%;
+padding: 25px 50px/%;
+padding: 25px/%;
+
+-----------------------------------------------
+/*it will avoid scroll bars when changing screen size*/
+width: px/%;
+max-width: px/%;
+min-width: px/%;
+
+-----------------------------------------------
+/*it will avoid scroll bars when changing screen size*/
+height: px/%;
+max-height: px/%;
+min-height: px/%;
+
+-----------------------------------------------
+/*width remains same no matters how much padding increase*/
+
+box-sizing: border-box;
+
+-----------------------------------------------
+/*it is drawn outside 
+ of the element*/
+
+outline-style: dotted/dashed/solid/double/groove/ridge/inset/outset;
+outline-color: red/#ff0000/rgb(255, 0, 0)/hsl(0, 100%, 50%)/invert;
+outline-width: px/%/thin/medium/thick;
+
+outline: dashed;
+outline: dotted red;
+outline: 5px solid yellow;
+outline: thick ridge pink;
+
+/*adds gap b/w 
+ and outline*/
+outline-offset: 15px;
+
+-----------------------------------------------
+
+cursor:auto;
+cursor:crosshair;
+cursor:default;
+cursor:e-resize;
+cursor:help;
+cursor:move;
+cursor:n-resize;
+cursor:ne-resize;
+cursor:nw-resize;
+cursor:pointer;
+cursor:progress;
+cursor:s-resize;
+cursor:se-resize;
+cursor:sw-resize;
+cursor:text;
+cursor:w-resize;
+cursor:wait;
+
+-----------------------------------------------
+/* unvisited link */
+a:link {
+color: red;
+}
+
+/* visited link */
+a:visited {
+color: green;
+}
+
+/* mouse over link */
+a:hover {
+color: hotpink;
+}
+
+/* selected link */
+a:active {
+color: blue;
+}
+
+a:link, a:visited {
+
+}
+
+a:hover, a:active {
+
+}
+
+tr:nth-child(even/odd) {
+/*every ever or odd row in a table*/
+}
+
+div > p {
+ /*select all p element that are child to div element*/
+}
+
+div + p {
+ /*select single p element that are next to div element*/
+}
+
+div ~ p {
+ /*select all p elements after div tag*/
+}
+
+p:first-child {
+  /*select only first p tag in whole document*/
+} 
+
+p i:first-child {
+  /*select only first i tag inside p tag*/
+} 
+
+
+p:first-child i {
+  /*select only first p tag*/
+} 
+
+li:last-child {
+  /*select last child in list*/
+}
+
+q:lang(no) {
+ /*put quotes around q tag*/
+  quotes: "~" "~";
+}
+
+p::first-line {
+ /*effect on first line of p tag*/
+}
+
+p::first-letter {
+ /*effect only first letter of the p tag*/
+}
+
+p.intro::first-letter {
+ /*effect only the first letter of a class of p tag*/
+}
+
+h1::before {
+ /*to put image before h1 tag*/
+  content: url(smiley.gif);
+}
+
+h1::after {
+ /*to put image after h1 tag*/
+  content: url(smiley.gif);
+}
+
+/*selects only list markers*/
+::marker {
+  color: red;
+  font-size: 23px;
+}
+
+/*it works for the selected text*/
+::selection {
+  color: red;
+  background: yellow;
+}
+
+
+a[target] {
+ /*[attribute] selector is used to select elements with a specified attribute.*/
+}
+
+a[target="_blank"] {
+/*[attribute] selector is used to select elements with a specified attribute. */
+}
+
+[title~="flower"] {
+/*[attribute="value"] selector is used to select elements with a specified attribute and value.*/
+}
+
+[class|="top"] {
+ /*[attribute^="value"] selector is used to select elements whose attribute value begins with a specified value.*/
+}
+
+[class^="top"] {
+/*[attribute^="value"] selector is used to select elements whose attribute value begins with a specified value.*/
+}
+
+[class$="test"] {
+/*[attribute$="value"] selector is used to select elements whose attribute value ends with a specified value.*/
+}
+
+
+[class*="te"] {
+/*[attribute*="value"] selector is used to select elements whose attribute value contains a specified value.*/
+}
+
+
+a[href*="w3schools"]{
+ /*to select only those links that have given keywords in it*/
+}
+
+
+input[type=text]:focus {
+/*works when focus on one input*/
+}
+
+
+::marker { 
+ /*it changes list styles color and font style*/
+ 
+}
+
+
+::selection {
+ /* ::selection pseudo-element matches the portion of an element that is selected by a user.*/
+}
+
+
+ul.topnav li a:hover:not(.active) {
+/**/
+}
+
+------------------------------------------
+
+@media screen and (max-width: 600px) {
+ /*less or same*/
+}
+
+
+@media screen and (min-width: 600px) {
+ /*more or same*/
+}
+
+@media screen and (max-width: 900px) and (min-width: 600px) {
+/*between*/
+}
+
+@media screen and (max-width: 900px) and (min-width: 600px), (min-width: 1100px) {
+/*between 600px and 900px OR above 1100px*/
+}
+
+@media only screen and (orientation: landscape) {
+ /*if screen is in landscape*/
+}
+
+
+
+input[type=text] {
+/*select only input type text*/
+}
+
+input[type=button] {
+/*select only input type button*/
+}
+------------------------------------------
+
+list-style-type: circle/square/upper-roman/lower-alpha;
+list-style-image: url('sqpurple.gif');
+list-style-position: outside/inside;
+list-style-type: none;
+list-style: square inside url("sqpurple.gif");
+
+------------------------------------------
+
+display: inline-block/block/inline/none/flex;
+flex-wrap: nowrap/wrap/wrap-reverse;
+flex-flow:row wrap;
+flex-direction: column/column-reverse/row/row-reverse/;
+justify-content:left/right/center/flex-start/flex-end/space-around/space-between/;
+align-items:flex-start/center/flex-end/stretch/space-around/space-between/baseline;
+/*to order flex items*/
+order:1/2/3/4/5.....;
+/*to grow the size of a particular flex item*/
+flex-grow:1/2/3/4/....;
+/*each flex to shrink the size of individual flex item*/
+flex-shrink:0/1/2...;
+/*set initial length of flex item*/
+flex-basis:200px;
+/*each flex-grow, flex-shrink, and flex-basis*/
+flex: 0 0 200px;
+/*size of flex*/
+flex: 50%/100%;
+
+/*each flex*/
+align-self: center/flex-start/flex-end;
+
+
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+
+
+visibility: hidden/visible;
+
+------------------------------------------
+
+position: static/relative/fixed/absolute/sticky;
+
+/*use positions with absolute and sticky*/
+left: 30px;
+bottom: 0px;
+right: 0px;
+top:10px;
+
+------------------------------------------
+/*to overlap underlap*/
+z-index: -1/0/1;
+
+------------------------------------------
+
+overflow: visible/hidden/scroll/auto;
+overflow-x:auto/hidden/scroll;
+overflow-y:auto/hidden/scroll;
+
+/*to show till box length limit or ...*/
+text-overflow: clip/ellipsis;
+
+------------------------------------------
+
+float: right/left/none;
+
+------------------------------------------
+/*no float on a particular side*/
+clear: left/right/none/both/inherit;
+
+------------------------------------------
+
+box-sizing: border-box;
+
+------------------------------------------
+
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+box-shadow: 0px 0px 15px currentcolor;
+box-shadow: 10px 10px;
+box-shadow: 10px 10px grey;
+box-shadow: 10px 10px 5px grey;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+
+------------------------------------------
+/*to show animations effects when hover or focus*/
+transition: width 0.4s ease-in-out;
+
+/*to resize text box or not*/
+resize: none/vertical/horizontal/both;
+
+-----------------------------------------
+body {
+  /*Creates or resets a counter*/
+  counter-reset: section;
+}
+
+h1 {
+    /*Creates or resets a counter*/
+  counter-reset: subsection;
+}
+
+h1::before {
+   /*Increments a counter value*/
+  counter-increment: section;
+  /*Inserts generated content*/
+  /*function - Adds the value of a counter to an element*/
+  content: "Section " counter(section) ". ";
+}
+
+h2::before {
+  counter-increment: subsection;
+  content: counter(section) "." counter(subsection) " ";
+}
+
+
+ol {
+  counter-reset: section;
+  list-style-type: none;
+}
+
+li::before {
+  counter-increment: section;
+  content: counters(section,".") " ";
+}
+
+/*creates a counter*/
+counter-reset: section; 
+
+/*Increments a counter value*/
+counter-increment: section;  
+
+/*print like in a given way*/
+content: "Section " counter(section) ": ";
+
+/*overrides all previous declaration of particular properties*/
+background-color: red !important;
+
+/*to take care of overflow images out of div tag*/
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+
+------------------------------------------------
+/*to change place dynamically*/
+transform: translate(50px,100px);
+
+/*to rotate*/
+transform: rotate(20deg);
+transform: rotate(-20deg);
+
+/*to change size from original*/
+transform: scale(2, 3);
+transform: scale(0.5,0.5);
+
+/*scale only horizontally*/
+transform: scaleX(2);
+/*flip*/
+transform: scaleX(-1);
+transform: scaleX(0.5);
+
+/*scale only vertically*/
+transform: scaleY(3);
+transform: scaleY(0.5);
+
+
+/*scale only digonally*/
+transform: skewX(20deg);
+transform: skewY(20deg);
+transform: skew(20deg, 10deg);
+transform: skew(20deg);
+
+/*matrix(scaleX(),skewY(),skewX(),scaleY(),translateX(),translateY())*/
+transform: matrix(1, -0.3, 0, 1, 0, 0);
+
+/*mirror transformation*/
+transform: rotateX(150deg);
+transform: rotateY(150deg);
+transform: rotateZ(90deg);
+
+
+/*animation of changing width with time delay*/
+transition: width 2s;
+transition: width 2s, height 4s;
+transition: width 2s, height 2s, transform 2s;
+
+
+/*predefined delays*/
+#div1 {transition-timing-function: linear;}
+#div2 {transition-timing-function: ease;}
+#div3 {transition-timing-function: ease-in;}
+#div4 {transition-timing-function: ease-out;}
+#div5 {transition-timing-function: ease-in-out;}
+
+/*animation starts after delay*/
+transition-delay: 1s;
+
+/*transition time*/
+transition-duration: 2s;
+
+/*property under transition*/
+transition-property: width;
+
+/*shorthand of transition*/
+transition: width 2s linear 1s;
+
+
+------------------------------------------
+/*animation name and duration*/
+
+/*name,duration,function,delay,iteration,direction */
+animation: example 5s linear 2s infinite alternate;
+
+animation-name: example;
+animation-duration: 4s;
+animation-delay: 2s;
+animation-delay: -2s;
+animation-iteration-count: 3/infinite;
+animation-direction: reverse/normal/alternate/alternate-reverse;
+
+/*after animation ends*/
+animation-fill-mode: forwards;
+animation-fill-mode: backwards;
+animation-fill-mode: both;
+
+
+/*define animation*/
+@keyframes example {
+  from {background-color: red;}
+  to {background-color: yellow;}
+}
+
+/*define animation based on %*/
+@keyframes example {
+  0%   {background-color: red;}
+  25%  {background-color: yellow;}
+  50%  {background-color: blue;}
+  100% {background-color: green;}
+}
+
+@keyframes example {
+  0%   {background-color:red; left:0px; top:0px;}
+  25%  {background-color:yellow; left:200px; top:0px;}
+  50%  {background-color:blue; left:200px; top:200px;}
+  75%  {background-color:green; left:0px; top:200px;}
+  100% {background-color:red; left:0px; top:0px;}
+}
+
+@keyframes example {
+  from {top: 0px;}
+  to {top: 200px; background-color: blue;}
+}
+
+/*speed of animation*/
+#div1 {animation-timing-function: linear;}
+#div2 {animation-timing-function: ease;}
+#div3 {animation-timing-function: ease-in;}
+#div4 {animation-timing-function: ease-out;}
+#div5 {animation-timing-function: ease-in-out;}
+
+-------------------------------------------
+/*to create a tooltip arrow*/
+
+content: "";
+position: absolute;
+top: 100%;
+left: 50%;
+margin-left: -5px;
+
+-width: 5px;
+
+-style: solid;
+
+-color: black transparent transparent transparent;
+
+
+content: " ";
+position: absolute;
+bottom: 100%;  /* At the top of the tooltip */
+left: 50%;
+margin-left: -5px;
+
+-width: 5px;
+
+-style: solid;
+
+-color: transparent transparent black transparent;
+
+
+content: " ";
+position: absolute;
+top: 50%;
+right: 100%; /* To the left of the tooltip */
+margin-top: -5px;
+
+-width: 5px;
+
+-style: solid;
+
+-color: transparent black transparent transparent;
+
+content: " ";
+position: absolute;
+top: 50%;
+left: 100%; /* To the right of the tooltip */
+margin-top: -5px;
+
+-width: 5px;
+
+-style: solid;
+
+-color: transparent transparent transparent black;
+
+
+/*add >> sign in the button*/
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+/*click effect on button*/
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/*fade effect on button*/
+.button:hover {opacity: 1}
+
+/*pagination */
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+.pagination a:hover:not(.active) {background-color: #ddd;}
+------------------------------------------
+/*to show effects on images*/
+filter: grayscale(100%);
+
+------------------------------------------
+-webkit-box-reflect: below;
+-webkit-box-reflect: right;
+-webkit-box-reflect: below 20px;
+-webkit-box-reflect: below 0px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4));
+
+------------------------------------------
+/*used to fit image inside container*/
+.fill {object-fit: fill;}
+.contain {object-fit: contain;}
+.cover {object-fit: cover;}
+.scale-down {object-fit: scale-down;}
+.none {object-fit: none;}
+/*change image position inside frame*/
+object-position: 100% 100%;
+-----------------------------------------
+/*add breadcrumb*/
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+
+-----------------------------------------
+column-count: 3;
+column-gap: 40px;
+column-rule-style: solid;
+
+/*separator line*/
+column-rule-width: 1px;
+column-rule-color: lightblue;
+column-rule-style: solid;
+column-rule: 1px solid lightblue;
+
+column-span: all;
+column-width: 100px;
+
+-----------------------------------------
+/*use var function to automatically put*/
+:root {
+  --blue: #1e90ff;
+  --white: #ffffff;
+}
+
+body { background-color: var(--blue); }
+
+h2 { border-bottom: 2px solid var(--blue); }
+
+.container {
+  color: var(--blue);
+  background-color: var(--white);
+  padding: 15px;
+}
+
+button {
+  background-color: var(--white);
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  padding: 5px;
+}
+
+/*to override the global value*/
+
+:root {
+  --blue: #1e90ff;
+  --white: #ffffff;
+}
+
+body {
+  background-color: var(--blue);
+}
+
+h2 {
+  border-bottom: 2px solid var(--blue);
+}
+
+.container {
+  color: var(--blue);
+  background-color: var(--white);
+  padding: 15px;
+}
+
+button {
+	/*redeclared here to override*/
+  --blue: #0000ff;
+  background-color: var(--white);
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  padding: 5px;
+}
+
+/*it also works with media queries*/
+
+:root {
+  --blue: #1e90ff;
+  --white: #ffffff;
+}
+
+.container {
+  --fontsize: 25px;
+}
+
+/* Styles */
+body {
+  background-color: var(--blue);
+}
+
+h2 {
+  border-bottom: 2px solid var(--blue);
+}
+
+.container {
+  color: var(--blue);
+  background-color: var(--white);
+  padding: 15px;
+  font-size: var(--fontsize);
+}
+
+@media screen and (min-width: 450px) {
+  .container {
+    --fontsize: 50px;
+  }
+   :root {
+    --blue: lightblue;
+  }
+}
+
+
