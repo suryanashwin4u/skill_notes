@@ -238,7 +238,7 @@ const car = {type:"Fiat", model:"500", color:"white"};
 CAR = {type:"Volvo", model:"EX60", color:"red"};    // ERROR
 
 
-//const arrays can be updated and not reassigned
+//const arrays can be updated
 const cars = ["Saab", "Volvo", "BMW"];
 cars[0] = "Toyota";
 cars.push("Audi");
@@ -308,6 +308,7 @@ var x = 5;
 var z = x ** 2;          // result is 25
 var z = Math.pow(x,2);   // result is 25
 
+
 //using single and double quotes
 var carName1 = "Volvo XC60";   			  // Using double quotes
 var carName2 = 'Volvo XC60';   			  // Using single quotes
@@ -340,7 +341,7 @@ var person = {
   }
 };
 
-//method without the () parentheses, it will return the function definition
+//method without the () parentheses, it will return the function definition here 
 document.getElementById("demo").innerHTML = person.fullName;
 
 //accessing objects
@@ -369,7 +370,7 @@ typeof x                     // Returns "undefined"
 typeof undefined             // Returns "undefined"
 typeof null                  // Returns "object"
 typeof {name:'John', age:34} // Returns "object"
-typeof [1,2,3,4]             // Returns "object" 
+typeof [1,2,3,4]             // Returns "object"
 typeof function myFunc(){}   // Returns "function"
 
 
@@ -546,6 +547,194 @@ txt.split(",");          // Split on commas
 txt.split(" ");          // Split on spaces
 txt.split("|");          // Split on pipe
 txt.split("");           // Split in characters
+
+//representing numbers
+var x = 3.14;    // A number with decimals
+var y = 3;       // A number without decimals
+var x = 123e5;    // 12300000
+var y = 123e-5;   // 0.00123
+var x = 999999999999999;   // x will be 999999999999999
+var y = 9999999999999999;  // y will be 10000000000000000
+var x = 0.2 + 0.1;         // x will be 0.30000000000000004
+var x = (0.2 * 10 + 0.1 * 10) / 10;       // x will be 0.3
+
+var x = 10;
+var y = 20;
+var z = x + y;           // z will be 30 (a number)
+
+var x = "10";
+var y = "20";
+var z = x + y;           // z will be 1020 (a string)
+
+var x = 10;
+var y = "20";
+var z = x + y;           // z will be 1020 (a string)
+
+var x = "10";
+var y = 20;
+var z = x + y;           // z will be 1020 (a string)
+
+var x = 10;
+var y = 20;
+var z = "The result is: " + x + y;	//1020
+
+var x = 10;
+var y = 20;
+var z = "30";
+var result = x + y + z;	//3030
+
+var x = "100";
+var y = "10";
+var z = x / y;       // z will be 10
+
+
+var x = "100";
+var y = "10";
+var z = x * y;       // z will be 1000
+
+
+var x = "100";
+var y = "10";
+var z = x - y;       // z will be 90
+
+
+var x = "100";
+var y = "10";
+var z = x + y;       // z will not be 110 (It will be 10010)
+
+
+var x = 100 / "Apple";  // x will be NaN (Not a Number)
+
+var x = 100 / "10";     // x will be 10
+
+var x = 100 / "Apple";
+isNaN(x);               // returns true because x is Not a Number
+
+var x = NaN;
+var y = 5;
+var z = x + y;         // z will be NaN
+
+var x = NaN;
+var y = "5";
+var z = x + y;         // z will be NaN5
+
+typeof NaN;            // returns "number"
+
+
+var myNumber = 2;
+while (myNumber != Infinity) {   // Execute until Infinity
+  myNumber = myNumber * myNumber;
+}
+
+var x =  2 / 0;       // x will be Infinity
+var y = -2 / 0;       // y will be -Infinity
+
+typeof Infinity;     // returns "number"
+
+var x = 0xFF;        // x will be 255
+
+var myNumber = 32;
+myNumber.toString(10);  // returns 32
+myNumber.toString(32);  // returns 10
+myNumber.toString(16);  // returns 20
+myNumber.toString(8);   // returns 40
+myNumber.toString(2);   // returns 100000
+
+var x = 123;			// typeof x returns number
+var y = new Number(123);// typeof y returns object
+
+// (x === y) is false because x and y have different types
+var x = 500;             
+var y = new Number(500); 
+
+// (x == y) is false because objects cannot be compared
+var x = new Number(500);             
+var y = new Number(500);
+
+
+var x = 123;
+x.toString();            // returns 123 from variable x
+(123).toString();        // returns 123 from literal 123
+(100 + 23).toString();   // returns 123 from expression 100 + 23
+
+
+var x = 9.656;
+x.toExponential(2);     // returns 9.66e+0
+x.toExponential(4);     // returns 9.6560e+0
+x.toExponential(6);     // returns 9.656000e+0
+
+
+var x = 9.656;
+x.toFixed(0);           // returns 10
+x.toFixed(2);           // returns 9.66
+x.toFixed(4);           // returns 9.6560
+x.toFixed(6);           // returns 9.656000
+
+
+var x = 9.656;
+x.toPrecision();        // returns 9.656
+x.toPrecision(2);       // returns 9.7
+x.toPrecision(4);       // returns 9.656
+x.toPrecision(6);       // returns 9.65600
+
+var x = 123;
+x.valueOf();            // returns 123 from variable x
+(123).valueOf();        // returns 123 from literal 123
+(100 + 23).valueOf();   // returns 123 from expression 100 + 23
+
+
+Number(true);          // returns 1
+Number(false);         // returns 0
+Number("10");          // returns 10
+Number("  10");        // returns 10
+Number("10  ");        // returns 10
+Number(" 10  ");       // returns 10
+Number("10.33");       // returns 10.33
+Number("10,33");       // returns NaN
+Number("10 33");       // returns NaN
+Number("John");        // returns NaN
+
+
+Number(new Date("2017-09-30"));    // returns 1506729600000
+
+
+parseInt("10");         // returns 10
+parseInt("10.33");      // returns 10
+parseInt("10 20 30");   // returns 10
+parseInt("10 years");   // returns 10
+parseInt("years 10");   // returns NaN 
+
+parseFloat("10");        // returns 10
+parseFloat("10.33");     // returns 10.33
+parseFloat("10 20 30");  // returns 10
+parseFloat("10 years");  // returns 10
+parseFloat("years 10");  // returns NaN
+
+var x = Number.MAX_VALUE;
+var x = Number.MIN_VALUE;
+var x = Number.POSITIVE_INFINITY;
+var x = 1 / 0;
+var x = Number.NEGATIVE_INFINITY;
+var x = -1 / 0;
+
+var x = Number.NaN;
+var x = 100 / "Apple";  // x will be NaN (Not a Number)
+
+var x = 6;
+var y = x.MAX_VALUE;    // y becomes undefined
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
