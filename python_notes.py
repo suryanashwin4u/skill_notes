@@ -942,13 +942,76 @@ thislist = ["apple", "banana", "cherry"]
 thislist[1:2] = ["blackcurrant", "watermelon"]
 print(thislist)
 
-# insert at 3 position in the list
+# insert at 3rd position in the list
 thislist.insert(2, "watermelon")
 
+# add at the end of the list
+thislist.append("orange")
+
+# add 2 list or tuple to the list together
+thislist.extend(tropical)
+
+# to remove item from a list
+thislist.remove("banana")
+
+# to pop up item from the given index of the list
+thislist.pop(1)
+
+# to pop up from the end
+thislist.pop()
+
+# remove the first item from the list
+del thislist[0]
 
 
+# delete the entire list
+del thislist
 
+# clear the list 
+thislist.clear()
 
+--------------------------------------------------
+
+# loop through a list
+for x in thislist:
+  print(x)
+
+# loop thru a list having some length and print the items
+for i in range(len(thislist)):
+  print(thislist[i])
+
+# loop thru a list having some length and print the items
+while i < len(thislist):
+  print(thislist[i])
+
+# shorthand loop items printing with next line
+[print(x) for x in thislist]
+
+# to check character and add into new list using loop
+for x in fruits:
+  if "a" in x:
+    newlist.append(x)
+
+# to check character and add into new list using loop
+newlist = [x for x in fruits if "a" in x]
+
+# make a new list of items in fruits other than apple
+newlist = [x for x in fruits if x != "apple"]
+
+# make a new list of items carring all items in a fruit
+newlist = [x for x in fruits]
+
+# make a new list of items carring all numbers from 0 to 9
+newlist = [x for x in range(10)]
+
+# make a new list of items carring all numbers less than 5
+newlist = [x for x in range(10) if x < 5]
+
+# make a new list of items using uppercase
+newlist = [x.upper() for x in fruits]
+
+# make a new list of items having 'hello'
+newlist = ['hello' for x in fruits]
 
 
 
