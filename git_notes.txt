@@ -21,6 +21,7 @@ git status
 =>to know the changes happen and currently unstaged files in the local project directory
 
 --------------------------------------------------------
+
 Note: Short status flags are:
 ?? - Untracked files
 A - Files added to stage
@@ -30,6 +31,7 @@ D - Deleted files
 
 git status --short
 =>compact view to get idea of changes
+
 =======================================================
 
 git add file_name
@@ -43,6 +45,7 @@ git add .
 
 git add -A
 =>to stage all files where changes happened
+
 =======================================================
 
 git commit -m "type changes happend in the file"
@@ -55,3 +58,90 @@ git commit -a -m "type changes happend in the file"
 
 git log
 =>to view the commits happens till now for a particular project
+type q to come out again
+
+======================================================
+
+git command_name -help
+=>See all the available options for the specific command
+
+git help --all
+=>See all possible commands
+
+Note: If you find yourself stuck in the list view, SHIFT + G to jump the end of the list, then q to exit the view.
+
+======================================================
+
+With Git:
+
+With a new branch called new-design, edit the code directly without impacting the main branch
+
+EMERGENCY! There is an unrelated error somewhere else in the project that needs to be fixed ASAP!
+
+Create a new branch from the main project called small-error-fix
+
+Fix the unrelated error and merge the small-error-fix branch with the main branch
+
+You go back to the new-design branch, and finish the work there
+
+Merge the new-design branch with main (getting alerted to the small error fix that you were missing)
+
+======================================================
+
+git branch branch_name
+=>create a new branch to update the code
+
+git branch
+=>to know list of branches
+
+
+======================================================
+
+git checkout branch_name
+=>change working branch
+
+Note: Using the -b option on checkout will create a new branch, and move to it, if it does not exist
+
+git checkout -b newbranchname
+=>create a new branch and move to it directly
+
+======================================================
+merging branches together
+
+1.need to change to the original repository branch
+2.now merge new branch code into original using git merge new_branch_name
+3.But if there is some conflicts in merging then solve that conflicts and then commit
+
+git merge new_branch_name
+=>to merge new branch into the branch where you are present right now
+
+======================================================
+
+git branch -d newbranchname
+=>to delete old branch
+
+
+======================================================
+add files from local drive to github repository
+
+1.create a new repository at github.com
+2.execute this command :git remote add origin https://github.com/link......
+3.git push --set-upstream origin master
+
+
+
+fetch gets all the change history of a tracked branch/repo.
+git fetch origin
+
+git log origin/master
+
+
+ we can also verify by showing the differences between our local master and origin/master
+ git diff origin/master
+
+
+ git merge origin/master
+
+
+
+ git pull origin
