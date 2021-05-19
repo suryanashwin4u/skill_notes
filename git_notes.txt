@@ -1,0 +1,57 @@
+                       GIT NOTES
+--------------------------------------------------------
+
+git --version
+=>check version of git installed in device
+
+=======================================================
+
+git config --global user.name "type username"
+git config --global user.email "type email id"
+=>globally declare your username and email to know who is commiting in the system
+
+=======================================================
+
+git init
+=>initialize git in local project directory at first
+
+=======================================================
+
+git status
+=>to know the changes happen and currently unstaged files in the local project directory
+
+--------------------------------------------------------
+Note: Short status flags are:
+?? - Untracked files
+A - Files added to stage
+M - Modified files
+D - Deleted files
+
+
+git status --short
+=>compact view to get idea of changes
+=======================================================
+
+git add file_name
+=>to stage file where changes happened
+
+git add --all
+=>to stage all files where changes happened
+
+git add .
+=>to stage all files where changes happened
+
+git add -A
+=>to stage all files where changes happened
+=======================================================
+
+git commit -m "type changes happend in the file"
+=>declare save point with message
+
+git commit -a -m "type changes happend in the file"
+=>declare save point with message for all files
+
+======================================================
+
+git log
+=>to view the commits happens till now for a particular project
