@@ -122,26 +122,93 @@ git branch -d newbranchname
 
 
 ======================================================
+working with github repository
+
+
 add files from local drive to github repository
 
 1.create a new repository at github.com
-2.execute this command :git remote add origin https://github.com/link......
-3.git push --set-upstream origin master
+2.execute this command to push local repository to github:
+    git remote add origin https://github.com/link......
+3. push our master branch to the origin url, and set it as the default remote branch:
+    git push --set-upstream origin master
 
 
-
-fetch gets all the change history of a tracked branch/repo.
 git fetch origin
+=>fetch the existing repository so that any updated wont be missed
+
 
 git log origin/master
+=>check the commits happened b4 you
 
 
- we can also verify by showing the differences between our local master and origin/master
- git diff origin/master
+git diff origin/master
+=>we can also verify by showing the differences between our local master and origin/master
 
 
- git merge origin/master
+git merge origin/master
+=>merge our current branch (master) with origin/master
+
+
+git pull origin
+=>Use pull to update our local Git
+
+git commit -a -m "message"
+=>commit all files directly without staging
+
+git push origin
+=>push files to remote repository
+
+git push origin update-readme
+=> push the branch from our local Git repository, to GitHub, where everyone can see the changes
+
+git branch -a
+=>returns all repository list at remote and local
+
+git branch -r
+=>returns all repositories at remote
+
+
+git checkout -b new_rep_name
+=>create a new local branch, and checkout direclty from one command
+
+
+git add README.md
+=>to add readme file
+
+============================================================
+
+fork (to contribute in someone else repository)
+
+git clone https://github.com/w3schools-test/w3schools-test.github.io.git
+=>to clone the fork to local drive
+
+Note: To specify a specific folder to clone to, add the name of the folder after the repository URL, like this: git clone https://github.com/w3schools-test/w3schools-test.github.io.git myfolder
+
+git remote -v
+=>
 
 
 
- git pull origin
+===========================================================
+revert changes
+
+git log --oneline
+=>returns short oneline all commits till now
+
+git revert HEAD --no-edit
+=> revert the latest commit using git revert HEAD (revert the latest change,  and then commit), adding the option --no-edit to skip the commit message editor (getting the default revert message)
+
+Note: To revert to earlier commits, use git revert HEAD~x (x being a number. 1 going back one more, 2 going back two more, etc.)
+
+git reset hashcode
+=>return all files of previous commit having same hashcode as above
+
+Warning: Messing with the commit history of a repository can be dangerous. It is usually ok to make these kinds of changes to your own local repository. However, you should avoid making changes that rewrite history to remote repositories, especially if others are working with them.
+
+
+git commit --amend -m "Added lines to README.md"
+=>ammend previous commit message
+
+Warning: Messing with the commit history of a repository can be dangerous. It is usually ok to make these kinds of changes to your own local repository. However, you should avoid making changes that rewrite history to remote repositories, especially if others are working with them.
+
