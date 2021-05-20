@@ -176,6 +176,9 @@ git checkout -b new_rep_name
 git add README.md
 =>to add readme file
 
+git remote rename origin newname
+=>rename origin to new name
+
 ============================================================
 
 fork (to contribute in someone else repository)
@@ -210,5 +213,34 @@ Warning: Messing with the commit history of a repository can be dangerous. It is
 git commit --amend -m "Added lines to README.md"
 =>ammend previous commit message
 
-Warning: Messing with the commit history of a repository can be dangerous. It is usually ok to make these kinds of changes to your own local repository. However, you should avoid making changes that rewrite history to remote repositories, especially if others are working with them.
+Warning: Messing with the commit history of a repository can be dangerous. It is usually ok to make these kinds of changes to your own local repository. However, you should avoid making changes that rewrite history to remote repositories, especially if others are working with them~
+
+===================================================
+
+secure git
+
+To create a .gitignore file, go to the root of your local Git, and create it 
+command: touch .gitignore
+
+We are just going to add two simple rules:
+1.Ignore any files with the .log extension
+2.Ignore everything in any directory named temp
+
+example:
+# ignore ALL .log files
+*.log
+
+# ignore ALL files in ANY directory named temp
+temp/
+
+Now all .log files and anything in temp folders will be ignored by Git.
+
+
+Note: In this case, we use a single .gitignore which applies to the entire repository.
+It is also possible to have additional .gitignore files in subdirectories. These only apply to files or folders within that directory.
+
+It is also possible to ignore files or folders but not show it in the distubuted .gitignore file.
+
+These kinds of ignores are specified in the .git/info/exclude file. It works the same way as .gitignore but are not shown to anyone else.
+============================================================
 
