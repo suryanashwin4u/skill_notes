@@ -1013,15 +1013,141 @@ newlist = [x.upper() for x in fruits]
 # make a new list of items having 'hello'
 newlist = ['hello' for x in fruits]
 
+# print a list of items which is not banana
+fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+newlist = [x if x != "banana" else "orange" for x in fruits]
+print(newlist)
 
+============================================================
+# sort a list in ascending order by default and case sensitive...it can give unexpected result
+thislist.sort()
+
+# sort a list in ascending order by default and case insensitive
+thislist.sort(key = str.lower)
+
+# sort a list in descending order by default
+thislist.sort(reverse = True)
+
+# sort according to the function
+def myfunc(n):
+  return abs(n - 50)
+thislist = [100, 50, 65, 82, 23]
+thislist.sort(key = myfunc)
+print(thislist)
+
+# to reverse a list
+thislist.reverse()
+
+# to copy 1 list to another
+mylist = thislist.copy()
+
+# change into list or make copy
+mylist = list(thislist)
+
+# join to list end to end
+list3 = list1 + list2
+
+# append list 1 to list 2
+for x in list2:
+  list1.append(x)
+
+# extend list 1 by adding list 2 at the end
+list1.extend(list2)
 
 # convert a tuple into list
 thislist = list(("apple", "banana", "cherry"))
+
+-------------------------------------------------------------
 
 # List:ordered and changeable. Allows duplicate members.
 # Tuple:ordered and unchangeable. Allows duplicate members.
 # Set:unordered and unindexed. No duplicate members.
 # Dictionary:ordered* and changeable. No duplicate members.
+
+------------------------------------------------------------
+
+# tuple length
+print(len(thistuple))
+
+# this is a tuple with comma
+thistuple = ("apple",)
+print(type(thistuple))
+
+#NOT a tuple but string without comma
+thistuple = ("apple")
+print(type(thistuple))
+
+# types of tuples
+tuple1 = ("apple", "banana", "cherry")
+tuple2 = (1, 5, 7, 9, 3)
+tuple3 = (True, False, False)
+tuple1 = ("abc", 34, True, 40, "male")
+
+# covert to tuple using tuple()
+thistuple = tuple(("apple", "banana", "cherry")) # note the double round-brackets
+
+# access tuple with index
+print(thistuple[1])
+
+# access tuple items with negative index
+print(thistuple[-1])
+
+# access tuple items using range
+print(thistuple[2:5])
+
+# access tuple items starting from index 0 to 3
+print(thistuple[:4])
+
+# access tuple items starting from 2 to end
+print(thistuple[2:])
+
+# access tuple items starting from -4 to -2
+print(thistuple[-4:-1])
+
+# if apple in tuple then true
+if "apple" in thistuple:
+
+#Convert the tuple into a list to be able to change it
+x = ("apple", "banana", "cherry")
+y = list(x)
+y[1] = "kiwi"
+x = tuple(y)
+
+# tuple is unammendable
+thistuple.append("orange") # This will raise an error
+
+# convert tuple into list , remove item and vice versa
+thistuple = ("apple", "banana", "cherry")
+y = list(thistuple)
+y.remove("apple")
+thistuple = tuple(y)
+
+# delete tuple completely
+del thistuple
+
+# unpacking tuple into variables
+fruits = ("apple", "banana", "cherry")
+(green, yellow, red) = fruits
+print(green)
+print(yellow)
+print(red)
+
+# Note: The number of variables must match the number of values in the tuple, if not, you must use an asterix to collect the remaining values as a list.
+
+# rest items of tuple which is not assigned to variables will be assigned to asterik variable to make a list of items automatically
+fruits = ("apple", "banana", "cherry", "strawberry", "raspberry")
+(green, yellow, *red) = fruits
+print(green)
+print(yellow)
+print(red)
+
+
+# asterik variable will store rest items which is not assigned to green and red varible
+fruits = ("apple", "mango", "papaya", "pineapple", "cherry")
+(green, *tropic, red) = fruits
+print(green)
+print(tropic)
+print(red)
 
 
 
