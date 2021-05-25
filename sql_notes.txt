@@ -1,3 +1,5 @@
+
+                SQL NOTES
 ******************************************
 
 //select column syntax
@@ -17,6 +19,7 @@ SELECT CustomerName, City FROM Customers;
 ******************************************
 
 
+
 //select distinct columns syntax 
 SELECT DISTINCT column1, column2, ...
 FROM table_name;
@@ -32,7 +35,8 @@ SELECT COUNT(DISTINCT Country) FROM Customers;
 
 
 
-*****************************************
+******************************************
+
 
 
 // select columns using where conditions syntax
@@ -87,7 +91,6 @@ WHERE City IN ('Paris','London');
 ******************************************
 
 
-
 //select rows from columns from a table where conditions with AND/OR/NOT operations matches
 SELECT column1, column2, ...
 FROM table_name
@@ -123,7 +126,8 @@ WHERE NOT Country='Germany' AND NOT Country='USA';
 
 
 
-********************************************
+******************************************
+
 
 
 
@@ -157,16 +161,60 @@ ORDER BY Country ASC, CustomerName DESC;
 
 
 
-*********************************************
+******************************************
 
-//insert data into some columns
+
+//insert data into some columns if different order
 INSERT INTO table_name (column1, column2, column3, ...)
 VALUES (value1, value2, value3, ...);
 
-//insert data into all columns
+//insert data into all columns if same order
 INSERT INTO table_name
 VALUES (value1, value2, value3, ...);
 
+example:
+
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+
+------------------------------------------------------------
 
 
+INSERT INTO Customers (CustomerName, City, Country)
+VALUES ('Cardinal', 'Stavanger', 'Norway');
+
+------------------------------------------------------------
+
+*******************************************
+
+//return all rows containing null
+SELECT column_names
+FROM table_name
+WHERE column_name IS NULL;
+
+//return all rows which does not contain null
+SELECT column_names
+FROM table_name
+WHERE column_name IS NOT NULL;
+--------------------------------------------
+examples:
+SELECT CustomerName, ContactName, Address
+FROM Customers
+WHERE Address IS NULL;
+--------------------------------------------
+SELECT CustomerName, ContactName, Address
+FROM Customers
+WHERE Address IS NOT NULL;
+
+******************************************
+//update sql command
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+--------------------------------------------
+example:
+UPDATE Customers
+SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+WHERE CustomerID = 1;
+--------------------------------------------
 

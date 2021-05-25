@@ -1,8 +1,11 @@
-                       GIT NOTES
+                    git tutorials
 --------------------------------------------------------
 
 git --version
 =>check version of git installed in device
+
+touch file_name
+=>create a file in current directory
 
 =======================================================
 
@@ -14,6 +17,9 @@ git config --global user.email "type email id"
 
 git init
 =>initialize git in local project directory at first
+
+git init directory_name
+=>Create a Repository and Directory Together
 
 =======================================================
 
@@ -46,19 +52,102 @@ git add .
 git add -A
 =>to stage all files where changes happened
 
+git add --ignore-removal 
+=>Git allows us to stage only updated and newly created files at once
+
+git add -u  
+=> To stage all modified and deleted files only
+
+git add *.java 
+=> to add all the same pattern files at once. 
+
+git reset <filename>
+=>To undo an add operation
+
+
+
+
+
+
 =======================================================
+git Commit
+=> it will commit but ask message to enter
+Press the Esc key and after that 'I' for insert mode. Type a commit message whatever you want. Press Esc after that ':wq' to save and exit from the editor
+
+git commit -a
+=>This process will only commit the already added files. It will not commit the files that have not been staged.
+
+git commit -am "Commit message." 
+=>This command will immediately make a commit for already staged files with a commit message
+
+git commit -amend  
+=> to edit the last commit.
+
+
 
 git commit -m "type changes happend in the file"
 =>declare save point with message
 
 git commit -a -m "type changes happend in the file"
 =>declare save point with message for all files
+=====================================================
+git show HEAD  
+->to check the status of the Head. This command will show the location of the Head.
+
+git show commit_id
+->returns commited stats
+
+When Head doesn't point to most recent commit, such state is called detached Head. If you checkout with an older commit, it will stand the detached head condition. 
+
+
+
+
 
 ======================================================
 
 git log
 =>to view the commits happens till now for a particular project
 type q to come out again
+
+git log --oneline
+=>returns short oneline all commits till now
+
+git log --stat
+=>gives whole stat of modification like summary line,modified line
+
+git log --patch
+=>shows the modified files, location of the lines that are added or removed
+
+git log --graph
+=>To list the commits in the form of a graph
+
+git log --graph --oneline
+=>To make the output more specific
+
+git log -n(type number)
+=>list only n commits
+
+git log --after="yy-mm-dd"
+=>returns all commits happened on yy-mm-dd
+
+git log --after="n days ago"  
+=>returns all commits happened n days ago
+
+$ git log --after="yyyy-mm-dd" --before="yyyy-mm-dd"  
+=>show all commits happened between this time
+
+$ git log --author="Author name"  
+=>show all the commits by author name/email
+
+$ git log --grep=" Commit message."  
+=>show all the commits by choosing from commit message of specific type
+
+
+
+
+
+
+
 
 ======================================================
 
@@ -94,6 +183,22 @@ git branch branch_name
 git branch
 =>to know list of branches
 
+git branch -d<branch name>  
+->In this command, Git prevents you from deleting the branch if it has unmerged changes.
+
+
+
+git push origin -delete <branch name>  
+->delete a remote branch
+
+git branch -m master  
+->move to master Branch
+
+git branch -m <old branch name><new branch name>  
+-> rename the branch
+
+
+
 
 ======================================================
 
@@ -115,11 +220,29 @@ merging branches together
 git merge new_branch_name
 =>to merge new branch into the branch where you are present right now
 
+git merge <commit>
+->to merge a specified commit
+
+
+When two branches are trying to merge, and both are edited at the same time and in the same file, Git won't be able to identify which version is to take for changes. Such a situation is called merge conflict. If such a situation occurs, it stops just before the merge commit so that you can resolve the conflicts manually.
+
+git mergetool  
+->to solve conflict
+
+To resolve the conflict, enter in the insert mode by merely pressing I key and make changes as you want. Press the Esc key, to come out from insert mode. Type the: w! at the bottom of the editor to save and exit the changes. To accept the changes, use the rebase command.
+
+
+git rebase --continue 
+->to continue after solving conflict
+To see that which is the first edited text of the merge conflict in your file, search the file attached with conflict marker <<<<<<<. You can see the changes from the HEAD or base branch after the line <<<<<<< HEAD in your text editor. Next, you can see the divider like =======. It divides your changes from the changes in the other branch, followed by >>>>>>> BRANCH-NAME.
+Decide whether you want to keep only your branch's changes or the other branch's changes, or create a new change. Delete the conflict markers <<<<<<<, =======, >>>>>>> and create final changes you want to merge.
+
+
+
 ======================================================
 
 git branch -d newbranchname
 =>to delete old branch
-
 
 ======================================================
 working with github repository
@@ -128,27 +251,51 @@ working with github repository
 add files from local drive to github repository
 
 1.create a new repository at github.com
+
 2.execute this command to push local repository to github:
     git remote add origin https://github.com/link......
+
+    git remote
+=>providing the remote name as the origin. Origin is the default name for the remote server,
+
+git remote --verbose  
+=> providing available remote connections. If a repository contains more than one remote connection, this command will list them all.
+
+git remote add <short name><remote URL> 
+->explicitly add a remote for a repository and add a short name to it for easyness
+
+ git remote remove <destination>  
+ -> remove a remote connection from a repository
+
+ git remote rename <old name><new name>  
+ ->renaming the remote server name so that you can use a short name in place of the remote server name
+
+ git remote show <remote>  
+ ->To see additional information about a particular remote.It will result in information about the remote server. It contains a list of branches related to the remote and also the endpoints attached for fetching and pushing.
+
+git remote set-url <remote name><newURL>  
+->To change the remote URL
+
+
+
+
+git pull shortname
+->pull the repo using shortname without using url
+
 3. push our master branch to the origin url, and set it as the default remote branch:
     git push --set-upstream origin master
-
 
 git fetch origin
 =>fetch the existing repository so that any updated wont be missed
 
-
 git log origin/master
 =>check the commits happened b4 you
-
 
 git diff origin/master
 =>we can also verify by showing the differences between our local master and origin/master
 
-
 git merge origin/master
 =>merge our current branch (master) with origin/master
-
 
 git pull origin
 =>Use pull to update our local Git
@@ -168,10 +315,8 @@ git branch -a
 git branch -r
 =>returns all repositories at remote
 
-
 git checkout -b new_rep_name
 =>create a new local branch, and checkout direclty from one command
-
 
 git add README.md
 =>to add readme file
@@ -181,20 +326,24 @@ git remote rename origin newname
 
 ============================================================
 
-fork (to contribute in someone else repository)
-
-git clone https://github.com/w3schools-test/w3schools-test.github.io.git
-=>to clone the fork to local drive
+git clone repo_url
+=>to clone the repository to local drive
 
 Note: To specify a specific folder to clone to, add the name of the folder after the repository URL, like this: git clone https://github.com/w3schools-test/w3schools-test.github.io.git myfolder
 
-git remote -v
-=>
+git clone repo_url "folder_name"  
+=>clone url to new folder
 
+git clone -b Branch_name Repository_URL "folder_name"
+=> allows making a copy of only a particular branch from a repository. You can make a directory for the individual branch by using the git clone command
 
+But the significant difference is that the fork is used to create a server-side copy, and clone is used to create a local copy of the repository.
 
 ===========================================================
 revert changes
+
+git revert <commit-ish>  
+->
 
 git log --oneline
 =>returns short oneline all commits till now
@@ -242,5 +391,97 @@ It is also possible to have additional .gitignore files in subdirectories. These
 It is also possible to ignore files or folders but not show it in the distubuted .gitignore file.
 
 These kinds of ignores are specified in the .git/info/exclude file. It works the same way as .gitignore but are not shown to anyone else.
+
+
+Rules for putting the pattern in .gitignore file:
+
+The rules for the patterns that can be put in the .gitignore file are as follows:
+
+Git ignores the Blank lines or lines starting with #.
+Only the Standard glob patterns work and will be applied recursively throughout the entire working tree.
+The patterns can be started with a forward slash (/) to avoid recursively.
+The patterns can be ended with a forward slash (/) to specify a directory.
+The patterns can be negated by starting it with an exclamation point (!).
+
+
+git config --global core.excludesfile ~/.gitignore_global 
+->To create a global .gitignore for the whole big repository
+
+git ls-files --ignore --exclude-standard  
+->To list the ignored file
+
+
 ============================================================
+
+
+git fetch repository_link
+=>To fetch the remote repository
+
+git fetch branch_name repository_link
+=>To fetch a particular branch name from the remote repository
+
+git fetch -all
+=>to fetch all the branches
+
+git fetch origin
+=>to fetch new updates in the same file if updated on remote
+
+git pull
+->to pull all updates in local repository
+
+git pull remote_branch_url
+->to pull all updates from remote branch url in local repository
+
+git pull remotename branchname
+->to share a project or send updates to the remote server
+
+
+
+git fetch -all
+=>fetch all remote updates without merging
+
+git mergetool
+=>Git merge tool command is used to resolve the conflict
+============================================================
+
+git stash
+=> just save whatever changes happened without commiting the changes in current files
+
+git stash save "message"
+=>stash with message
+
+git stash list
+=>check the stored stashes
+
+git stash apply 
+-> reapply the changes made
+
+git stash apply stash_id
+-> In case of more than one stash, you can use "git stash apply" command followed by stash index id to apply the particular commit.
+
+git stash show
+->To see the changes in the file before stash and after stash operation
+
+git stash show -p
+-> To display the changed content of the file,show the edited files and content.
+
+git stash pop
+->re-apply the previous commits to the repository.
+
+git stash drop
+->used to delete a stash from the queue. Generally, it deletes the most recent stash.
+
+git stash drop <stash id>
+-> To delete a particular stash from the available stashes, pass the stash id in stash drop command.
+
+git stash drop stash@{1} 
+->to delete a particular stash with given id
+
+git stash clear 
+->To delete all the available stashes
+
+git stash branch <Branch Name>  
+->create a new branch and transfer the stashed work on that
+
+
 
