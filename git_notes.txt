@@ -4,9 +4,6 @@
 git --version
 =>check version of git installed in device
 
-touch file_name
-=>create a file in current directory
-
 =======================================================
 
 git config --global user.name "type username"
@@ -45,10 +42,10 @@ git add file_name
 
 git add --all
 =>to stage all files where changes happened
-
+or
 git add .
 =>to stage all files where changes happened
-
+or
 git add -A
 =>to stage all files where changes happened
 
@@ -61,39 +58,30 @@ git add -u
 git add *.java 
 => to add all the same pattern files at once. 
 
-
+================================================
 
 git reset --hard  
 ->This option will reset the changes and match the position of the Head before the last changes
 It will remove the available changes from the staging area.
 
-the reset hard mode performs below operations:
-
-It will move the HEAD pointer.
-It will update the staging Area with the content that the HEAD is pointing.
-It will update the working directory to match the Staging Area.
-
-
-
-
+reset hard mode performs below operations:
+1.It will move the HEAD pointer.
+2.It will update the staging Area with the content that the HEAD is pointing.
+3.It will update the working directory to match the Staging Area.
 
 git reset --mixed  
--> reset the status of the Head, and it will not delete any data from the staging area to match the position of the Head
+->reset the status of the Head, and it will not delete any data from the staging area to match the position of the Head
 
-the reset mixed mode performs the below operations:
+reset mixed mode performs the below operations:
 
 It will move the HEAD pointer
 It will update the Staging Area with the content that the HEAD is pointing to.
 
-
-git reset--soft <commit-sha>  
+git reset --soft <commit-sha>  
 -> it is used to change the position of the Head
-
 
 git reset <option> <commit-sha>  
 -> To reset it, git reset command can be used with any option supported by reset command. It will take the default behavior of a particular command and reset the given commit
-
-
 
 git reset <filename>
 =>To undo an add operation
@@ -107,10 +95,8 @@ git rm <file Name>
 git rm --cached <file name>   
 ->remove a file from the version control system. The deleted file will remain in the repository.
 
-
 git cherry-pick <commit id>  
 ->take commit id from one branch where accidently commit took place and do same commit into another branch
-
 
 git tag <tag name>  
 ->command will mark the current status of the project.
