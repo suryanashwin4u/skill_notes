@@ -1,0 +1,85 @@
+			php notes from php manual
+**********************************************
+
+Get system information from PHP
+<?php phpinfo(); ?>
+
+**********************************************
+
+returns name of browser using
+<?php
+echo $_SERVER['HTTP_USER_AGENT'];
+?>
+
+**********************************************
+
+strpos() is a function built into PHP which searches a string for another string.
+ 
+ <?php
+if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== FALSE) {
+    echo 'You are using Internet Explorer.<br />';
+}
+?>
+
+**********************************************
+
+htmlspecialchars() makes sure any characters that are special in html are properly encoded so people can't inject HTML tags or Javascript into your page.
+
+Hi <?php echo htmlspecialchars($_POST['name']); ?>.
+
+just convert it to an int which will automatically get rid of any stray characters.
+You are <?php echo (int)$_POST['age']; ?> years old.
+
+use the $_REQUEST superglobal, if you do not care about the source of your request data. It contains the merged information of GET, POST and COOKIE data.
+
+**********************************************
+
+use the short echo tag to <?= 'print this string' ?>
+
+<? echo 'this code is within short tags, but will only work '.'if short_open_tag is enabled'; ?>
+
+**********************************************
+
+Advanced escaping using conditions
+
+<?php if ($expression == true): ?>
+  This will show if the expression is true.
+<?php else: ?>
+  Otherwise this will show.
+<?php endif; ?>
+
+**********************************************
+
+"one-line" comment styles only comment to the end of the line or the current block of PHP code
+
+<h1>This is an <?php # echo 'simple';?> example</h1>
+
+**********************************************
+
+bool value remains in capital form (TRUE / FALSE)
+
+$a_bool = TRUE  // a boolean
+
+**********************************************
+
+returns type of data
+
+echo gettype($a_bool); // prints out:  boolean
+
+**********************************************
+
+it will check for integer
+
+if (is_int($an_int)) {
+    $an_int += 4;
+}
+
+**********************************************
+
+it will check for string
+
+if (is_string($a_bool)) {
+    echo "String: $a_bool";
+}
+
+**********************************************

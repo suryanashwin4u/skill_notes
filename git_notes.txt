@@ -61,13 +61,109 @@ git add -u
 git add *.java 
 => to add all the same pattern files at once. 
 
+
+
+git reset --hard  
+->This option will reset the changes and match the position of the Head before the last changes
+It will remove the available changes from the staging area.
+
+the reset hard mode performs below operations:
+
+It will move the HEAD pointer.
+It will update the staging Area with the content that the HEAD is pointing.
+It will update the working directory to match the Staging Area.
+
+
+
+
+
+git reset --mixed  
+-> reset the status of the Head, and it will not delete any data from the staging area to match the position of the Head
+
+the reset mixed mode performs the below operations:
+
+It will move the HEAD pointer
+It will update the Staging Area with the content that the HEAD is pointing to.
+
+
+git reset--soft <commit-sha>  
+-> it is used to change the position of the Head
+
+
+git reset <option> <commit-sha>  
+-> To reset it, git reset command can be used with any option supported by reset command. It will take the default behavior of a particular command and reset the given commit
+
+
+
 git reset <filename>
 =>To undo an add operation
 
+git reset -hard <remote>/<branch_name>  
+->to reset the master branch with updates that you fetched from remote. The hard option is used to forcefully change all the files in the local repository with a remote repository.
+
+git rm <file Name>  
+->to remove file from directory
+
+git rm --cached <file name>   
+->remove a file from the version control system. The deleted file will remain in the repository.
 
 
+git cherry-pick <commit id>  
+->take commit id from one branch where accidently commit took place and do same commit into another branch
 
 
+git tag <tag name>  
+->command will mark the current status of the project.
+
+git tag 
+->list all the tags in the repository
+
+git tag show <tagname>  
+->to show details of particular tag
+
+git tag -l "<pattern>.*" ( example:git tag -l "pro*" )
+->return list of all commands with some pattern
+
+git tag <tag name> -m "< Tag message>  
+->to create tag with message
+
+git push origin <tagname>  
+->push the tag to remote
+
+git push origin --tags  
+->push all the tags at once
+
+git tag --delete <tagname>  
+->delete tag
+
+git push origin --delete<tag name>  
+->delete a remote tag name
+
+git tag -d <tag1> <tag2>  
+->delete more than one tags
+
+git push origin -d <tag1> <tag2>  
+->delete more than one tags from remote
+
+
+git checkout -b < new branch name> <tag name>  
+->create a new branch with the same state of the repository as it is in the tag
+
+git tag <tagname> < reference of commit>
+->create a tag from commit id
+
+
+git remote -v  
+->To check the remote server upstream/downstream url
+
+git push --set-upstream origin master  
+->set the master branch as the default remote branch
+
+git branch --set-upstream-to origin master  
+->set the default remote branch
+
+git branch -vv  
+->To display default remote branches
 
 =======================================================
 git Commit
@@ -240,6 +336,28 @@ Decide whether you want to keep only your branch's changes or the other branch's
 
 
 ======================================================
+git rebase <branch name>  
+->When you made some commits on a feature branch (test branch) and some in the master branch. You can rebase any of these branches
+
+git rebase --skip
+->If you want to skip the change, you can skip
+
+git rebase -i  
+->It will list all the available interactive options.it will open an editor with available options.
+
+Git Merge																			Git Rebase
+Merging creates a final commit at merging.						Git rebase does not create any commit at rebasing.
+It merges all commits as a single commit.						It creates a linear track of commits.
+It creates a graphical history that might be a bit complex to understand.				It creates a linear history that can be easily understood.
+It is safe to merge two branches.								Git "rebase" deals with the severe operation.
+Merging can be performed on both public and private branches.	It is the wrong choice to use rebasing on public branches.
+Merging integrates the content of the feature branch with the master branch. So, the master branch is changed, and feature branch history remains consistence.	Rebasing of the master branch may affect the feature branch.
+Merging preserves history.	Rebasing rewrites history.
+Git merge presents all conflicts at once.						Git rebase presents conflicts one by one.
+
+git rebase -i HEAD ~3 
+->to squash previous 3 commits and give a new message
+
 
 git branch -d newbranchname
 =>to delete old branch
@@ -294,6 +412,21 @@ git log origin/master
 git diff origin/master
 =>we can also verify by showing the differences between our local master and origin/master
 
+git diff
+->we can track the changes that have not been staged.
+
+git diff --staged
+->allows us to track the changes that are staged but not committed.
+
+git diff HEAD  
+->track the changes after commiting
+
+git diff <commit1-sha> <commit2-sha>  
+->track the changes between two commits
+
+git diff <branch 1> < branch 2>  
+->tranck the changes between two branches
+
 git merge origin/master
 =>merge our current branch (master) with origin/master
 
@@ -342,8 +475,19 @@ But the significant difference is that the fork is used to create a server-side 
 ===========================================================
 revert changes
 
+git revert
+->revert records some new changes that are just opposite to previously made commits.
+
 git revert <commit-ish>  
-->
+->to revert a commit
+
+git revert -e <commit-ish> 
+->to edit the commit message
+
+git revert -n <commit-ish> 
+->not open the editor, it will direclty revert the commit
+
+
 
 git log --oneline
 =>returns short oneline all commits till now

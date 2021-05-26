@@ -1,5 +1,17 @@
 		MERN STACK COMMANDS
 ---------------------------------------------------------------------------------
+
+
+
+npm install -g @angular/cli
+=to install angular cli
+
+npm install -global @angular/cli@next
+=to install next update version
+
+ng -v
+=check version
+
 ng
 =start angular
 
@@ -17,8 +29,6 @@ ng g s services\data-service
 
 npm i ngx-bootstrap
 =add bootstrap files into project
-
-
 
 npm install -g npm
 =to install npm
@@ -385,6 +395,11 @@ to set the username/e-mail for just the current repo, you can remove global
 10. git branch
 =to know the branch we are currently in
 
+10.1 git branch -r(show all remote branches)/-a(show all branches)
+
+11.git fetch
+=to update everything that is new
+
 10.1 git branch branch_name
 =create a new branch in local drive
 
@@ -474,3 +489,11 @@ git push -u origin main
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 ---------------------------------------------------------------------------------
+django commands
+
+1.pip install django
+=install django
+2.django-admin startproject project_name
+=start project in a directory
+3.django-admin startapp name
+=startapp
