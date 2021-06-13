@@ -6,7 +6,7 @@ Get system information from PHP
 
 **********************************************
 
-returns name of browser using
+returns name of internet browser surfing internet
 <?php
 echo $_SERVER['HTTP_USER_AGENT'];
 ?>
@@ -25,10 +25,10 @@ if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== FALSE) {
 
 htmlspecialchars() makes sure any characters that are special in html are properly encoded so people can't inject HTML tags or Javascript into your page.
 
-Hi <?php echo htmlspecialchars($_POST['name']); ?>.
+<?php echo htmlspecialchars($_POST['name']); ?>
 
 just convert it to an int which will automatically get rid of any stray characters.
-You are <?php echo (int)$_POST['age']; ?> years old.
+<?php echo (int)$_POST['age']; ?>
 
 use the $_REQUEST superglobal, if you do not care about the source of your request data. It contains the merged information of GET, POST and COOKIE data.
 
@@ -55,6 +55,16 @@ Advanced escaping using conditions
 <h1>This is an <?php # echo 'simple';?> example</h1>
 
 **********************************************
+Four compound types:
+
+array
+object
+callable
+iterable
+And finally two special types:
+
+resource
+NULL
 
 bool value remains in capital form (TRUE / FALSE)
 
@@ -65,6 +75,10 @@ $a_bool = TRUE  // a boolean
 returns type of data
 
 echo gettype($a_bool); // prints out:  boolean
+
+Note: To check the type and value of an expression, use the var_dump() function.
+
+echo var_dump($a_bool);
 
 **********************************************
 
@@ -83,3 +97,44 @@ if (is_string($a_bool)) {
 }
 
 **********************************************
+
+
+
+<?php
+var_dump((bool) "");        // bool(false)
+var_dump((bool) 1);         // bool(true)
+var_dump((bool) -2);        // bool(true)
+var_dump((bool) "foo");     // bool(true)
+var_dump((bool) 2.3e5);     // bool(true)
+var_dump((bool) array(12)); // bool(true)
+var_dump((bool) array());   // bool(false)
+var_dump((bool) "false");   // bool(true)
+?>
+
+**********************************************
+
+<?php
+$a = 1234; // decimal number
+$a = 0123; // octal number (equivalent to 83 decimal)
+$a = 0x1A; // hexadecimal number (equivalent to 26 decimal)
+$a = 0b11111111; // binary number (equivalent to 255 decimal)
+$a = 1_234_567; // decimal number (as of PHP 7.4.0)
+?>
+
+**********************************************
+
+<?php
+$large_number = 2147483647;
+var_dump($large_number);                     // int(2147483647)
+
+$large_number = 2147483648;
+var_dump($large_number);                     // float(2147483648)
+
+$million = 1000000;
+$large_number =  50000 * $million;
+var_dump($large_number);                     // float(50000000000)
+?>
+
+**********************************************
+
+

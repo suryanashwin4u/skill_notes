@@ -1,0 +1,112 @@
+1.Pandas is used for reading data and data manipulation.
+
+2.numpy is used for computations of numerical data.
+
+3.matplotlib is used for graphing data.
+
+4.scikit-learn is used for machine learning models. 
+
+5.Supervised learning is when we have a known target based on past data (for example, predicting what price a house will sell for).
+
+6.unsupervised learning is when there isn't a known past answer (for example, determining the topics discussed in restaurant reviews).
+
+7.Within supervised learning, there are classification and regression problems. 
+
+8.Regression is predicting a numerical value (for example, predicting what price a house will sell for).
+
+9.classification is predicting what class something belongs to (for example, predicting if a borrower will default on their loan).
+
+10.machine learning models:  Logistic Regression, Decision Trees, Random Forests, Neural Networks.
+
+11.The median can also be thought of as the 50th percentile. This means that 50% of the data is less than the median and 50% of the data is greater than the median. This tells us where the middle of the data is, but we often want more of an understanding of the distribution of the data. We�ll often look at the 25th percentile and the 75th percentile.The 25th percentile is the value that�s one quarter of the way through the data. This is the value where 25% of the data is less than it (and 75% of the data is greater than it).Similarly, the 75th percentile is three quarters of the way through the data. This is the value where 75% of the data is less than it (and 25% of the data is greater than it).
+
+12.If there is an even number of datapoints, to find the median (or 50th percentile), you take the mean of the two values in the middle.
+
+13.The standard deviation and variance are measures of how dispersed or spread out the data is, We measure how far each datapoint is from the mean.
+
+14.Even though data is never a perfect normal distribution, we can still use the standard deviation to gain insight about how the data is distributed.
+
+15.standard deviation is square root of variance.
+
+16.use numpy for manipulating arrays.
+
+17.First we import the package. It is standard practice to nickname numpy as np.
+
+for example:-
+
+import numpy as np
+data = [15, 16, 18, 19, 22, 24, 29, 30, 34]
+print("mean:", np.mean(data))
+print("median:", np.median(data))
+print("50th percentile (median):", np.percentile(data, 50))
+print("25th percentile:", np.percentile(data, 25))
+print("75th percentile:", np.percentile(data, 75))
+print("standard deviation:", np.std(data))
+print("variance:", np.var(data))
+
+18.Pandas is a Python module that helps us read and manipulate data. What's cool about pandas is that you can take in data and view it as a table that's human readable, but it can also be interpreted numerically so that you can do lots of computations with it.
+
+19.We call the table of data a DataFrame.
+
+20.We need to start by importing Pandas. It's standard practice to nickname it pd so that it's faster to type later on.
+
+21.Our data is stored as CSV (comma-separated values) file.
+
+22.The first line is the header and then each subsequent line is the data in csv file.
+
+23.read data from csv file and display using pandas function:
+for example:-
+
+import pandas as pd
+df=pd.read_csv("give path to csv file")             //read csv file and store into object
+print(df)                                           //print all rows at once
+print(df.head())                                    //print only 5 rows
+print(df['column_name'])                            //print single column values
+print(df[['column_name_1','column_name_2',....]])   //print multiple columns values
+
+24.describe method in python will show results like:
+
+Count: This is the number of rows that have a value. 
+Mean: Recall that the mean is the standard average.
+Std: This is short for standard deviation. This is a measure of how dispersed the data is.
+Min: The smallest value
+25%: The 25th percentile
+50%: The 50th percentile, also known as the median.
+75%: The 75th percentile
+Max: The largest value
+
+for example:-
+import pandas as pd
+pd.options.display.max_columns = 6                                            //define max no. of columns to show
+df = pd.read_csv('https://sololearn.com/uploads/files/titanic.csv')
+print(df.describe())                                                          //describe every result like mean,median,std,var,percentiles
+
+25.We create a Pandas Series that will be a series of Trues and Falses:
+import pandas as pd
+df = pd.read_csv('https://sololearn.com/uploads/files/titanic.csv')
+print(df['Sex'] == 'male')                                                   //return true or false series
+df['male'] = df['Sex'] == 'male'                                             //return a column carries true or false and make a new column
+
+26.Numpy is a Python package for manipulating lists and tables of numerical data. We can use it to do a lot of statistical calculations. We call the list or table of data a numpy array. so, numpy object is an array
+
+27.We often start with our data in a Pandas DataFrame, but then want to convert it to a numpy array. The values attribute does this for us.
+
+for example:
+import pandas as pd
+df = pd.read_csv('https://sololearn.com/uploads/files/titanic.csv')
+print(df['Fare'].values)
+
+for example:
+import pandas as pd
+df = pd.read_csv('https://sololearn.com/uploads/files/titanic.csv')
+print(df[['Pclass', 'Fare', 'Age']].values)
+
+28.We use the numpy shape attribute to determine the size of our numpy array. The size tells us how many rows and columns are in our data.
+
+for example:
+import pandas as pd
+df = pd.read_csv('https://sololearn.com/uploads/files/titanic.csv')
+arr = df[['Pclass', 'Fare', 'Age']].values
+print(arr.shape)
+
+29.
