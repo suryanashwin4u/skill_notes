@@ -1,0 +1,7 @@
+To create laravel project
+->composer create-project laravel/laravel project_name<-
+
+Then go inside your project directory
+
+type '->php artisan serve<-' to start your project at localhost
+
