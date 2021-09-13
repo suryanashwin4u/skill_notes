@@ -1,5 +1,11 @@
 							React Notes
 -------------------------------------------------------------------------
+// it is javascript library for UI building, it follows component based approach,declarative approach, reusable code,speed,simplicity and scalability
+
+// to install react js: npm install -g create-react-app
+// to check react version: create-react-app --version
+// to create react app: create-react-app <project-name>
+
 //two let us write React code in our JavaScripts, and the third, Babel, allows us to write JSX syntax and ES6 in older browsers.
 <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
