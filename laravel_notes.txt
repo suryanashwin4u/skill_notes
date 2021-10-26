@@ -569,7 +569,7 @@ Route::resource('student', 'StudentController',['names' => ['create' =>'student.
 
 
 -------------------------------------------------------------------------------------------
-			notes
+			            notes
 ------------------------------------------------------------
 1. php artisan --version == to know installed laravel version
 

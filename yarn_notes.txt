@@ -48,4 +48,13 @@ create react app with name
 to start react app using yarn and it will create my server at localhost:3000
 ==>yarn start
 
+to fetch bootstrap package
+==>yarn add bootstrap@4.0.0
 
+to fetch reactstrap and react popper package
+==>yarn add reactstrap@5.0.0 react-popper@0.9.2
+
+
+yarn add bootstrap@4.0.0
+yarn add reactstrap@5.0.0
+yarn add react-popper@0.9.2

@@ -2,15 +2,20 @@
 -------------------------------------------------------------------------
 // it is javascript library for UI building, it follows component based approach,declarative approach, reusable code,speed,simplicity and scalability
 // install latest node js 
-// to install react js: npm install -g create-react-app
-// to check react version: create-react-app --version
-// to create react app: create-react-app <project-name>
+// to install react js ==> npm install -g create-react-app
+// to check react version ==> create-react-app --version
+// to create react app ==> create-react-app <project-name>
+// to run react app ==> npm start
 
 //two let us write React code in our JavaScripts, and the third, Babel, allows us to write JSX syntax and ES6 in older browsers.
 <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 
+//to install react-bootstrap in the react app
+==>npm install react-bootstrap bootstrap
 
+//importing bootstrap file
+==import 'bootstrap/dist/css/bootstrap.min.css';
 
 
