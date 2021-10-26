@@ -568,6 +568,269 @@ Route::resource('student', 'StudentController',['names' => ['create' =>'student.
 
 
 
+-------------------------------------------------------------------------------------------
+			notes
+------------------------------------------------------------
+1. php artisan --version == to know installed laravel version
+
+2. composer.json file also contains details of the project
+ 
+   "php": "^7.3|^8.0",(min. supported version | current version)
+
+3. Axios: Axios is a Javascript library used to make HTTP requests from node.js or XMLHttpRequests from the browser and it supports the Promise API that is native to JS ES6. It can be used intercept HTTP requests and responses and enables client-side protection against XSRF. It also has the ability to cancel requests.
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+4. laravel breeze authentication
+
+5. faker.js to create fake data
+
+6. 
+
+7. dd($request); dump and die function to check requests
+
+8. naming conventions:
+	functions->userDetails()
+	controller->FetchController.php
+	models->Home.php,FetchModal.php
+	blade files->show_user_details.blade.php
+	javascript files-> show_users.js
+	route names->update_pro_name
+	route url->update-pro-name
+	
+9.dbeaver for checking database than phpmyadmin
+
+10.
+	
+
+-------------------------------------------------------
+laravel codes
+
+1.call controller function using url passing parameter
+
+use App\Http\Controllers\ProvisionServer;
+Route::get('/user/{id}', [UserController::class, 'show']);
+
+2.
+
+
+------------------------------------------------------
+                	CRM NOTES
+
+		add-enquiry.blade.php 	
+
+1.@extends( 'home' )===>
+
+2.@section('pageTitle')===>
+	{{ 'Enquiry' }}===>
+  @endsection===>
+		
+  @section( 'addtional_css' )===>
+	
+  @section('content')===>
+
+3.href="{{ asset('https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')}}"===>
+  href="{{ asset('css/new_css/add-enquiry.css')}}"===>
+
+4.@parent===>
+
+5.@append====>
+
+6.href="{{route('enquiry')}}"===>
+
+7.@include('enquiry.add.personal')===>
+
+8.token: "{{ csrf_token() }}"===>
+
+9.fetchCountries: "{{ url('fetchCountries') }}"===>
+
+10.pathToEmailAttachment: "{{ asset('uploads/emailtemplate/') }}"===>
+
+11.var broadAndNarrowId = {!! json_encode($broadAndNarrowId) !!};===>
+
+12.$('.passport-div-open1, .passport_tentative_date,.passport_tentative_date1  ').hide();===>
+
+13.$("#state_id").append("<option value=\"" + "" + "\">" + "" + "</option>");===>
+
+14.<script src="{{ asset('js/theia-sticky-sidebar.js')}}"></script>===>
+
+15.$('[data-toggle="tooltip"]').tooltip();==>
+
+16.<script>
+  $(function () {
+    setTimeout(function () {
+        var header_height = $("header").height() + 50;
+        //  console.log(header_height);
+        $(".fixed-scroll-div").length > 0 &&
+            $(".fixed-scroll-div").parent().theiaStickySidebar({
+                updateSidebarHeight: !0,
+                additionalMarginTop: header_height,
+            });
+    }, 200);
+  });
+</script>
+
+
+17.function scrollToAnchor(aid) {
+  var aTag = $("a[name='" + aid + "']");
+  $('html,body').animate({
+    scrollTop: aTag.offset().top - 110
+  }, 'slow');
+}
+
+$("#1").click(function() {
+  scrollToAnchor('perinfo');
+});
+
+
+18. {{ Form::select('marital_status',config('sc_common.marital_status'), isset($personalDetail['marital_status']) ?$personalDetail['marital_status'] : null, ['id' => 'marital_status','class'=>'form-control select2']) }}
+
+{{Form::select('mobile_code',$phoneCode,91, ['class'=>'form-control ISD_code select2','id'=>'mobile_code','placeholder'=>''])}}
+
+{{Form::select('whatsup_no_code',$phoneCode,91, ['class'=>'form-control ISD_code select2','id'=>'whatsup_mobile_code','placeholder'=>''])}}
+
+{{Form::select('secondary_mobile_code',$phoneCode,91, ['class'=>'form-control ISD_code select2','placeholder'=>''])}}
+
+{{Form::select('country_live_in',$allCountry,101, ['class'=>'form-control select2','id'=>'country_id','placeholder'=>'','onchange'=>'get_addStateName();'])}}
+
+{{Form::select('state_id',$indianState,null, ['class'=>'form-control select2','id'=>'state_id','onchange'=>"get_addCityName()"])}}
+
+
+19. value="{{ isset($spouse['marriage_date'])?$spouse['marriage_date']:null }}"
+
+20. $('#marriage_date').datepick({
+        dateFormat: 'dd-mm-yyyy',
+        maxDate: 0,
+    });
+
+21.onkeypress="return isNumberKey(event)
+
+22.
+
+
+---------------------------------------------------------
+			blade template note
+
+{{$variable}};  
+{{ $variable or 'default value'}}  
+
+
+@if(($id)==1)  
+student id is equal to 1.  
+@else  
+student id is not equal to 1  
+@endif  
+
+
+@unless($id==1)  
+student id is not equal to 1.  
+@endunless  
+
+
+@hasSection('title')  
+ @yield('title') - App Name  
+ @else  
+ Name  
+@endif  
+
+
+@for($i=1;$i<11;$i++)  
+{{$i}}  
+@endfor  
+
+
+@foreach($students as $students)  
+{{$students}}<br>  
+@endforeach  
+
+
+@while(($i)<5)  
+javatpoint  
+{{$i++}}  
+@endwhile  
+
+
+@yield('content')  
+@yield('footer') 
+
+@extends('layout.master')  
+@section('content')  
+<h1>Contact Page </h1>   
+@stop  
+
+@section('footer')  
+<script> alert("Hello JavaTpoint") </script>      
+@stop 
+
+
+@extends('layout.master')  
+@section('content')  
+<h1>Post Page:</h1>  
+<h2>id is :{{$id}}<br> Password is :{{$password}}<br>Name is : {{$name}}</h2>  
+@stop  
+
+
+@extends('layout.master')  
+@section('content')  
+<h1>Contact Page</h1>  
+@stop   
+@section('footer')  
+@parent  
+<p>this is appended</p>  
+@stop  
+
+The use of @parent directive is to display the content of the section defined in the master layout.
+
+
+migration files functions
+
+  public function up()  
+    {  
+            Schema::create('users', function (Blueprint $table) {  
+            $table->bigIncrements('id');  
+            $table->string('name');  
+            $table->string('email')->unique();  
+            $table->timestamp('email_verified_at')->nullable();  
+            $table->string('password');  
+            $table->rememberToken();  
+            $table->timestamps();  
+        });  
+    }  
+  
+  public function down()  
+    {  
+        Schema::dropIfExists('users');  
+    }  
+
+
+The up() method is used to create the new table, add the new columns or indexes to the database while the down() method is the opposite of the up() method, i.e., it drops the fields. The above class is basically creating the table in a database. The up() method runs the static method, i.e., create() by using the Schema class.
+
+ The create() method contains the two parameters, i.e., the name of the table and the closure function.
+
+$table->bigIncrements('id'): It means that the $table is implementing the increments() method which is creating the id column in users table, and this 'id' is auto-incremented.
+
+$table->string('name'): It means that $table implements the string() method which is creating the name column in users table.
+
+$table->string('email')->unique(): It means that $table implements the string() method which is creating the email column in users table. It also implements the unique() function which means that email should be unique.
+
+$table->timestamp('email_verified_at')->nullable(): It means that $table implements the timestamp() method which is creating the email_verified_at column in users table. This function also creates the two columns, i.e., created_at and updated_at, and these two fields are automatically updated when new records are added or updated.
+
+$table->integer('is_admin')->unsigned();
+$table->integer('is_admin')->default('0'); 
+
+command to create tables into database
+==>php artisan migrate
+
+command to create migration file
+==>php artisan make:migration create_posts_table --create="table_name"
+
+command to rollback tables from the database
+==>php artisan migrate:rollback
+
+lists all the commands available in Laravel.
+==>php artisan list
 
 
 
