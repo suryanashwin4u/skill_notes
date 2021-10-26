@@ -189,7 +189,7 @@ When Head doesn't point to most recent commit, such state is called detached Hea
 
 git log
 =>to view the commits happens till now for a particular project
-type q to come out again
+->type 'q' to come out again
 
 git log --oneline
 =>returns short oneline all commits till now
