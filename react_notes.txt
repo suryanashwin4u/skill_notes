@@ -16,6 +16,12 @@
 ==>npm install react-bootstrap bootstrap
 
 //importing bootstrap file
-==import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+npm install --save bootstrap
+npm install --save reactstrap react react-dom
+
+import { Button } from 'reactstrap';
+
+https://cdnjs.cloudflare.com/ajax/libs/reactstrap/4.8.0/reactstrap.min.js
 
