@@ -17,6 +17,21 @@ laravel development server will start at localhost:8000
 to generate application key to secure session and other encrypted data
 ==>php artisan key:generate
 
+to rename the laravel application name
+==>php artisan app:name "new name"
+
+to start maintainence mode
+==>php artisan down
+
+to stop maintainence mode
+==>php artisan up
+
+to print component output using component name
+--><x-header componentName="nameofcomponent">
+
+create a middleware with some addition functions
+==>php artisan make:middleware nameofmiddleware --plain
+
 application key can be seen inside .env file
 
 Laravel is a PHP framework that uses the MVC architecture.
@@ -170,11 +185,16 @@ return "Hello javaTpoint";
 
 CSRF Protection
 The HTML forms that are pointing to Post, Put or Delete routes defined in the web route files should include CSRF token field. If the CSRF token field is not included, then the request will be rejected.
-
 <form method="POST" action="/profile">  
     @csrf  
     ...  
 </form>  
+class formcontroller extends controller{
+  function get_form_data(Request $req){
+    return $req->input();  //to return form data in json format data with csrf token
+  }
+}
+
 
 The router defines the routes that can respond to the following http verbs:
 
@@ -359,8 +379,12 @@ echo"Age is not greater than 10";
 return $next($request);       
 }}
 
-Route Groups is an essential feature in Laravel, which allows you to group all the routes. Routes Groups are beneficial when you want to apply the attributes to all the routes. If you use route groups, you do not have to apply the attributes individually to each route; this avoids duplication. It allows you to share the attributes such as middleware or namespaces, without defining these attributes on each individual route.
-Route::group( [ ] , callback);  
+Route Groups is an essential feature in Laravel, which allows you to group all the routes. 
+Routes Groups are beneficial when you want to apply the attributes to all the routes. 
+If you use route groups, you do not have to apply the attributes individually to each route; this avoids duplication. 
+It allows you to share the attributes such as middleware or namespaces, without defining these attributes on each individual route.
+
+Route::group( [ ] , callback_function);  
 
 Route::group([], function()  
 {  
@@ -399,22 +423,16 @@ Route::get('/testng',function()
 
 We can also assign middleware to all the routes within a group.
 
-Route::middleware(['age'])->group( function()  
-{  
-  
-   Route::get('/aws',function()  
- {  
-   echo "aws tutorial";  
- });  
-Route::get('/jira',function()  
- {  
-   echo "jira tutorial";  
- });  
-Route::get('/testng',function()  
- {  
-   echo "testng tutorial";  
- });  
-  
+Route::middleware(['age'])->group(function(){    
+    Route::get('/aws',function(){  
+      echo "aws tutorial";  
+    });  
+    Route::get('/jira',function(){
+      echo "jira tutorial";  
+    });  
+    Route::get('/testng',function(){  
+      echo "testng tutorial";  
+    });  
 });  
 
 
@@ -653,9 +671,11 @@ Route::get('/user/{id}', [UserController::class, 'show']);
 
 
 ------------------------------------------------------
-                	CRM NOTES
-
-		add-enquiry.blade.php 	
+to use php variable inside js to convert array into json format into view
+0.<script>
+    var data = @json($data);
+    console.log(data[0]);
+  </script>
 
 1.@extends( 'home' )===>
 
@@ -674,15 +694,15 @@ Route::get('/user/{id}', [UserController::class, 'show']);
 
 5.@append====>
 
-6.href="{{route('enquiry')}}"===>
+6.href="{{route('enquiry')}}"===>to route using route name
 
-7.@include('enquiry.add.personal')===>
+7.@include('enquiry.add.personal')===>to include blade files into current view
 
-8.token: "{{ csrf_token() }}"===>
+8.token: "{{ csrf_token() }}"===>auto generate csrf token for form
 
 9.fetchCountries: "{{ url('fetchCountries') }}"===>
 
-10.pathToEmailAttachment: "{{ asset('uploads/emailtemplate/') }}"===>
+10.pathToEmailAttachment: "{{ asset('uploads/emailtemplate/') }}"===>to add css,js etc files
 
 11.var broadAndNarrowId = {!! json_encode($broadAndNarrowId) !!};===>
 
@@ -777,8 +797,8 @@ student id is not equal to 1.
 @endfor  
 
 
-@foreach($students as $students)  
-{{$students}}<br>  
+@foreach($students as $student)  
+{{$student}}<br>  
 @endforeach  
 
 
