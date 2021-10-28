@@ -1,8 +1,25 @@
-laravel short notes
--------------------------
-Laravel is a PHP framework that uses the MVC architecture.
+              LARAVEL FRAMEWORK SHORT NOTES
+================================================================
+check version of laravel framework installed in the systems
+==>php artisan --version
 
-where,
+check version of composer installed in the systems
+==>composer
+
+create laravel app in a directory
+==>composer create-project laravel/laravel –prefer-dist
+
+start laravel app in local server
+==>php artisan serve
+
+laravel development server will start at localhost:8000
+
+to generate application key to secure session and other encrypted data
+==>php artisan key:generate
+
+application key can be seen inside .env file
+
+Laravel is a PHP framework that uses the MVC architecture.
 
 Framework: It is the collection of methods, classes, or files that the programmer uses, and they can also extend its functionality by using their code.
 Architecture: It is the specific design pattern that the framework follows. Laravel is following the MVC architecture.
@@ -11,7 +28,9 @@ M: 'M' stands for Model. A model is a class that deals with a database.
 V: 'V' stands for View. A view is a class that deals with an HTML
 C: 'C' stands for Controller. A controller is the middle-man that deals with both model and view. A controller is the class that retrieves the data from the model and sends the data to the view class.
 
-Following are some advantages of Laravel:
+================================================================
+ADVANTAGES OF LARAVEL FRAMEWORK:
+
 1.Creating authorization and authentication systems
 2.Integration with tools
 Laravel is integrated with some popular cache back ends such as Redis, and Memcached.
@@ -23,7 +42,9 @@ Laravel is integrated with some popular cache back ends such as Redis, and Memca
 An American organization, i.e., OWASP Foundation, defines the most important security vulnerabilities such as SQL injection, cross-site request forgery, cross-site scripting, etc.
 8.Scheduling tasks configuration and management
 
-Following are the features of Laravel:
+================================================================
+FEATURE OF LARAVEL:
+
 1.Authentication
 2.Innovative Template Engine
 3.Effective ORM
@@ -35,10 +56,10 @@ It uses "Bcrypt Hashing Algorithm" to generate the salted password means that th
 8.Libraries and Modular
 9.Artisan
 Artisan also allows the developers to create their own commands.
+================================================================
+COMPOSER:
 
-What is Composer?
 Composer is a dependency manager for a PHP programming language that manages the dependencies of PHP software and required libraries
-
 Composer runs through the command line. The main purpose of the composer is to install the dependencies or libraries for an application. The composer also provides the users to install the PHP applications available on the Packagist, where Packagist is the main repository that contains all the available packages.
 
 Following are some important commands used in Composer:
@@ -53,67 +74,82 @@ command to create a new laravel project:
 -->composer create-project laravel/laravel project_name   (for latest laravel version)
 or
 -->composer create-project ?prefer-dist laravel/laravel project_name 5.2.29  (for old laravel versions)
+================================================================
+LARAVEL DIRECTORY STRUCTURE:
 
-laravel directory structure
--------------------------------
-app directory
+1.APP directory
 
 The App folder contains the following sub-folders:
-
 1.Console = Console folder contains the artisan commands required for Laravel.
 2.Exceptions = Exceptions folder contains the various exception handlers.The Exceptions directory contains the file handle.php that handles all the exceptions.
 3.Http = It has sub-folders such as controllers, middleware, and requests.
-3.1 middleware = It provides a filter mechanism and communication between request and response.
-3.2 Requests = includes all the requests of an application.
+    1. middleware = It provides a filter mechanism and communication between request and response.
+    2. Requests = includes all the requests of an application.
 4.Providers =contain all the service providers that are required to register events for core servers and provides configuration for Laravel application.
+------------------------------------------------------------
+2.BOOTSTRAP directory
 
+holds the files that are required to bootstrap the Laravel application and to configure auto-loading. 
+The bootstrap folder contains a sub-folder cache used for caching a web application. 
+It also contains the file app.php that initializes the scripts required for bootstrap.
+------------------------------------------------------------
+3.CONFIG directory
 
-bootstrap directory
-holds the files that are required to bootstrap the Laravel application and to configure auto-loading. The bootstrap folder contains a sub-folder cache used for caching a web application. It also contains the file app.php that initializes the scripts required for bootstrap.
-
-config directory
 contains the various configuration files
+------------------------------------------------------------
+4.DATABASE directory
 
-Database directory
 holds the database files.
 
 database directory consists of three sub-folders:
-1.Factories: The factories folder is used to generate a huge number of data records.
-2.Migrations: The migrations folder is used to migrate the database in web application.
-3.Seeds: The seeds folder contains the classes used to perform unit testing database.
+1.FACTORIES: The factories folder is used to generate a huge number of data records.
+2.MIGRATION: The migrations folder is used to migrate the database in web application.
+3.SEEDS: The seeds folder contains the classes used to perform unit testing database.
+------------------------------------------------------------
+5.PUBLIC directory
 
-Public directory
 contains the front controllers used for initializing the Laravel web application
 
 Following are the sub-folders of a public directory:
-1. .htaaccess: It is used for the server configuration.
-2. Javascript and CSS: These files are considered as the main assets of a web application.
-3. index.php: This file is used for initializing the web application.
+1. .HTACCESS: It is used for the server configuration.
+2. JS and CSS: These files are considered as the main assets of a web application.
+3. INDEX.php: This file is used for initializing the web application.
+------------------------------------------------------------
+6.RESOURCE directory
 
-Resource directory
-used to enhance the web application. It contains the following sub-folders:
+used to enhance the web application. 
 
-1. Assets: This folder contains the files such as LESS and SCSS used for styling the web application.
-2. Lang: The lang folder provides configuration for localization or internationalization.
-3. Views: The views folder contains html files used to interact with the end-users
+It contains the following sub-folders:
 
+1. ASSETS: This folder contains the files such as LESS and SCSS used for styling the web application.
+2. LANG: The lang folder provides configuration for localization or internationalization.
+3. VIEWS: The views folder contains html files used to interact with the end-users
+------------------------------------------------------------
+7.STORAGE Directory
 
-Storage Directory
 contains those files which are required frequently when a Laravel project is running.
 
 It contains the following folders:
 
-1. App: It contains the files which are called frequently.
-2. Framework: It contains templates, filed based sessions, and file cache.
-3. Logs: This folder tracks the exceptions and error logs.
+1. APP: It contains the files which are called frequently.
+2. FRAMEWORK: It contains templates, filed based sessions, and file cache.
+3. LOGS: This folder tracks the exceptions and error logs.
 
-Test directory
+------------------------------------------------------------
+8.TEST directory
+
 holds all the automated unit test cases
 
-Vendor directory
+------------------------------------------------------------
+9.VENDOR directory
+
 contains the composer dependencies
 
-The route/web.php directory contains the definition of route files for your web interface. The routes in web.php are assigned with the web middleware group that provides the features like session state and CSRF protection. The routes defined in routes/api.php are assigned with the API middleware group, and they are stateless.
+============================================================
+
+The route/web.php directory contains the definition of route files for your web interface. 
+The routes in web.php are assigned with the web middleware group that provides the features like session state and CSRF protection. 
+The routes defined in routes/api.php are assigned with the API middleware group, and they are stateless.
 The routes defined in the routes/web.php can be accessed by entering the defined URL to the browser.
 
 Route is the class which defines the static method get(). The get() method contains the parameters '/' and function() closure. The '/' defines the root directory and function() defines the functionality of the get() method.
