@@ -886,17 +886,261 @@ $table->timestamp('email_verified_at')->nullable(): It means that $table impleme
 $table->integer('is_admin')->unsigned();
 $table->integer('is_admin')->default('0'); 
 
+command to create migration file
+==>php artisan make:migration file_name --create="table_name" //'-create="table_name"' Is the flag that creates the table. 
+
+<?php  
+use Illuminate\Support\Facades\Schema;  
+use Illuminate\Database\Schema\Blueprint;  
+use Illuminate\Database\Migrations\Migration;  
+class AddColumnAdminIsToTable extends Migration  
+{  
+    /** 
+     * Run the migrations. 
+     * 
+     * @return void 
+     */  
+    public function up()  
+    {  
+        Schema::table('posts', function (Blueprint $table) {  
+            //  
+        });  
+    }  
+  
+    /** 
+     * Reverse the migrations. 
+     * 
+     * @return void 
+     */  
+    public function down()  
+    {  
+        Schema::table('posts', function (Blueprint $table) {  
+            //  
+        });  
+    }  
+}  
+
+command to Add columns to the existing table using migration
+==>php artisan make:migration file_name -table="table_name"   //-table="table_name" is the flag which tells the laravel that we are working on exsisting table.
+
 command to create tables into database
 ==>php artisan migrate 
 
-command to create migration file
-==>php artisan make:migration create_posts_table --create="table_name"
 
 command to rollback tables from the database
 ==>php artisan migrate:rollback
 
 lists all the commands available in Laravel.
 ==>php artisan list
+
+
+There are six commands of migrate in Laravel:
+php artisan migrate ==> creates the migration table in a database.
+php artisan migrate:refresh ==> rollback all the migrations and then re-run the migrations. Basically, it is used to re-create the entire tables.
+php artisan migrate:reset ==> rollback all the migrations, i.e., it drops all the tables that you have created in your database.
+php artisan migrate:rollback ==> rollback the last tables batch migration.
+php artisan migrate:status ==> to show the status of each migration.
+
+---------------------------------------------------------------------
+		DEALING WITH DATABASE
+
+1.Inserting the data
+
+Route::get('/insert', function () {  
+	DB::insert('insert into posts(title,body) values(?,?)',['software developer','himanshu is a software developer']);  
+}); 
+
+
+2.Reading the data
+
+Route::get('/select',function(){  
+	$results=DB::select('select * from posts where id=?',[1]);  
+	foreach($results as $posts)  
+	{  
+	echo "title is :".$posts->title;  
+	echo "<br>";  
+	echo "body is:".$posts->body;  
+	}  
+	}); 
+
+3.Updating the data
+
+Route::get('/update', function(){  
+$updated=DB::update('update posts set title="software tester" where id=?',[1]);  
+
+if($updated)  {
+echo "updated";
+}else{
+echo "not updated";
+}
+});
+
+4.Deleting the data
+
+Route::get('/delete',function(){  
+$deleted=DB::delete('delete from posts where id=?',[2]);  
+if($deleted)  {
+echo "deleted";
+}else{
+echo "not deleted";
+}
+});
+});  
+
+-------------------------------------------------------------------
+			  ELOQUENT
+
+eloquent model that allows the interaction with a database. 
+Each database table has its corresponding model that provides the interaction with a database. 
+The model allows you to query the data in your tables.
+
+Models are created in the app directory
+
+command to create the model:
+==>php artisan make:model model_name
+
+generate the model by using database migration:
+==>php artisan make:model model_name -m / php artisan make:model Post -migration
+
+Mostly model class name should be in singular format and table name should be in plural format of model class name....like class table extends Model{} --> table name in the database --> tables
+
+if it is not then declare protected $table = 'table_name' inside model class of that table;
+
+structure of the model class:
+<?php  
+namespace App;  
+use Illuminate\Database\Eloquent\Model;  
+class table extends Model  
+{  
+	protected $table = 'table_1'; // it is used when table name is different from class name else it is not necessery to declare
+	protected $primaryKey = 'post_id';  
+	public $incrementing = false;
+	protected $keyType = 'string';	
+}  
+
+fetching all data from the table
+
+<?php  
+use App\Post;  
+
+Route::get('/read',function(){  
+
+$posts=model_class_name::all();  //all() method that retrieves all the records from the database
+
+foreach($posts as $post)  
+{  
+  echo $post->column_name;  
+}  
+});  
+
+finding data from the table
+
+Route::get('/find',function(){  
+$posts=model_class_name::find(2); 	//to retrieve only 2nd row from the database
+return $posts->title;  		   
+
+$posts=model_class_name::where('id',2)->first();  //fetch only first row where id=2
+return $posts;  
+
+$posts=model_class_name::where('id',1)->value('column_name');  //to retrieve the value of a column directly.
+return $posts;  
+
+});  
+
+inserting data into database
+
+Route::get('/insert',function(){
+$post=new model_class_name;  
+$post->column_name_1='Nishka';      //inserting into column_name_1
+$post->column_name_2='QA Analyst';  //inserting into column_name_2
+$post->save();  		    //to insert data
+});  
+
+
+Route::get('/basicupdate',function(){  
+$post=model_class_name::find(2);    	//find 2nd row		   
+$post->column_name_1='Haseena';     	//change column value of that row 	
+$post->column_name_2='Graphic Designer';//change column value of that row
+$post->save();  			//to update data
+});  
+
+MASS ASSIGNMENT
+
+Route::get('/create',function(){  
+Post::create(['column_name_1'=>'Harshita','column_name_2'=>'Technical Content Writer']);  
+});  
+
+To provide the mass assignment, we need to add the $fillable attribute in a model class
+<?php  
+namespace App;  
+use Illuminate\Database\Eloquent\Model;  
+class Post extends Model  
+{  
+    //  
+protected $table='posts';  
+protected $primaryKey='id';  
+protected $fillable=  
+[  
+'column_name_1',  
+'column_name_2'  
+];  
+}  
+
+mass updating data through eloquent
+Route::get('/update',function(){  
+model_class_name::where('id',1)->update(['column_name_1'=>'Charu','column_name_2'=>'technical Content Writer']);  
+});  
+
+delete data after finding through eloquent
+Route::get('/delete',function(){  
+$post=model_class_name::find(1);  
+$post->delete();  		//delete row after finding
+});  
+
+
+Route::get('/destroy',function(){  
+model_class_name::destroy(2);  //direct delete 2nd row
+});  
+
+
+Route::get('/destroy',function(){  
+Post::destroy([3,4]);  	       //delete 3rd,4th row directly
+});
+
+
+Route::get('/delete1',function(){  
+Post::where('id',5)->delete();  //delete using query
+});  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
