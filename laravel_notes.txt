@@ -770,6 +770,7 @@ $("#1").click(function() {
 			blade template note
 
 {{$variable}};  
+
 {{ $variable or 'default value'}}  
 
 
@@ -839,8 +840,13 @@ javatpoint
 
 The use of @parent directive is to display the content of the section defined in the master layout.
 
+----------------------------------------------------------------------
 
+                          forms remaining
+
+----------------------------------------------------------------------
 migration files functions
+
 
   public function up()  
     {  
@@ -848,22 +854,26 @@ migration files functions
             $table->bigIncrements('id');  
             $table->string('name');  
             $table->string('email')->unique();  
-            $table->timestamp('email_verified_at')->nullable();  
+            $table->timestamp('email_verified_at')->nullable();  // value can be null if not filled
             $table->string('password');  
-            $table->rememberToken();  
-            $table->timestamps();  
+            $table->rememberToken();  //generate unique token id for users after login
+            $table->timestamps();  //generate created_at and updated_at time column
         });  
     }  
   
   public function down()  
     {  
         Schema::dropIfExists('users');  
+        
+        //This function checks whether the 'users' table exists or not, if the 'users' exists, then it drops the users table.
     }  
 
 
-The up() method is used to create the new table, add the new columns or indexes to the database while the down() method is the opposite of the up() method, i.e., it drops the fields. The above class is basically creating the table in a database. The up() method runs the static method, i.e., create() by using the Schema class.
-
- The create() method contains the two parameters, i.e., the name of the table and the closure function.
+up() method is used to create the new table, add the new columns or indexes to the database
+down() method is the opposite of the up() method, i.e., it drops the fields. 
+The above class is basically creating the table in a database. 
+The up() method runs the static method, i.e., create() by using the Schema class.
+The create() method contains the two parameters, i.e., the name of the table and the closure function.
 
 $table->bigIncrements('id'): It means that the $table is implementing the increments() method which is creating the id column in users table, and this 'id' is auto-incremented.
 
@@ -877,7 +887,7 @@ $table->integer('is_admin')->unsigned();
 $table->integer('is_admin')->default('0'); 
 
 command to create tables into database
-==>php artisan migrate
+==>php artisan migrate 
 
 command to create migration file
 ==>php artisan make:migration create_posts_table --create="table_name"
