@@ -1112,6 +1112,9 @@ Route::get('/delete1',function(){
 Post::where('id',5)->delete();  //delete using query
 });  
 
+Soft Deleting/Trashing
+In soft deleting, records are not permanently deleted; they are stored in the trash space.
+
 
 
 
