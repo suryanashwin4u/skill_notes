@@ -1115,6 +1115,133 @@ Post::where('id',5)->delete();  //delete using query
 Soft Deleting/Trashing
 In soft deleting, records are not permanently deleted; they are stored in the trash space.
 
+First, we need to set the deleted_at attribute to the model class.
+<?php  
+namespace App;  
+use Illuminate\Database\Eloquent\Model;  
+use Illuminate\Database\Eloquent\SoftDeletes;  
+class Post extends Model  
+{  
+ use SoftDeletes;  
+protected $table='posts';  
+protected $primaryKey='id';  
+protected $dates=['deleted_at'];  
+}  
+
+Now, make migration to add a deleted_at column in the posts table.
+php artisan make:migration migration_name --table=table_name
+
+
+<?php  
+use Illuminate\Support\Facades\Schema;  
+use Illuminate\Database\Schema\Blueprint;  
+use Illuminate\Database\Migrations\Migration;  
+  
+class AddColumnDeletedAt extends Migration  
+{  
+    /** 
+     * Run the migrations. 
+     * 
+     * @return void 
+     */  
+    public function up()  
+    {  
+        Schema::table('posts', function (Blueprint $table) {  
+            $table->softDeletes();  
+        });  
+    }  
+  
+    /** 
+     * Reverse the migrations. 
+     * 
+     * @return void 
+     */  
+    public function down()  
+    {  
+        Schema::table('posts', function (Blueprint $table) {  
+            $table->dropColumn('deleted_at');  
+        });  
+    }  
+}  
+
+The laravel contains the helper method known as softDeletes(), which we have used in the above code. 
+The softDeletes() method is used to create the column.
+
+Now, run the command php artisan migrate.
+
+Route::get('/softdelete',function(){  
+Post::find(1)->delete();  
+});  
+
+we are softdeleting the record
+
+To retrieve the deleted data, we use the withTrashed() method:
+Route::get('/readsofdelete',function(){  
+$post=model_class_name::withTrashed()->where('id',1)->get();  
+return $post;  
+});  
+
+Restoring deleted/trashed data:
+Route::get('/restore',function(){  
+Post::withTrashed()->where('id',1)->restore();  
+});  
+
+Deleting records permanently:
+Route::get('/forcedelete',function(){  
+Post::onlyTrashed()->forceDelete();  
+}); 
+
+Laravel Tinker allows you to interact with a database without creating the routes. Laravel tinker is used with a php artisan to create the objects or modify the data. The php artisan is a command-line interface that is available with a Laravel. Tinker is a command tool that works with a php artisan. A tinker plays around the database means that it allows you to create the objects, insert the data, etc.
+
+To enter the Tinker environment, run the command given below:
+==>php artisan tinker
+
+inserts the data directly in the database table:
+==>$post=App\Post::create(['title'=>'Akshay','body'=>'akshay is a software developer'])
+
+We can retrieve the records from the database in three ways:
+
+The first way is to use the find() method.
+==>$post=App\Post::find(1)
+
+The second way is to use the constraint, i.e., where clause.
+==>$post=App\Post::where('id',1)->first()
+
+==>$post=App\Post::where('id','>',1)->get()
+
+The third way is to use whereId().
+==>$post=App\Post::whereId(1)->first()
+
+Updating data
+==>$post=App\Post::find(1)
+==>$post->title='Akshay'
+==>$post->save()='Akshay'
+
+Deleting data
+==>$post->delete()
+
+To delete the record permanently
+==>$post->onlyTrashed()
+
+To delete the trashed record permanently
+==>$post->forceDelete()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
