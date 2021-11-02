@@ -1,4 +1,4 @@
-			php notes from php manual
+    			php notes from php manual
 **********************************************
 
 Get system information from PHP
@@ -135,6 +135,36 @@ $large_number =  50000 * $million;
 var_dump($large_number);                     // float(50000000000)
 ?>
 
-**********************************************
+********************************************************************************************
+
+
+                            REST API IN PHP
+************************************************************************************
+It stands for Representational State Transfer 
+It supports all formats like json,xml,text,user-defined
+------------------------------------------------------------------------------------
+HTTP METHODS:
+
+GET => READ DATA
+PUT => UPDATE DATA
+POST => INSERT OR CREATE DATA
+DELETE => DELETE DATA
+------------------------------------------------------------------------------------------------------
+
+set this code at the top of the php file if it is receiving data in json format 
+==> header('Content-Type:application/json');
+
+if it is receiving data using any kind of http method
+==> header('Access-Control-Allow-Methods:PUT/GET/POST/DELETE');
+
+It is security related, anybody can access this page
+==> header('Access-Control-Allow-Origin:*');
+
+It is security related, only website can access this page
+==> header('Access-Control-Allow-Origin:www.abcdef.com');
+
+It is security related, only website can access this page
+==> header('Access-Control-Allow-Headers:<header-name>'); //header-name can be any1 from above codes
+
 
 

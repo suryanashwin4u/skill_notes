@@ -1,7 +1,5 @@
-
                 SQL NOTES
 ******************************************
-
 //select column syntax
 
 ==>SELECT column1, column2, ... FROM table_name;
