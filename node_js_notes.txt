@@ -1,0 +1,226 @@
+nodejs is a server-side platform built on google chrome's js engine.  
+it is developed by ryan dahl, 
+it uses an event-driven, 
+non-blocking i/o model, 
+it is lightweight and efficient,
+it is perfect for data-intensive real-time applications, 
+it uses asynchronous approach of client server communication which means when any number of request can be send to the server without waiting for the response.
+
+check node version installed
+==>node -v
+
+check npm version installed
+==>npm -v
+
+check npx version installed
+==>npx -v
+
+to work on node command prompt
+==>node
+
+to clean the command prompt
+==>clear
+
+we can execute javascript code inside node command prompt
+
+to abort current expression in node command prompt
+==>control + c or .exit 
+
+to exit from node command prompt
+==>control + d 
+
+Sometimes you get stuck, this gets you out
+==>.break    
+
+Alias for .break
+==>.clear    
+
+Enter editor mode
+==>.editor   
+
+Exit the REPL
+==>.exit     
+
+Print this help message
+==>.help     
+
+Load JS from a file into the REPL session
+==>.load     
+
+Save all evaluated commands in this REPL session to a file
+==>.save     
+
+to create package.json in needed directory
+==>npm init
+
+to install lite-server
+==>npm install lite-server --save-dev
+
+to start lite-server
+==>npm start
+
+to execute javascript code of a file inside node command prompt inside a node project
+==>node filename.js
+
+__dirname
+==>it is a global variable which is set to the absolute path of the directory containing the currently executing script.==>console.log(__dirname);
+
+__filename
+==>it is a global variable which is set to the absolute path of the currently executing script.==>console.log(__filename);
+
+require
+==>it is a function which is used to load modules.==>var file = require(./filename.js);
+
+console
+==>it is a global object which is used to log messages to the console.
+
+buffer
+==>it is a global object which is used to create a buffer.
+
+module
+==>it is a global object which is used to create a module.
+
+exports
+==>it is a global object which is used to export a module to other files.
+
+To access modules and variables present in another js files in nodejs we use 'export' and 'require' keywords.
+for example:
+
+To create a server in nodejs we use 'http' module and its createServer(req,res), res.writeHead(statusCode,statusMessage,headers), res.write(body), Res.end(body), listen(port,hostname,backlog,callback)
+
+for example:
+const http=require('http');
+const server=http.createServer((req,res)=>{
+    res.writeHead(200,{'Content-Type':'text/plain'}); //content-type can be: html,css,js,json,text,plain
+    res.write("hello world"); // content sent to the client screen, its content depends on the content-type
+    res.end();
+}).listen(3000,()=>{
+    console.log("server is running on port 3000");
+});
+
+nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
+nodemon does not require any additional changes to your code or method of development. nodemon is a replacement wrapper for node. To use nodemon, replace the word node on the command line when executing your script.
+
+To install nodemon: 
+==>npm install -g nodemon
+
+To run file.js using nodemon:
+==>nodemon filename.js  (bydefault nodemon will run on port 3000 and index.js file will be executed)
+
+To install express js framework in the system
+==>npm install express
+
+****************************************************************************************************
+To fetch express module and use its functions
+example:-
+
+const express = require('express');             //importing express module
+const app = express();                          //creating an instance of express
+
+app.use('/fake_path',express.static('public'));  //to use static files with virtual path as it is more secure
+
+app.get('/get', (req, res) => {                 //using get method
+    res.send('homepage access using get request through url');           //sending response to the client
+});
+
+app.post('/post', (req, res) => {               //using post method
+  res.send('homepage access using post request through postman application');           //sending response to the client
+});
+
+app.get('/index', (req, res) => {                                                   //using get method
+  res.sendFile( __dirname + '/index.html');     //sending response to the client
+});
+
+
+app.get('/get_variable_1/a/:var_a/b/:var_b', (req, res) => {                      //passing parameters using url get method
+  res.send("showing variable passed through url: var_a = " + req.params.var_a + " , var_b = " + req.params.var_b); //showing url parameters on the client screen
+});
+
+// passing parameters when not necessery
+app.get('/get_variable_2/a/:var_a?', (req, res) => { 
+  if(req.params.var_a == undefined){
+    res.send("parameter not passed");
+  }else{
+    res.send("use question mark if parameter is not mandatory: " + req.params.var_a); 
+  }
+});
+
+// passing parameters using dash notation
+app.get('/get_variable_3/:a-:b',(req,res)=>{                                 
+  res.send("a = "+ req.params.a +" , b = "+ req.params.b);
+});
+
+// passing parameters using dash notation
+app.get('/get_variable_4/:a?-:b?',(req,res)=>{                                 
+  res.send("a = "+ req.params.a +" , b = "+ req.params.b);
+});
+
+// passing parameters using dot notation
+app.get('/get_variable_5/:a.:b',(req,res)=>{                                 
+  res.send("a = "+ req.params.a +" , b = "+ req.params.b);
+});
+
+// passing parameters using dot notation
+app.get('/get_variable_6/:a?.:b?',(req,res)=>{                                 
+  res.send("a = "+ req.params.a +" , b = "+ req.params.b);
+});
+
+// optional parameters are a or b or ab but cd is mandatory
+app.get('/get_variable_7/a?b?cd',(req,res)=>{                                 
+  res.send("a?b?cd");
+});
+
+// possible parameters abcd,abbcd,abbbcd 
+app.get('/get_variable_8/ab+cd',(req,res)=>{                                 
+  res.send("ab+cd");
+});
+
+// possible parameters abcd,abjasldjflacd 
+app.get('/get_variable_9/ab*cd',(req,res)=>{                                 
+  res.send("ab*cd but middle parameter is: " + req.params[0]);
+});
+
+// possible parameters abcd,abjasldjflacd 
+app.get('/get_variable_10/ab(*)cd',(req,res)=>{                                 
+  res.send("ab*cd but middle parameter is: " + req.params[0]);
+});
+
+// possible parameters are words ending with fly keyword 
+app.get(/.*fly$/,(req,res)=>{                                 
+  res.send("only parameters ending with fly are accepted");
+});
+
+//listening on port 3000
+app.listen(3000, () => {                        
+  console.log('server listening on port 3000!');
+});
+
+
+****************************************************************************************************
+Use the application generator tool, express-generator, to quickly create an application skeleton.
+
+To install express application generator globally
+==>npm install express-generator -g
+
+To get help on the express framework tool
+==>express -h
+
+To work on views there are many template engines available in express js like pug,ejs etc.
+
+To install ejs view engine in the system 
+==>express --view=ejs appname (for ejs template engine)
+or
+==>express --view=pug appname (for pug template engine)
+
+after it install all npm dependencies in the pug or ejs app using this command:
+==>npm install
+
+To run the ejs or pug app if already inside the app directory
+==>DEBUG=app_name:* npm start  (it will run at localhost:3000)
+
+
+
+
+
+
+

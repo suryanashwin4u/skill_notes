@@ -1,8 +1,0 @@
-to create package.json in a directory
-==>npm init
-
-to install lite-server
-==>npm install lite-server --save-dev
-
-to start lite-server
-==>npm start
