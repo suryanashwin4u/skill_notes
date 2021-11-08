@@ -614,10 +614,161 @@ All the methods of the controller have a default route name, but Laravel allows 
 
 Route::resource('student', 'StudentController',['names' => ['create' =>'student.build']]);  
 
+======================================================
+                  laravel forms
+======================================================
 
+install a html package from composer
+==>$composer require "laravelcollective/html":"^5.4.0"  
 
+open the config/app directory in your project and add the html provider in the providers array of the config/app.php file.
 
+we add the two class aliases to the aliases array of the config/app.php file.
+'aliases' => [  
+              'Form' => Illuminate\Html\FormFacade::class,  
+              'Html' => Illuminate\Html\HtmlFacade::class,   
+             ],  
 
+Opening a Form
+==>
+Form::open(['url' => 'post/create'])  
+//  
+//
+//
+Form::close()
+
+In laravel forms, the default method is assumed to be 'post' method
+==>Form::open(['url'=>'Post/create , 'method'=>'Put''])
+or
+==>Form.open(['route' => 'route.name'])  
+or
+==>Form.open(['action' => 'Controller@method' , 'method'=>'POST' ])  
+
+The syntax for writing a label element in Laravel is given below:
+==>Form::label('phone_no', 'Phone Number',['class'=>'phone_no']);
+
+The syntax for generating a text area in Laravel is given below:
+==>Form::text('email');
+or
+We can also specify the default value to the text box.
+==>Form::text('email','akshita123@gmail.com');
+
+The syntax for the password field is given below:
+==>Form::password('password',['class'=>'pass']);
+
+We can create the checkbox as given below:
+==>Form::checkbox('name','value');
+
+By default, the checkbox is unchecked. We can also check the box by providing true value to the checkbox element.
+==>Form::checkbox('name','value',true);
+
+We can create the radio button as given below:
+==>Form::radio('name','value');
+
+By default, the radio button is not selected. We can also select the radio button by providing true value to the radio button element.
+==>Form::radio(''name','value',true);
+
+We can also add the number input field in a form.
+==>Form::number('name','value');
+
+Syntax for file input field is given below:
+==>Form::file('image');
+
+The syntax for creating a drop-down menu is given below:
+==>Form::select('digits', [1,2,3,4,5,6])
+
+We can also set the drop-down list with a default value:
+==>Form::select('digits',[1,2,3,4,5,6],'2')
+The above code sets the value of the drop-down list with a second element of the array, i.e., 3 as indexing starts with 0.
+
+Generating Grouped list
+==>Form::select('name',[
+        'fruits' => ['Apple','Mango','Orange'],
+        'Vegetables' => ['Potato','Tomato','Cabbage'],
+])
+
+Generating drop-down list with a range.
+==>Form::selectRange('number',1,30)
+
+Generating drop-down list with a month names.
+==>Form.selectMonth('month')
+
+The syntax for generating a date input field is given below:
+==>Form::date('name',\Carbon\Carbon::now())
+
+We can also create the button in a web form by using the button field in a form.
+==>Form::submit('Click me!!')
+
+for example
+==>
+{!! Form::open(['route'=>'posts.store']) !!}  
+    
+<div class="form-group">  
+{{form::label('name','Name')}}  
+{{form::text('name','',['class'=>'form-control','placeholder'=>'Name'])}}  
+</div>  
+
+<div class="form-group">  
+{{form::label('gender','Gender')}}  
+{{form::radio('male','Male')}} Male  
+{{form::radio('Female','Female')}} Female  
+</div>  
+
+<div class="form-group">  
+{{form::label('profile','Profile')}}  
+{{form::select('list',['Software Developer','QA Analyst','Manager','HR'])}}  
+</div>  
+
+<div class="form-group">  
+{{form::label('dob','Date of Birth')}}  
+{{Form::date('dob', \Carbon\Carbon::now())}}  
+</div>  
+
+<div class="form-group">  
+{{form::label('skills','Skills Description')}}    
+{{form::textarea('body','',['placeholder'=>'Skills Description'])}}  
+</div>  
+
+<div class="form-group">  
+{{form::label('percentage','Percentage in 12th')}}  
+{{form::text('percent','',['class'=>'form-control','placeholder'=>'Percentage in 12th'])}}  
+</div>  
+
+<div class="form-group">  
+{{form::label('experience','Experience')}}  
+{{form::number('exp','number')}}  
+</div>  
+
+<div class="form-group">  
+{{form::label('expected_salary','Expected Salary')}}  
+{{form::text('salary','',['placeholder'=>'Expected Salary'])}}  
+</div>  
+  
+<div class="form-group">  
+{{form::label('resume','Resume Upload')}}  
+{{Form::file('resume')}}  
+</div>  
+  
+{{Form::submit('Submit', ['class'=>'btn btn-primary'])}}  
+  
+{!!Form::close()!!}  
+@stop  
+
+then we make a resource controller to validate form data
+==>public function store(Request $request)  
+    {  
+       $this->validate($request,[  
+       'name'=>'required',  
+       'list'=> 'required',  
+       'dob'=>'required',  
+       'body'=>'required',  
+       'percent'=>'required',  
+       'exp'=>'required',  
+       'salary'=>'required',  
+       'resume'=>'required']);  
+           
+      return "Resume has been updated successfully";      
+    }  
 
 
 
@@ -633,9 +784,7 @@ Route::resource('student', 'StudentController',['names' => ['create' =>'student.
 
 3. Axios: Axios is a Javascript library used to make HTTP requests from node.js or XMLHttpRequests from the browser and it supports the Promise API that is native to JS ES6. It can be used intercept HTTP requests and responses and enables client-side protection against XSRF. It also has the ability to cancel requests.
 
-
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
 
 4. laravel breeze authentication
 
@@ -653,11 +802,6 @@ Route::resource('student', 'StudentController',['names' => ['create' =>'student.
 	javascript files-> show_users.js
 	route names->update_pro_name
 	route url->update-pro-name
-	
-9.dbeaver for checking database than phpmyadmin
-
-10.
-	
 
 -------------------------------------------------------
 laravel codes
@@ -1019,7 +1163,6 @@ class table extends Model
 }  
 
 fetching all data from the table
-
 <?php  
 use App\Post;  
 
@@ -1046,6 +1189,12 @@ $posts=model_class_name::where('id',1)->value('column_name');  //to retrieve the
 return $posts;  
 
 });  
+
+pluck() method
+==>used to retrieve a list of specific values from a given $array. 
+It is most useful when used against arrays of objects, but will also work with arrays just as well.
+for example:
+$country = Country::where('is_active', 1)->pluck('country_name', 'id');
 
 inserting data into database
 
@@ -1226,12 +1375,35 @@ To delete the record permanently
 To delete the trashed record permanently
 ==>$post->forceDelete()
 
+==========================================
+              crm notes
 
+1.php carbon class has some predefined functions for time formating
+this code will convert string to date using parse method, find difference between both date and convert into years
+{{ \Carbon\Carbon::parse($applicantData->date_of_birth)->diff(\Carbon\Carbon::now())->format('%y years') }}
 
+2.config('app.url')
+it will go to config file and check for url variable and return env url value from env file if available
 
+3.env('APP_URL', 'http://localhost')
+it will return APP_URL value from env file but if it is not available in env value then it will return value as passed in above function as 2nd argument
 
+4.explode(',' , string_variable)
+it will break string as per separater passed as first argument in the above function and return array
 
+5.end(pass_array)
+return last element of an array
 
+6.except(['name'])
+returns collection array except name key
+
+7.array_keys(array)
+returns array keys 
+
+8.array_search("value",array)
+return key of value in array
+
+9.Form::select('name_of_label', [""=>""]+$allowedUsers, null, ['id'=>'assign_user_id','class'=>'form-control assignSelect2','wire:model'=>'model.user_id'])
 
 
 
