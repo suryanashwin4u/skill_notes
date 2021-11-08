@@ -44,7 +44,8 @@ V: 'V' stands for View. A view is a class that deals with an HTML
 C: 'C' stands for Controller. A controller is the middle-man that deals with both model and view. A controller is the class that retrieves the data from the model and sends the data to the view class.
 
 ================================================================
-ADVANTAGES OF LARAVEL FRAMEWORK:
+                ADVANTAGES OF LARAVEL FRAMEWORK:
+================================================================
 
 1.Creating authorization and authentication systems
 2.Integration with tools
@@ -58,7 +59,8 @@ An American organization, i.e., OWASP Foundation, defines the most important sec
 8.Scheduling tasks configuration and management
 
 ================================================================
-FEATURE OF LARAVEL:
+                     FEATURE OF LARAVEL:
+================================================================
 
 1.Authentication
 2.Innovative Template Engine
@@ -70,9 +72,11 @@ FEATURE OF LARAVEL:
 It uses "Bcrypt Hashing Algorithm" to generate the salted password means that the password is saved as an encrypted password in a database, not in the form of a plain text.
 8.Libraries and Modular
 9.Artisan
+
 Artisan also allows the developers to create their own commands.
 ================================================================
-COMPOSER:
+                            COMPOSER:
+================================================================
 
 Composer is a dependency manager for a PHP programming language that manages the dependencies of PHP software and required libraries
 Composer runs through the command line. The main purpose of the composer is to install the dependencies or libraries for an application. The composer also provides the users to install the PHP applications available on the Packagist, where Packagist is the main repository that contains all the available packages.
@@ -90,7 +94,8 @@ command to create a new laravel project:
 or
 -->composer create-project ?prefer-dist laravel/laravel project_name 5.2.29  (for old laravel versions)
 ================================================================
-LARAVEL DIRECTORY STRUCTURE:
+                    LARAVEL DIRECTORY STRUCTURE:
+================================================================
 
 1.APP directory
 
@@ -773,10 +778,9 @@ then we make a resource controller to validate form data
 
 
 
--------------------------------------------------------------------------------------------
-			            notes
-------------------------------------------------------------
-1. php artisan --version == to know installed laravel version
+================================================================
+			                    notes
+================================================================
 
 2. composer.json file also contains details of the project
  
@@ -795,13 +799,21 @@ then we make a resource controller to validate form data
 7. dd($request); dump and die function to check requests
 
 8. naming conventions:
-	functions->userDetails()
-	controller->FetchController.php
-	models->Home.php,FetchModal.php
-	blade files->show_user_details.blade.php
-	javascript files-> show_users.js
-	route names->update_pro_name
-	route url->update-pro-name
+	
+  functions names
+  ==>userDetails()
+	controller
+  ==>FetchController.php
+	models
+  ==>Home.php,FetchModal.php
+	blade files
+  ==>show_user_details.blade.php
+	javascript files
+  ==>show_users.js
+	route names
+  ==>update_pro_name
+	route url
+  ==>update-pro-name
 
 -------------------------------------------------------
 laravel codes
@@ -936,22 +948,24 @@ student id is not equal to 1.
  Name  
 @endif  
 
-
 @for($i=1;$i<11;$i++)  
 {{$i}}  
 @endfor  
 
+@forelse($students as $student)  
+{{$student}}<br>
+@empty
+No Record Found  
+@endforelse  
 
 @foreach($students as $student)  
 {{$student}}<br>  
 @endforeach  
 
-
 @while(($i)<5)  
 javatpoint  
 {{$i++}}  
 @endwhile  
-
 
 @yield('content')  
 @yield('footer') 
@@ -965,13 +979,11 @@ javatpoint
 <script> alert("Hello JavaTpoint") </script>      
 @stop 
 
-
 @extends('layout.master')  
 @section('content')  
 <h1>Post Page:</h1>  
 <h2>id is :{{$id}}<br> Password is :{{$password}}<br>Name is : {{$name}}</h2>  
 @stop  
-
 
 @extends('layout.master')  
 @section('content')  
@@ -984,13 +996,9 @@ javatpoint
 
 The use of @parent directive is to display the content of the section defined in the master layout.
 
-----------------------------------------------------------------------
-
-                          forms remaining
-
-----------------------------------------------------------------------
-migration files functions
-
+=======================================================================
+                    migration files functions
+=======================================================================
 
   public function up()  
     {  
@@ -1403,7 +1411,7 @@ returns array keys
 8.array_search("value",array)
 return key of value in array
 
-9.Form::select('name_of_label', [""=>""]+$allowedUsers, null, ['id'=>'assign_user_id','class'=>'form-control assignSelect2','wire:model'=>'model.user_id'])
+
 
 
 
