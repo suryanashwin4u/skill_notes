@@ -925,9 +925,16 @@ $("#1").click(function() {
 ---------------------------------------------------------
 			blade template note
 
+//to print variable value in the template view
 {{$variable}};  
 
+//to print variable value after checking exsistence
 {{ $variable or 'default value'}}  
+
+//check if a variable has value
+@isset($a)
+  template code
+@endisset
 
 
 @if(($id)==1)  
@@ -948,9 +955,12 @@ student id is not equal to 1.
  Name  
 @endif  
 
+
+
 @for($i=1;$i<11;$i++)  
 {{$i}}  
 @endfor  
+
 
 @forelse($students as $student)  
 {{$student}}<br>
@@ -958,19 +968,25 @@ student id is not equal to 1.
 No Record Found  
 @endforelse  
 
+
+
 @foreach($students as $student)  
 {{$student}}<br>  
 @endforeach  
+
 
 @while(($i)<5)  
 javatpoint  
 {{$i++}}  
 @endwhile  
 
+
+
 @yield('content')  
 @yield('footer') 
 
 @extends('layout.master')  
+
 @section('content')  
 <h1>Contact Page </h1>   
 @stop  
@@ -993,6 +1009,7 @@ javatpoint
 @parent  
 <p>this is appended</p>  
 @stop  
+
 
 The use of @parent directive is to display the content of the section defined in the master layout.
 

@@ -167,3 +167,5 @@ after it install all npm dependencies in the pug or ejs app using this command:
 To run the ejs or pug app if already inside the app directory
 ==>DEBUG=app_name:* npm start  (it will run at localhost:3000)
 
+To install body-parser for working on post data using forms
+==>npm install body-parser
