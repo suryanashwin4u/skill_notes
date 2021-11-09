@@ -1428,7 +1428,39 @@ returns array keys
 8.array_search("value",array)
 return key of value in array
 
+9.The firstOrNew method is really useful for finding the first Model that matches some constraints or making a new one if there isn’t one that matches those constraints.
+$user = User::firstOrNew(['email' =>  request('email')]);
+You may also pass an array of additional attributes to set as the second parameter if no existing Model is found:
+$user = User::firstOrNew(
+    ['email' =>  request('email')],
+    ['name' => request('name')]
+);
 
+10.The firstOrCreate method is very similar to the firstOrNew method. It tries to find a model matching the attributes you pass in the first parameter. If a model is not found, it automatically creates and saves a new Model after applying any attributes passed in the second parameter
+$user = User::firstOrCreate(
+    ['email' =>  request('email')],
+    ['name' => request('name')]
+);
+
+11. The firstOr method retrieves the first Model from a query, or if no matching Model is found, it will call a callback passed.
+$user = User::where('email', request('email'))->firstOr(function () {
+    $account = Account::create([ //... ]);
+ 
+    return User::create([
+        'account_id' => $account->id,
+        'email' => request('email'),
+    ]);
+});
+
+
+12.The updateOrCreate method attempts to find a Model matching the constraints passed as the first parameter. If a matching Model is found, it will update the match with the attributes passed as the second parameter. If no matching Model is found a new Model will be created with both the constraints passed as the first parameter and the attributes passed as the second parameter.
+$user = User::updateOrCreate(
+    ['email' =>  request('email')],
+    ['name' => request('name')]
+);
+
+13.
+Carbon::parse($request->gicDate)->format('Y-m-d H:i:s') : ''
 
 
 
