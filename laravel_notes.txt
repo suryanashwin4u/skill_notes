@@ -1,5 +1,15 @@
               LARAVEL FRAMEWORK SHORT NOTES
 ================================================================
+naming conventions:
+functions ==> userDetails()
+controller ==> FetchController.php
+model ==> Home.php,FetchModel.php
+blade ==> show_user_details.blade.php
+js ==> show_users.js
+route name ==> update_pro_name
+route url ==> update-pro-name
+
+
 check version of laravel framework installed in the systems
 ==>php artisan --version
 
@@ -191,7 +201,7 @@ return "Hello javaTpoint";
 CSRF Protection
 The HTML forms that are pointing to Post, Put or Delete routes defined in the web route files should include CSRF token field. If the CSRF token field is not included, then the request will be rejected.
 <form method="POST" action="/profile">  
-    @csrf  
+    @csrf  or {{csrf_field()}}
     ...  
 </form>  
 class formcontroller extends controller{
@@ -234,15 +244,20 @@ Route::get('hello', function () {
 
 <?php  
 Route::redirect('hello','/');  
+Route::redirect('/here', '/there');
+By default, Route::redirect returns a 302 status code.
+Route::redirect('/here', '/there', 301); 
+to return a 301 status code:
+Route::permanentRedirect('/here', '/there');
 
 View() method is used to return the view of another URL.
-<?php  
+
 Route::get('/', function () {  
     return view('welcome');  
 });  
-<?php  
 Route::view('/','welcome');  
-
+Route::view('/welcome', 'welcome');
+Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 
 
 Required Parameters
@@ -299,6 +314,19 @@ Route::get('user/{id}/{name}', function ($id,$name) {
     return "id is : ". $id ." ,".  "Name is : ".$name ;  
 })->where(['id'=>'[0-9]+', 'name'=>'[a-zA-Z]+']);  
 
+Route::get('/user/{id}/{name}', function ($id, $name) {
+    //
+})->whereNumber('id')->whereAlpha('name');
+
+Route::get('/user/{name}', function ($name) {
+    //
+})->whereAlphaNumeric('name');
+
+Route::get('/user/{id}', function ($id) {
+    //
+})->whereUuid('id');   <---doubt
+
+
 Global Constraints are used when we have multiple routes, and the same constraints are applied to all the routes.define these patterns in the boot method of your RouteServiceProvider.
 public function boot()  
 {  
@@ -328,7 +356,8 @@ Route::get('student/details/example',array
    return "The url is : " .$url;  
 }));  
 
-php artisan route:list.==>command to know route lists
+command to know route lists
+==>php artisan route:list
 
 Note: The benefit of using named routes is that if we change the location of the route, then also the link will work or we can say that it is beneficial for changing the URLs dynamically.
 
@@ -823,7 +852,10 @@ laravel codes
 use App\Http\Controllers\ProvisionServer;
 Route::get('/user/{id}', [UserController::class, 'show']);
 
-2.
+2.passing parameters and dependency injection
+Route::get('/user/{id}', function (Request $request, $id) {
+    return 'User '.$id;
+});
 
 
 ------------------------------------------------------
@@ -1010,6 +1042,12 @@ javatpoint
 <p>this is appended</p>  
 @stop  
 
+to push to named stacks which can be rendered somewhere else in another view or layout.
+@push('scripts')
+    <script src="/example.js"></script>
+@endpush
+
+
 
 The use of @parent directive is to display the content of the section defined in the master layout.
 
@@ -1092,9 +1130,11 @@ class AddColumnAdminIsToTable extends Migration
 command to Add columns to the existing table using migration
 ==>php artisan make:migration file_name -table="table_name"   //-table="table_name" is the flag which tells the laravel that we are working on exsisting table.
 
+command to make tables if relative path is given for a project
+==>php artisan migrate --path= relative_directory_path
+
 command to create tables into database
 ==>php artisan migrate 
-
 
 command to rollback tables from the database
 ==>php artisan migrate:rollback
@@ -1155,6 +1195,34 @@ echo "not deleted";
 }
 });
 });  
+
+
+table(),get()
+$users = DB::table('users')->get();
+
+where(),first()
+$user = DB::table('users')->where('name', 'John')->first();
+
+value()
+$email = DB::table('users')->where('name', 'John')->value('email');
+
+find()
+$user = DB::table('users')->find(3);
+
+pluck()
+$titles = DB::table('users')->pluck('title');
+$titles = DB::table('users')->pluck('title', 'name');
+
+orderBy(),chunk()->it returns small chunks of data at a time
+DB::table('users')->orderBy('id')->chunk(100, function ($users) {
+    foreach ($users as $user) {
+        //
+    }
+});
+
+
+
+
 
 -------------------------------------------------------------------
 			  ELOQUENT
@@ -1462,11 +1530,80 @@ $user = User::updateOrCreate(
 13.
 Carbon::parse($request->gicDate)->format('Y-m-d H:i:s') : ''
 
+14. back to previous route
+==> return back();
+
+15. this will produce full url with given route
+==> url("/posts/{$post->id}");
 
 
 
 
+=================================================================
+                    LARAVEL EXCEL package IMPORT
+=================================================================
 
+1. first install laravel excel package
+==> composer require maatwebsite/excel
+
+2. add into config/app.php providers array
+==> Maatwebsite\Excel\ExcelServiceProvider::class,
+
+3. add it in aliases in config/app.php aliases array
+==> 'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
+4. To publish the config, run the vendor publish command:
+==> php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config
+
+
+5. make a model suiting table name in the database
+==>php artisan make:model model_name 
+
+6. make an import class which will be created inside app\imports with the same name as given below
+==>php artisan make:import modelnameImport --model=modelname
+
+7.make changes inside the import class 
+==> public function model(array $row)
+    {
+        return new employee([
+     //enter columns name like this       
+            'name'     => $row[name],
+            'email'    => $row[email], 
+            'phone'    => $row[phone], 
+            'salary'    => $row[salary], 
+            'department'    => $row[department],
+
+        ]);
+    }
+
+8. add other classes like and use it in existing import class:
+==> use Maatwebsite\Excel\Concerns\WithHeadingRow;
+==> class employeeImport implements ToModel,WithHeadingRow
+
+9.create controller
+==> public function importExcelFile() 
+    {
+
+            return view('import-form');
+       
+    }
+
+    public function import(Request $request) 
+    {
+       
+        Excel::import(new employeeImport, $request->file);
+        return "records imported successfully";
+    }
+10.make a form in the view
+==> <form method="post" enctype="multipart/form-data" action={{route('employee.import')}} >
+            @csrf
+            <input type="file" name="file">
+            <button>submit</button>
+        </form>
+
+11.create route
+==> Route::get('/import-form', [EmployeeController::class,'importExcelFile']);
+    Route::post('/import', [EmployeeController::class,'import'])->name('employee.import');
 
 
 

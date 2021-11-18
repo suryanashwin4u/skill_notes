@@ -1,5 +1,25 @@
       			  javascript notes
 --------------------------------------------
+//use axiox in place of ajax
+displayLoader("message");
+axios.post(routes.process_guide_submit, {
+		data1:data1,
+		data2:data2
+})
+.then((response) => {
+                if (response.data.status === 'success') {
+                    clearForm();
+                    showAlert(response.data.data, response.data.status)
+                } else if (response.data.status === 'error') {
+                    showAlert(response.data.data, response.data.status)
+                }
+            })
+            .catch((error) => console.log(error))
+            .finally(() => removeLoader());
+}
+
+
+
 //change the inner html string using id selector
 document.getElementById("id_name").innerHTML = "type_string_here";
 

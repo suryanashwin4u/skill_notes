@@ -1,5 +1,15 @@
                     git tutorials
 --------------------------------------------------------
+things to remember
+=>take pull from branches before pushing code to this or another branch
+
+
+
+search conflicts with find command
+=>try searching <<< or >>>, if there is any conflict then it will show
+=>if there is any conflict tell seniors
+
+
 
 git --version
 =>check version of git installed in device
