@@ -9,6 +9,11 @@ js ==> show_users.js
 route name ==> update_pro_name
 route url ==> update-pro-name
 
+set it to true to show debugbar in the running project
+-->debugbar_enabled=true
+
+clear cache
+==>php artisan optimize:clear
 
 check version of laravel framework installed in the systems
 ==>php artisan --version
@@ -1219,10 +1224,6 @@ DB::table('users')->orderBy('id')->chunk(100, function ($users) {
         //
     }
 });
-
-
-
-
 
 -------------------------------------------------------------------
 			  ELOQUENT

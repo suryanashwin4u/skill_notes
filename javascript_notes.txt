@@ -7,16 +7,34 @@ axios.post(routes.process_guide_submit, {
 		data2:data2
 })
 .then((response) => {
-                if (response.data.status === 'success') {
-                    clearForm();
-                    showAlert(response.data.data, response.data.status)
-                } else if (response.data.status === 'error') {
-                    showAlert(response.data.data, response.data.status)
-                }
-            })
-            .catch((error) => console.log(error))
-            .finally(() => removeLoader());
+  if (response.data.status === 'success') {
+      clearForm();
+      showAlert(response.data.data, response.data.status)
+  } else if (response.data.status === 'error') {
+      showAlert(response.data.data, response.data.status)
+  }
+  })
+  .catch((error) => console.log(error))
+  .finally(() => removeLoader());
 }
+
+//to remove spaces inside the string
+"e,  d, d, d".replace(/\s+/g, ''); =>e,d,d,d
+
+//convert date and time to string format
+var timestamp = new Date();
+console.log(new Date());  =>returns object
+timestamp.toString();     =>convert object to string
+timestamp.toTimeString(); =>return only time string
+timestamp.toDateString(); =>return only date string
+timestamp.toUTCString();  =>return only UTC string
+timestamp.toISOString();  =>return only ISO string
+timestamp.toGMTString();  =>return only GMT string
+timestamp.toLocaleDateString(); =>return only date string
+
+
+
+
 
 
 
