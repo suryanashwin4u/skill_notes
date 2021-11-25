@@ -1,18 +1,28 @@
               LARAVEL FRAMEWORK SHORT NOTES
 ================================================================
-naming conventions:
-functions ==> userDetails()
-controller ==> FetchController.php
-model ==> Home.php,FetchModel.php
-blade ==> show_user_details.blade.php
-js ==> show_users.js
-route name ==> update_pro_name
-route url ==> update-pro-name
+                  SOME BASIC NAME CONVENTIONS:
+================================================================
+functions 
+==> userDetails()
+controller
+==> FetchController.php
+model 
+==> Home.php,FetchModel.php
+blade 
+==> show_user_details.blade.php
+js 
+==> show_users.js
+route name 
+==> update_pro_name
+route url 
+==> update-pro-name
+================================================================
+                    SOME BASIC COMMANDS:
+================================================================
+set it to true to show debugbar in the running project in the .env file
+==>DEBUGBAR_ENABLED=true
 
-set it to true to show debugbar in the running project
--->debugbar_enabled=true
-
-clear cache
+clear laravel project cache
 ==>php artisan optimize:clear
 
 check version of laravel framework installed in the systems
@@ -21,13 +31,13 @@ check version of laravel framework installed in the systems
 check version of composer installed in the systems
 ==>composer
 
-create laravel app in a directory
-==>composer create-project laravel/laravel –prefer-dist
+to create a new laravel project:
+==>composer create-project laravel/laravel project_name   (for latest laravel version)
 
-start laravel app in local server
+start laravel app at local server
 ==>php artisan serve
 
-laravel development server will start at localhost:8000
+==>laravel development server will start at localhost:8000
 
 to generate application key to secure session and other encrypted data
 ==>php artisan key:generate
@@ -42,59 +52,15 @@ to stop maintainence mode
 ==>php artisan up
 
 to print component output using component name
---><x-header componentName="nameofcomponent">
+==><x-header componentName="nameofcomponent">
 
 create a middleware with some addition functions
 ==>php artisan make:middleware nameofmiddleware --plain
 
-application key can be seen inside .env file
-
-Laravel is a PHP framework that uses the MVC architecture.
-
-Framework: It is the collection of methods, classes, or files that the programmer uses, and they can also extend its functionality by using their code.
-Architecture: It is the specific design pattern that the framework follows. Laravel is following the MVC architecture.
-
-M: 'M' stands for Model. A model is a class that deals with a database.
-V: 'V' stands for View. A view is a class that deals with an HTML
-C: 'C' stands for Controller. A controller is the middle-man that deals with both model and view. A controller is the class that retrieves the data from the model and sends the data to the view class.
-
-================================================================
-                ADVANTAGES OF LARAVEL FRAMEWORK:
-================================================================
-
-1.Creating authorization and authentication systems
-2.Integration with tools
-Laravel is integrated with some popular cache back ends such as Redis, and Memcached.
-3.Mail service integration
-4.Handling exception and configuration error
-5.Automation testing work
-6.Separation of business logic code from presentation code
-7.Fixing most common technical vulnerabilities
-An American organization, i.e., OWASP Foundation, defines the most important security vulnerabilities such as SQL injection, cross-site request forgery, cross-site scripting, etc.
-8.Scheduling tasks configuration and management
-
-================================================================
-                     FEATURE OF LARAVEL:
-================================================================
-
-1.Authentication
-2.Innovative Template Engine
-3.Effective ORM
-4.MVC Architecture Support
-5.Secure Migration System
-6.Unique Unit-testing
-7.Intact Security
-It uses "Bcrypt Hashing Algorithm" to generate the salted password means that the password is saved as an encrypted password in a database, not in the form of a plain text.
-8.Libraries and Modular
-9.Artisan
-
-Artisan also allows the developers to create their own commands.
+==>application key can be seen inside .env file
 ================================================================
                             COMPOSER:
 ================================================================
-
-Composer is a dependency manager for a PHP programming language that manages the dependencies of PHP software and required libraries
-Composer runs through the command line. The main purpose of the composer is to install the dependencies or libraries for an application. The composer also provides the users to install the PHP applications available on the Packagist, where Packagist is the main repository that contains all the available packages.
 
 Following are some important commands used in Composer:
 1.The require command is used to add the libraries or packages as a parameter to the file composer.json, and then install it.
@@ -102,29 +68,20 @@ Following are some important commands used in Composer:
 3.The update command is used to update all the libraries or packages from the composer.json file based on the versions mentioned in the composer.json file.
 4.The remove command is used to uninstall the library or package and remove it from the composer.json file.
 
-check whether the composer is installed successfully or not. To check this, open the command prompt and type Composer then press enter.
-
-command to create a new laravel project:
--->composer create-project laravel/laravel project_name   (for latest laravel version)
-or
--->composer create-project ?prefer-dist laravel/laravel project_name 5.2.29  (for old laravel versions)
 ================================================================
                     LARAVEL DIRECTORY STRUCTURE:
 ================================================================
-
 1.APP directory
 
 The App folder contains the following sub-folders:
-1.Console = Console folder contains the artisan commands required for Laravel.
-2.Exceptions = Exceptions folder contains the various exception handlers.The Exceptions directory contains the file handle.php that handles all the exceptions.
+1.Console = contains the artisan commands.
+2.Exceptions = contains handle.php that handles all the exceptions.
 3.Http = It has sub-folders such as controllers, middleware, and requests.
-    1. middleware = It provides a filter mechanism and communication between request and response.
-    2. Requests = includes all the requests of an application.
-4.Providers =contain all the service providers that are required to register events for core servers and provides configuration for Laravel application.
+4.Providers = contain all the service providers that are required to register events for core servers and provides configuration for Laravel application.
 ------------------------------------------------------------
 2.BOOTSTRAP directory
 
-holds the files that are required to bootstrap the Laravel application and to configure auto-loading. 
+holds the files that are required to bootstrap or load the Laravel application and to configure auto-loading. 
 The bootstrap folder contains a sub-folder cache used for caching a web application. 
 It also contains the file app.php that initializes the scripts required for bootstrap.
 ------------------------------------------------------------
@@ -133,8 +90,6 @@ It also contains the file app.php that initializes the scripts required for boot
 contains the various configuration files
 ------------------------------------------------------------
 4.DATABASE directory
-
-holds the database files.
 
 database directory consists of three sub-folders:
 1.FACTORIES: The factories folder is used to generate a huge number of data records.
@@ -152,13 +107,12 @@ Following are the sub-folders of a public directory:
 ------------------------------------------------------------
 6.RESOURCE directory
 
-used to enhance the web application. 
+used to enhance the web application.
 
 It contains the following sub-folders:
-
 1. ASSETS: This folder contains the files such as LESS and SCSS used for styling the web application.
 2. LANG: The lang folder provides configuration for localization or internationalization.
-3. VIEWS: The views folder contains html files used to interact with the end-users
+3. VIEWS: The views folder contains html files used to interact with the end-users.
 ------------------------------------------------------------
 7.STORAGE Directory
 
@@ -183,156 +137,115 @@ contains the composer dependencies
 ============================================================
 
 The route/web.php directory contains the definition of route files for your web interface. 
+
 The routes in web.php are assigned with the web middleware group that provides the features like session state and CSRF protection. 
+
 The routes defined in routes/api.php are assigned with the API middleware group, and they are stateless.
+
 The routes defined in the routes/web.php can be accessed by entering the defined URL to the browser.
 
-Route is the class which defines the static method get(). The get() method contains the parameters '/' and function() closure. The '/' defines the root directory and function() defines the functionality of the get() method.
+Route is the class which defines the static method get(). 
 
 <?php  
 Route::get('/', function ()  
  {      
-return view ('welcome');  
+return view ('welcome');  //return welcome.blade.php
 });  
-
 
 <?php  
 Route::get('/example', function ()  
  {      
-return "Hello javaTpoint";  
+return "Hello javaTpoint"; //return text on screen
 });  
 
-
 CSRF Protection
-The HTML forms that are pointing to Post, Put or Delete routes defined in the web route files should include CSRF token field. If the CSRF token field is not included, then the request will be rejected.
+The HTML forms that are pointing to Post, Put or Delete routes defined in the web route files should include CSRF token field. 
+If the CSRF token field is not included, then the request will be rejected.
+
+In blade file:
 <form method="POST" action="/profile">  
     @csrf  or {{csrf_field()}}
     ...  
 </form>  
+In Controller:
 class formcontroller extends controller{
   function get_form_data(Request $req){
-    return $req->input();  //to return form data in json format data with csrf token
+    return $req->input(); or dd($request->all());  //to return form data in json format data with csrf token
   }
 }
 
-
-The router defines the routes that can respond to the following http verbs:
+The Route Class contains some functions that can respond to the following http verbs:
 
 Route::get($uri, $callback);
-
 Route::post($uri, $callback);
-
 Route::put($uri, $callback);
-
 Route::patch($uri, $callback);
-
 Route::delete($uri, $callback);
-
 Route::options($uri, $callback);
 
-to register a route that responds to the multiple http verbs, and this can be achieved by using the match() method.
+it can handle only get or post request
 Route::match(['get', 'post'], '/', function () {  
 //  
 }); 
 
-to register a node that responds to all the http verbs, so we use any() method.
+it can handle any http request
 Route::any('/', function ()   
 {  
 //  
 }) 
 
-Redirect() method is used to navigate from one URL to another URL
+redirect any url request
 <?php  
 Route::get('hello', function () {  
     return redirect('/');  
 })  
 
+
 <?php  
-Route::redirect('hello','/');  
-Route::redirect('/here', '/there');
-By default, Route::redirect returns a 302 status code.
-Route::redirect('/here', '/there', 301); 
+Route::redirect('hello','/');             //redirect directly using url request
+Route::redirect('/here', '/there');     
+
+==>By default, Route::redirect returns a 302 status code.
+
 to return a 301 status code:
+Route::redirect('/here', '/there', 301);  //manually set status code
+or
 Route::permanentRedirect('/here', '/there');
 
-View() method is used to return the view of another URL.
-
-Route::get('/', function () {  
-    return view('welcome');  
-});  
 Route::view('/','welcome');  
 Route::view('/welcome', 'welcome');
 Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 
-
-Required Parameters
-<?php  
-Route::get('/', function()  
-{  
-  return "This is a home page";   
-}  
-);  
-Route::get('/about', function()  
-{  
-  return "This is a about us page";   
-}  
-);  
-Route::get('/contact', function()  
-{  
-  return "This is a contact us page";   
-}  
-);
-
-
-Route::get('/post/{id}', function($id)  
-{  
-  return "id number is : ". $id;   
-}  
-);  
-
- 
+//pass url parameters to the callback functions
 Route::get('/post/{id}/{name}', function($id,$name)  
 {  
   return "id number is : ". $id ." ".$name;   
-}  
-);  
+});  
 
+//pass optional parameters to callback functions
 Route::get('user/{name?}', function ($name=null) {  
     return $name;  
 });  
 
-Route::get('user/{name?}', function ($name = 'himani') {  
-    return $name;  
-});  
-
-Route::get('user/{name?}', function ($name=null) {  
-    return $name;  
-})->where('name','[a-zA-Z]+');  
-
-The 'where' method accepts the name of the parameter and regular expression constraint that defines how the parameter should be constrained.
-
-Route::get('user/{id?}', function ($id=null) {  
-    return "id is : ". $id;  
-}->where('id','[0-9]+');  
-
+//pass the url parameters with some regular expressions
 Route::get('user/{id}/{name}', function ($id,$name) {  
     return "id is : ". $id ." ,".  "Name is : ".$name ;  
 })->where(['id'=>'[0-9]+', 'name'=>'[a-zA-Z]+']);  
 
+The 'where' method accepts the name of the parameter and regular expression constraint that defines how the parameter should be constrained.
+
+//request filter using predefined helper functions in route class
 Route::get('/user/{id}/{name}', function ($id, $name) {
-    //
 })->whereNumber('id')->whereAlpha('name');
 
 Route::get('/user/{name}', function ($name) {
     //
 })->whereAlphaNumeric('name');
 
-Route::get('/user/{id}', function ($id) {
-    //
-})->whereUuid('id');   <---doubt
+Global Constraints are used when we have multiple routes, 
+and the same constraints are applied to all the routes.
+define these patterns in the boot method of your RouteServiceProvider.
 
-
-Global Constraints are used when we have multiple routes, and the same constraints are applied to all the routes.define these patterns in the boot method of your RouteServiceProvider.
 public function boot()  
 {  
 Route::pattern('id', '[0-9]+');  
@@ -344,16 +257,17 @@ Route::get('student/details', function()
 {  
     //  
 }) -> name('student_details'); 
-
+or
 Route::get('student/details', 'studentcontroller@showdetails') -> name('student_details');
 
-Generating URLs to named routes
+
 //Generating URLs  
 $url= route('student_details');  
-//Generating Redirects...  
+
+//Generating Redirects using route names
 return redirect() -> route('student_details');  
 
-
+//naming using as
 Route::get('student/details/example',array   
 ('as'=>'student.details',function()  
 {  
@@ -361,49 +275,42 @@ Route::get('student/details/example',array
    return "The url is : " .$url;  
 }));  
 
-command to know route lists
+to know route lists
 ==>php artisan route:list
 
-Note: The benefit of using named routes is that if we change the location of the route, then also the link will work or we can say that it is beneficial for changing the URLs dynamically.
+Note:The benefit of using named routes is that if we change the location of the route,
+then also the link will work or we can say that it is beneficial for changing the URLs dynamically.
 
 Route::get('user/{id}/profile',function($id)  
 {  
-   $url=route('profile',['id'=>100]);  
+   $url = route('profile',['id'=>100]);  
     return $url;  
 })->name('profile');  
 
 Navigating from one route to another using named routes
 <a href="{{ route('student.details') }}">Student</a>  
 
-Middleware acts as a layer between the user and the request. located in the app/Http/Middleware directory.
+Middleware acts as a layer between the user and the request. 
+located in the app/Http/Middleware directory.
 
 Creating a middleware
-command:php artisan make:middleware 'name of the middleware'.
+==>php artisan make:middleware 'name of the middleware'.
 
-Apply a Middleware
-1.Open the kernel.php file. If we want to apply the middleware to all the URLs.
+Apply a Middleware ,Open the kernel.php file. 
+1.to all the URLs.
+==>protected $middleware = []
 
-protected $middleware =[]
-
-2.Open the kernel.php file. If we want to apply the middleware to some specific routes
-
-protected $routeMiddleware = [ ]
+2.to some specific routes
+==>protected $routeMiddleware = []
 
 3. Open the kernel.php file. If we want to apply group of middlewares at a time 
-
-protected $middlewareGroups = [ ]
+==>protected $middlewareGroups = []
 
 Add the middleware code in the web.php file.
-Route::Get('/',function()  
-{  
-  return view('welcome');  
-})-> middleware('age');  
-
 Route::Get('/{age}',function($age)  
 {  
   return view('welcome');  
 })-> middleware('age');  
-
 
 public function handle($request, Closure $next){  
   //return "middleware";  
