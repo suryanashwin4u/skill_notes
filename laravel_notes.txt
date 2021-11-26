@@ -1514,7 +1514,9 @@ Carbon::parse($request->gicDate)->format('Y-m-d H:i:s') : ''
     Route::post('/import', [EmployeeController::class,'import'])->name('employee.import');
 
 
-
+//if any db query fails then it rollbacks all db requests
+use DB::transactions(function(){
+});
 
 
 

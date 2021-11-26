@@ -707,6 +707,545 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {} //for email validation
 if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {} //for url validation
 
 
+d - Represents the day of the month (01 to 31)
+m - Represents a month (01 to 12)
+Y - Represents a year (in four digits)
+l (lowercase 'L') - Represents the day of the week
+Other characters, like"/", ".", or "-" can also be inserted between the characters to add additional formatting.
+
+echo "Today is " . date("Y/m/d") . "<br>";
+echo "Today is " . date("Y.m.d") . "<br>";
+echo "Today is " . date("Y-m-d") . "<br>";
+echo "Today is " . date("l");
+
+&copy; 2010-<?php echo date("Y");?>   //copyright date
+
+H - 24-hour format of an hour (00 to 23)
+h - 12-hour format of an hour with leading zeros (01 to 12)
+i - Minutes with leading zeros (00 to 59)
+s - Seconds with leading zeros (00 to 59)
+a - Lowercase Ante meridiem and Post meridiem (am or pm)
+
+echo "The time is " . date("h:i:sa");
+
+date_default_timezone_set("America/New_York");
+echo "The time is " . date("h:i:sa");
+
+$d=mktime(11, 14, 54, 8, 12, 2014);                 //return integer
+echo "Created date is " . date("Y-m-d h:i:sa", $d); //return string
+
+$d=strtotime("10:30pm April 15 2014");              //return string to int
+echo "Created date is " . date("Y-m-d h:i:sa", $d); //return int to string
+
+$d=strtotime("tomorrow");
+echo date("Y-m-d h:i:sa", $d) . "<br>";
+
+$d=strtotime("next Saturday");
+echo date("Y-m-d h:i:sa", $d) . "<br>";
+
+$d=strtotime("+3 Months");
+echo date("Y-m-d h:i:sa", $d) . "<br>";
+
+$startdate=strtotime("Saturday");
+$enddate=strtotime("+6 weeks", $startdate);
+
+$d1=strtotime("July 04");
+$d2=ceil(($d1-time())/60/60/24);
+
+require will produce a fatal error (E_COMPILE_ERROR) and stop the script
+include will only produce a warning (E_WARNING) and the script will continue
+Use require when the file is required by the application.
+Use include when the file is not required and application should continue when file is not found.
+
+include 'filename';
+or
+require 'filename';
+
+echo readfile("webdictionary.txt");
+
+$myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
+echo fread($myfile,filesize("webdictionary.txt"));  //read whole file
+echo fgets($myfile);  //read single line
+
+while(!feof($myfile)) { //check end of file
+  echo fgets($myfile) . "<br>";
+  echo fgetc($myfile);  //read character
+}
+
+$myfile = fopen("testfile.txt", "w"); //open a file in write mode
+fwrite($myfile, $txt); //write into a file
+fclose($myfile);
+
+r	Open a file for read only. File pointer starts at the beginning of the file
+w	Open a file for write only. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file
+a	Open a file for write only. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist
+x	Creates a new file for write only. Returns FALSE and an error if file already exists
+r+	Open a file for read/write. File pointer starts at the beginning of the file
+w+	Open a file for read/write. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file
+a+	Open a file for read/write. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist
+x+	Creates a new file for read/write. Returns FALSE and an error if file already exists
+
+
+In your "php.ini" file, search for the file_uploads directive, and set it to On:
+
+file_uploads = On
+
+<?php
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+  if($check !== false) {
+    echo "File is an image - " . $check["mime"] . ".";
+    $uploadOk = 1;
+  } else {
+    echo "File is not an image.";
+    $uploadOk = 0;
+  }
+}
+?>
+$target_dir = "uploads/" - specifies the directory where the file is going to be placed
+$target_file specifies the path of the file to be uploaded
+$imageFileType holds the file extension of the file (in lower case)
+
+
+// Check if file already exists
+if (file_exists($target_file)) {
+  echo "Sorry, file already exists.";
+  $uploadOk = 0;
+}
+
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 500000) {
+  echo "Sorry, your file is too large.";
+  $uploadOk = 0;
+}
+
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+  $uploadOk = 0;
+}
+
+//file uploading code in php
+<?php
+$target_dir = "uploads/";
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+// Check if image file is a actual image or fake image
+if(isset($_POST["submit"])) {
+  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+  if($check !== false) {
+    echo "File is an image - " . $check["mime"] . ".";
+    $uploadOk = 1;
+  } else {
+    echo "File is not an image.";
+    $uploadOk = 0;
+  }
+}
+
+// Check if file already exists
+if (file_exists($target_file)) {
+  echo "Sorry, file already exists.";
+  $uploadOk = 0;
+}
+
+// Check file size
+if ($_FILES["fileToUpload"]["size"] > 500000) {
+  echo "Sorry, your file is too large.";
+  $uploadOk = 0;
+}
+
+// Allow certain file formats
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+&& $imageFileType != "gif" ) {
+  echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+  $uploadOk = 0;
+}
+
+// Check if $uploadOk is set to 0 by an error
+if ($uploadOk == 0) {
+  echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+  } else {
+    echo "Sorry, there was an error uploading your file.";
+  }
+}
+?>
+
+//pathinfo returns file information
+print_r(pathinfo("/testweb/test.txt"));
+Array
+(
+[dirname] => /testweb
+[basename] => test.txt
+[extension] => txt
+)
+
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+
+if(!isset($_COOKIE[$cookie_name])) {
+  echo "Cookie named '" . $cookie_name . "' is not set!";
+} else {
+  echo "Cookie '" . $cookie_name . "' is set!<br>";
+  echo "Value is: " . $_COOKIE[$cookie_name];
+}
+
+Note: The setcookie() function must appear BEFORE the <html> tag.
+Note: The value of the cookie is automatically URLencoded when sending the cookie, and automatically decoded when received (to prevent URLencoding, use setrawcookie() instead).
+
+To modify a cookie, just set (again) the cookie using the setcookie() function:
+
+To delete a cookie, use the setcookie() function with an expiration date in the past:
+// set the expiration date to one hour ago
+setcookie("user", "", time() - 3600);
+
+//check if cookie is set
+if(count($_COOKIE) > 0) {
+  echo "Cookies are enabled.";
+} else {
+  echo "Cookies are disabled.";
+}
+
+<?php
+// Start the session
+session_start();
+?>
+
+<?php
+// Set session variables
+$_SESSION["favcolor"] = "green";
+$_SESSION["favanimal"] = "cat";
+echo "Session variables are set.";
+?>
+
+Note: The session_start() function must be the very first thing in your document. Before any HTML tags.
+
+echo "Favorite color is " . $_SESSION["favcolor"] . ".<br>";
+echo "Favorite animal is " . $_SESSION["favanimal"] . ".";
+
+<?php
+print_r($_SESSION);
+?>
+
+Most sessions set a user-key on the user's computer that looks something like this: 765487cf34ert8dede5a562e4f3a7e12. Then, when a session is opened on another page, it scans the computer for a user-key. If there is a match, it accesses that session, if not, it starts a new session.
+
+<?php
+// to change a session variable, just overwrite it
+$_SESSION["favcolor"] = "yellow";
+print_r($_SESSION);
+?>
+
+<?php
+// remove all session variables
+session_unset();
+
+// destroy the session
+session_destroy();
+?>
+
+<?php
+  foreach (filter_list() as $id =>$filter) {
+    echo '<tr><td>' . $filter . '</td><td>' . filter_id($filter) . '</td></tr>';
+  }
+?>
+
+Validating data = Determine if the data is in proper form.
+
+Sanitizing data = Remove any illegal character from the data.
+
+$newstr = filter_var($str, FILTER_SANITIZE_STRING);
+$num = filter_var($int, FILTER_VALIDATE_INT);
+$ip_address = filter_var($ip, FILTER_VALIDATE_IP);
+$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+$email = filter_var($email, FILTER_VALIDATE_EMAIL);
+$url = filter_var($url, FILTER_VALIDATE_URL);
+$url = filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);               //return url or false
+$url = filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED);   //return url or false
+$newstr = filter_var($str, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); //return clean string
+
+
+//arraymap(first argument will print,take string)
+<?php
+function my_callback($item) {
+  return strlen($item);
+}
+$strings = ["apple", "orange", "banana", "coconut"];
+$lengths = array_map("my_callback", $strings);                                //callback function is executed with every array iteration
+$lengths = array_map( function($item) { return strlen($item); } , $strings);  //inline callback function
+print_r($lengths);
+?>
+
+//(string,callback function(string))
+<?php
+function exclaim($str) {
+  return $str . "! ";
+}
+printFormatted("Hello world", "exclaim");
+?>
+
+//convert into json for transfer
+echo json_encode(array("Peter"=>35, "Ben"=>37, "Joe"=>43));
+echo json_encode(array("Volvo", "BMW", "Toyota"));
+
+//convert from json to object
+$obj = json_decode('{"Peter":35,"Ben":37,"Joe":43}');
+echo $obj->Peter; // 35
+
+//convert from json to assosiative array
+$arr = json_decode('{"Peter":35,"Ben":37,"Joe":43}',true);
+echo $arr["Peter"];
+
+//foreach works with object and array,assosiative array
+foreach($obj as $key => $value) {  
+  echo $key . " => " . $value . "<br>"; 
+}
+
+
+
+getMessage()	
+==>Returns a string describing why the exception was thrown
+getPrevious()
+==>If this exception was triggered by another one, this method returns the previous exception. If not, then it returns null
+getCode()
+==>Returns the exception code
+getFile()
+==>Returns the full path of the file in which the exception was thrown
+getLine()
+==>Returns the line number of the line of code which threw the exception
+
+
+<?php
+function divide($dividend, $divisor) {
+  if($divisor == 0) {
+    throw new Exception("Division by zero", 1);
+  }
+  return $dividend / $divisor;
+}
+try {
+  echo divide(5, 0);
+} catch(Exception $ex) {
+  $code = $ex->getCode();
+  $message = $ex->getMessage();
+  $file = $ex->getFile();
+  $line = $ex->getLine();
+  echo "Exception thrown in $file on line $line: [Code $code]
+  $message";
+}
+?>
+
+//classes and objects
+<?php
+class Fruit {
+  // Properties
+  public $name;
+  public $color;
+
+  // Methods
+  function set_name($name) {
+    $this->name = $name;
+  }
+  function get_name() {
+    return $this->name;
+  }
+}
+
+$apple = new Fruit();
+$banana = new Fruit();
+$apple->set_name('Apple');
+$banana->set_name('Banana');
+
+echo $apple->get_name();
+echo $banana->get_name();
+?>
+
+//check class and objects relation
+var_dump($apple instanceof Fruit);
+
+//constructor and destructor
+<?php
+class Fruit {
+ class Fruit {
+  public $name;
+  public $color;
+  function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color;
+  }
+  function __destruct() {
+    echo "The fruit is {$this->name} and the color is {$this->color}.";
+  }
+}
+$apple = new Fruit("Apple", "red");
+?>
+
+
+three access modifiers:
+public 
+==>the property or method can be accessed from everywhere. This is default
+protected 
+==>the property or method can be accessed within the class and by classes derived from that class
+private 
+==>the property or method can ONLY be accessed within the class
+
+//restrictions on variables
+<?php
+class Fruit {
+  public $name;
+  protected $color;
+  private $weight;
+}
+
+$mango = new Fruit();
+$mango->name = 'Mango'; // OK
+$mango->color = 'Yellow'; // ERROR
+$mango->weight = '300'; // ERROR
+?>
+
+//restrictions on functions
+<?php
+class Fruit {
+  public $name;
+  public $color;
+  public $weight;
+
+  function set_name($n) {  // a public function (default)
+    $this->name = $n;
+  }
+  protected function set_color($n) { // a protected function
+    $this->color = $n;
+  }
+  private function set_weight($n) { // a private function
+    $this->weight = $n;
+  }
+}
+
+$mango = new Fruit();
+$mango->set_name('Mango'); // OK
+$mango->set_color('Yellow'); // ERROR
+$mango->set_weight('300'); // ERROR
+?>
+
+//inheritence of public methods and functions
+<?php
+class Fruit {
+  public $name;
+  public $color;
+  public function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color; 
+  }
+  public function intro() {
+    echo "The fruit is {$this->name} and the color is {$this->color}."; 
+  }
+}
+
+class Strawberry extends Fruit {
+  public function message() {
+    echo "Am I a fruit or a berry? "; 
+  }
+}
+
+$strawberry = new Strawberry("Strawberry", "red");
+$strawberry->message();
+$strawberry->intro();
+?>
+
+//protected members cant be accessed from outside the class
+<?php
+class Fruit {
+  public $name;
+  public $color;
+  public function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color; 
+  }
+  protected function intro() {
+    echo "The fruit is {$this->name} and the color is {$this->color}."; 
+  }
+}
+class Strawberry extends Fruit {
+  public function message() {
+    echo "Am I a fruit or a berry? "; 
+    $this->intro();     //inherited protected works
+  }
+}
+// Try to call all three methods from outside class
+$strawberry = new Strawberry("Strawberry", "red");  // OK. __construct() is public
+$strawberry->message(); // OK. message() is public
+$strawberry->intro(); // ERROR. intro() is protected
+?>
+
+//overidding methods in inheritence
+<?php
+class Fruit {
+  public $name;
+  public $color;
+  public function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color; 
+  }
+  public function intro() {
+    echo "The fruit is {$this->name} and the color is {$this->color}."; 
+  }
+}
+class Strawberry extends Fruit {
+  public $weight;
+  public function __construct($name, $color, $weight) {
+    $this->name = $name;
+    $this->color = $color;
+    $this->weight = $weight; 
+  }
+  public function intro() {
+    echo "The fruit is {$this->name}, the color is {$this->color}, and the weight is {$this->weight} gram."; 
+  }
+}
+$strawberry = new Strawberry("Strawberry", "red", 50);
+$strawberry->intro();
+?>
+
+//final class cant be extended
+<?php
+final class Fruit {
+}
+class Strawberry extends Fruit {
+  //error
+}
+?>
+
+
+//final method cant be extended
+<?php
+class Fruit {
+  final public function intro() {
+    // some code
+  }
+}
+
+class Strawberry extends Fruit {
+  // will result in error
+  public function intro() {
+    // some code
+  }
+}
+?>
+
+
+
+
+
+
+
+
 
 Get system information from PHP
 <?php phpinfo(); ?>
