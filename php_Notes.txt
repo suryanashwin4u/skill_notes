@@ -708,7 +708,6 @@ if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-
 
 
 
-
 Get system information from PHP
 <?php phpinfo(); ?>
 
