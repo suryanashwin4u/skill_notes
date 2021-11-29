@@ -31,6 +31,7 @@ echo "I love " . $txt . "!";
 -----------------------------------------------------
 $txt = "W3Schools.com";
 echo "I love $txt!";
+echo "I love {$txt}!";
 ?>
 -----------------------------------------------------
 PHP has three different variable scopes:
@@ -132,6 +133,7 @@ The PHP var_dump() function returns the data type and value:
 <?php
 $x = 5985;
 var_dump($x);
+var_dump($x,$y,$z,....);
 ?>
 -----------------------------------------------------
 classes and objects
@@ -147,6 +149,18 @@ class Car {
     return "My car is a " . $this->color . " " . $this->model . "!";
   }
 }
+-----------------------------------------------------
+$objects = [
+  new classNameA('var_1','var_2'),
+  new classNameB('var_1','var_2'),
+  new classNameC('var_1','var_2'),
+  new classNameD('var_1','var_2'),
+  new classNameE('var_1','var_2'),
+];
+
+dd($objects);     //dump and die function to show object properties
+
+$objects[0]; //calling constructor
 -----------------------------------------------------
 $myCar = new Car("black", "Volvo");
 echo $myCar -> message();
@@ -366,6 +380,16 @@ for ($x = 0; $x <= 100; $x+=10) {
 foreach ($colors as $value) {
   echo "$value <br>";
 }
+
+<?php foreach($values as $value): ?>
+<li><?= $name; ?></li>
+<?php endforeach; ?>
+
+
+<?php foreach($values as $key=>$value): ?>
+<li><strong><?= $key; ?></strong><span><?= $value; ?></span></li>
+<?php endforeach; ?>
+
 -----------------------------------------------------
 
 foreach($age as $x => $val) {
@@ -472,6 +496,10 @@ add_five($num);
 echo $num;
 ?>
 
+-----------------------------------------------------
+delete any  item from an array or assosiative array:
+unset(var[0]);
+unset(var['key']);
 -----------------------------------------------------
 $cars = array("Volvo", "BMW", "Toyota");
 echo "I like " . $cars[0] . ", " . $cars[1] . " and " . $cars[2] . ".";
@@ -757,6 +785,8 @@ Use include when the file is not required and application should continue when f
 include 'filename';
 or
 require 'filename';
+
+require 'index.view.php';
 -----------------------------------------------------
 echo readfile("webdictionary.txt");
 -----------------------------------------------------
@@ -1643,8 +1673,6 @@ while($row = mysqli_fetch_assoc($result)) {             //return assosiative arr
     echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
 }
 
-
-
 $msg = mysqli_error($conn); //return error message if query execution failed
 
 // Close connection in PROCEDUREL
@@ -1686,6 +1714,9 @@ try {
   $firstname = "Mary"; $lastname = "Moe"; $email = "mary@example.com";              
   $stmt->execute();
 
+  $tasks = $statement->fetchAll(PDO::FETCH_CLASS,'class_name');                     //make instance and map with each row in number
+
+
   $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);                                // set the resulting array to associative
   foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
     echo $v;
@@ -1698,6 +1729,12 @@ try {
 // Close Connection in PDO
 $conn = null;
 
+----------------------------------------------
+          USEFULL FUNCTIONS IN PHP
+----------------------------------------------
+<?php
+echo ucwords("hello world");                                                     //convert every first letter into upper case   
+?>
 
 
 **********************************************
@@ -1739,6 +1776,8 @@ use the $_REQUEST superglobal, if you do not care about the source of your reque
 
 use the short echo tag to <?= 'print this string' ?>
 
+<?= "hello world"; ?>
+<?= $hello; ?>
 <? echo 'this code is within short tags, but will only work '.'if short_open_tag is enabled'; ?>
 
 **********************************************
