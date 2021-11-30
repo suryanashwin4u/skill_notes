@@ -1,38 +1,27 @@
                     git tutorials
---------------------------------------------------------
+*******************************************************
 things to remember
 =>take pull from branches before pushing code to this or another branch
-
-
 
 search conflicts with find command
 =>try searching <<< or >>>, if there is any conflict then it will show
 =>if there is any conflict tell seniors
-
-
-
+=======================================================
 git --version
 =>check version of git installed in device
-
 =======================================================
-
 git config --global user.name "type username"
 git config --global user.email "type email id"
 =>globally declare your username and email to know who is commiting in the system
-
 =======================================================
-
 git init
 =>initialize git in local project directory at first
 
 git init directory_name
 =>Create a Repository and Directory Together
-
 =======================================================
-
 git status
-=>to know the changes happen and currently unstaged files in the local project directory
-
+=>to know the changes happen and currently unstagged files in the local project directory
 --------------------------------------------------------
 
 Note: Short status flags are:

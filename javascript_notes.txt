@@ -1,25 +1,8 @@
       			  javascript notes
 --------------------------------------------
-//use axiox in place of ajax
-displayLoader("message");
-axios.post(routes.process_guide_submit, {
-		data1:data1,
-		data2:data2
-})
-.then((response) => {
-  if (response.data.status === 'success') {
-      clearForm();
-      showAlert(response.data.data, response.data.status)
-  } else if (response.data.status === 'error') {
-      showAlert(response.data.data, response.data.status)
-  }
-  })
-  .catch((error) => console.log(error))
-  .finally(() => removeLoader());
-}
 
-//to remove spaces inside the string
-"e,  d, d, d".replace(/\s+/g, ''); =>e,d,d,d
+//to remove spaces inside a string
+var new_string = "e,  d, d, d".replace(/\s+/g, '');  => e,d,d,d
 
 //convert date and time to string format
 var timestamp = new Date();
@@ -32,12 +15,9 @@ timestamp.toISOString();  =>return only ISO string
 timestamp.toGMTString();  =>return only GMT string
 timestamp.toLocaleDateString(); =>return only date string
 
-
-
-
-
-
-
+==============================================================
+                    W3SCHOOLS.COM NOTES
+==============================================================
 //change the inner html string using id selector
 document.getElementById("id_name").innerHTML = "type_string_here";
 

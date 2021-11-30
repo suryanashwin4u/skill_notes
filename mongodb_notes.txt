@@ -1,1 +1,35 @@
-mongodb_notes.js
+==============================================
+            MONGO DB FROM LECTURES
+==============================================
+
+To install mongoose
+==>npm install mongoose
+
+there is a live database of mongodb with name mlab with 500mb free space
+
+install mongo db server before working on mongo compass(ui based database software)
+
+to start working on mongodb from command prompt add mongodb bin folder directory path in system variables "path" and click ok,k,k
+
+To clear cmd screen
+==>cls 
+
+Show database
+==>Show dbs
+
+create a new db
+==>db.createCollection('collection_name')
+
+move to db
+==>use db_name
+
+
+
+
+
+=============================================
+            JAVATPOINT NOTES
+=============================================
+MongoDB is a No SQL database
+
+
