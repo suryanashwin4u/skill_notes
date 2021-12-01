@@ -5,6 +5,8 @@
 // to install react js ==> npm install -g create-react-app
 // to check react version ==> create-react-app --version
 // to create react app ==> create-react-app <project-name>
+or
+// to create react app ==>npx create-react-app <project-name>
 // to run react app ==> npm start
 
 //two let us write React code in our JavaScripts, and the third, Babel, allows us to write JSX syntax and ES6 in older browsers.

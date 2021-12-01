@@ -133,11 +133,17 @@ writing-mode: vertical-rl;
 }
 
 text-shadow: 2px 2px;
+
 text-shadow: 2px 2px red;
+
 text-shadow: 2px 2px 5px red;
+
 text-shadow: 3px 3px 3px #ababab;
+
 text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+
 text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+
 text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 
 
@@ -161,7 +167,9 @@ font: italic small-caps bold 12px/30px Georgia, serif;
 --------------------------------------------------
 
 background: color_name image_path repeat_xy position;
+
 background: url(img_man.jpg) no-repeat center fixed; 
+
 background-size: 1500px 80px;
 
 /*fix the image fullly inside the box*/
@@ -169,38 +177,57 @@ background-size: contain/cover;
 
 /*3 bgsizes of images*/
 background-size: 50px, 130px, auto;
+
 background-color: transparent/currentcolor;
 
 
 background-color:color_name;
+
 background-image:url("./image.jpg");
 
 /*top to down color change*/
 background-image: linear-gradient(red, yellow);
+
 background-image: linear-gradient(to right, red , yellow);
+
 background-image: linear-gradient(to bottom right, red, yellow);
+
 background-image: linear-gradient(180deg, red, yellow);
+
 background-image: linear-gradient(red, yellow, green);
+
 background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+
 background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+
 background-image: repeating-linear-gradient(red, yellow 10%, green 20%);
+
 background-image: repeating-linear-gradient(45deg,red,yellow 7%,green 10%);
+
 background-image: repeating-linear-gradient(190deg,red,yellow 7%,green 10%);
+
 background-image: repeating-linear-gradient(90deg,red,yellow 7%,green 10%);
 
 background-image: radial-gradient(red, yellow, green);
+
 background-image: radial-gradient(red 5%, yellow 15%, green 60%);
+
 background-image: radial-gradient(circle, red, yellow, green);
+
 background-image: radial-gradient(closest-side at 60% 55%, red, yellow, black);
+
 background-image: radial-gradient(farthest-side at 70% 55%, red, yellow, black);
+
 background-image: radial-gradient(closest-corner at 60% 55%, red, yellow, black);
+
 background-image: radial-gradient(farthest-corner at 60% 55%, red, yellow, black);
 
 background-image: repeating-radial-gradient(red, yellow 10%, green 15%);
 
-
 background-repeat:repeat-x/repeat-y/no-repeat;
+
 background-position:top left/bottom right;
+
 background-attachment:fixed/scroll;
 
 /*background starts from 
@@ -214,13 +241,14 @@ background-clip:content-box/padding-box/
 
 /*for multiple background images*/
 background-image: url(img_flwr.gif), url(paper.gif);
+
 background-position: right bottom, left top;
+
 background-repeat: no-repeat, repeat;
-
-
 
 /*multiple images shortcut*/
 background: url(img_flwr.gif) right bottom no-repeat, url(paper.gif) left top repeat;
+
 background: url(img_tree.gif) left top no-repeat, url(img_flwr.gif) right bottom no-repeat, url(paper.gif) left top repeat;
 
 -------------------------------------------------
@@ -326,37 +354,54 @@ border-image: url(
 -----------------------------------------------
 
 margin-top: 150px/%/auto/inherit
+
 margin-bottom: 150px/%/auto/inherit;
+
 margin-right: 150px/%/auto/inherit;
+
 margin-left: 80px/%/auto/inherit;
 
 margin: 25px 50px 75px 100px/%;
+
 margin: 25px 50px 75px/%;
+
 margin: 25px 50px/%;
+
 margin: 25px/%;
+
 margin: auto;
 
 ------------------------------------------------
 padding-top: 50px/%;
+
 padding-right: 30px/%;
+
 padding-bottom: 50px/%;
+
 padding-left: 80px/%;
 
 padding: 25px 50px 75px 100px/%;
+
 padding: 25px 50px 75px/%;
+
 padding: 25px 50px/%;
+
 padding: 25px/%;
 
 -----------------------------------------------
 /*it will avoid scroll bars when changing screen size*/
 width: px/%;
+
 max-width: px/%;
+
 min-width: px/%;
 
 -----------------------------------------------
 /*it will avoid scroll bars when changing screen size*/
 height: px/%;
+
 max-height: px/%;
+
 min-height: px/%;
 
 -----------------------------------------------
@@ -369,12 +414,17 @@ box-sizing: border-box;
  of the element*/
 
 outline-style: dotted/dashed/solid/double/groove/ridge/inset/outset;
+
 outline-color: red/#ff0000/rgb(255, 0, 0)/hsl(0, 100%, 50%)/invert;
+
 outline-width: px/%/thin/medium/thick;
 
 outline: dashed;
+
 outline: dotted red;
+
 outline: 5px solid yellow;
+
 outline: thick ridge pink;
 
 /*adds gap b/w 
@@ -384,21 +434,37 @@ outline-offset: 15px;
 -----------------------------------------------
 
 cursor:auto;
+
 cursor:crosshair;
+
 cursor:default;
+
 cursor:e-resize;
+
 cursor:help;
+
 cursor:move;
+
 cursor:n-resize;
+
 cursor:ne-resize;
+
 cursor:nw-resize;
+
 cursor:pointer;
+
 cursor:progress;
+
 cursor:s-resize;
+
 cursor:se-resize;
+
 cursor:sw-resize;
+
 cursor:text;
+
 cursor:w-resize;
+
 cursor:wait;
 
 -----------------------------------------------
@@ -593,18 +659,27 @@ input[type=button] {
 ------------------------------------------
 
 list-style-type: circle/square/upper-roman/lower-alpha;
+
 list-style-image: url('sqpurple.gif');
+
 list-style-position: outside/inside;
+
 list-style-type: none;
+
 list-style: square inside url("sqpurple.gif");
 
 ------------------------------------------
 
 display: inline-block/block/inline/none/flex;
+
 flex-wrap: nowrap/wrap/wrap-reverse;
+
 flex-flow:row wrap;
+
 flex-direction: column/column-reverse/row/row-reverse/;
+
 justify-content:left/right/center/flex-start/flex-end/space-around/space-between/;
+
 align-items:flex-start/center/flex-end/stretch/space-around/space-between/baseline;
 /*to order flex items*/
 order:1/2/3/4/5.....;
@@ -638,8 +713,11 @@ position: static/relative/fixed/absolute/sticky;
 
 /*use positions with absolute and sticky*/
 left: 30px;
+
 bottom: 0px;
+
 right: 0px;
+
 top:10px;
 
 ------------------------------------------
@@ -649,7 +727,9 @@ z-index: -1/0/1;
 ------------------------------------------
 
 overflow: visible/hidden/scroll/auto;
+
 overflow-x:auto/hidden/scroll;
+
 overflow-y:auto/hidden/scroll;
 
 /*to show till box length limit or ...*/
@@ -670,13 +750,16 @@ box-sizing: border-box;
 ------------------------------------------
 
 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
 box-shadow: 0px 0px 15px currentcolor;
+
 box-shadow: 10px 10px;
+
 box-shadow: 10px 10px grey;
+
 box-shadow: 10px 10px 5px grey;
+
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-
 
 ------------------------------------------
 /*to show animations effects when hover or focus*/

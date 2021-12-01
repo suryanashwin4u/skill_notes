@@ -1,4 +1,4 @@
-                python notes
+          PYTHON NOTES FROM W3SCHOOLS.COM
 ==================================================
 
 It was created by Guido van Rossum

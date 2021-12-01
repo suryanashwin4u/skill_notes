@@ -130,13 +130,11 @@ git tag -d <tag1> <tag2>
 git push origin -d <tag1> <tag2>  
 ->delete more than one tags from remote
 
-
 git checkout -b < new branch name> <tag name>  
 ->create a new branch with the same state of the repository as it is in the tag
 
 git tag <tagname> < reference of commit>
 ->create a tag from commit id
-
 
 git remote -v  
 ->To check the remote server upstream/downstream url
@@ -164,8 +162,6 @@ git commit -am "Commit message."
 git commit -amend  
 => to edit the last commit.
 
-
-
 git commit -m "type changes happend in the file"
 =>declare save point with message
 
@@ -179,10 +175,6 @@ git show commit_id
 ->returns commited stats
 
 When Head doesn't point to most recent commit, such state is called detached Head. If you checkout with an older commit, it will stand the detached head condition. 
-
-
-
-
 
 ======================================================
 
@@ -223,13 +215,6 @@ $ git log --author="Author name"
 $ git log --grep=" Commit message."  
 =>show all the commits by choosing from commit message of specific type
 
-
-
-
-
-
-
-
 ======================================================
 
 git command_name -help
@@ -267,8 +252,6 @@ git branch
 git branch -d<branch name>  
 ->In this command, Git prevents you from deleting the branch if it has unmerged changes.
 
-
-
 git push origin -delete <branch name>  
 ->delete a remote branch
 
@@ -277,9 +260,6 @@ git branch -m master
 
 git branch -m <old branch name><new branch name>  
 -> rename the branch
-
-
-
 
 ======================================================
 
@@ -304,7 +284,6 @@ git merge new_branch_name
 git merge <commit>
 ->to merge a specified commit
 
-
 When two branches are trying to merge, and both are edited at the same time and in the same file, Git won't be able to identify which version is to take for changes. Such a situation is called merge conflict. If such a situation occurs, it stops just before the merge commit so that you can resolve the conflicts manually.
 
 git mergetool  
@@ -312,13 +291,10 @@ git mergetool
 
 To resolve the conflict, enter in the insert mode by merely pressing I key and make changes as you want. Press the Esc key, to come out from insert mode. Type the: w! at the bottom of the editor to save and exit the changes. To accept the changes, use the rebase command.
 
-
 git rebase --continue 
 ->to continue after solving conflict
 To see that which is the first edited text of the merge conflict in your file, search the file attached with conflict marker <<<<<<<. You can see the changes from the HEAD or base branch after the line <<<<<<< HEAD in your text editor. Next, you can see the divider like =======. It divides your changes from the changes in the other branch, followed by >>>>>>> BRANCH-NAME.
 Decide whether you want to keep only your branch's changes or the other branch's changes, or create a new change. Delete the conflict markers <<<<<<<, =======, >>>>>>> and create final changes you want to merge.
-
-
 
 ======================================================
 git rebase <branch name>  
@@ -343,13 +319,10 @@ Git merge presents all conflicts at once.						Git rebase presents conflicts one
 git rebase -i HEAD ~3 
 ->to squash previous 3 commits and give a new message
 
-
 git branch -d newbranchname
 =>to delete old branch
-
 ======================================================
 working with github repository
-
 
 add files from local drive to github repository
 
@@ -367,20 +340,17 @@ git remote --verbose
 git remote add <short name><remote URL> 
 ->explicitly add a remote for a repository and add a short name to it for easyness
 
- git remote remove <destination>  
+git remote remove <destination>  
  -> remove a remote connection from a repository
 
- git remote rename <old name><new name>  
+git remote rename <old name><new name>  
  ->renaming the remote server name so that you can use a short name in place of the remote server name
 
- git remote show <remote>  
+git remote show <remote>  
  ->To see additional information about a particular remote.It will result in information about the remote server. It contains a list of branches related to the remote and also the endpoints attached for fetching and pushing.
 
 git remote set-url <remote name><newURL>  
 ->To change the remote URL
-
-
-
 
 git pull shortname
 ->pull the repo using shortname without using url
@@ -472,8 +442,6 @@ git revert -e <commit-ish>
 git revert -n <commit-ish> 
 ->not open the editor, it will direclty revert the commit
 
-
-
 git log --oneline
 =>returns short oneline all commits till now
 
@@ -487,14 +455,12 @@ git reset hashcode
 
 Warning: Messing with the commit history of a repository can be dangerous. It is usually ok to make these kinds of changes to your own local repository. However, you should avoid making changes that rewrite history to remote repositories, especially if others are working with them.
 
-
 git commit --amend -m "Added lines to README.md"
 =>ammend previous commit message
 
 Warning: Messing with the commit history of a repository can be dangerous. It is usually ok to make these kinds of changes to your own local repository. However, you should avoid making changes that rewrite history to remote repositories, especially if others are working with them~
 
 ===================================================
-
 secure git
 
 To create a .gitignore file, go to the root of your local Git, and create it 
@@ -513,14 +479,12 @@ temp/
 
 Now all .log files and anything in temp folders will be ignored by Git.
 
-
 Note: In this case, we use a single .gitignore which applies to the entire repository.
 It is also possible to have additional .gitignore files in subdirectories. These only apply to files or folders within that directory.
 
 It is also possible to ignore files or folders but not show it in the distubuted .gitignore file.
 
 These kinds of ignores are specified in the .git/info/exclude file. It works the same way as .gitignore but are not shown to anyone else.
-
 
 Rules for putting the pattern in .gitignore file:
 
@@ -532,7 +496,6 @@ The patterns can be started with a forward slash (/) to avoid recursively.
 The patterns can be ended with a forward slash (/) to specify a directory.
 The patterns can be negated by starting it with an exclamation point (!).
 
-
 git config --global core.excludesfile ~/.gitignore_global 
 ->To create a global .gitignore for the whole big repository
 
@@ -541,7 +504,6 @@ git ls-files --ignore --exclude-standard
 
 
 ============================================================
-
 
 git fetch repository_link
 =>To fetch the remote repository
@@ -563,8 +525,6 @@ git pull remote_branch_url
 
 git pull remotename branchname
 ->to share a project or send updates to the remote server
-
-
 
 git fetch -all
 =>fetch all remote updates without merging
@@ -611,6 +571,3 @@ git stash clear
 
 git stash branch <Branch Name>  
 ->create a new branch and transfer the stashed work on that
-
-
-

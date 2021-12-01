@@ -1,4 +1,4 @@
-      			  javascript notes
+      			  javascript notes from 
 --------------------------------------------
 
 //to remove spaces inside a string
