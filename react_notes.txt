@@ -7,7 +7,11 @@
 // to create react app ==> create-react-app <project-name>
 or
 // to create react app ==>npx create-react-app <project-name>
+//change to reactjs directory then start react js
 // to run react app ==> npm start
+//server will start at localhost:3000
+
+//package.json file contains all the dependencies information
 
 //two let us write React code in our JavaScripts, and the third, Babel, allows us to write JSX syntax and ES6 in older browsers.
 <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
@@ -27,3 +31,5 @@ import { Button } from 'reactstrap';
 
 https://cdnjs.cloudflare.com/ajax/libs/reactstrap/4.8.0/reactstrap.min.js
 
+===========================================================
+video remaining:

@@ -179,12 +179,10 @@ To install nodemon:
 ==>npm install -g nodemon
 
 To run file.js using nodemon:
-==>nodemon filename.js  (bydefault nodemon will run on port 3000 and index.js file will be executed)
+==>nodemon filename.js  (by default nodemon will run on port 3000 and index.js file will be executed)
 
 To update nodemon version
 ==>npm i nodemon
 
-
-
 ****************************************************************************************************
-videos number remaining: 25,
+remaining videos:25,37-72

@@ -1,11 +1,6 @@
 ==============================================
             MONGO DB FROM LECTURES
 ==============================================
-
-
-
-
-----------------------------------------------
 To install mongoose
 ==>npm install mongoose
 ----------------------------------------------
@@ -34,7 +29,7 @@ To check the currently selected database
 dumping db into directory
 ==>mongodump
 ----------------------------------------------
-restore from directory to db
+restore from directory to database
 ==>mongorestore
 ----------------------------------------------
 exit from mongo db server shell
@@ -49,10 +44,10 @@ To drop current database and files associated with this
 create a collection having some name
 ==>db.createCollection('collection_name',options)
 
-Field	    Type	Description
-Capped  	Boolean	(Optional)  If it is set to true, enables a capped collection. Capped collection is a fixed size collecction that automatically overwrites its oldest entries when it reaches its maximum size. If you specify true, you need to specify size parameter also.
+Field	      Type	              Description
+Capped  	  Boolean	(Optional)  If it is set to true, enables a capped collection. Capped collection is a fixed size collecction that automatically overwrites its oldest entries when it reaches its maximum size. If you specify true, you need to specify size parameter also.
 AutoIndexID	Boolean	(Optional)  If it is set to true, automatically create index on ID field. Its default value is false.
-Size	    Number	(Optional)  It specifies a maximum size in bytes for a capped collection. Ifcapped is true, then you need to specify this field also.
+Size	      Number	(Optional)  It specifies a maximum size in bytes for a capped collection. Ifcapped is true, then you need to specify this field also.
 Max	        Number	(Optional)  It specifies the maximum number of documents allowed in the capped collection.
 ----------------------------------------------
 enter data into collection_name
@@ -89,9 +84,6 @@ var Allcourses =
 ----------------------------------------------
 to drop a collection from a database    
 ==>db.collection_name.drop()        //returns true or false 
-
-----------------------------------------------
-
 
 ----------------------------------------------
 enter data into collection_name
@@ -212,13 +204,53 @@ get index column details
 it changes index column
 ==>db.collection_name.createIndex({"key_name":1})
 ----------------------------------------------
-we can create validation schema using db.collection.interest()....
+create new collection name with schema structure as validator
 
-start from 33rd video 
-https://www.youtube.com/watch?v=a-Yh5O0WTrM&list=PLUVqY59GNZQMcLXlrBo4T557kWjbKHMLS&index=33
-=============================================
-            JAVATPOINT NOTES
-=============================================
-MongoDB is a No SQL database
+==>db.createCollection("collection_name", {
+   validator: {
+      $jsonSchema: {
+         bsonType: "object",
+         required: [ "key1", "key2", "key3", "key4" ],
+         properties: {
+            key1: {
+               bsonType: "string",
+               description: "must be a string and is required"
+            },
+            key2: {
+               bsonType: "int",
+               minimum: 2017,
+               maximum: 3017,
+               description: "must be an integer in [ 2017, 3017 ] and is required"
+            },
+            key3: {
+               enum: [ "Math", "English", "Computer Science", "History", null ],
+               description: "can only be one of the enum values and is required"
+            },
+            key4: {
+               bsonType: [ "double" ],
+               description: "must be a double if the field exists"
+            },
+            key5: {
+               bsonType: "object",
+               required: [ "city" ],
+               properties: {
+                  street: {
+                     bsonType: "string",
+                     description: "must be a string if the field exists"
+                  },
+                  city: {
+                     bsonType: "string",
+                     description: "must be a string and is required"
+                  }
+               }
+            }
+         }
+      }
+   }
+})
+
+----------------------------------------------
+
+
 
 
