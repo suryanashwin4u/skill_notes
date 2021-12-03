@@ -1,14 +1,14 @@
     	php notes from php manual
 **********************************************
             php from w3school.com
-
+-----------------------------------------------------
 //keywords are not case sensitive
 <?php
 ECHO "Hello World!<br>";
 echo "Hello World!<br>";
 EcHo "Hello World!<br>";
 ?>
-
+-----------------------------------------------------
 //variables are case sensitive
 <?php
 $color = "red";
@@ -17,29 +17,30 @@ echo "My house is " . $COLOR . "<br>";
 echo "My boat is " . $coLOR . "<br>";
 ?>
 
-
+-----------------------------------------------------
 Rules for PHP variables:
 A variable starts with the $ sign, followed by the name of the variable
 A variable name must start with a letter or the underscore character
 A variable name cannot start with a number
 A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )
-
+-----------------------------------------------------
 <?php
 $txt = "W3Schools.com";
 echo "I love " . $txt . "!";
 ?>
-
+-----------------------------------------------------
 $txt = "W3Schools.com";
 echo "I love $txt!";
+echo "I love {$txt}!";
 ?>
-
+-----------------------------------------------------
 PHP has three different variable scopes:
 local
 global
 static
-
+-----------------------------------------------------
 A variable declared outside a function has a GLOBAL SCOPE and can only be accessed outside a function:
-
+-----------------------------------------------------
 <?php
 $x = 5; // global scope
 function myTest() {
@@ -50,7 +51,7 @@ myTest();
 echo "<p>Variable x outside function is: $x</p>";
 ?>
 
-
+-----------------------------------------------------
 A variable declared within a function has a LOCAL SCOPE and can only be accessed within that function:
 function myTest() {
   $x = 5; // local scope
@@ -61,7 +62,7 @@ myTest();
 // using x outside the function will generate an error
 echo "<p>Variable x outside function is: $x</p>";
 ?>
-
+-----------------------------------------------------
 
 global keyword is used to access a global variable from within a function.
 <?php
@@ -76,7 +77,7 @@ function myTest() {
 myTest();
 echo $y; // outputs 15
 ?>
-
+-----------------------------------------------------
 
 <?php
 $x = 5;
@@ -89,7 +90,7 @@ function myTest() {
 myTest();
 echo $y; // outputs 15
 ?>
-
+-----------------------------------------------------
 when a function is completed/executed, all of its variables are deleted. However, sometimes we want a local variable NOT to be deleted.
 <?php
 function myTest() {
@@ -103,37 +104,38 @@ myTest();
 myTest();
 ?>
 
-
+-----------------------------------------------------
 echo has no return value while print has a return value of 1 so it can be used in expressions. echo can take multiple parameters (although such usage is rare) while print can take one argument. echo is marginally faster than print.
-
+-----------------------------------------------------
 echo statement can be used with or without parentheses: echo or echo()
-
+-----------------------------------------------------
 <?php
 echo "This ", "string ", "was ", "made ", "with multiple parameters.";
 echo "<h2>" . $txt1 . "</h2>";
 echo "Study PHP at " . $txt2 . "<br>";
 ?>
-
+-----------------------------------------------------
 print statement can be used with or without parentheses: print or print().
-
+-----------------------------------------------------
 <?php
 print "<h2>PHP is Fun!</h2>";
 print "Hello world!<br>";
 print "I'm about to learn PHP!";
 ?>
-
+-----------------------------------------------------
 Rules for integers:
 An integer must have at least one digit
 An integer must not have a decimal point
 An integer can be either positive or negative
 Integers can be specified in: decimal (base 10), hexadecimal (base 16), octal (base 8), or binary (base 2) notation
-
+-----------------------------------------------------
 The PHP var_dump() function returns the data type and value:
 <?php
 $x = 5985;
 var_dump($x);
+var_dump($x,$y,$z,....);
 ?>
-
+-----------------------------------------------------
 classes and objects
 <?php
 class Car {
@@ -147,7 +149,19 @@ class Car {
     return "My car is a " . $this->color . " " . $this->model . "!";
   }
 }
+-----------------------------------------------------
+$objects = [
+  new classNameA('var_1','var_2'),
+  new classNameB('var_1','var_2'),
+  new classNameC('var_1','var_2'),
+  new classNameD('var_1','var_2'),
+  new classNameE('var_1','var_2'),
+];
 
+dd($objects);     //dump and die function to show object properties
+
+$objects[0]; //calling constructor
+-----------------------------------------------------
 $myCar = new Car("black", "Volvo");
 echo $myCar -> message();
 echo "<br>";
@@ -155,20 +169,20 @@ $myCar = new Car("red", "Toyota");
 echo $myCar -> message();
 ?>
 
-
+-----------------------------------------------------
 A variable of data type NULL is a variable that has no value assigned to it.
-
+-----------------------------------------------------
 Tip: If a variable is created without a value, it is automatically assigned a value of NULL.
-
+-----------------------------------------------------
 Variables can also be emptied by setting the value to NULL:
 <?php
 $x = "Hello world!";
 $x = null;
 var_dump($x);
 ?>
-
+-----------------------------------------------------
 resource type is not an actual data type. It is the storing of a reference to functions and resources external to PHP.
-
+-----------------------------------------------------
 <?php
 echo strlen("Hello world!"); // outputs 12
 echo str_word_count("Hello world!"); // outputs 2
@@ -176,59 +190,59 @@ echo strrev("Hello world!"); // outputs !dlrow olleH
 echo strpos("Hello world!", "world"); // outputs 6
 echo str_replace("world", "Dolly", "Hello world!"); // outputs Hello Dolly!
 ?>
-
+-----------------------------------------------------
 predefined constants for integers:
 PHP_INT_MAX - The largest integer supported
 PHP_INT_MIN - The smallest integer supported
 PHP_INT_SIZE -  The size of an integer in bytes
-
+-----------------------------------------------------
 check if the type of a variable is integer:
 is_int()
 is_integer() - alias of is_int()
 is_long() - alias of is_int()
-
+-----------------------------------------------------
 <?php
 $x = 5985;
 var_dump(is_int($x));
-
+-----------------------------------------------------
 $x = 59.85;
 var_dump(is_int($x));
 ?>
-
+-----------------------------------------------------
 predefined constants for floats (from PHP 7.2):
 PHP_FLOAT_MAX - The largest representable floating point number
 PHP_FLOAT_MIN - The smallest representable positive floating point number
 - PHP_FLOAT_MAX - The smallest representable negative floating point number
 PHP_FLOAT_DIG - The number of decimal digits that can be rounded into a float and back without precision loss
 PHP_FLOAT_EPSILON - The smallest representable positive number x, so that x + 1.0 != 1.0
-
+-----------------------------------------------------
 to check if the type of a variable is float:
 is_float()
 is_double() - alias of is_float()
-
+-----------------------------------------------------
 <?php
 $x = 10.365;
 var_dump(is_float($x));
 ?>
-
+-----------------------------------------------------
 to check if a numeric value is finite or infinite:
 is_finite()
 is_infinite()
-
+-----------------------------------------------------
 <?php
 $x = 1.9e411;
 var_dump($x);
 ?>
-
+-----------------------------------------------------
 NaN stands for Not a Number.
 to check if a value is not a number:
 is_nan();
-
+-----------------------------------------------------
 <?php
 $x = acos(8);
 var_dump($x);
 ?>
-
+-----------------------------------------------------
 is_numeric() function can be used to find whether a variable is numeric.
 <?php
 $x = 5985;
@@ -243,22 +257,22 @@ var_dump(is_numeric($x));
 $x = "Hello";
 var_dump(is_numeric($x));
 ?>
-
+-----------------------------------------------------
 The (int), (integer), or intval() function are often used to convert a value to an integer.
 <?php
 // Cast float to int
 $x = 23465.768;
 $int_cast = (int)$x;
 echo $int_cast;
-
+-----------------------------------------------------
 echo "<br>";
-
+-----------------------------------------------------
 // Cast string to int
 $x = "23465.768";
 $int_cast = (int)$x;
 echo $int_cast;
 ?>
-
+-----------------------------------------------------
 <?php
 echo(pi()); // returns 3.1415926535898
 echo(min(0, 150, 30, 20, -8, -200));  // returns -200
@@ -270,17 +284,17 @@ echo(round(0.49));  // returns 0
 echo(rand());
 echo(rand(10, 100));
 ?>
-
+-----------------------------------------------------
 <?php
 define("GREETING", "Welcome to W3Schools.com!");
 echo GREETING;
 ?>
-
+-----------------------------------------------------
 <?php
 define("GREETING", "Welcome to W3Schools.com!", true);
 echo greeting;
 ?>
-
+-----------------------------------------------------
 <?php
 define("cars", [
   "Alfa Romeo",
@@ -289,21 +303,21 @@ define("cars", [
 ]);
 echo cars[0];
 ?> 
-
+-----------------------------------------------------
 Constants are automatically global and can be used across the entire script.
 <?php
 define("GREETING", "Welcome to W3Schools.com!");
-
+-----------------------------------------------------
 function myTest() {
   echo GREETING;
 }
 myTest();
 ?>
-
+-----------------------------------------------------
 **  Exponentiation  $x ** $y    Result of raising $x to the $y'th power 
 <>  Not equal   $x <> $y    Returns true if $x is not equal to $y
 <=> Spaceship   $x <=> $y   Returns an integer less than, equal to, or greater than zero, depending on if $x is less than, equal to, or greater than $y. Introduced in PHP 7.
-
+-----------------------------------------------------
 
 and And $x and $y   True if both $x and $y are true 
 or  Or  $x or $y    True if either $x or $y is true 
@@ -312,17 +326,17 @@ xor Xor $x xor $y   True if either $x or $y is true, but not both
 ||  Or  $x || $y    True if either $x or $y is true 
 !   Not !$x         True if $x is not true
 
-
+-----------------------------------------------------
 .   Concatenation   $txt1 . $txt2   Concatenation of $txt1 and $txt2    
 .=  Concatenation assignment    $txt1 .= $txt2  Appends $txt2 to $txt1
 
-
+-----------------------------------------------------
 $x = expr1 ? expr2 : expr3
-
+-----------------------------------------------------
 $x = expr1 ?? expr2 
 The value of $x is expr1 if expr1 exists, and is not NULL.
 If expr1 does not exist, or is NULL, the value of $x is expr2.
-
+-----------------------------------------------------
 if ($t < "10") {
   echo "Have a good morning!";
 } elseif ($t < "20") {
@@ -330,7 +344,7 @@ if ($t < "10") {
 } else {
   echo "Have a good night!";
 }
-
+-----------------------------------------------------
 
 switch ($favcolor) {
   case "red":
@@ -345,34 +359,44 @@ switch ($favcolor) {
   default:
     echo "Your favorite color is neither red, blue, nor green!";
 }
-
+-----------------------------------------------------
 
 while($x <= 5) {
   echo "The number is: $x <br>";
   $x++;
 }
-
+-----------------------------------------------------
 do {
   echo "The number is: $x <br>";
   $x++;
 } while ($x <= 5);
-
+-----------------------------------------------------
 
 for ($x = 0; $x <= 100; $x+=10) {
   echo "The number is: $x <br>";
 }
-
+-----------------------------------------------------
 
 foreach ($colors as $value) {
   echo "$value <br>";
 }
 
+<?php foreach($values as $value): ?>
+<li><?= $name; ?></li>
+<?php endforeach; ?>
+
+
+<?php foreach($values as $key=>$value): ?>
+<li><strong><?= $key; ?></strong><span><?= $value; ?></span></li>
+<?php endforeach; ?>
+
+-----------------------------------------------------
 
 foreach($age as $x => $val) {
   echo "$x = $val<br>";
 }
 
-
+-----------------------------------------------------
 for ($x = 0; $x < 10; $x++) {
   if ($x == 4) {
     break;
@@ -380,7 +404,7 @@ for ($x = 0; $x < 10; $x++) {
   echo "The number is: $x <br>";
 }
 
-
+-----------------------------------------------------
 for ($x = 0; $x < 10; $x++) {
   if ($x == 4) {
     continue;
@@ -388,7 +412,7 @@ for ($x = 0; $x < 10; $x++) {
   echo "The number is: $x <br>";
 }
 
-
+-----------------------------------------------------
 while($x < 10) {
   if ($x == 4) {
     break;
@@ -397,7 +421,7 @@ while($x < 10) {
   $x++;
 }
 
-
+-----------------------------------------------------
 while($x < 10) {
   if ($x == 4) {
     $x++;
@@ -406,7 +430,7 @@ while($x < 10) {
   echo "The number is: $x <br>";
   $x++;
 }
-
+-----------------------------------------------------
 
 function familyName($fname, $year) {
   echo "$fname Refsnes. Born in $year <br>";
@@ -414,7 +438,7 @@ function familyName($fname, $year) {
 familyName("Hege", "1975");
 familyName("Stale", "1978");
 familyName("Kai Jim", "1983");
-
+-----------------------------------------------------
 
 <?php 
 declare(strict_types=1); // strict requirement
@@ -424,7 +448,7 @@ function addNumbers(int $a, int $b) {
 echo addNumbers(5, "5 days");
 // since strict is enabled and "5 days" is not an integer, an error will be thrown
 ?>
-
+-----------------------------------------------------
 
 <?php declare(strict_types=1); // strict requirement
 function setHeight(int $minheight = 50) {
@@ -435,7 +459,7 @@ setHeight(); // will use the default value of 50
 setHeight(135);
 setHeight(80);
 ?>
-
+-----------------------------------------------------
 <?php declare(strict_types=1); // strict requirement
 function sum(int $x, int $y) {
   $z = $x + $y;
@@ -445,7 +469,7 @@ echo "5 + 10 = " . sum(5, 10) . "<br>";
 echo "7 + 13 = " . sum(7, 13) . "<br>";
 echo "2 + 4 = " . sum(2, 4);
 ?>
-
+-----------------------------------------------------
 
 <?php declare(strict_types=1); // strict requirement
 function addNumbers(float $a, float $b) : float {
@@ -453,7 +477,7 @@ function addNumbers(float $a, float $b) : float {
 }
 echo addNumbers(1.2, 5.2);
 ?>
-
+-----------------------------------------------------
 
 <?php declare(strict_types=1); // strict requirement
 function addNumbers(float $a, float $b) : int {
@@ -461,7 +485,7 @@ function addNumbers(float $a, float $b) : int {
 }
 echo addNumbers(1.2, 5.2);
 ?>
-
+-----------------------------------------------------
 //updating variable value using reference operator
 <?php
 function add_five(&$value) {
@@ -472,7 +496,11 @@ add_five($num);
 echo $num;
 ?>
 
-
+-----------------------------------------------------
+delete any  item from an array or assosiative array:
+unset(var[0]);
+unset(var['key']);
+-----------------------------------------------------
 $cars = array("Volvo", "BMW", "Toyota");
 echo "I like " . $cars[0] . ", " . $cars[1] . " and " . $cars[2] . ".";
 echo count($cars);
@@ -480,7 +508,7 @@ for($x = 0; $x < $arrlength; $x++) {
   echo $cars[$x];
   echo "<br>";
 }
-
+-----------------------------------------------------
 $age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
 $age['Peter'] = "35";
 $age['Ben'] = "37";
@@ -491,7 +519,7 @@ foreach($age as $x => $x_value) {
   echo "<br>";
 }
 
-
+-----------------------------------------------------
 $cars = array (
   array("Volvo",22,18),
   array("BMW",15,13),
@@ -499,7 +527,7 @@ $cars = array (
   array("Land Rover",17,15)
 );
 echo $cars[0][0].": In stock: ".$cars[0][1].", sold: ".$cars[0][2].".<br>";
-
+-----------------------------------------------------
 for ($row = 0; $row < 4; $row++) {
   echo "<p><b>Row number $row</b></p>";
   echo "<ul>";
@@ -508,7 +536,7 @@ for ($row = 0; $row < 4; $row++) {
   }
   echo "</ul>";
 }
-
+-----------------------------------------------------
 
 sort() - sort arrays in ascending order
 rsort() - sort arrays in descending order
@@ -516,7 +544,7 @@ asort() - sort associative arrays in ascending order, according to the value
 ksort() - sort associative arrays in ascending order, according to the key
 arsort() - sort associative arrays in descending order, according to the value
 krsort() - sort associative arrays in descending order, according to the key
-
+-----------------------------------------------------
 sort($cars);
 sort($numbers);
 rsort($cars);
@@ -525,7 +553,7 @@ asort($age);
 ksort($age);
 arsort($age);
 krsort($age);
-
+-----------------------------------------------------
 
 <?php
 $x = 75;
@@ -536,7 +564,7 @@ function addition() {
 addition();
 echo $z;
 ?>
-
+-----------------------------------------------------
 
 $_SERVER['PHP_SELF']    
 ==>Returns the filename of the currently executing script
@@ -586,56 +614,56 @@ $_SERVER['SCRIPT_NAME']
 ==>Returns the path of the current script
 $_SERVER['SCRIPT_URI']  
 ==>Returns the URI of the current page
-
+-----------------------------------------------------
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
  $name = $_REQUEST['fname'];
   if (empty($name)) {}
-
+-----------------------------------------------------
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // collect value of input field
   $name = $_POST['fname'];
   if (empty($name)) {
-
+-----------------------------------------------------
 <a href="test_get.php?subject=PHP&web=W3schools.com">Test $GET</a>
-
+-----------------------------------------------------
 echo "Study " . $_GET['subject'] . " at " . $_GET['web'];
-
+-----------------------------------------------------
 $exp = "/w3schools/i";
 ==>/ is the delimiter, w3schools is the pattern that is being searched for, and i is a modifier that makes the search case-insensitive.
-
+-----------------------------------------------------
 The delimiter can be any character that is not a letter, number, backslash or space. The most common delimiter is the forward slash (/), but when your pattern contains forward slashes it is convenient to choose other delimiters such as # or ~.
-
+-----------------------------------------------------
 preg_match()    
 ==>Returns 1 if the pattern was found in the string and 0 if not
 preg_match_all()    
 ==>Returns the number of times the pattern was found in the string, which may also be 0
 preg_replace()  
 ==>Returns a new string where matched patterns have been replaced with another string
-
+-----------------------------------------------------
 $str = "Visit W3Schools";
 $pattern = "/w3schools/i";
 echo preg_match($pattern, $str); // Outputs 1
-
+-----------------------------------------------------
 $str = "The rain in SPAIN falls mainly on the plains.";
 $pattern = "/ain/i";
 echo preg_match_all($pattern, $str); // Outputs 4
-
+-----------------------------------------------------
 $str = "Visit Microsoft!";
 $pattern = "/microsoft/i";
 echo preg_replace($pattern, "W3Schools", $str); // Outputs "Visit W3Schools!"
-
+-----------------------------------------------------
 $str = "Visit Microsoft!";
 $pattern = "/microsoft/i";
 echo preg_replace($pattern, "W3Schools", $str); // Outputs "Visit W3Schools!"
-
+-----------------------------------------------------
 i   
 ==>Performs a case-insensitive search
 m   
 ==>Performs a multiline search (patterns that search for the beginning or end of a string will match the beginning or end of each line)
 u   
 ==>Enables correct matching of UTF-8 encoded patterns
-
+-----------------------------------------------------
 [abc]   
 ==>Find one character from the options between the brackets
 [^abc]
@@ -643,7 +671,7 @@ u
 [0-9]
 ==>Find one character from the range 0 to 9
 
-
+-----------------------------------------------------
 |   
 ==>Find a match for any one of the patterns separated by | as in: cat|dog|fish
 .   
@@ -661,7 +689,7 @@ $
 \uxxxx  
 ==>Find the Unicode character specified by the hexadecimal number xxxx
 
-
+-----------------------------------------------------
 n+  
 ==>Matches any string that contains at least one n
 n*  
@@ -675,51 +703,48 @@ n{x,y}
 n{x,}   
 ==>Matches any string that contains a sequence of at least X n's
 
-
-
+-----------------------------------------------------
 $str = "Apples and bananas.";
 $pattern = "/ba(na){2}/i";
 echo preg_match($pattern, $str); // Outputs 1
 
-
+-----------------------------------------------------
 <form action="welcome.php" method="post">
 Welcome <?php echo $_POST["name"]; ?><br>
 Your email address is: <?php echo $_POST["email"]; ?>
 
-
+-----------------------------------------------------
 <form action="welcome_get.php" method="get">
 Welcome <?php echo $_GET["name"]; ?><br>
 Your email address is: <?php echo $_GET["email"]; ?>
-
+-----------------------------------------------------
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 ==>htmlspecialchars() function converts special characters to HTML entities. This means that it will replace HTML characters like < and > with &lt; and &gt;. This prevents attackers from exploiting the code by injecting HTML or Javascript code (Cross-site Scripting attacks) in forms.
-
+-----------------------------------------------------
 XSS enables attackers to inject client-side script into Web pages viewed by other users.
-
-
+-----------------------------------------------------
 $data = trim($data);
 $data = stripslashes($data);
 $data = htmlspecialchars($data);
-
-
+-----------------------------------------------------
 if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {} //for name validation
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {} //for email validation
 if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {} //for url validation
 
-
+-----------------------------------------------------
 d - Represents the day of the month (01 to 31)
 m - Represents a month (01 to 12)
 Y - Represents a year (in four digits)
 l (lowercase 'L') - Represents the day of the week
 Other characters, like"/", ".", or "-" can also be inserted between the characters to add additional formatting.
-
+-----------------------------------------------------
 echo "Today is " . date("Y/m/d") . "<br>";
 echo "Today is " . date("Y.m.d") . "<br>";
 echo "Today is " . date("Y-m-d") . "<br>";
 echo "Today is " . date("l");
-
+-----------------------------------------------------
 &copy; 2010-<?php echo date("Y");?>   //copyright date
-
+-----------------------------------------------------
 H - 24-hour format of an hour (00 to 23)
 h - 12-hour format of an hour with leading zeros (01 to 12)
 i - Minutes with leading zeros (00 to 59)
@@ -727,55 +752,57 @@ s - Seconds with leading zeros (00 to 59)
 a - Lowercase Ante meridiem and Post meridiem (am or pm)
 
 echo "The time is " . date("h:i:sa");
-
+-----------------------------------------------------
 date_default_timezone_set("America/New_York");
 echo "The time is " . date("h:i:sa");
-
+-----------------------------------------------------
 $d=mktime(11, 14, 54, 8, 12, 2014);                 //return integer
 echo "Created date is " . date("Y-m-d h:i:sa", $d); //return string
-
+-----------------------------------------------------
 $d=strtotime("10:30pm April 15 2014");              //return string to int
 echo "Created date is " . date("Y-m-d h:i:sa", $d); //return int to string
-
+-----------------------------------------------------
 $d=strtotime("tomorrow");
 echo date("Y-m-d h:i:sa", $d) . "<br>";
-
+-----------------------------------------------------
 $d=strtotime("next Saturday");
 echo date("Y-m-d h:i:sa", $d) . "<br>";
-
+-----------------------------------------------------
 $d=strtotime("+3 Months");
 echo date("Y-m-d h:i:sa", $d) . "<br>";
-
+-----------------------------------------------------
 $startdate=strtotime("Saturday");
 $enddate=strtotime("+6 weeks", $startdate);
-
+-----------------------------------------------------
 $d1=strtotime("July 04");
 $d2=ceil(($d1-time())/60/60/24);
-
+-----------------------------------------------------
 require will produce a fatal error (E_COMPILE_ERROR) and stop the script
 include will only produce a warning (E_WARNING) and the script will continue
 Use require when the file is required by the application.
 Use include when the file is not required and application should continue when file is not found.
-
+-----------------------------------------------------
 include 'filename';
 or
 require 'filename';
 
+require 'index.view.php';
+-----------------------------------------------------
 echo readfile("webdictionary.txt");
-
+-----------------------------------------------------
 $myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
 echo fread($myfile,filesize("webdictionary.txt"));  //read whole file
 echo fgets($myfile);  //read single line
-
+-----------------------------------------------------
 while(!feof($myfile)) { //check end of file
   echo fgets($myfile) . "<br>";
   echo fgetc($myfile);  //read character
 }
-
+-----------------------------------------------------
 $myfile = fopen("testfile.txt", "w"); //open a file in write mode
 fwrite($myfile, $txt); //write into a file
 fclose($myfile);
-
+-----------------------------------------------------
 r	Open a file for read only. File pointer starts at the beginning of the file
 w	Open a file for write only. Erases the contents of the file or creates a new file if it doesn't exist. File pointer starts at the beginning of the file
 a	Open a file for write only. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist
@@ -785,11 +812,11 @@ w+	Open a file for read/write. Erases the contents of the file or creates a new 
 a+	Open a file for read/write. The existing data in file is preserved. File pointer starts at the end of the file. Creates a new file if the file doesn't exist
 x+	Creates a new file for read/write. Returns FALSE and an error if file already exists
 
-
+-----------------------------------------------------
 In your "php.ini" file, search for the file_uploads directive, and set it to On:
 
 file_uploads = On
-
+-----------------------------------------------------
 <?php
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -811,33 +838,33 @@ $target_dir = "uploads/" - specifies the directory where the file is going to be
 $target_file specifies the path of the file to be uploaded
 $imageFileType holds the file extension of the file (in lower case)
 
-
+-----------------------------------------------------
 // Check if file already exists
 if (file_exists($target_file)) {
   echo "Sorry, file already exists.";
   $uploadOk = 0;
 }
-
+-----------------------------------------------------
 // Check file size
 if ($_FILES["fileToUpload"]["size"] > 500000) {
   echo "Sorry, your file is too large.";
   $uploadOk = 0;
 }
-
+-----------------------------------------------------
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 && $imageFileType != "gif" ) {
   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
   $uploadOk = 0;
 }
-
+-----------------------------------------------------
 //file uploading code in php
 <?php
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
+-----------------------------------------------------
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -849,18 +876,19 @@ if(isset($_POST["submit"])) {
     $uploadOk = 0;
   }
 }
-
+-----------------------------------------------------
 // Check if file already exists
 if (file_exists($target_file)) {
   echo "Sorry, file already exists.";
   $uploadOk = 0;
 }
-
+-----------------------------------------------------
 // Check file size
 if ($_FILES["fileToUpload"]["size"] > 500000) {
   echo "Sorry, your file is too large.";
   $uploadOk = 0;
 }
+-----------------------------------------------------
 
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
@@ -868,6 +896,7 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
   $uploadOk = 0;
 }
+-----------------------------------------------------
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
@@ -881,7 +910,7 @@ if ($uploadOk == 0) {
   }
 }
 ?>
-
+-----------------------------------------------------
 //pathinfo returns file information
 print_r(pathinfo("/testweb/test.txt"));
 Array
@@ -890,79 +919,79 @@ Array
 [basename] => test.txt
 [extension] => txt
 )
-
+-----------------------------------------------------
 setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-
+-----------------------------------------------------
 if(!isset($_COOKIE[$cookie_name])) {
   echo "Cookie named '" . $cookie_name . "' is not set!";
 } else {
   echo "Cookie '" . $cookie_name . "' is set!<br>";
   echo "Value is: " . $_COOKIE[$cookie_name];
 }
-
+-----------------------------------------------------
 Note: The setcookie() function must appear BEFORE the <html> tag.
 Note: The value of the cookie is automatically URLencoded when sending the cookie, and automatically decoded when received (to prevent URLencoding, use setrawcookie() instead).
-
+-----------------------------------------------------
 To modify a cookie, just set (again) the cookie using the setcookie() function:
-
+-----------------------------------------------------
 To delete a cookie, use the setcookie() function with an expiration date in the past:
 // set the expiration date to one hour ago
 setcookie("user", "", time() - 3600);
-
+-----------------------------------------------------
 //check if cookie is set
 if(count($_COOKIE) > 0) {
   echo "Cookies are enabled.";
 } else {
   echo "Cookies are disabled.";
 }
-
+-----------------------------------------------------
 <?php
 // Start the session
 session_start();
 ?>
-
+-----------------------------------------------------
 <?php
 // Set session variables
 $_SESSION["favcolor"] = "green";
 $_SESSION["favanimal"] = "cat";
 echo "Session variables are set.";
 ?>
-
+-----------------------------------------------------
 Note: The session_start() function must be the very first thing in your document. Before any HTML tags.
-
+-----------------------------------------------------
 echo "Favorite color is " . $_SESSION["favcolor"] . ".<br>";
 echo "Favorite animal is " . $_SESSION["favanimal"] . ".";
-
+-----------------------------------------------------
 <?php
 print_r($_SESSION);
 ?>
-
+-----------------------------------------------------
 Most sessions set a user-key on the user's computer that looks something like this: 765487cf34ert8dede5a562e4f3a7e12. Then, when a session is opened on another page, it scans the computer for a user-key. If there is a match, it accesses that session, if not, it starts a new session.
-
+-----------------------------------------------------
 <?php
 // to change a session variable, just overwrite it
 $_SESSION["favcolor"] = "yellow";
 print_r($_SESSION);
 ?>
-
+-----------------------------------------------------
 <?php
 // remove all session variables
 session_unset();
-
+-----------------------------------------------------
 // destroy the session
 session_destroy();
 ?>
-
+-----------------------------------------------------
 <?php
   foreach (filter_list() as $id =>$filter) {
     echo '<tr><td>' . $filter . '</td><td>' . filter_id($filter) . '</td></tr>';
   }
 ?>
-
+-----------------------------------------------------
 Validating data = Determine if the data is in proper form.
 
 Sanitizing data = Remove any illegal character from the data.
-
+-----------------------------------------------------
 $newstr = filter_var($str, FILTER_SANITIZE_STRING);
 $num = filter_var($int, FILTER_VALIDATE_INT);
 $ip_address = filter_var($ip, FILTER_VALIDATE_IP);
@@ -973,7 +1002,7 @@ $url = filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);               //re
 $url = filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED);   //return url or false
 $newstr = filter_var($str, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH); //return clean string
 
-
+-----------------------------------------------------
 //arraymap(first argument will print,take string)
 <?php
 function my_callback($item) {
@@ -984,7 +1013,7 @@ $lengths = array_map("my_callback", $strings);                                //
 $lengths = array_map( function($item) { return strlen($item); } , $strings);  //inline callback function
 print_r($lengths);
 ?>
-
+-----------------------------------------------------
 //(string,callback function(string))
 <?php
 function exclaim($str) {
@@ -992,26 +1021,26 @@ function exclaim($str) {
 }
 printFormatted("Hello world", "exclaim");
 ?>
-
+-----------------------------------------------------
 //convert into json for transfer
 echo json_encode(array("Peter"=>35, "Ben"=>37, "Joe"=>43));
 echo json_encode(array("Volvo", "BMW", "Toyota"));
-
+-----------------------------------------------------
 //convert from json to object
 $obj = json_decode('{"Peter":35,"Ben":37,"Joe":43}');
 echo $obj->Peter; // 35
-
+-----------------------------------------------------
 //convert from json to assosiative array
 $arr = json_decode('{"Peter":35,"Ben":37,"Joe":43}',true);
 echo $arr["Peter"];
-
+-----------------------------------------------------
 //foreach works with object and array,assosiative array
 foreach($obj as $key => $value) {  
   echo $key . " => " . $value . "<br>"; 
 }
 
 
-
+-----------------------------------------------------
 getMessage()	
 ==>Returns a string describing why the exception was thrown
 getPrevious()
@@ -1023,7 +1052,7 @@ getFile()
 getLine()
 ==>Returns the line number of the line of code which threw the exception
 
-
+-----------------------------------------------------
 <?php
 function divide($dividend, $divisor) {
   if($divisor == 0) {
@@ -1042,7 +1071,7 @@ try {
   $message";
 }
 ?>
-
+-----------------------------------------------------
 //classes and objects
 <?php
 class Fruit {
@@ -1067,10 +1096,10 @@ $banana->set_name('Banana');
 echo $apple->get_name();
 echo $banana->get_name();
 ?>
-
+-----------------------------------------------------
 //check class and objects relation
 var_dump($apple instanceof Fruit);
-
+-----------------------------------------------------
 //constructor and destructor
 <?php
 class Fruit {
@@ -1088,7 +1117,7 @@ class Fruit {
 $apple = new Fruit("Apple", "red");
 ?>
 
-
+-----------------------------------------------------
 three access modifiers:
 public 
 ==>the property or method can be accessed from everywhere. This is default
@@ -1096,7 +1125,7 @@ protected
 ==>the property or method can be accessed within the class and by classes derived from that class
 private 
 ==>the property or method can ONLY be accessed within the class
-
+-----------------------------------------------------
 //restrictions on variables
 <?php
 class Fruit {
@@ -1110,7 +1139,7 @@ $mango->name = 'Mango'; // OK
 $mango->color = 'Yellow'; // ERROR
 $mango->weight = '300'; // ERROR
 ?>
-
+-----------------------------------------------------
 //restrictions on functions
 <?php
 class Fruit {
@@ -1134,7 +1163,7 @@ $mango->set_name('Mango'); // OK
 $mango->set_color('Yellow'); // ERROR
 $mango->set_weight('300'); // ERROR
 ?>
-
+-----------------------------------------------------
 //inheritence of public methods and functions
 <?php
 class Fruit {
@@ -1148,18 +1177,16 @@ class Fruit {
     echo "The fruit is {$this->name} and the color is {$this->color}."; 
   }
 }
-
 class Strawberry extends Fruit {
   public function message() {
     echo "Am I a fruit or a berry? "; 
   }
 }
-
 $strawberry = new Strawberry("Strawberry", "red");
 $strawberry->message();
 $strawberry->intro();
 ?>
-
+-----------------------------------------------------
 //protected members cant be accessed from outside the class
 <?php
 class Fruit {
@@ -1184,7 +1211,7 @@ $strawberry = new Strawberry("Strawberry", "red");  // OK. __construct() is publ
 $strawberry->message(); // OK. message() is public
 $strawberry->intro(); // ERROR. intro() is protected
 ?>
-
+-----------------------------------------------------
 //overidding methods in inheritence
 <?php
 class Fruit {
@@ -1212,7 +1239,7 @@ class Strawberry extends Fruit {
 $strawberry = new Strawberry("Strawberry", "red", 50);
 $strawberry->intro();
 ?>
-
+-----------------------------------------------------
 //final class cant be extended
 <?php
 final class Fruit {
@@ -1230,7 +1257,6 @@ class Fruit {
     // some code
   }
 }
-
 class Strawberry extends Fruit {
   // will result in error
   public function intro() {
@@ -1238,14 +1264,482 @@ class Strawberry extends Fruit {
   }
 }
 ?>
+-----------------------------------------------------
+//constants called outside class
+<?php
+class Goodbye {
+  
+  const LEAVING_MESSAGE = "Thank you for visiting W3Schools.com!";
+  
+  public function byebye() {
+    echo self::LEAVING_MESSAGE;     //constant returned inside class
+  }
+}
+echo Goodbye::LEAVING_MESSAGE;      //constant returned outside class
+?>
+-----------------------------------------------------
+An abstract class is a class that contains at least one abstract method. 
+An abstract method is a method that is declared, but not implemented in the code.
+<?php
+abstract class ParentClass {
+  abstract public function someMethod1();
+  abstract public function someMethod2($name, $color);
+  abstract public function someMethod3() : string;
+}
+?>
+
+<?php
+//inheritence of abstract method by child classes
+abstract class Car {
+  public $name;
+  public function __construct($name) {
+    $this->name = $name;
+  }
+  abstract public function intro() : string; 
+}
+class Audi extends Car {
+  public function intro() : string {
+    return "Choose German quality! I'm an $this->name!"; 
+  }
+}
+class Volvo extends Car {
+  public function intro() : string {
+    return "Proud to be Swedish! I'm a $this->name!"; 
+  }
+}
+class Citroen extends Car {
+  public function intro() : string {
+    return "French extravagance! I'm a $this->name!"; 
+  }
+}
+$audi = new audi("Audi");
+echo $audi->intro();
+$volvo = new volvo("Volvo");
+echo $volvo->intro();
+$citroen = new citroen("Citroen");
+echo $citroen->intro();
+?>
+
+//abstract class inherited by child classes
+<?php
+abstract class ParentClass {
+  abstract protected function prefixName($name);
+}
+class ChildClass extends ParentClass {
+  public function prefixName($name) {
+    if ($name == "John Doe") {
+      $prefix = "Mr.";
+    } elseif ($name == "Jane Doe") {
+      $prefix = "Mrs.";
+    } else {
+      $prefix = "";
+    }
+    return "{$prefix} {$name}";       //variable returns like this
+  }
+}
+$class = new ChildClass;
+echo $class->prefixName("John Doe");
+echo "<br>"; 
+echo $class->prefixName("Jane Doe");
+?>
+
+//abstract method inherited by child class used with additional arguments
+<?php
+abstract class ParentClass {
+  abstract protected function prefixName($name);
+}
+class ChildClass extends ParentClass {
+  public function prefixName($name, $separator = ".", $greet = "Dear") {
+    if ($name == "John Doe") {
+      $prefix = "Mr";
+    } elseif ($name == "Jane Doe") {
+      $prefix = "Mrs";
+    } else {
+      $prefix = "";
+    }
+    return "{$greet} {$prefix}{$separator} {$name}";
+  }
+}
+$class = new ChildClass;
+echo $class->prefixName("John Doe");
+echo "<br>";  
+echo $class->prefixName("Jane Doe");
+?>
+-----------------------------------------------------
+//interfaces
+<?php
+interface InterfaceName {
+  public function someMethod1();
+  public function someMethod2($name, $color);
+  public function someMethod3() : string;
+}
+?>
 
 
+The difference between interfaces and abstract classes are:
+1.Interfaces cannot have properties, while abstract classes can
+2.All interface methods must be public, while abstract class methods is public or protected
+3.All methods in an interface are abstract, so they cannot be implemented in code and the abstract keyword is not necessary
+4.Classes can implement an interface while inheriting from another class at the same time
+
+//implementing interfaces in the class
+<?php
+interface Animal {
+  public function makeSound();
+}
+class Cat implements Animal {
+  public function makeSound() {
+    echo "Meow";
+  }
+}
+$animal = new Cat();
+$animal->makeSound();
+?>
+
+//implenting interface by many classes
+<?php
+interface Animal {
+  public function makeSound();
+}
+class Cat implements Animal {
+  public function makeSound() {
+    echo " Meow ";
+  }
+}
+class Dog implements Animal {
+  public function makeSound() {
+    echo " Bark ";
+  }
+}
+class Mouse implements Animal {
+  public function makeSound() {
+    echo " Squeak ";
+  }
+}
+$cat = new Cat();
+$dog = new Dog();
+$mouse = new Mouse();
+$animals = array($cat, $dog, $mouse);
+foreach($animals as $animal) {
+  $animal->makeSound();
+}
+?>
+-----------------------------------------------------
+PHP only supports single inheritance: a child class can inherit only from one single parent.
+in order to achieve multiple inheritence traits are used in php
+
+Traits are used to declare methods that can be used in multiple classes.
+Traits can have methods and abstract methods that can be used in multiple classes, 
+and the methods can have any access modifier (public, private, or protected).
+
+<?php
+trait message1 {
+  public function msg1() {
+    echo "OOP is fun! ";
+  }
+}
+trait message2 {
+  public function msg2() {
+    echo "OOP reduces code duplication!";
+  }
+}
+class Welcome {
+  use message1;
+}
+class Welcome2 {
+  use message1, message2;
+}
+$obj = new Welcome();
+$obj->msg1();
+
+$obj2 = new Welcome2();
+$obj2->msg1();
+$obj2->msg2();
+?>
+-----------------------------------------------------
+
+//static methods called from outside and inside
+<?php
+class greeting {
+  public static function welcome() {
+    echo "Hello World!";
+  }
+   public function __construct() {
+    self::welcome();
+  }
+}
+new greeting();
+greeting::welcome();
+?>
+
+//calling static method of parent class 
+<?php
+class A {
+  protected static function getWebsiteName() {
+    return "W3Schools.com";
+  }
+}
+class B extends A {
+  public $websiteName;
+  public function __construct() {
+    $this->websiteName = parent::getWebsiteName();
+  }
+}
+$domainW3 = new domainW3;
+echo $domainW3 -> websiteName;
+?>
+
+//calling static variable from outside the class
+<?php
+class pi {
+  public static $value = 3.14159;
+}
+echo pi::$value;
+?>
+
+//calling static variable inside same class
+<?php
+class pi {
+  public static $value=3.14159;
+  public function staticValue() {
+    return self::$value;
+  }
+}
+$pi = new pi();
+echo $pi->staticValue();
+?>
+
+//calling static variable from child class using parent keyword
+<?php
+class pi {
+  public static $value=3.14159;
+}
+class x extends pi {
+  public function xStatic() {
+    return parent::$value;
+  } 
+}
+echo x::$value;
+$x = new x();
+echo $x->xStatic();
+?>
+-----------------------------------------------------
+Namespaces are qualifiers that solve two different problems:
+They allow for better organization by grouping classes that work together to perform a task
+They allow the same name to be used for more than one class
+
+// all the methods and properties belongs to Html namespace rightnow
+<?php
+namespace Html;
+class Table {
+  public $title = "";
+  public $numRows = 0;
+  public function message() {
+    echo "<p>Table '{$this->title}' has {$this->numRows} rows.</p>";
+  }
+}
+$table = new Table();
+$table->title = "My table";
+$table->numRows = 5;
+?>
+<!DOCTYPE html>
+<html>
+<body>
+<?php
+$table->message();
+?>
+</body>
+</html>
+
+//nested namespace
+namespace Code\Html;
+
+//dont use namespace in this case
+$table = new Html\Table();
+$row = new Html\Row();
+
+//use namespace in this case
+namespace Html;
+$table = new Table();
+$row = new Row();
+
+//renaming namespace
+use Html as H;
+$table = new H\Table();
+
+use Html\Table as T;
+$table = new T();
+
+-----------------------------------------------------
+//iterable to iterate over an array using iterable keyword
+<?php
+function printIterable(iterable $myIterable) {
+  foreach($myIterable as $item) {
+    echo $item;
+  }
+}
+$arr = ["a", "b", "c"];
+printIterable($arr);
+?>
+
+<?php
+function getIterable():iterable {
+  return ["a", "b", "c"];
+}
+$myIterable = getIterable();
+foreach($myIterable as $item) {
+  echo $item;
+}
+?>
+
+An iterator contains a list of items and provides methods to loop through them. 
+It keeps a pointer to one of the elements in the list. 
+Each item in the list should have a key which can be used to find the item.
+
+An iterator must have these methods:
+current()
+==>Returns the element that the pointer is currently pointing to. 
+It can be any data type
+key() 
+==>Returns the key associated with the current element in the list. 
+It can only be an integer, float, boolean or string
+next() 
+==>Moves the pointer to the next element in the list
+rewind() 
+==>Moves the pointer to the first element in the list
+valid() 
+==>If the internal pointer is not pointing to any element (for example, if next() was called at the end of the list), 
+this should return false. 
+It returns true in any other case.
 
 
+----------------------------------------------
+  MYSQL USING OBJECT,PROCEDUREL,PDO
+----------------------------------------------
+// Create connection in OOP
+$conn = new mysqli($servername, $username, $password, $port); //return connection object ($port is optional if needed then use it)
+
+// Check connection in OOP
+if ($conn->connect_error) {                            //return error message
+  die("Connection failed: " . $conn->connect_error);   //to exit from current running script
+}
+
+//execute sql query in OOP
+$conn->query("CREATE DATABASE myDB");                  //return true or false
+$conn->multi_query($sql);                              //execute multiple query at a time 
+
+$sql_result->num_rows;                                 //return number of rows in a query result                                 
+
+while($row = $result->fetch_assoc()){                  //return associative array from query result
+    echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+    echo "<tr><td>".$row["id"]."</td><td>".$row["firstname"]." ".$row["lastname"]."</td></tr>";
+}
+
+//advantages of binding parameters over normal query:reduce parsing time,minimize bandwidth,SQL injection cannot occur.
+$stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email) VALUES (?, ?, ?)");  //prepare
+$stmt->bind_param("sss", $firstname, $lastname, $email);                                       //bind (i:integer,s:string,d:double,b:blob)
+$firstname = "John"; $lastname = "Doe"; $email = "john@example.com";                           //set parameters
+$stmt->execute();                                                                              //execute
+
+$firstname = "Mary";$lastname = "Moe";$email = "mary@example.com";                             //set parameter
+$stmt->execute();
+
+//get last record id
+$last_id = $conn->insert_id;                          //return last or latest id
+
+//return error message on failed SQL query
+$conn->error;
+
+//close connection in OOP
+$conn->close();   
 
 
+----------------------------------------------
+// Create connection in PROCEDUREL
+$conn = mysqli_connect($servername, $username, $password);
+
+// Check connection in PROCEDUREL 
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error()); //return connection error if failed
+}
+
+$status = mysqli_query($conn, "CREATE DATABASE myDB");  //return query object 
+$status = mysqli_multi_query($conn, $sql)               //execute many query at a time
+
+$num = mysqli_num_rows($result);                        //return number of rows in query result  
+$last_id = mysqli_insert_id($conn);                     //return last or latest id
+
+while($row = mysqli_fetch_assoc($result)) {             //return assosiative array from result query    
+    echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+}
+
+$msg = mysqli_error($conn); //return error message if query execution failed
+
+// Close connection in PROCEDUREL
+mysqli_close($conn);
+----------------------------------------------
+//PDO DATABASE CONNECTION
+try {
+  $conn = new PDO("mysql:host=$host_name; dbname=$db_name", $user_name, $password); //return pdo object 
+
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);                   //set the PDO error mode to exception
+
+  echo "Connected successfully";
+
+  $conn->exec($sql);                                                                //return true or false
+
+  $last_id = $conn->lastInsertId();                                                 //return last insert id
+  
+  $conn->beginTransaction();                                                        //begin the transaction     
+
+  $conn->exec("INSERT INTO MyGuests (firstname, lastname, email)                    //query 1
+  VALUES ('John', 'Doe', 'john@example.com')");                                       
+  $conn->exec("INSERT INTO MyGuests (firstname, lastname, email)                    //query 2  
+  VALUES ('Mary', 'Moe', 'mary@example.com')");
+  $conn->exec("INSERT INTO MyGuests (firstname, lastname, email)                    //query 3
+  VALUES ('Julie', 'Dooley', 'julie@example.com')");
+
+  $conn->commit();                                                                  //commit the transaction  
+
+  //prepare and binding 
+  $stmt = $conn->prepare("INSERT INTO MyGuests (firstname, lastname, email)         //prepare sql and bind parameters
+  VALUES ( :firstname, :lastname, :email)");
+  $stmt->bindParam(':firstname', $firstname);
+  $stmt->bindParam(':lastname', $lastname);
+  $stmt->bindParam(':email', $email);
+
+  $firstname = "John"; $lastname = "Doe"; $email = "john@example.com";               
+  $stmt->execute();
+  
+  $firstname = "Mary"; $lastname = "Moe"; $email = "mary@example.com";              
+  $stmt->execute();
+
+  $tasks = $statement->fetchAll(PDO::FETCH_CLASS,'class_name');                     //make instance and map with each row in number
 
 
+  $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);                                // set the resulting array to associative
+  foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+    echo $v;
+  }
+} catch(PDOException $e) {                                                          //pdoexception object
+  $conn->rollback();                                                                //roll back the transaction if something failed
+  echo "Connection failed: " . $e->getMessage();                                    //return error message
+}
+
+// Close Connection in PDO
+$conn = null;
+
+----------------------------------------------
+          USEFULL FUNCTIONS IN PHP
+----------------------------------------------
+<?php
+echo ucwords("hello world");                                                     //convert every first letter into upper case   
+?>
+
+
+**********************************************
+           NOTES FROM PHP MANUAL
+**********************************************
 
 Get system information from PHP
 <?php phpinfo(); ?>
@@ -1282,6 +1776,8 @@ use the $_REQUEST superglobal, if you do not care about the source of your reque
 
 use the short echo tag to <?= 'print this string' ?>
 
+<?= "hello world"; ?>
+<?= $hello; ?>
 <? echo 'this code is within short tags, but will only work '.'if short_open_tag is enabled'; ?>
 
 **********************************************

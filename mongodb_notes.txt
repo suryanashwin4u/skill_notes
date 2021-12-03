@@ -1,1 +1,256 @@
-mongodb_notes.js
+==============================================
+            MONGO DB FROM LECTURES
+==============================================
+To install mongoose
+==>npm install mongoose
+----------------------------------------------
+there is a live database of mongodb with name mlab with 500mb free space
+install mongo db server before working on mongo compass(ui based database software)
+to start working on mongodb from command prompt add mongodb bin folder directory path in system variables "path" and click ok,k,k
+----------------------------------------------
+To start mongo server shell from command prompt
+==>mongo
+----------------------------------------------
+To clear cmd screen
+==>cls 
+----------------------------------------------
+Show database
+==>Show dbs
+----------------------------------------------
+create a new db
+==>db.createCollection('collection_name')
+----------------------------------------------
+move to db
+==>use db_name
+----------------------------------------------
+To check the currently selected database
+==>db
+----------------------------------------------
+dumping db into directory
+==>mongodump
+----------------------------------------------
+restore from directory to database
+==>mongorestore
+----------------------------------------------
+exit from mongo db server shell
+==>exit
+----------------------------------------------
+it shows all collections inside a particular database
+==>show collections
+----------------------------------------------
+To drop current database and files associated with this
+==>db.dropDatabase()
+----------------------------------------------
+create a collection having some name
+==>db.createCollection('collection_name',options)
+
+Field	      Type	              Description
+Capped  	  Boolean	(Optional)  If it is set to true, enables a capped collection. Capped collection is a fixed size collecction that automatically overwrites its oldest entries when it reaches its maximum size. If you specify true, you need to specify size parameter also.
+AutoIndexID	Boolean	(Optional)  If it is set to true, automatically create index on ID field. Its default value is false.
+Size	      Number	(Optional)  It specifies a maximum size in bytes for a capped collection. Ifcapped is true, then you need to specify this field also.
+Max	        Number	(Optional)  It specifies the maximum number of documents allowed in the capped collection.
+----------------------------------------------
+enter data into collection_name
+==>db.collection_name.insert({key_name : value})
+
+it creates a new collection and insert data if not exists
+
+to insert many data at once, just create an array of many key values and pass as parameter inside insert() function
+
+for example:
+var Allcourses =  
+    [  
+      {  
+        Course: "Java",  
+        details: { Duration: "6 months", Trainer: "Sonoo Jaiswal" },  
+        Batch: [ { size: "Medium", qty: 25 } ],  
+        category: "Programming Language"  
+      },  
+      {  
+        Course: ".Net",  
+        details: { Duration: "6 months", Trainer: "Prashant Verma" },  
+        Batch: [ { size: "Small", qty: 5 }, { size: "Medium", qty: 10 }, ],  
+        category: "Programming Language"  
+      },  
+      {  
+        Course: "Web Designing",  
+        details: { Duration: "3 months", Trainer: "Rashmi Desai" },  
+        Batch: [ { size: "Small", qty: 5 }, { size: "Large", qty: 10 } ],  
+        category: "Programming Language"  
+      }  
+    ];
+    db.collection_name.insert( Allcourses );    
+
+----------------------------------------------
+to drop a collection from a database    
+==>db.collection_name.drop()        //returns true or false 
+
+----------------------------------------------
+enter data into collection_name
+==>db.collection_name.insertOne({key_name : value})
+
+for example:
+==>db.collection.insertOne({
+    key 1:"value",              //string
+    key 2:1,                    //integer
+    key 3:{k1:"",k2:""},        //object
+    key 4:["k1","k2"]           //array
+    }
+});
+----------------------------------------------
+find data from collection_name
+==>db.collection_name.find({key_name : value});
+----------------------------------------------
+to insert many rows of data at once in a collection
+==>db.collection_name.insertMany([{key_name: values},.....])
+----------------------------------------------
+db.collection_name.find({ key_name:values})
+=to find a column and value from a collection_name
+----------------------------------------------
+to display all data from a collection in a pretty format
+==>db.collection_name.find().pretty()
+----------------------------------------------
+to display a particular data from a collection in a pretty format
+==>db.collection_name.find({key:value}).pretty()
+----------------------------------------------
+find a particular row from a collection using object Id
+==>db.collection_name.find({"_id":ObjectId("write_id_here")}).pretty()
+----------------------------------------------
+to display all data with particular key values from a collection
+==>db.collection_name.find({key_name:{$in:["X","Y"]}}).pretty()
+----------------------------------------------
+to display all data with 2 or more key values from a collection with some conditions($lt=less than,$gt=greater than,$lte=less than equal,$gte=greater than equal)
+==>db.collection_name.find({key_name:value, key_name:"{$lt:write_number}}).pretty()
+==>db.collection_name.find({key_name:value, key_name:"{$gt:write_number}}).pretty()
+==>db.collection_name.find({key_name:value, key_name:"{$lte:write_number}}).pretty()
+==>db.collection_name.find({key_name:value, key_name:"{$gte:write_number}}).pretty()
+
+to find data with value names and greater than on other value
+==>db.collection_name.find({key_name: values , key_name:"{$gt:write_number}}).pretty()
+----------------------------------------------
+to delete documents from a collection according to a certain situation
+==>db.collection_name.remove (DELETION_CRITERIA)
+
+to remove all records from a collection
+==>db.collection_name.remove ()
+
+to remove a certain record
+==>db.javatpoint.remove( { key : value } )  
+
+to remove only one record
+==>db.javatpoint.remove( { key : value }, 1 )  
+
+----------------------------------------------
+to update data only in one object with currentdate
+==>db.collection_name.updateOne({{key_name:value},{$set:{"key_name":"value",key_name:"value"},$currentDate:{lastModified:true})
+----------------------------------------------
+to find data with or and greater than condition
+==>db.collection_name.find({ $or:[{key_name: values} , {key_name:{$gt:number}}]}).pretty()
+----------------------------------------------
+to find only one record
+==>db.collection_name.findOne({"key_name":"values"})
+----------------------------------------------
+to show only those keys values which are mentioned as 1 here
+==>db.collection_name.find({},{"key1":1,"key2":1,"key3":1}).pretty()
+----------------------------------------------
+to delete only one record
+==>db.collection_name.deleteOne({"key_name":"value"})
+----------------------------------------------
+to delete many records
+==>db.collection_name.deleteMany({"key_name":"value"})
+----------------------------------------------
+to find data using matching key and grouping according to other keys and sum of values
+==>db.collection_name.aggregate([{$match:{$key}},{$group:{_id:"$key",total:{$sum:"$key"}}}])
+----------------------------------------------
+used to get distinct data based on keywords passed
+==>db.collection_name.distinct("key")
+----------------------------------------------
+to show only certain keys records (1 represents show,0 for hide)
+==>db.collection_name.aggregate([{$project:{"_id":0,"key1":1,"key2":1,"key3":1}}]).pretty()
+----------------------------------------------
+to hide certain key values from a record and show rest 
+==>db.collection_name.aggregate([{$project:{"_id":0,"key":0}}]).pretty()
+----------------------------------------------
+apply joins from 2 collections 
+==>db.collection_name.aggregate([{$match:{"key":"value"}},{$lookup:{from:"collection_name",localField:"key",foreignField:"key",as:"key_name"}}]).pretty()
+----------------------------------------------
+sort data in mentioned in keyword in ascending manner
+==>db.collection_name.find().sort({"key_name":1}).pretty()
+----------------------------------------------
+sort data in mentioned in keyword in descending manner
+==>db.collection_name.find().sort({"key_name":-1}).pretty()
+----------------------------------------------
+skip numbers of rows from beginning 
+==>db.collection_name.find().skip(write_number)
+----------------------------------------------
+sort descendingly and then skip number of rows from beginning
+==>db.collection_name.sort("key_name":-1).skip(write_number)
+----------------------------------------------
+limit data from till given number of rows
+==>db.collection_name.find().limit(write_number)
+----------------------------------------------
+limit data from till given number of rows and sort it reversingly
+==>db.collection_name.sort({"item":-number}).limit(number)
+----------------------------------------------
+limit data from till given number of rows and sort
+==>db.collection_name.sort({"item":number}).limit(number)
+----------------------------------------------
+limit data from till given number of rows and sort and skip
+==>db.collection_name.sort({"item":number}).limit(number).skip(number)
+----------------------------------------------
+get index column details
+==>db.collection_name.getIndexes()
+----------------------------------------------
+it changes index column
+==>db.collection_name.createIndex({"key_name":1})
+----------------------------------------------
+create new collection name with schema structure as validator
+
+==>db.createCollection("collection_name", {
+   validator: {
+      $jsonSchema: {
+         bsonType: "object",
+         required: [ "key1", "key2", "key3", "key4" ],
+         properties: {
+            key1: {
+               bsonType: "string",
+               description: "must be a string and is required"
+            },
+            key2: {
+               bsonType: "int",
+               minimum: 2017,
+               maximum: 3017,
+               description: "must be an integer in [ 2017, 3017 ] and is required"
+            },
+            key3: {
+               enum: [ "Math", "English", "Computer Science", "History", null ],
+               description: "can only be one of the enum values and is required"
+            },
+            key4: {
+               bsonType: [ "double" ],
+               description: "must be a double if the field exists"
+            },
+            key5: {
+               bsonType: "object",
+               required: [ "city" ],
+               properties: {
+                  street: {
+                     bsonType: "string",
+                     description: "must be a string if the field exists"
+                  },
+                  city: {
+                     bsonType: "string",
+                     description: "must be a string and is required"
+                  }
+               }
+            }
+         }
+      }
+   }
+})
+
+----------------------------------------------
+
+
+
+
