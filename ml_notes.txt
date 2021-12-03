@@ -1,3 +1,235 @@
+        lectures videos notes:
+-------------------------------------
+anaconda navigators:
+-------------------------------------
+1.spyder ide 
+2.jupyter notebook ide
+-------------------------------------
+important python libraries:
+-------------------------------------
+1.numpy
+2.pandas
+3.matplotlib
+4.seaborn
+5.scikit-learn
+-------------------------------------
+supervised learning are of 2 Types
+-------------------------------------
+supervised learning is when the model is getting trained on a labelled dataset.
+
+1.regression:
+
+1.linear regression(
+    model representation,
+    cost function
+    )
+
+2.optimization(
+    gradient descent,
+    batch & mini batch,
+    stochastic,
+    confusion matrix,
+    bias variance trade off,
+    multiple linear regression,
+    polynomial regression,
+    overfitting and underfitting, 
+    support vector regression,
+    decision tree regression,
+    random forest regression
+    )
+
+2.classification:
+Logistic Regression,
+k-nearest neighbors,
+support vector machine:kernel svm,
+naive bayes,
+decision tree classification,
+random forest classification
+
+-------------------------------------
+unsupervised learning:
+-------------------------------------
+
+1.clustering:
+k-means clustering,
+hierarchical clustering
+
+2.association rule mining:
+apriori,
+eclat
+
+3.dimensionality reduction:
+principal component analysis
+linear discriminant analysis
+kernel pca 
+
+4.regularization:
+ridge,
+lasso
+
+5.model selection:
+kfold cross validation,
+grid search
+
+6.ensemble learning:
+bagging & boosting:xgboost
+
+-------------------------------------
+3.reinforcement learning:
+-------------------------------------
+the process of encouraging or establishing a belief or pattern of behaviour.
+
+an agent learns to behave in a environment by performing actions and seeing the results.
+  
+upper confidence bound(ucb),
+thomson sampling
+
+------------------------------------- 
+installation guide anaconda navigator
+-------------------------------------
+1.go to anaconda website and download anaconda. 
+2.open it and search for jupyter notebook.
+3.click launch button and it will start localhost:8888 on browser automatically 
+
+or
+
+if you have already installed jupyter notebook then just run jupyter notebook command from cmd
+
+-------------------------------------
+How does machine learning works:
+-------------------------------------
+machine learning algos is trained using a training data set to create a models.
+when new input data(test data) is introduced to the ML algo, it makes a prediction on the basis of the models.
+
+The prediction is evaluated for accuracy and if the accuracy is acceptable, the machine learning algo is deployed.
+if the accuracy is not acceptable, the machine learning algorithm is trained again and again with an augmentaed training data set.
+-------------------------------------
+data mining:the process of discovering patterns in large data sets involving methods at the intersection of machine learning,
+statistics and database systems.
+
+data mining is the analysis step of the knowledge discovery in databases or kdd
+
+predictive modelling: a process that uses data mining and probability to forecast outcomes
+-------------------------------------
+artificial intelligence > machine learning(subset) > deep learning(subset)
+
+AI coined by John McCarthy 
+
+2 types of AI: 
+1.Applied AI(Weak AI)
+2.Generalized AI(Strong AI)
+
+for example: 
+1.weak AI (ALEXA,GOOGLE ASSISTANT)
+2.strong AI(human)
+
+machine is a subset of AI
+machine learning is a set of algorithms that train on a data set to make predictions or take actions in order to optimize some systems.
+
+deep learning is a subset of machine learning where learning method is based on data representation or feature learning.
+
+deep refers to 1 or more hidden layers in this case.
+
+in deep learning dat goes through many numbers of non-linear transformation obtain an output.
+
+examples: google lens, fb face recognition, mobile check deposits
+
+differences between Ml vs Dl:
+1.data dependencies:dl needs large data
+2.hardware dependencies:dl needs high power devices
+3.feature engineering:dl needs features as information
+4.execution time: dl needs more time
+
+AI:human intelligence exhibited by machines
+ML:an approach to achieve artificial intelligence
+DL:a technique for implementing machine learning
+
+data science has an intersection with artificial intelligence but is not a subset of artificial intelligence.
+
+data science is a subset of bit of AI,ML,DL
+
+data science is the art and science of drawing actionable insights from the data.
+
+applications: retail,bank,ecommerce,healthcare and telecom etc.
+
+steps in datascience: 
+1.data collection
+2.data preprocessing
+3.data analyzing
+4.data visualization
+5.model building:[importing data, data cleaning, model building, train model, test model, improve efficiancy, prediction]
+6.deployment
+ 
+-------------------------------------
+
+machine learning life cycle:
+1.define project objectives
+2.data collection:[primary data:collected by researcher first hand,secondary data:passed through statistical process]
+3.data preprocessing:[data cleaning(filling missing data,smoothing noisy data),transformation(normalisation),dimensionality reduction]
+4.data visualization
+5.model selection
+6.model building
+7.deployment
+
+-------------------------------------
+
+numpy is scientific computing library for python
+support large number of data in the form of multi-dimensional array and matrix
+use for maths calculation like linear algebra, Fourier transform , and random number capabilites
+
+-------------------------------------
+
+tab separated -> .tsv
+comma separated -> .csv
+
+-------------------------------------
+
+install numpy package : pip install numpy 
+to import into project : import numpy as np
+create numpy array : np.array([1,2,3,4,5])
+create numpy 2d array : np.array([1,2,3,4,5],[1,2,3])
+create numpy 3d array : np.array([1,2,3,4,5],[1,2,3],[2,3,4])
+create numpy Nd array : np.array([1,2,3,4,5],[1,2,3],[2,3,4].......[],[],[])
+check type : type(variable)
+check dimension : array_var.ndim
+check size : array_var.size
+check shape : array_var.shape
+check datatype : array_var.dtype
+create ones 1d array : array_var.ones(5)
+create ones 2d array : array_var.ones((3,4))
+create ones 3d array : array_var.ones((3,4,3))
+
+
+
+
+
+
+
+
+
+-------------------------------------
+
+execute current cell and create a new one down below
+=>shift + enter
+execute only current cell
+=>control + enter
+press A to create a new cell
+
+-------------------------------------
+numpy codes:
+
+
+
+
+
+
+
+
+
+
+
+
+
 1.Pandas is used for reading data and data manipulation.
 
 2.numpy is used for computations of numerical data.
