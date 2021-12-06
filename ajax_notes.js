@@ -1,6 +1,6 @@
 $.ajax({
     type: "POST",
-    url: /filename,                                 //url
+    url: /target_route or filename,                                 //url
     data: {
         "key": value,                               //json data
     },

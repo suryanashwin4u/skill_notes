@@ -1519,12 +1519,11 @@ use DB::transactions(function(){
 });
 
 
+//return array directly
+return  [CourseBroadField::whereIsActive(1)->where('id','!=',$request->id)->get(['id','broad_field_name'])];
 
-
-
-
-
-
+//return json
+return response()->json(['status' => 'success', 'msg' => 'Course cloned successfully']);
 
 
 
