@@ -1,1 +1,405 @@
-jquery_notes.js
+========================================================
+                JQUERY W3SCHOOL.COM NOTES
+========================================================
+//CDN
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+//code execute if page is loaded
+$(document).ready(function(){
+  code....
+});
+
+//shorter version of above code
+$(function(){
+  code....
+});
+
+Syntax	                        Description
+-----------------------------------------------------------------------------
+$("*")	                    Selects all elements	
+$(this)	                    Selects the current HTML element	
+$("p.intro")	            Selects all <p> elements with class="intro"	
+$("p:first")	            Selects the first <p> element	
+$("ul li:first")	        Selects the first <li> element of the first <ul>	
+$("ul li:first-child")	    Selects the first <li> element of every <ul>	
+$("[href]")	                Selects all elements with an href attribute	
+$("a[target='_blank']")	    Selects all <a> elements with a target attribute value equal to "_blank"	
+$("a[target!='_blank']")	Selects all <a> elements with a target attribute value NOT equal to "_blank"	
+$(":button")	            Selects all <button> elements and <input> elements of type="button"	
+$("tr:even")	            Selects all even <tr> elements	
+$("tr:odd")	                Selects all odd <tr> elements	
+
+
+Mouse Events	    Keyboard Events	    Form Events 	Document/Window Events
+------------------------------------------------------------------------------
+click	            keypress	        submit	        load
+dblclick	        keydown	            change	        resize
+mouseenter	        keyup	            focus	        scroll
+mouseleave	 	    blur	            unload
+
+//click event and execute function
+$("p").click(function(){
+  code...
+});
+
+//hide current element on double click
+$("p").dblclick(function(){
+  $(this).hide();
+});
+
+//alert on mouse enter
+$("#p1").mouseenter(function(){
+  alert("You entered p1!");
+});
+
+//alert on mouseleave
+$("#p1").mouseleave(function(){
+  alert("Bye! You now leave p1!");
+});
+
+//alert on mousedown
+$("#p1").mousedown(function(){
+  alert("Mouse down over p1!");
+});
+
+//alert on mouseup
+$("#p1").mouseup(function(){
+  alert("Mouse up over p1!");
+});
+
+//alert on hover and execute anonymous function after it
+$("#p1").hover(function(){
+  alert("You entered p1!");
+},
+function(){
+  alert("Bye! You now leave p1!");
+});
+
+//change css on focus
+$("input").focus(function(){
+  $(this).css("background-color", "#cccccc");
+});
+
+//change css on removing focus
+$("input").blur(function(){
+  $(this).css("background-color", "#ffffff");
+});
+
+//hide current element on click
+$("p").on("click", function(){
+  $(this).hide();
+});
+
+//many events at a time
+$("p").on({
+  mouseenter: function(){
+    $(this).css("background-color", "lightgray");
+  },
+  mouseleave: function(){
+    $(this).css("background-color", "lightblue");
+  },
+  click: function(){
+    $(this).css("background-color", "yellow");
+  }
+});
+
+//show tag
+$("p").show();
+
+//hide tag
+$("p").hide();
+
+//hide in 1 second
+$("p").hide(1000);
+
+//hide and show on simultanous clicks
+$("p").toggle();
+
+//fadein element in normal,slow,fast mode and in 3s
+$("#div1").fadeIn();
+$("#div2").fadeIn("slow");
+$("#div2").fadeIn("fast");
+$("#div3").fadeIn(3000);
+
+//fadeout element in normal,slow mode and in 3s
+$("#div1").fadeOut();
+$("#div2").fadeOut("slow");
+$("#div3").fadeOut(3000);
+
+//fadetoggle element in normal,slow mode and in 3s
+$("#div1").fadeToggle();
+$("#div2").fadeToggle("slow");
+$("#div3").fadeToggle(3000);
+
+//fadeto a particular limit
+$("#div1").fadeTo("slow", 0.15);
+$("#div2").fadeTo("slow", 0.4);
+$("#div3").fadeTo("slow", 0.7);
+
+//slidedown in slow mode
+$("#panel").slideDown("slow");
+
+//slide up only
+$("#panel").slideUp();
+
+//slide up and down
+$("#panel").slideToggle();
+
+//animate element to the left
+$("div").animate({left: '250px'});
+
+//animate using css attributes
+$("div").animate({
+left: '250px',
+opacity: '0.5',
+height: '150px',
+width: '150px'
+});
+
+//can be declared like this
+$("div").animate({
+left: '250px',
+height: '+=150px',
+width: '+=150px'
+});
+
+//toggle element height using animate function
+$("div").animate({
+    height: 'toggle'
+});
+
+//many animate functions togethers with speed
+$("div").animate({height: '300px', opacity: '0.4'}, "slow");
+$("div").animate({width: '300px', opacity: '0.8'}, "fast");
+$("div").animate({height: '100px', opacity: '0.4'}, "slow");
+$("div").animate({width: '100px', opacity: '0.8'}, "fast");
+$("div").animate({left: '100px'}, "slow");
+$("div").animate({fontSize: '3em'}, "slow");
+
+//slidedown element on click
+$("#flip").click(function(){
+    $("#panel").slideDown(5000);
+});
+
+//stop sliding on click
+$("#stop").click(function(){
+    $("#panel").stop();
+});
+
+//hide element slowly and with callback function
+$("p").hide("slow", function(){
+    alert("The paragraph is now hidden");
+});
+
+//hide element in 1s and execute function
+$("button").click(function(){
+  $("p").hide(1000);
+  alert("The paragraph is now hidden");
+});
+
+
+//chaining of inbuilt functions
+$("#p1").css("color", "red").slideUp(2000).slideDown(2000);
+
+//chaining can be arranged like this
+$("#p1").css("color", "red")
+  .slideUp(2000)
+  .slideDown(2000);
+
+//show text format not any html
+$("#test").text();
+
+//show in html format
+$("#test").html();
+
+//show value of input elements
+$("#test").val();
+
+//show attribute value
+$("#w3s").attr("href");
+
+//set text value to a tag
+$("#test1").text("Hello world!");
+
+//set html in an element
+$("#test2").html("<b>Hello world!</b>");
+
+//set value in an element
+$("#test3").val("Dolly Duck");
+
+//set text using any function
+$("#test1").text(function(i, origText){
+return "Old text: " + origText + " New text: Hello world!
+    (index: " + i + ")";
+});
+
+//set html using function
+$("#test2").html(function(i, origText){
+    return "Old html: " + origText + " New html: Hello <b>world!</b>
+    (index: " + i + ")";
+  });
+
+//set attribute href 
+$("#w3s").attr("href", "https://www.w3schools.com/jquery/");
+
+//set 2 or more attributes
+$("#w3s").attr({
+    "href" : "https://www.w3schools.com/jquery/",
+    "title" : "W3Schools jQuery Tutorial"
+});
+
+//set attribute using function
+$("#w3s").attr("href", function(i, origValue){
+    return origValue + "/jquery/";
+  });
+
+//append html at the end of the tag
+$("p").append(" <b>Appended text</b>.");
+
+//prepend html at the start of the tag
+$("p").prepend("Some prepended text.");
+
+//append many texts element
+var txt1 = "<p>Text.</p>";               // Create element with HTML 
+var txt2 = $("<p></p>").text("Text.");   // Create with jQuery
+var txt3 = document.createElement("p");  // Create with DOM
+$("body").append(txt1, txt2, txt3);
+
+//append after an element
+$("img").after("Some text after");
+
+//prepend before an element
+$("img").before("Some text before");
+
+//append many texts after image
+var txt1 = "<b>I </b>";                    // Create element with HTML 
+var txt2 = $("<i></i>").text("love ");     // Create with jQuery
+var txt3 = document.createElement("b");    // Create with DOM
+txt3.innerHTML = "jQuery!";
+$("img").after(txt1, txt2, txt3);          // Insert new elements after <img>
+
+//remove parent element
+$("#div1").remove();
+
+//empty child elements using parent
+$("#div1").empty();
+
+//remove tags with class name
+$("p").remove(".test");
+$("p").remove(".test, .demo");
+
+
+//add classes to elements
+ $("h1, h2, p").addClass("blue");
+
+//remove classes from elements
+ $("h1, h2, p").removeClass("blue");
+
+//toggle class to elements
+ $("h1, h2, p").toggleClass("blue");
+
+//to know css value of property
+$("p").css("background-color");
+
+//to set css property into elements
+$("p").css("background-color", "yellow");
+
+//to set many css properties into elements
+$("p").css({"background-color": "yellow", "font-size": "200%"});
+
+//to know width of the element
+$("#div1").width();
+
+//to know height of the element
+$("#div1").height();
+
+//to know innerwidth of the element
+$("#div1").innerWidth();
+
+//to know innerheight of the element
+$("#div1").innerHeight();
+
+//to know outerwidth of the element
+$("#div1").outerWidth();
+
+//to know outerheight of the element
+$("#div1").outerHeight();
+
+//to know outerwidth of the element
+$("#div1").outerWidth(true);
+
+//to know outerheight of the element
+$("#div1").outerHeight(true);
+
+//document width
+$(document).width();
+
+//document height
+$(document).height();
+
+//window width
+$(window).width();
+
+//window height
+$(window).height();
+
+//set element width and height
+$("#div1").width(500).height(500);
+
+//select parent of span element and set its css
+$("span").parent().css({"color": "red", "border": "2px solid red"});
+
+//select all the parent elements of span tag and set there css
+$("span").parents().css({"color": "red", "border": "2px solid red"});
+
+//select all the <ul> parents of span tag and change its css
+$("span").parents("ul").css({"color": "red", "border": "2px solid red"});
+
+//select all the parents except <div> tag and set there css
+$("span").parentsUntil("div").css({"color": "red", "border": "2px solid red"});
+
+//select immediate child element of <div> tag and set its css
+$("div").children().css({"color": "red", "border": "2px solid red"});
+
+//select immediate child element having .first class name and change its css
+$("div").children("p.first").css({"color": "red", "border": "2px solid red"});
+
+//find span tag inside div element and set its css
+$("div").find("span").css({"color": "red", "border": "2px solid red"});
+
+//find all elements inside div tag and set its css
+$("div").find("*").css({"color": "red", "border": "2px solid red"});
+
+//select all the siblings elements of h2 tag except h2 and set its css
+$("h2").siblings().css({"color": "red", "border": "2px solid red"});
+
+//select all p element sibling of h2 tag and set its css
+$("h2").siblings("p").css({"color": "red", "border": "2px solid red"});
+
+//select next element of h2 tag and set its css
+$("h2").next().css({"color": "red", "border": "2px solid red"});
+
+//select next all elements of h2 tag and set its css
+$("h2").nextAll().css({"color": "red", "border": "2px solid red"});
+
+//select next elements from h2 tag untill h6 tag and set there css
+$("h2").nextUntil("h6").css({"color": "red", "border": "2px solid red"});
+
+//select only first div and change its css
+$("div").first().css("background-color", "yellow");
+
+//select only last div and change its css
+$("div").last().css("background-color", "yellow");
+
+//select only tag with index 2 and set its css
+$("p").eq(2).css("background-color", "yellow");
+index numbers start at 0
+for example:-
+<p>My name is Donald (index 0).</p>
+<p>Donald Duck (index 1).</p>
+<p>I live in Duckburg (index 2).</p>    //this row will be effected with css
+<p>My best friend is Mickey (index 3).</p>
+
+
+
+
