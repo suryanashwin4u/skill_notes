@@ -400,6 +400,81 @@ for example:-
 <p>I live in Duckburg (index 2).</p>    //this row will be effected with css
 <p>My best friend is Mickey (index 3).</p>
 
+//search all <p> tags with same class name as given below then set css properties
+$("p").filter(".intro").css("background-color", "yellow");
 
+//search all <p> tags which do not contain class name as given below then set css properties
+$("p").not(".intro").css("background-color", "yellow");
 
+//load remote file 
+$("#div1").load("demo_test.txt");
+
+//load any particular element from remote file
+$("#div1").load("demo_test.txt #p1");
+
+//load remote file then call fallback function and check for status
+$("#div1").load("demo_test.txt", function(responseTxt, statusTxt, xhr){
+    if(statusTxt == "success")
+        alert("External content loaded successfully!");
+    if(statusTxt == "error")
+        alert("Error: " + xhr.status + ": " + xhr.statusText);
+});
+
+//fetch remote file then callback function pass data and status
+$.get("demo_test.asp", function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
+
+//call remote file pass data in json format then callback function works with returned data and status
+$.post("demo_test_post.asp",
+{
+  name: "Donald Duck",
+  city: "Duckburg"
+},
+function(data,status){
+  alert("Data: " + data + "\nStatus: " + status);
+});
+
+//it does not show any conflict on using such syntax
+$.noConflict();
+jQuery(document).ready(function(){
+  code....
+}
+
+or
+
+var jq = $.noConflict();
+jq(document).ready(function(){
+  code..
+}
+
+//pass $ again to use it back
+$.noConflict();
+jQuery(document).ready(function($){
+  code....
+}
+
+//to filter from table
+ $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+
+//filter from the list
+ $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myList li").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+
+//filter elements inside body tag
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myDIV *").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
 
