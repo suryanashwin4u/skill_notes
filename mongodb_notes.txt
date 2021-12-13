@@ -205,7 +205,6 @@ it changes index column
 ==>db.collection_name.createIndex({"key_name":1})
 ----------------------------------------------
 create new collection name with schema structure as validator
-
 ==>db.createCollection("collection_name", {
    validator: {
       $jsonSchema: {
