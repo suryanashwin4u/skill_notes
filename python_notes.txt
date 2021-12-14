@@ -13,12 +13,12 @@ python file.py
 
 --------------------------------------------------
 # type python to run python editor at command prompt
+
 python 
 
 or
 
 py
-
 --------------------------------------------------
 # type exit() to come out of cmd editor
 exit()

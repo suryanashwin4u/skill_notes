@@ -1,0 +1,69 @@
+-----------------------------------
+        DJANGO TUTORIALS
+-----------------------------------
+
+To install django in localhost
+==> py -m pip install Django
+
+To start python interpreter at command prompt
+==>python
+
+To install django in other python version
+==>python -m pip install django
+
+To know django version
+==>python -m django --version
+
+To exit from python cmd interpreter
+==> ctrl + z or exit()
+
+To know django admin commands is installed
+==>python -m django
+
+For help on a specific subcommand in django admin
+==>python -m django help
+
+To create django project
+==>python -m django-admin startproject project-name
+
+To start website server at local host
+==>python manage.py runserver
+
+All the url paths defined inside this list
+urlpatterns = [
+    path('url_name' , file_name.function_name , name='route_name),
+]
+
+import file to work through urls
+==>from . import views
+
+To view errors and bugs in localhost , it should be false in production
+==>DEBUG = True
+
+Go to settings.py and write templates inside 'DIRS' to tell django that templates will be stored inside inside templates folder
+==>  'DIRS': ['templates'],
+
+To import templates folder files include this code inside views.py
+==>from django.shortcuts import render
+
+Passing parameters to the templates
+==> def sixth(request):
+        passing_parameters = {'name':'ashwani kumar', 'age':'26'}
+        return render( request , "index.html" , passing_parameters)
+
+Chaining to other routes
+==>def fourth(request):
+     return HttpResponse('''<h1>fourth function</h1>
+     <a href="/first">Call first function</a>''')
+
+Passing html and links
+==>def third(request):
+     return HttpResponse('''<h1>third function</h1><a href="www.youtube.com">youtube</a>''')
+
+
+
+
+
+
+
+
