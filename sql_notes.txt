@@ -463,13 +463,13 @@ SELECT column_name(s) FROM table1
 UNION ALL
 SELECT column_name(s) FROM table2;
 
+example:-
 SELECT City, Country FROM Customers
 WHERE Country='Germany'
 UNION ALL
 SELECT City, Country FROM Suppliers
 WHERE Country='Germany'
 ORDER BY City;
-
 
 ******************************************
 //GROUPBY
@@ -482,6 +482,7 @@ WHERE condition
 GROUP BY column_name(s)
 ORDER BY column_name(s);
 
+example:-
 SELECT COUNT(CustomerID), Country
 FROM Customers
 GROUP BY Country;
@@ -491,11 +492,194 @@ FROM Customers
 GROUP BY Country
 ORDER BY COUNT(CustomerID) DESC;
 
-
 SELECT Shippers.ShipperName,COUNT(Orders.OrderID) AS NumberOfOrders FROM Orders
 LEFT JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID
 GROUP BY ShipperName;
 
+
+
+******************************************
+//HAVING Operator
+
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+HAVING condition
+ORDER BY column_name(s);
+
+example:-
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5
+ORDER BY COUNT(CustomerID) DESC;
+
+SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders
+FROM (Orders
+INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID)
+GROUP BY LastName
+HAVING COUNT(Orders.OrderID) > 10;
+
+SELECT Employees.LastName, COUNT(Orders.OrderID) AS NumberOfOrders
+FROM Orders
+INNER JOIN Employees ON Orders.EmployeeID = Employees.EmployeeID
+WHERE LastName = 'Davolio' OR LastName = 'Fuller'
+GROUP BY LastName
+HAVING COUNT(Orders.OrderID) > 25;
+
+******************************************
+//EXISTS Operator
+
+SELECT column_name(s)
+FROM table_name
+WHERE EXISTS
+(SELECT column_name FROM table_name WHERE condition);
+
+For example:-
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price < 20);
+
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price = 22);
+
+******************************************
+//ANY operator:
+
+returns a boolean value as a result
+returns TRUE if ANY of the subquery values meet the condition
+
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ANY
+  (SELECT column_name
+  FROM table_name
+  WHERE condition);
+
+operator must be a standard comparison operator (=, <>, !=, >, >=, <, or <=).
+
+//ALL operator:
+
+returns a boolean value as a result
+returns TRUE if ALL of the subquery values meet the condition
+is used with SELECT, WHERE and HAVING statements
+
+SELECT column_name(s)
+FROM table_name
+WHERE column_name operator ALL
+  (SELECT column_name
+  FROM table_name
+  WHERE condition);
+
+example:-
+SELECT ProductName 
+FROM Products
+WHERE ProductID = ANY (SELECT ProductID FROM OrderDetails WHERE Quantity = 10);
+
+SELECT ProductName
+FROM Products
+WHERE ProductID = ANY
+  (SELECT ProductID
+  FROM OrderDetails
+  WHERE Quantity > 99);
+
+SELECT ALL ProductName
+FROM Products
+WHERE TRUE;
+
+SELECT ProductName
+FROM Products
+WHERE ProductID = ALL
+  (SELECT ProductID
+  FROM OrderDetails
+  WHERE Quantity = 10);
+
+
+******************************************
+//SELECT INTO Syntax
+
+SELECT *
+INTO newtable [IN externaldb]
+FROM oldtable
+WHERE condition;
+
+SELECT column1, column2, column3, ...
+INTO newtable [IN externaldb]
+FROM oldtable
+WHERE condition;
+
+example:-
+SELECT * INTO CustomersBackup2017
+FROM Customers;
+
+SELECT * INTO CustomersBackup2017 IN 'Backup.mdb'
+FROM Customers;
+
+SELECT CustomerName, ContactName INTO CustomersBackup2017
+FROM Customers;
+
+SELECT * INTO CustomersGermany
+FROM Customers
+WHERE Country = 'Germany';
+
+SELECT Customers.CustomerName, Orders.OrderID
+INTO CustomersOrderBackup2017
+FROM Customers
+LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID;
+
+SELECT * INTO newtable
+FROM oldtable
+WHERE 1 = 0;
+
+******************************************
+//INSERT INTO Syntax
+
+Copy all columns from one table to another table:
+
+INSERT INTO table2
+SELECT * FROM table1
+WHERE condition;
+
+
+Copy only some columns from one table into another table:
+INSERT INTO table2 (column1, column2, column3, ...)
+SELECT column1, column2, column3, ...
+FROM table1
+WHERE condition;
+
+
+INSERT INTO Customers (CustomerName, City, Country)
+SELECT SupplierName, City, Country FROM Suppliers;
+
+
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+SELECT SupplierName, ContactName, Address, City, PostalCode, Country FROM Suppliers;
+
+INSERT INTO Customers (CustomerName, City, Country)
+SELECT SupplierName, City, Country FROM Suppliers
+WHERE Country='Germany';
+
+******************************************
+//CASE Syntax
+
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END;
+
+Example:-
+
+SELECT OrderID, Quantity,
+CASE
+    WHEN Quantity > 30 THEN 'The quantity is greater than 30'
+    WHEN Quantity = 30 THEN 'The quantity is 30'
+    ELSE 'The quantity is under 30'
+END AS QuantityText
+FROM OrderDetails;
 
 
 
