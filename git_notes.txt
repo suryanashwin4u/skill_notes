@@ -571,3 +571,6 @@ git stash clear
 
 git stash branch <Branch Name>  
 ->create a new branch and transfer the stashed work on that
+
+git stash --include-untracked
+->it include untracked files and finally stash it

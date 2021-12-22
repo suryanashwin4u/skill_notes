@@ -681,13 +681,264 @@ CASE
 END AS QuantityText
 FROM OrderDetails;
 
+******************************************
+//IFNULL(), ISNULL(), COALESCE(), and NVL() Functions
 
 
+******************************************
+//Stored Procedures
 
 
+******************************************
+//COMMENTS
+Single line comments start with --.
 
+Any text between -- and the end of the line will be ignored
 
+SELECT * FROM Customers -- WHERE City='Berlin';
 
+--SELECT * FROM Customers;
 
+/*Select all the columns
+of all the records
+in the Customers table:*/
 
+SELECT CustomerName, /*City,*/ Country FROM Customers;
+
+SELECT * FROM Customers WHERE (CustomerName LIKE 'L%'
+OR CustomerName LIKE 'R%' /*OR CustomerName LIKE 'S%'
+OR CustomerName LIKE 'T%'*/ OR CustomerName LIKE 'W%')
+AND Country='USA'
+ORDER BY CustomerName;
+
+******************************************
+//create a new database
+CREATE DATABASE databasename;
+
+//show databases
+SHOW DATABASES;
+
+//drop database
+DROP DATABASE databasename;
+
+******************************************
+//to take backup and save into disk
+BACKUP DATABASE databasename
+TO DISK = 'filepath';
+
+//only backs up the parts of the database that have changed
+BACKUP DATABASE databasename
+TO DISK = 'filepath'
+WITH DIFFERENTIAL;
+
+******************************************
+//create table
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+   ....
+);
+
+CREATE TABLE table_name (
+    column1 datatype constraint,
+    column2 datatype constraint,
+    column3 datatype constraint,
+    ....
+);
+
+constraints are commonly used in SQL:
+NOT NULL - Ensures that a column cannot have a NULL value
+UNIQUE - Ensures that all values in a column are different
+PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+FOREIGN KEY - Prevents actions that would destroy links between tables
+CHECK - Ensures that the values in a column satisfies a specific condition
+DEFAULT - Sets a default value for a column if no value is specified
+CREATE INDEX - Used to create and retrieve data from the database very quickly
+
+examples:
+
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255) NOT NULL,
+    Age int
+);
+
+ALTER TABLE Persons
+MODIFY Age int NOT NULL;
+
+CREATE TABLE Persons (
+    ID int NOT NULL UNIQUE,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+
+//add a constraint to a column
+ALTER TABLE Persons
+ADD UNIQUE (ID);
+
+//drop a constraint from a column
+ALTER TABLE Persons
+DROP INDEX UC_Person;
+
+//declaring primary key
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (ID)
+);
+
+//declaring primary key on many columns
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT PK_Person PRIMARY KEY (ID,LastName)
+);
+
+//change column primary key
+ALTER TABLE Persons
+ADD PRIMARY KEY (ID);
+
+//drop a primary key constraint column
+ALTER TABLE Persons
+DROP PRIMARY KEY;
+
+//foreign key constraint
+CREATE TABLE Orders (
+    OrderID int NOT NULL,
+    OrderNumber int NOT NULL,
+    PersonID int,
+    PRIMARY KEY (OrderID),
+    FOREIGN KEY (PersonID) REFERENCES Persons(PersonID)
+);
+
+//change column constraint
+ALTER TABLE Orders
+ADD FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
+
+//drop column constraint
+ALTER TABLE Orders
+DROP FOREIGN KEY FK_PersonOrder;
+
+//create table only if age column value is greater or more than 18
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CHECK (Age>=18)
+);
+
+//adding check constraint from a column
+ALTER TABLE Persons
+ADD CHECK (Age>=18);
+
+//drop check constraint from a column
+ALTER TABLE Persons
+DROP CHECK CHK_PersonAge;
+
+//set a column default constraint
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    City varchar(255) DEFAULT 'Sandnes'
+);
+
+//add a default constraint in existing table
+ALTER TABLE Persons
+ALTER City SET DEFAULT 'Sandnes';
+
+//drop default constraint from a table
+ALTER TABLE Persons
+ALTER City DROP DEFAULT;
+
+//create index constraint but duplicate values allowed
+CREATE INDEX index_name
+ON table_name (column1, column2, ...);
+
+//Creates a unique index on a table. Duplicate values are not allowed:
+CREATE UNIQUE INDEX index_name
+ON table_name (column1, column2, ...);
+ 
+//drop index constraint
+ALTER TABLE table_name
+DROP INDEX index_name;
+
+//autoincrement constraint , it starts from 1
+CREATE TABLE Persons (
+    Personid int NOT NULL AUTO_INCREMENT,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (Personid)
+);
+
+//change table column to start numbering from 100
+ALTER TABLE Persons AUTO_INCREMENT=100;
+
+******************************************
+//copying and create a new table
+
+CREATE TABLE new_table_name AS
+    SELECT column1, column2,...
+    FROM existing_table_name
+    WHERE ....;
+
+******************************************
+//drop a table
+
+DROP TABLE table_name;
+******************************************
+//truncate table table name
+
+TRUNCATE TABLE table_name;
+******************************************
+//add a column to existing table
+
+ALTER TABLE table_name
+ADD column_name datatype;
+******************************************
+//drop a column to existing table
+
+ALTER TABLE table_name
+DROP COLUMN column_name;
+******************************************
+//change column datatype
+
+ALTER TABLE table_name
+ALTER COLUMN column_name datatype;
+******************************************
+//date and time datatypes in mysql
+
+DATE - format YYYY-MM-DD
+DATETIME - format: YYYY-MM-DD HH:MI:SS
+TIMESTAMP - format: YYYY-MM-DD HH:MI:SS
+YEAR - format YYYY or YY
+
+******************************************
+//view is a virtual table based on the result-set of an SQL statement.
+
+CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+CREATE OR REPLACE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+
+DROP VIEW view_name;
+******************************************
+//SQL INJECTION
+
+******************************************
 
