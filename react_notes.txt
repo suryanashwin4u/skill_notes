@@ -40,7 +40,7 @@ https://cdnjs.cloudflare.com/ajax/libs/reactstrap/4.8.0/reactstrap.min.js
 //single html tags like <hr>,<img>,<input> must be closed with / like <hr/>,<img/>,<input/>
 //class should be className
 //href='#' should be converted to href='/'
-
+//template literal ${props.variable}
+//javascript object {{color: prop.variable}}
 ===========================================================
-start:82nd video
-start from 6th video https://www.youtube.com/playlist?list=PLu0W_9lII9agx66oZnT6IyhcMIbUMNMdt
+start from 22th video https://www.youtube.com/playlist?list=PLu0W_9lII9agx66oZnT6IyhcMIbUMNMdt
