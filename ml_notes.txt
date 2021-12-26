@@ -191,13 +191,54 @@ create numpy 2d array : np.array([1,2,3,4,5],[1,2,3])
 create numpy 3d array : np.array([1,2,3,4,5],[1,2,3],[2,3,4])
 create numpy Nd array : np.array([1,2,3,4,5],[1,2,3],[2,3,4].......[],[],[])
 check type : type(variable)
-check dimension : array_var.ndim
-check size : array_var.size
-check shape : array_var.shape
-check datatype : array_var.dtype
-create ones 1d array : array_var.ones(5)
-create ones 2d array : array_var.ones((3,4))
-create ones 3d array : array_var.ones((3,4,3))
+check dimension : arr.ndim
+check size : arr.size
+check shape : arr.shape
+check datatype : arr.dtype
+create ones 1d array of 1. float values: arr.ones(5)
+create ones 2d array of 1. float values: arr.ones((3,4))
+create ones 3d array of 1. float values : arr.ones((3,4,3)) 
+create ones 2d array of 1 int values: arr.ones((3,4),dtype = int) 
+create zeros 2d array of 0. float values: arr.zeros((3,4))
+create zeros 2d array of 0 int values: arr.zeros((3,4),dtype = int)
+create zeros 2d array of false int values: arr.zeros((3,4),dtype = bool)
+create zeros 2d array of empty string values: arr.zeros((3,4),dtype = str)
+create empty matrix: arr.empty((3,3))
+create array with 1 to 13 numbers: arr.arange(1,13)
+create array with even numbers between 1 to 13 number: arr.arange(1,13,2)
+create array with 4 values with range 1 to 5: arr.linspace(1,5,4)
+create array with other dimensions: arr.reshape(2,6)
+create array with other dimensions: arr.reshape(2,6,3)
+create array with range and reshape to a matrix array having different dimensions: arr.arange(1,13).reshape(2,6)
+convert 2d array to 1d: arr.ravel() or arr.flatten()
+transpose array: arr.transpose() or arr.T
+add 2 matrix array: arr1 + arr2 or arr.add(arr1,arr2)
+subtract 2 matrix array : arr1 - arr2 or arr.subtract(arr1,arr2)
+divide 2 matrix array : arr1 / arr2 or arr.divide(arr1,arr2)
+multiply 2 matrix array : arr1 * arr2 or arr.multiply(arr1,arr2)
+multiply like matrix: arr1 @ arr2 or arr1.dot(arr2)
+max value in an array: arr1.max()
+arg value of max number: arr1.argmax()
+find max value in column: arr1.max(axis=0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
