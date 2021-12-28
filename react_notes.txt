@@ -42,5 +42,7 @@ https://cdnjs.cloudflare.com/ajax/libs/reactstrap/4.8.0/reactstrap.min.js
 //href='#' should be converted to href='/'
 //template literal ${props.variable}
 //javascript object {{color: prop.variable}}
+
+//constructor runs first then render(){} then componentDidMount(){}
 ===========================================================
-start from 22th video https://www.youtube.com/playlist?list=PLu0W_9lII9agx66oZnT6IyhcMIbUMNMdt
+start from 31th video https://www.youtube.com/watch?v=y9ns0Cpp2do&list=PLu0W_9lII9agx66oZnT6IyhcMIbUMNMdt&index=31

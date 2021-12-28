@@ -1,29 +1,12 @@
-      			  javascript notes from 
---------------------------------------------
-
-//to remove spaces inside a string
-var new_string = "e,  d, d, d".replace(/\s+/g, '');  => e,d,d,d
-
-//convert date and time to string format
-var timestamp = new Date();
-console.log(new Date());  =>returns object
-timestamp.toString();     =>convert object to string
-timestamp.toTimeString(); =>return only time string
-timestamp.toDateString(); =>return only date string
-timestamp.toUTCString();  =>return only UTC string
-timestamp.toISOString();  =>return only ISO string
-timestamp.toGMTString();  =>return only GMT string
-timestamp.toLocaleDateString(); =>return only date string
-
 ==============================================================
                     W3SCHOOLS.COM NOTES
 ==============================================================
 //change the inner html string using id selector
+//double or single quotes accepted
 document.getElementById("id_name").innerHTML = "type_string_here";
 
 //can be declared like this
-document.getElementById("demo").innerHTML =
-"Hello Dolly!";
+document.getElementById("demo").innerHTML = "Hello Dolly!";
 
 //calculate and print
 document.getElementById("demo").innerHTML = 5 + 6;
@@ -31,16 +14,16 @@ document.getElementById("demo").innerHTML = 5 + 6;
 //print at browser window
 document.write("type_string_here");
 
-//calculate and print
+//print sum but remove all previous content in webpage
 document.write(5 + 6);
+<button type="button" onclick="document.write(5 + 6)">Try it</button>
 
 //to show alert message
-alert(5 + 6);
-
-//to show alert message
-window.alert("helloworld");
+//window object is the global scope object, that means that variables, properties, and methods by default belong to the window object
+alert(5 + 6); or window.alert("test");
 
 //to print at console
+//use it for debugging purpose
 console.log("helloworld");
 
 //change src attribute using id selector
@@ -56,7 +39,13 @@ document.getElementById("demo").style.display = "none";
 document.getElementById("demo").style.display = "block";
 
 //include script from same folder
+//Placing scripts at the bottom of the <body> element improves the display speed, because script interpretation slows down the display.
 <script src="myScript.js"><script>
+
+//external files javascript content defined in this way
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Paragraph changed.";
+}
 
 //include script from other server
 <script src="https://www.w3schools.com/js/myScript1.js"><script>
@@ -72,21 +61,37 @@ function myFunction() {
 }
 <script>
 
-//click button , calculate and then print
+//js support different lines
+document.getElementById("demo").innerHTML =
+"Hello Dolly!";
+
+//click button, calculate and then print
 <button type="button" onclick="document.write(5 + 6)"><button>
 
-//click button and print on screen
+//print the screen on button click
 <button onclick="window.print()"><button>
-
 
 //declare variables
 var x, y, z;    
 x = 5;        
 y = 6;          
 z = x + y;  
-var person = "Hege";
-var person='Hege';
+
+var person = "Hege";    
+
+var person='Hege';    //js ignore spaces
+
 var x = y + z;
+
+var a = 5; b = 6; c = a + b;    //same line
+
+let x = y + z;
+
+let x;
+x = 1;
+
+let x,y;
+x=1;y=2;
 
 //looks same but different variables as of upper case letter
 var lastname, lastName;
@@ -96,10 +101,30 @@ lastname = "Peterson";
 
 //general rules for creating variables:
 .Names can contain letters, digits, underscores, and dollar signs
-.Names must begin with a letter
-.Names can also begin with $ and _
+.Names must begin with a letter -->first
+.Names can also begin with $ and _ -->$first or _first
 .Names are case sensitive
-.keywords cannot be used as variable names
+.Keywords cannot be used as variable names
+.Hyphens are not allowed  --> first-number(not allowed)
+.Underscores are allowed  --> first_number 
+.Upper Camel Case allowed --> FirstNumber
+.Lower Camel Case Allowed --> firstNumber
+
+//rules for js keywords
+.JavaScript does not interpret LET or Let as the keyword let.
+
+//unicode
+JavaScript uses the Unicode character set.
+Unicode covers (almost) all the characters, punctuations, and symbols in the world.
+
+//comments 
+. use // 
+. use /* .... */ 
+. used to prevent code execution
+
+//when to use var,let,const
+.use const when variable cant change its value through out execution
+.
 
 //declare many variables on the same line and ending with semicolon
 var person = "John Doe", carName = "Volvo", price = 200;
@@ -123,12 +148,10 @@ var $$$ = "Hello World";
 var $ = 2;
 var $myvar=10;
 
-
 //underscore can be used as an identifier
 var _lastName = "Johnson";
 var _x = 2;
 var _100 = 5;
-
 
 //var variables cannot restrict access outside the block
 var x = 10;
@@ -139,13 +162,11 @@ var x = 10;
 }
 // Here x is 2
 
-
 var i = 5;
 for (var i = 0; i < 10; i++) {
 // some statements
 }
 // Here i is 10
-
 
 //let helps restrict access outside the block
 var x = 10;
@@ -156,7 +177,6 @@ var x = 10;
 }
 // Here x is 10
 
-
 //both let and var has global scope
 let i = 5;
 var y=5;
@@ -165,18 +185,15 @@ for (let i = 0; i < 10; i++){
 }
 // Here i and y are 5
 
-
 //both var or let declared inside function have only function scope
 function myFunction() {
   var carName = "Volvo";   // Function Scope
   let carName = "Volvo";   // Function Scope
 }
 
-
 //var variables can be accessed with windows object but with let we cannot do the same
 var carName = "Volvo";
 window.carName;
-
 
 //redeclaring a var variable using let is not allowed
 var x = 2;       // Allowed

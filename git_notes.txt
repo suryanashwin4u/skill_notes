@@ -249,7 +249,7 @@ git branch branch_name
 git branch
 =>to know list of branches
 
-git branch -d<branch name>  
+git branch -d <branch name>  
 ->In this command, Git prevents you from deleting the branch if it has unmerged changes.
 
 git push origin -delete <branch name>  
