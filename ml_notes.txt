@@ -184,17 +184,17 @@ comma separated -> .csv
 
 -------------------------------------
 
-install numpy package : pip install numpy 
-to import into project : import numpy as np
-create numpy array : np.array([1,2,3,4,5])
-create numpy 2d array : np.array([1,2,3,4,5],[1,2,3])
-create numpy 3d array : np.array([1,2,3,4,5],[1,2,3],[2,3,4])
-create numpy Nd array : np.array([1,2,3,4,5],[1,2,3],[2,3,4].......[],[],[])
-check type : type(variable)
-check dimension : arr.ndim
-check size : arr.size
-check shape : arr.shape
-check datatype : arr.dtype
+install numpy package   : pip install numpy 
+to import into project  : import numpy as np
+create numpy array      : data = np.array([1,2,3,4,5])
+create numpy 2d array   : data = np.array([1,2,3,4,5],[1,2,3])
+create numpy 3d array   : data = np.array([1,2,3,4,5],[1,2,3],[2,3,4])
+create numpy Nd array   : data = np.array([1,2,3,4,5],[1,2,3],[2,3,4].......[],[],[])
+check type              : type(data)
+check dimension         : arr.ndim
+check size              : arr.size
+check shape             : arr.shape
+check datatype          : arr.dtype
 create ones 1d array of 1. float values: arr.ones(5)
 create ones 2d array of 1. float values: arr.ones((3,4))
 create ones 3d array of 1. float values : arr.ones((3,4,3)) 
@@ -253,7 +253,7 @@ find max value in column: arr1.max(axis=0)
 execute current cell and create a new one down below
 =>shift + enter
 execute only current cell
-=>control + enter
+=>ctrl + enter
 press A to create a new cell
 
 -------------------------------------
