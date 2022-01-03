@@ -1,10 +1,21 @@
                    sass	notes
 --------------------------------------------------
 Sass files has the ".scss" file extension.
+Sass stands for Syntactically Awesome Stylesheet
+Sass is a CSS pre-processor
+Sass reduces repetition of CSS and therefore saves time
+Sass lets you use features that do not exist in CSS, like variables, nested rules, mixins, imports, inheritance, built-in functions, and other stuff.
+Sass pre-processor to convert Sass code into standard CSS.
+Transpiling is a term for taking a source code written in one language and transform/translate it into another language.
+Sass supports standard CSS comments /* comment */, and in addition it supports inline comments // comment
+Sass is based on Ruby
+Sass is platform independent
+Install Sass :https://sass-lang.com/install
+Sass variables are only available at the level of nesting where they are defined.
+It could be wise to define all global variables in its own file, named "_globals.scss", and include the file with the @include keyword.
 --------------------------------------------------
+
 //declaring values outside
-
-
 $primary_1: #a2b9bc;
 
 .main-header {
@@ -14,16 +25,19 @@ $primary_1: #a2b9bc;
 --------------------------------------------------
 //declaring inner values for inside things
 
-
+$myFont: Helvetica, sans-serif;
 $myColor: red;
+$myFontSize: 18px;
+$myWidth: 680px;
 
-h1 {
-  $myColor: green;
+body {
+  font-family: $myFont;
+  font-size: $myFontSize;
   color: $myColor;
 }
 
-p {
-  color: $myColor;
+#container {
+  width: $myWidth;
 }
 
 --------------------------------------------------
@@ -32,7 +46,7 @@ p {
 $myColor: red;
 
 h1 {
-  $myColor: green !global;
+  $myColor: green !global; //it becomes global now
   color: $myColor;
 }
 
@@ -41,4 +55,48 @@ p {
 }
 
 -------------------------------------------------
-//
+//nested css with html tags
+
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    display: inline-block;
+  }
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+
+-------------------------------------------------
+//nested with css properties
+
+font: {
+  family: Helvetica, sans-serif;
+  size: 18px;
+  weight: bold;
+}
+
+text: {
+  align: center;
+  transform: lowercase;
+  overflow: hidden;
+}
+
+-------------------------------------------------
+//importing external scss file
+
+@import "reset";  //no need to write extension
+
+body {
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+  color: red;
+}
+
+

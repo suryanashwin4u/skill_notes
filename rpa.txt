@@ -1,0 +1,5 @@
+uipath is a rpa tool used to automate tasks, it has drag and drop functionality.
+3 components:uipath studio,uipath robot,uipath orchestrator
+uipath studio is a tool to design automation process in a visual manner, thru diagrams using drap and drop functionality
+
+
