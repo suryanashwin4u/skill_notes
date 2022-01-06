@@ -574,3 +574,6 @@ git stash branch <Branch Name>
 
 git stash --include-untracked
 ->it include untracked files and finally stash it
+
+git stash -u
+->stash new files too and old files changes
