@@ -379,6 +379,81 @@ to count frequency of a character in a string: np.char.count(str1,"a")
 
 to find a character or word position in a string: np.char.find(str1,"ai")
 
+-------------------------------------
+        pandas package functions:
+-------------------------------------
+pandas provide functions to work on dataframes object for data manipulations
+
+numpy array used to implement of pandas data objects
+
+install pandas: pip install pandas
+
+use pandas: import pandas as pd
+
+to know version: pd.__version__
+
+to make series: pd.Series([1,2,34,54])
+
+to make Series with first column as alphabets: pd.Series([1,2,34,54], index = ['a','b','c','d'])
+
+to make Series with first column as alphabets and rest columns as floats: pd.Series([1,2,34,54], index = ['a','b','c','d'], dtype = float)
+
+to make Series with first column as alphabets and rest columns as floats and a name to Series: pd.Series([1,2,34,54], index = ['a','b','c','d'], dtype = float, name = 'data values')
+
+to make Series containing 0.5 as 2nd column: pd.Series(0.5)
+
+to make Series containing a,b as 1st column and 1,2 as 2nd column: pd.Series({'a':1,'b':2})
+
+to make Series containing 2nd column: series = pd.Series([1,2,3,4,5]) 
+
+access series elements: series[0] or series[1:5]
+
+return max number: max(series)
+
+return min number: min(series)
+
+return greater numbers than this in a series: series[series > 3]
+
+add 2 pandas series: series1 + series2
+============================================
+pandas dataframe is 2d, size-mutable,potentially heterogeneous tabular data structure with labeled axes(rows & cols)
+
+make empty dataframe: pd.DataFrame()
+
+make dataframe using list: pd.DataFrame(['a','b','c','d'])
+
+make dataframe using many list of list: pd.DataFrame([[1,2,4],[2,3,4],[4,5,6]])
+
+make dataframe using dictionary : pd.DataFrame({'id':[11,22,33,44]})
+
+make dataframe using dictionary : pd.DataFrame({'id':[11,22,33,44],'sn':[1,2,3,4]})
+
+make dataframe using list of dictionary : pd.DataFrame([{'id':11,'sn':22},{'sn':22,'ee':33,'kd':34}])
+
+make dataframes from series: pd.DataFrame({'id':pd.Series([1,2,3]),'sn':pd.Series([111,222,333])})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
