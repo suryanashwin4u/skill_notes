@@ -183,43 +183,214 @@ tab separated -> .tsv
 comma separated -> .csv
 
 -------------------------------------
+    numpy package functions:
+-------------------------------------
+install numpy package                                                           :       pip install numpy 
 
-install numpy package   : pip install numpy 
-to import into project  : import numpy as np
-create numpy array      : data = np.array([1,2,3,4,5])
-create numpy 2d array   : data = np.array([1,2,3,4,5],[1,2,3])
-create numpy 3d array   : data = np.array([1,2,3,4,5],[1,2,3],[2,3,4])
-create numpy Nd array   : data = np.array([1,2,3,4,5],[1,2,3],[2,3,4].......[],[],[])
-check type              : type(data)
-check dimension         : arr.ndim
-check size              : arr.size
-check shape             : arr.shape
-check datatype          : arr.dtype
-create ones 1d array of 1. float values: arr.ones(5)
-create ones 2d array of 1. float values: arr.ones((3,4))
-create ones 3d array of 1. float values : arr.ones((3,4,3)) 
-create ones 2d array of 1 int values: arr.ones((3,4),dtype = int) 
-create zeros 2d array of 0. float values: arr.zeros((3,4))
-create zeros 2d array of 0 int values: arr.zeros((3,4),dtype = int)
-create zeros 2d array of false int values: arr.zeros((3,4),dtype = bool)
-create zeros 2d array of empty string values: arr.zeros((3,4),dtype = str)
-create empty matrix: arr.empty((3,3))
-create array with 1 to 13 numbers: arr.arange(1,13)
-create array with even numbers between 1 to 13 number: arr.arange(1,13,2)
-create array with 4 values with range 1 to 5: arr.linspace(1,5,4)
-create array with other dimensions: arr.reshape(2,6)
-create array with other dimensions: arr.reshape(2,6,3)
-create array with range and reshape to a matrix array having different dimensions: arr.arange(1,13).reshape(2,6)
-convert 2d array to 1d: arr.ravel() or arr.flatten()
-transpose array: arr.transpose() or arr.T
-add 2 matrix array: arr1 + arr2 or arr.add(arr1,arr2)
-subtract 2 matrix array : arr1 - arr2 or arr.subtract(arr1,arr2)
-divide 2 matrix array : arr1 / arr2 or arr.divide(arr1,arr2)
-multiply 2 matrix array : arr1 * arr2 or arr.multiply(arr1,arr2)
-multiply like matrix: arr1 @ arr2 or arr1.dot(arr2)
-max value in an array: arr1.max()
-arg value of max number: arr1.argmax()
-find max value in column: arr1.max(axis=0)
+to import numpy into project                                                    :       import numpy as np
+
+create numpy array                                                              :       data = np.array([1,2,3,4,5])
+
+create numpy 2d array                                                           :       data = np.array([1,2,3,4,5],[1,2,3])
+
+create numpy 3d array                                                           :       data = np.array([1,2,3,4,5],[1,2,3],[2,3,4])
+
+create numpy Nd array                                                           :       data = np.array([1,2,3,4,5],[1,2,3],[2,3,4].......[],[],[])
+
+check type                                                                      :       type(data)
+
+check dimension                                                                 :       arr.ndim
+
+check size                                                                      :       arr.size
+
+check shape                                                                     :       arr.shape
+
+check datatype                                                                  :       arr.dtype
+
+create ones 1d array of 1. float .values                                        :        arr.ones(5)
+
+create ones 2d array of 1. float .values                                        :        arr.ones((3,4))
+
+create ones 3d array of 1. float values                                         :       arr.ones((3,4,3)) 
+
+create ones 2d array of 1 int .values                                           :       arr.ones((3,4),dtype = int) 
+
+create zeros 2d array of 0. float .values                                       :       arr.zeros((3,4))
+
+create zeros 2d array of 0 int .values                                          :      arr.zeros((3,4),dtype = int)
+
+create zeros 2d array of false int .values                                      :      arr.zeros((3,4),dtype = bool)
+
+create zeros 2d array of empty string .values                                   :       arr.zeros((3,4),dtype = str)
+
+create empty matrix                                                             :        arr.empty((3,3))
+
+create array with 1 to 13 numbers                                               :      arr.arange(1,13)
+
+create array with even numbers between 1 to 13 number                           :      arr.arange(1,13,2)
+
+create array with 4 values with range 1 to 5                                    :       arr.linspace(1,5,4)
+
+create array with other dimensions:         arr.reshape(2,6)
+
+create array with other dimensions:         arr.reshape(2,6,3)
+
+create array with range and reshape to a matrix array having different dimensions:      arr.arange(1,13).reshape(2,6)
+
+convert 2d array to 1d:         arr.ravel()         or      arr.flatten()
+
+transpose array:        arr.transpose()         or      arr.T
+
+add 2 matrix array:         arr1 + arr2         or      arr.add(arr1,arr2)
+
+subtract 2 matrix array :       arr1 - arr2         or      arr.subtract(arr1,arr2)
+
+divide 2 matrix array :         arr1 / arr2         or      arr.divide(arr1,arr2)
+
+multiply 2 matrix array :       arr1 * arr2         or      arr.multiply(arr1,arr2)
+
+multiply 2 matrix in a maths like way:      arr1 @ arr2         or      arr1.dot(arr2)
+
+max value in an array:      arr1.max()
+
+index number of max value in array:         arr1.argmax()
+
+find max values in each column of an array matrix as axis = 0 represents column :       arr1.max(axis=0) 
+
+find max values in each row of an array matrix as axis = 1 represents row :         arr1.max(axis=1) 
+
+min value in an array:      arr1.min()
+
+index number of min value in array:         arr1.argmin()
+
+find min values in each column of an array matrix as axis = 0 represents column :       arr1.min(axis=0) 
+
+find min values in each row of an array matrix as axis = 1 represents row :         arr1.min(axis=1) 
+
+find sum of all elements of in matrix array:                    np.sum(arr1)
+
+find sum of all elements of each column in a matrix array:      np.sum(arr1,axis = 0)
+
+find sum of all elements of each row in a matrix array:         np.sum(arr1,axis = 1)
+
+find mean of an array matrix elements:                          np.mean(arr1)
+
+find square root of array matrix elements:                      np.sqrt(arr1)
+
+find standard deviation of array matrix elements:               np.std(arr1)
+
+find exponent of each element in an array of matrix:            np.exp(arr1)
+
+find natural log of each element in an array of matrix:         np.log(arr1)
+
+find log10 of each element in an array of matrix:               np.log10(arr1)
+
+to print element of a matrix array:     arr[0,0]
+
+to know dimension of a value:           arr[0,0].ndim
+
+to print all the elements in first row:           arr[0]
+
+to print all rows of first column:           arr[:,0]
+
+to print all rows of first column:           arr[:,0:1]
+
+to print dimensions of rows of first column:           arr[:,0:1].ndim
+
+to print a sub matrix from a big matrix:               arr[1:10,1:10]
+
+to print a sub matrix from a big matrix:               arr[:,1:10]
+
+to print a sub matrix from a big matrix:               arr[:] or arr[::] or arr[:,:]
+
+return memory space occupied by array elements:        arr.itemsize
+
+list concatenation: list1 + list2
+
+array did not concatenate but adds elements with same index and returns another array :         arr1 + arr2
+
+to concatenate array vertically (bydefault axis=0) :              np.concatenate(arr1,arr2)
+
+to horizontal concatenate array horizontally :       np.concatenate((arr1,arr2),axis=1)
+
+vertical concatenate arrays without using axis: np.vstack((arr1,arr2))
+
+horizontal concatenate arrays without using axis: np.hstack((arr1,arr2,arr3.....))
+
+split array into 2 parts and return list: np.split(arr1,2)
+
+split array into 2 parts , rowwise and return list: np.split(arr1,2,axis=1)
+
+split array as per given 2nd argument(return array with 1 element,2 element,rest elements): np.split(arr1,[1,2])
+
+return trignometric sin values: np.sin(180)
+
+return trignometric cos values: np.cos(180)
+
+return trignometric tan values: np.tan(180)
+
+return array of elements containing a range from 0 to given 2nd arg with 0.1 difference: np.sin(arange(0, np.pi * 3, 0.1))
+
+importing matplotlib to work on graphs:  import matplotlib.pyplot as plt
+
+plot sin wave and show:   ptl.plot(arr1_sin,arr2_sin) and plt.show()
+
+angle into radian : np.sin(180 * np.pi/180) 
+
+to work on random class functions: import random
+
+to return any random value between 0 to 1: np.random.random(1)
+
+to return a matrix of random values in the range 0 to 1: np.random.random(3,3)
+
+to return a random number in the given range : np.random.randint(1,5)
+
+to return random numbers for given size of 2d or 3d matrix : np.random.randint(1,5,(3,3)) or np.random.randint(1,5,(3,3,3))
+
+to return same random numbers each time: np.random.seed(10) & np.random.randint(1,5,(4,4,4))
+
+to return array of 3 random values between 0 to 1: np.random.rand(3)
+
+to return array of 3,3 matrix random values between 0 to 1: np.random.rand(3,3)
+
+to return array of 3,3 matrix random values between -1 to 1: np.random.randn(3,3)
+
+to return random number if choice of numbers are given: np.random.choice([1,4,5,6,7])
+
+to return permutation of list elements: np.random.permutation([1,4,5,3])
+
+to return an array of concatenated string : np.char.add(str1,str2)
+
+to return an array of lowercase or uppercase string : np.char.lower(str1) or np.char.upper(str2)
+
+to return array of string containing both side space: np.char.center(str1,50)
+
+to return array of string containing both side filling characters: np.char.center(str1,50,fillchar = "*")
+
+to return array of string words separated by space or lines: np.char.split(str1) or np.char.splitlines("hello\nworld")
+
+to return array of containing formated characters dmy to d:m:y or dmy to d/m/y: np.char.join([":","/"],[dmy,dmy]) 
+
+to replace words in a string : np.char.replace(str1,"ai","art. intelligence")
+
+to check if both string are equal: np.char.equal(str1,str2)
+
+to count frequency of a character in a string: np.char.count(str1,"a")
+
+to find a character or word position in a string: np.char.find(str1,"ai")
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
