@@ -394,6 +394,8 @@ to know version: pd.__version__
 
 to make series: pd.Series([1,2,34,54])
 
+to make series: pd.Series([1,np.nan,34,np.NAN])
+
 to make Series with first column as alphabets: pd.Series([1,2,34,54], index = ['a','b','c','d'])
 
 to make Series with first column as alphabets and rest columns as floats: pd.Series([1,2,34,54], index = ['a','b','c','d'], dtype = float)
@@ -431,6 +433,83 @@ make dataframe using dictionary : pd.DataFrame({'id':[11,22,33,44],'sn':[1,2,3,4
 make dataframe using list of dictionary : pd.DataFrame([{'id':11,'sn':22},{'sn':22,'ee':33,'kd':34}])
 
 make dataframes from series: pd.DataFrame({'id':pd.Series([1,2,3]),'sn':pd.Series([111,222,333])})
+
+
+
+read csv file and return dataframe: pd.read_csv('file_path')
+
+to import os library: import os
+
+to get current working directory: os.getcwd()
+
+to change first row as header in a dataframe which is imported from a csv file: pd.read_csv('file_path',header = 1)
+
+when no header needed then: pd.read_csv('file_path',header = None)
+
+when no header available in csv file but custom header name is needed: pd.read_csv('file_path', header = None , prefix = 'columns')
+
+give separate names to each column in a dataframe: df = pd.read_csv('file_path', names = ['A','B','C','D'])
+
+bydefault returns first 5 rows of a dataframe: df.head()
+
+returns only 1 row: df.head(1)
+
+return last 5 rows of a dataframe: df.tail()
+
+return last 2 rows of a dataframe: df.tail(2)
+
+change column elements data types: pd.read_csv('file_path', dtype = {'col1':'float64','col2':'float64'})
+
+change column values into true or false values: pd.read_csv('file_path', true_values = ['col_element_value'], false_values = ['col_element_value'])
+
+to show not available, no values values as NaN : pd.read_csv('file_path', na_values = ['not available','no values'])
+
+to show not available, no values values as NaN : pd.read_csv('file_path', na_values = ['not available','no values'])
+
+to show not available, no values as per column wise as NaN : pd.read_csv('file_path', na_value = {'col1':'no values','col2':'not available'})
+
+keep default value as NaN in a dataframe if unknown data is found : pd.read_csv('file_path', keep_default_na = True)
+
+it does not show any null or nan values: pd.read_csv('file_path', na_filter = False)
+
+return true if null values found in the dataframe else false: df.isnull() or df.notnull()
+
+return number of null values if found in column view: df.isnull().sum() or df.notnull().sum()
+
+return sum of all null values found in a dataframe: df.isnull().sum().sum() or df.notnull().sum().sum()
+
+fill 0 in place of NaN in a dataframe: df.fillna(0)
+
+fill values column wise in place of NaN in a dataframe: df.fillna({'col1':'none','col2':0,'col3':0})
+
+to fill previous column values in place of NaN in a dataframe(aka forward fill): df.fillna(method = 'ffill') or df.fillna(method = 'pad')
+
+to fill next column values in place of NaN in a dataframe(aka backward fill): df.fillna(method = 'bfill') or df.fillna(method = 'pad')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
