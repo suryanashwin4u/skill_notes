@@ -717,7 +717,6 @@ x.valueOf();            // returns 123 from variable x
 (123).valueOf();        // returns 123 from literal 123
 (100 + 23).valueOf();   // returns 123 from expression 100 + 23
 
-
 Number(true);          // returns 1
 Number(false);         // returns 0
 Number("10");          // returns 10
@@ -729,9 +728,7 @@ Number("10,33");       // returns NaN
 Number("10 33");       // returns NaN
 Number("John");        // returns NaN
 
-
 Number(new Date("2017-09-30"));    // returns 1506729600000
-
 
 parseInt("10");         // returns 10
 parseInt("10.33");      // returns 10
@@ -757,6 +754,33 @@ var x = 100 / "Apple";  // x will be NaN (Not a Number)
 
 var x = 6;
 var y = x.MAX_VALUE;    // y becomes undefined
+
+------------------------------------------------------------------
+//IMPROVE JS PERFORMANCE
+
+//Reduce Activity in Loops
+let l = arr.length;           
+for (let i = 0; i < l; i++) {
+}
+
+//Reduce DOM Access
+const obj = document.getElementById("demo");
+obj.innerHTML = "Hello";
+
+//Reduce DOM Size
+Keep the number of elements in the HTML DOM small.
+This will always improve page loading, and speed up rendering (page display), especially on smaller devices.
+
+//Avoid Unnecessary Variables
+document.getElementById("demo").innerHTML = firstName + " " + lastName;
+
+//Delay JavaScript Loading
+An alternative is to use defer="true" in the script tag. The defer attribute specifies that the script should be executed after the page has finished parsing, but it only works for external scripts.
+
+//Avoid Using with keyword
+It has a negative effect on speed. It also clutters up JavaScript scopes.
+The with keyword is not allowed in strict mode.
+
 
 
 

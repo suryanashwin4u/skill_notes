@@ -3,9 +3,8 @@ axios.post(route_name or url, {
 	key:value, or key,           //json key value
 }).then((response) => {
   
-  }).catch((error) => {
+}).catch((error) => {
 
-  }).finally(() => {
+}).finally(() => {
 
-  });
-}
+});
