@@ -35,3 +35,24 @@ style: a property used for styling the components using StyleSheet.
 styles: used to design individual components.
 {styles.instructions}>{instructions}:
 const styles = StyleSheet.create({}): The StyleSheet class creates the style object that controls the layout and appearance of components. It is similar to Cascading Style Sheets (CSS) used on the Web.
+
+
+
+====================================================================================
+RUN APP THROUGH EXPO IN PHONE
+
+Install expo in pc
+==>npm install -g expo-cli
+
+In powershell execute it before creating expo app in desktop
+==>Set-ExecutionPolicy RemoteSigned
+
+Create app folder
+==>expo init AwesomeProject
+
+run app
+==>yarn start
+
+scan qr code on mobile
+====================================================================================
+
