@@ -1,5 +1,57 @@
-uipath is a rpa tool used to automate tasks, it has drag and drop functionality.
-3 components:uipath studio,uipath robot,uipath orchestrator
-uipath studio is a tool to design automation process in a visual manner, thru diagrams using drap and drop functionality
+uipath is a rpa tool used to guide digital robots to automate those tasks of web,windows application and citrix etc which are repetitive in nature, 
+it has drag and drop functionality of activites.
+
+it has community edition for free for learning purpose.
+
+rpa: robotic process automation
+
+uipath comes with 3 main components: 
+1.uipath studio, 2.uipath robot, 3.uipath orchestrator.
+
+uipath studio is a tool to design automation process in a visual manner, 
+thru diagrams using drap and drop functionality.
+
+uipath robot: robot executes the processes built in studio and scheduled in orchestrator.
+
+uipath orchestrator: web app to deploy,schedule,monitor and manage robots and processes
+It is a centralized robot management dashboard where we can easily deploy, secure and manage uipath robots.
+
+it can manage environments, create and manage robot, robot performance monitoring, deploying and monitoring processes, assets management, managing package, managing logs, managing and stopping process, schedule jobs.
+
+create a new sequence using ctrl + N then define properties and start designing
+
+-----------------------------------------------
+we can choose activities from the left section and drag-drop into our sequence for designing work flow
+
+1.MESSAGE BOX: to show outputs messages.
+2.INPUT DIALOG: to take values.
+3.ASSIGN: to give variable a value internally.
+ var_name.ToString()
+ var_name.Substring(starting_index,ending_index)
+ var_name.ToShortTimeString()
+
+ to assign a current date to a variable: Now()
+ to assign a current date and time string to a variable: Now().ToString()   
+ to assign a current time to a variable: Now().ToShortTimeString()
+ to assign a boolean values: True or False
+4.WRITE LINE: to print output at console down below in uipath studio 
+
+we can create a flowchart in uipath studio before designing process
+
+GenericValue: it checks for first variable datatype then convert next variable into the same one to compute the results.
+
+===================================================
+completed 10 videos
+
+
+
+
+
+
+
+
+
+
+
 
 

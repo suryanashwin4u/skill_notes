@@ -573,6 +573,8 @@ to fill next column values in place of NaN in a dataframe(aka backward fill): df
 
 
 
+
+
 -------------------------------------
 
 execute current cell and create a new one down below
