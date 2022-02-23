@@ -55,4 +55,20 @@ run app
 
 scan qr code on mobile
 ====================================================================================
+RUN APP THROUGH ANDROID STUIDO
 
+globally install react native
+==>npm install -g create-react-native-app
+
+create app with name
+==>create-react-native-app MyReactNative
+
+install react native cli
+==>npm install -g react-native-cli
+
+==>npm run eject
+
+start react native project
+==>npm start
+
+====================================================================================
