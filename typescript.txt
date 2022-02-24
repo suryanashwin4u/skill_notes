@@ -45,3 +45,356 @@ FEATURES OF TYPESCRIPT
 
 The code written in TypeScript is compiled and converted into its JavaScript equivalent for the execution. This process is known as Trans-piled.
 
+
+                JavaScript	                                                                            TypeScript
+1.	It doesn't support strongly typed or static typing.	                                It supports strongly typed or static typing feature.
+3.	JavaScript source file is in ".js" extension.	                                    TypeScript source file is in ".ts" extension.
+4.	It is directly run on the browser.	                                                It is not directly run on the browser.
+5.	It is just a scripting language.	                                                It supports object-oriented programming concept like classes, interfaces, inheritance, generics, etc.
+6.	It doesn't support optional parameters.	                                            It supports optional parameters.
+7.	It is interpreted language that's why it highlighted the errors at runtime.	        It compiles the code and highlighted errors during the development time.
+8.	JavaScript doesn't support modules.	                                                TypeScript gives support for modules.
+9.	In this, number, string are the objects.	                                        In this, number, string are the interface.
+10.	JavaScript doesn't support generics.	                                            TypeScript supports generics.
+
+Example:
+<script>
+function addNumbers(a, b) {  
+    return a + b;  
+}  
+var sum = addNumbers(15, 25);  
+document.write('Sum of the numbers is: ' + sum); 
+</script>
+
+
+Example:
+function addNumbers(a, b) {  
+    return a + b;  
+}  
+var sum = addNumbers(15, 25);  
+console.log('Sum of the numbers is: ' + sum);
+
+-----------------------------------------------------------------------------------
+TypeScript compiler (TSC) transform the TypeScript program equivalent to its JavaScript code. It also performs the parsing, and type checking of our TypeScript code to JavaScript code.
+
+We can install the TypeScript compiler by locally, globally, or both with any npm package. Once installation completes, we can compile the TypeScript file by running "tsc" command on the command line.
+
+tsc helloworld.ts
+
+TypeScript compiler configuration is given in tsconfig.json file
+
+npm install typescript -g                      //Install as a global module  
+
+tsc -v // version of typescript
+
+--------------------------------------------------------------------------------------
+DATA TYPES
+
+let first: number = 12.0;             // number   
+let second: number = 0x37CF;          // hexadecimal  
+let third: number = 0o377 ;           // octal  
+let fourth: number = 0b111001;        // binary   
+
+let empName: string = "Rohan";   
+let empDept: string = "IT";   
+let output2: string = `${empName} works in the ${empDept} department.`;
+
+let isDone: boolean = false;  
+
+1.  function helloUser(): void {  
+       alert("This is a welcome message");  
+    } 
+2.  let tempNum: void = undefined;  
+    tempNum = null;      
+    tempNum = 123;      //Error 
+
+let num: number = null;  
+let bool: boolean = null;   
+let str: string = null;  
+
+let num: number = undefined;  
+let bool: boolean = undefined;  
+let str: string = undefined;  
+
+It is the "super type" of all data type in TypeScript.
+1. let val: any = 'Hi';  
+      val = 555;   // OK  
+      val = true;   // OK
+
+2. function ProcessData(x: any, y: any) {  
+                       return x + y;  
+            }  
+            let result: any;  
+            result = ProcessData("Hello ", "Any!"); //Hello Any!  
+            result = ProcessData(2, 3); //5  
+
+var list : number[] = [1, 3, 5];  
+var list : Array<number> = [1, 3, 5];
+
+Tuple is a data type which includes two sets of values of different data types
+It allows us to express an array where the type of a fixed number of elements is known, but they are not the same.
+
+// Declare a tuple  
+let a: [string, number];  
+  
+// Initialize it  
+a = ["hi", 8, "how", 5]; // OK 
+
+It defines the syntax for classes to follow, means a class which implements an interface is bound to implement all its members. It cannot be instantiated but can be referenced by the class which implements it. The TypeScript compiler uses interface for type-checking that is also known as "duck typing" or "structural subtyping."
+interface Calc {  
+    subtract (first: number, second: number): any;  
+}  
+let Calculator: Calc = {  
+    subtract(first: number, second: number) {  
+        return first - second;  
+    }  
+}  
+
+It is different from the interface which has an implementation inside it, whereas an interface does not have any implementation inside it.
+class Student  
+{  
+    RollNo: number;  
+    Name: string;   
+    constructor(_RollNo: number, Name: string)   
+    {  
+        this.RollNo = _rollNo;  
+        this.Name = _name;  
+    }  
+    showDetails()  
+    {  
+        console.log(this.rollNo + " : " + this.name);  
+    }  
+}
+
+Enums define a set of named constant.
+enum Color {  
+        Red, Green, Blue  
+};  
+let c: Color;  
+ColorColor = Color.Green;
+
+//named function with number as parameters type and return type  
+function add(a: number, b: number): number {  
+            return a + b;  
+}  
+  
+//anonymous function with number as parameters type and return type  
+let sum = function (a: number, y: number): number {  
+            return a + b;  
+}; 
+
+-------------------------------------------------------------------------------------
+GENERIC TYPES:
+function identity<T>(arg: T): T {  
+    return arg;  
+}
+let output1 = identity<string>("myString");  
+let output2 = identity<number>( 100 );
+
+function f() {  
+    console.log("f(): evaluated");  
+    return function (target, propertyKey: string, descriptor: PropertyDescriptor) {  
+        console.log("f(): called");  
+    }  
+}  
+class C {  
+    @f()  
+    method() {}  
+}  
+
+
+            Null Vs Undefined
+1.	It is an assignment value. It can be assigned to a variable which indicates that a variable does not point any object.	
+    It is not an assignment value. It means a variable has been declared but has not yet been assigned a value.
+2.	It is an object.	
+    It is a type itself.
+3.	The null value is a primitive value which represents the null, empty, or non-existent reference.	
+    The undefined value is a primitive value, which is used when a variable has not been assigned a value.
+4.	Null indicates the absence of a value for a variable.	
+    Undefined indicates the absence of the variable itself.
+5.	Null is converted to zero (0) while performing primitive operations.	
+    Undefined is converted to NaN while performing primitive operations.
+
+//Variable declaration without assigning any value to it  
+var a;        
+console.log(a);  //undefined 
+
+//Variable declared and assigned to null  
+var a = null;   
+console.log( a );   //output: null  
+
+Declare its value without type. Then the variable will be set to any.
+var [identifier] = value; 
+
+Declare without value and type. Then the variable will be set to any and initialized with undefined.
+var [identifier];  
+
+        var	 VS  let
+1.	The var keyword was introduced with JavaScript.	
+    The let keyword was added in ES6 (ES 2015) version of JavaScript.
+
+2.	It has global scope.	
+    It is limited to block scope.
+
+3.	It can be declared globally and can be accessed globally.	
+    It can be declared globally but cannot be accessed globally.
+
+4.	Variable declared with var keyword can be re-declared and updated in the same scope.
+    Example:
+    function varGreeter(){
+    var a = 10;        
+    var a = 20; //a is replaced
+    console.log(a);
+    }
+    varGreeter();
+
+    Variable declared with let keyword can be updated but not re-declared.
+    Example:
+    function varGreeter(){
+    let a = 10;        
+    let a = 20; //SyntaxError: 
+    //Identifier 'a' has already been declared
+    console.log(a);
+    }
+    varGreeter();
+
+5.	It is hoisted.
+    Example:
+    {
+    console.log(c); // undefined. 
+    //Due to hoisting
+    var c = 2;
+    }
+
+    It is not hoisted.
+    Example:
+    {
+    console.log(b); // ReferenceError: 
+    //b is not defined
+    let b = 3;
+    }
+
+CONDITIONAL OPERATOR
+let result = (num > 0) ? "True":"False"  
+
+CONCATENATE
+let message = "Welcome to " + "JavaTpoint";
+
+TYPE OPERATORS
+1.in:
+let Bike = {make: 'Honda', model: 'CLIQ', year: 2018};
+console.log('make' in Bike);    //return true
+
+2.delete:
+let Bike = { Company1: 'Honda',
+             Company2: 'Hero',
+             Company3: 'Royal Enfield'
+           };
+delete Bike.Company1; //delete properties from object
+console.log(Bike);
+
+3.typeof:
+let message = "Welcome to " + "JavaTpoint";
+console.log(typeof message); //return datatype
+
+4.instanceof:
+let arr = [1, 2, 3];
+console.log( arr instanceof Array ); // true
+
+//object in typescript
+var student : {   
+    id: number;   
+    name: string;   
+}; 
+student = {   
+  id: 100,   
+  name : "John"  
+}  
+
+let arr = [ 10, 20, null, 40 ];  
+
+let empCode: any = 111;   
+let employeeCode = <number> code;
+
+let empCode: any = 111;   
+let employeeCode = code as number;   
+
+In TypeScript, we can use angular "bracket <>" to show Type Assertion.
+Example
+let empCode: any = 111;   
+let employeeCode = <number> empCode;   
+
+TypeScript provides another way to show Type Assertion by using "as" keyword.
+Example
+let empCode: any = 111;   
+let employeeCode = empCode as number;  
+
+interface Student {   
+    name: string;   
+    code: number;   
+}  
+let student = <Student> { };   
+student.name = "Rohit"; // Correct  
+student.code = 123; // Correct  
+
+let fruits: string[] = ['Apple', 'Orange', 'Banana'];  
+
+let fruits: Array<string> = ['Apple', 'Orange', 'Banana'];  
+
+let arr:number[];   
+arr = [1, 2, 3, 4]   
+console.log("Array[0]: " +arr[0]);   
+
+let arr_name:datatype[][] = [ [a1,a2,a3], [b1,b2,b3] ];  
+
+var mArray:number[][] = [[1,2,3],[5,6,7]] ;  
+console.log(mArray[0][0]);  
+
+let arr:string[] = new Array("JavaTpoint","2200","Java","Abhishek");  
+for(var i = 0;i<arr.length;i++) {   
+   console.log(arr[i]);  
+}
+
+//array by using the Array object.  
+let arr:string[] = new Array("JavaTpoint","2200","Java","Abhishek");  
+for(var i = 0;i<arr.length;i++) {   
+   console.log(arr[i]);  
+}  
+
+let i:any;   
+let arr:string[] = ["JavaTpoint", "2300", "Java", "Abhishek"];  
+for(i in arr) {   
+   console.log(arr[i])   
+}  
+
+let arr:string[] = new Array("JavaTpoint", "2300", "Java", "Abhishek");   
+//Passing arrays in function  
+function display(arr_values:string[]) {  
+   for(let i = 0;i<arr_values.length;i++) {   
+      console.log(arr[i]);  
+   }    
+}  
+//Calling arrays in function  
+display(arr);  
+
+spread operator is used to initialize arrays and objects from another array or object. We can also use it for object de-structuring
+let arr1 = [ 1, 2, 3];  
+let arr2 = [ 4, 5, 6];  
+//Create new array from existing array  
+let copyArray = [...arr1];     
+console.log("CopiedArray: " +copyArray);  
+//Create new array from existing array with more elements  
+let newArray = [...arr1, 7, 8];  
+console.log("NewArray: " +newArray);  
+//Create array by merging two arrays  
+let mergedArray = [...arr1, ...arr2];  
+console.log("MergedArray: " +mergedArray);  
+
+
+
+
+
+
+
+    
+
