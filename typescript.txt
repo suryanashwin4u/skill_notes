@@ -1,3 +1,6 @@
+                                                    TYPESCRIPT 
+==================================================================================================================
+
 TypeScript is an open-source, object-oriented programing language, which is developed and maintained by Microsoft under the Apache 2 license
 TypeScript is a strongly typed superset of JavaScript which compiles to plain JavaScript. It is a language for application-scale JavaScript development, which can be executed on any browser, any Host, and any Operating System.
 TypeScript is not directly run on the browser. It needs a compiler to compile and generate in JavaScript file. TypeScript is the ES6 version of JavaScript with some additional features.
