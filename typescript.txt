@@ -459,6 +459,24 @@ for(i = 0;i<arrType.length;i++){
 }
 
 
+let uname = new String("Hello JavaTpoint");  
+console.log("Message: " +uname);  
+console.log("Length: "+uname.length); 
+
+
+var studentName: String = 'Peter'; 
+var studentName: String = "Peter"; 
+
+
+let empName:string = "Rohit Sharma";   
+let compName:string = "JavaTpoint";   
+// Pre-ES6  
+let empDetail1: string = empName + " works in the " + compName + " company.";   
+// Post-ES6  
+let empDetail2: string = `${empName} works in the ${compName} company.`;   
+console.log("Before ES6: " +empDetail1);  
+console.log("After ES6: " +empDetail2);  
+
 
 
 
