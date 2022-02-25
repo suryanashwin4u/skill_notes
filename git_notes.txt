@@ -532,7 +532,8 @@ git fetch -all
 git mergetool
 =>Git merge tool command is used to resolve the conflict
 ============================================================
-
+                        GIT STASH
+============================================================
 git stash
 => just save whatever changes happened without commiting the changes in current files
 

@@ -394,6 +394,40 @@ let mergedArray = [...arr1, ...arr2];
 console.log("MergedArray: " +mergedArray);  
 
 
+let tuple_name = [val1,val2,val3, ...val n];  
+let arrTuple = [101, "JavaTpoint", 105, "Abhishek"];  
+
+let arrTuple = [];   
+arrTuple[0] = 101  
+arrTuple[1] = 105  
+
+let empTuple = ["Rohit Sharma", 25, "JavaTpoint"];  
+empTuple.push(10001);   // append value to the tuple
+empTuple.length
+empTuple[1] = 30;  
+
+let empTuple = ["Rohit Sharma", 25, "JavaTpoint"];  
+empTuple = [];  
+
+let empTuple = ["Rohit Sharma", 25, "JavaTpoint"];  
+let [emp, student,kk] = empTuple;
+
+
+
+let empTuple = ["JavaTpoint", 101, "Abhishek"];     
+//Passing tuples in function    
+function display(tuple_values:any[]) {    
+   for(let i = 0;i<empTuple.length;i++) {     
+      console.log(empTuple[i]);    
+   }      
+}    
+//Calling tuple in function    
+display(empTuple);  
+
+
+
+
+
 
 
 
