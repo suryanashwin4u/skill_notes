@@ -44,16 +44,38 @@ RUN APP THROUGH EXPO IN PHONE
 Install expo in pc
 ==>npm install -g expo-cli
 
+check expo version
+==>expo --version
+
 In powershell execute it before creating expo app in desktop
 ==>Set-ExecutionPolicy RemoteSigned
 
-Create app folder
+Create project folder
 ==>expo init AwesomeProject
 
 run app
 ==>yarn start
 
+to run project
+==>npm start / expo start
+
 scan qr code on mobile
+
+expo cli:
+press a to open react-native app on android
+press w to open react-native app on web
+press r to reload app
+press m to toggle menu
+
+press ctrl + m to start hot reloading
+
+to run app on web
+==>expo start --web
+
+install react js extension for web....then it will show code for mobile using it
+
+
+
 ====================================================================================
 RUN APP THROUGH ANDROID STUIDO
 
