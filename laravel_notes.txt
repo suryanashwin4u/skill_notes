@@ -1528,8 +1528,8 @@ return response()->json(['status' => 'success', 'msg' => 'Course cloned successf
 
 
 
-
-
+//to create import class for excel upload
+php artisan make:import UpdateCourseLinkImport
 
 
 
