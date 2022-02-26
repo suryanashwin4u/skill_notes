@@ -938,7 +938,25 @@ WHERE condition;
 
 DROP VIEW view_name;
 ******************************************
-//SQL INJECTION
-
+                SQL INJECTION
 ******************************************
+code injection technique that might destroy your database,common web hacking techniques,placement of malicious code in SQL statements, via web page input.
+
+Use SQL Parameters for Protection
+
+SQL parameters are values that are added to an SQL query at execution time, in a controlled manner.
+
+Note that parameters are represented in the SQL statement by a @ marker.
+
+The SQL engine checks each parameter to ensure that it is correct for its column and are treated literally, and not as part of the SQL to be executed.
+
+$stmt = $dbh->prepare("INSERT INTO Customers (CustomerName,Address,City)
+VALUES (:nam, :add, :cit)");
+$stmt->bindParam(':nam', $txtNam);
+$stmt->bindParam(':add', $txtAdd);
+$stmt->bindParam(':cit', $txtCit);
+$stmt->execute();
+
+
+
 
