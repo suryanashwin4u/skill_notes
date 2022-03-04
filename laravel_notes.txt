@@ -1525,9 +1525,6 @@ return  [CourseBroadField::whereIsActive(1)->where('id','!=',$request->id)->get(
 //return json
 return response()->json(['status' => 'success', 'msg' => 'Course cloned successfully']);
 
-
-
-
 //to create import class for excel upload
 php artisan make:import UpdateCourseLinkImport
 
