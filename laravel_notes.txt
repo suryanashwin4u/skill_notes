@@ -34,12 +34,10 @@ check version of composer installed in the systems
 to create a new laravel project:
 ==>composer create-project laravel/laravel project_name   (for latest laravel version)
 
-start laravel app at local server
+start laravel app at local host server localhost:8000
 ==>php artisan serve
 
-==>laravel development server will start at localhost:8000
-
-to generate application key to secure session and other encrypted data
+to generate application key to secure session and other encrypted data, application key can be seen inside .env file
 ==>php artisan key:generate
 
 to rename the laravel application name
@@ -54,10 +52,8 @@ to stop maintainence mode
 to print component output using component name
 ==><x-header componentName="nameofcomponent">
 
-create a middleware with some addition functions
-==>php artisan make:middleware nameofmiddleware --plain
-
-==>application key can be seen inside .env file
+create a middleware
+==>php artisan make:middleware nameofmiddleware
 ================================================================
                             COMPOSER:
 ================================================================
@@ -147,15 +143,13 @@ The routes defined in the routes/web.php can be accessed by entering the defined
 Route is the class which defines the static method get(). 
 
 <?php  
-Route::get('/', function ()  
- {      
-return view ('welcome');  //return welcome.blade.php
+Route::get('/', function (){      
+  return view ('welcome');  //return welcome.blade.php
 });  
 
 <?php  
-Route::get('/example', function ()  
- {      
-return "Hello javaTpoint"; //return text on screen
+Route::get('/example', function (){      
+  return "Hello javaTpoint"; //return text on screen
 });  
 
 CSRF Protection
@@ -175,7 +169,6 @@ class formcontroller extends controller{
 }
 
 The Route Class contains some functions that can respond to the following http verbs:
-
 Route::get($uri, $callback);
 Route::post($uri, $callback);
 Route::put($uri, $callback);
@@ -185,41 +178,35 @@ Route::options($uri, $callback);
 
 it can handle only get or post request
 Route::match(['get', 'post'], '/', function () {  
-//  
+
 }); 
 
 it can handle any http request
-Route::any('/', function ()   
-{  
-//  
+Route::any('/', function (){  
+
 }) 
 
 redirect any url request
 <?php  
 Route::get('hello', function () {  
-    return redirect('/');  
+    return redirect('/url_name');  
 })  
 
-
-<?php  
-Route::redirect('hello','/');             //redirect directly using url request
+redirect directly using url request
+Route::redirect('hello','/');             
 Route::redirect('/here', '/there');     
 
-==>By default, Route::redirect returns a 302 status code.
-
 to return a 301 status code:
-Route::redirect('/here', '/there', 301);  //manually set status code
+Route::redirect('/here', '/there', 301);
 or
 Route::permanentRedirect('/here', '/there');
 
 Route::view('/','welcome');  
-Route::view('/welcome', 'welcome');
-Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+Route::view('/', 'welcome', ['name' => 'Taylor']);
 
-//pass url parameters to the callback functions
-Route::get('/post/{id}/{name}', function($id,$name)  
-{  
-  return "id number is : ". $id ." ".$name;   
+//pass parameters to the callback functions
+Route::get('/post/{id}/{name}', function($id,$name){  
+  return "id number is : ". $id ." ".$name;
 });  
 
 //pass optional parameters to callback functions
@@ -232,45 +219,43 @@ Route::get('user/{id}/{name}', function ($id,$name) {
     return "id is : ". $id ." ,".  "Name is : ".$name ;  
 })->where(['id'=>'[0-9]+', 'name'=>'[a-zA-Z]+']);  
 
-The 'where' method accepts the name of the parameter and regular expression constraint that defines how the parameter should be constrained.
+The 'where' method accepts the name of the parameter 
+and 
+regular expression constraint that defines how the parameter should be constrained.
 
 //request filter using predefined helper functions in route class
 Route::get('/user/{id}/{name}', function ($id, $name) {
+
 })->whereNumber('id')->whereAlpha('name');
 
 Route::get('/user/{name}', function ($name) {
-    //
+
 })->whereAlphaNumeric('name');
 
 Global Constraints are used when we have multiple routes, 
 and the same constraints are applied to all the routes.
 define these patterns in the boot method of your RouteServiceProvider.
 
-public function boot()  
-{  
-Route::pattern('id', '[0-9]+');  
-parent::boot();  
+public function boot(){  
+  Route::pattern('id', '[0-9]+');  
+  parent::boot();  
 }  
 
 Named Routes
-Route::get('student/details', function()  
-{  
-    //  
-}) -> name('student_details'); 
-or
-Route::get('student/details', 'studentcontroller@showdetails') -> name('student_details');
+Route::get('student/details', function(){
 
+})->name('student_details');
+or
+Route::get('student/details', 'studentcontroller@showdetails')->name('student_details');
 
 //Generating URLs  
-$url= route('student_details');  
+$url= route('student_details');
 
 //Generating Redirects using route names
 return redirect() -> route('student_details');  
 
 //naming using as
-Route::get('student/details/example',array   
-('as'=>'student.details',function()  
-{  
+Route::get('student/details/example',array('as'=>'student.details',function(){  
    $url=route('student.details');  
    return "The url is : " .$url;  
 }));  
@@ -281,8 +266,7 @@ to know route lists
 Note:The benefit of using named routes is that if we change the location of the route,
 then also the link will work or we can say that it is beneficial for changing the URLs dynamically.
 
-Route::get('user/{id}/profile',function($id)  
-{  
+Route::get('user/{id}/profile',function($id){  
    $url = route('profile',['id'=>100]);  
     return $url;  
 })->name('profile');  
@@ -297,55 +281,49 @@ Creating a middleware
 ==>php artisan make:middleware 'name of the middleware'.
 
 Apply a Middleware ,Open the kernel.php file. 
-1.to all the URLs.
+1. to all the URLs.
 ==>protected $middleware = []
 
-2.to some specific routes
+2. to some specific routes
 ==>protected $routeMiddleware = []
 
 3. Open the kernel.php file. If we want to apply group of middlewares at a time 
 ==>protected $middlewareGroups = []
 
 Add the middleware code in the web.php file.
-Route::Get('/{age}',function($age)  
-{  
+Route::get('/{age}',function($age){  
   return view('welcome');  
-})-> middleware('age');  
+})->middleware('age');  
 
 public function handle($request, Closure $next){  
-  //return "middleware";  
-if($request->age>10)  
-{  
+if($request->age>10){  
 echo "Age is greater than 10";  
 }  
-else  
-{  
+else{  
 echo"Age is not greater than 10";  
 }  
 return $next($request);       
-}}
+}
 
 Route Groups is an essential feature in Laravel, which allows you to group all the routes. 
 Routes Groups are beneficial when you want to apply the attributes to all the routes. 
 If you use route groups, you do not have to apply the attributes individually to each route; this avoids duplication. 
 It allows you to share the attributes such as middleware or namespaces, without defining these attributes on each individual route.
 
-Route::group( [ ] , callback_function);  
+Route::group([],callback_function);  
 
-Route::group([], function()  
-{  
-   Route::get('/first',function()  
- {  
+Route::group([], function(){  
+   Route::get('/first',function(){  
    echo "first route";  
- });  
-Route::get('/second',function()  
- {  
+});
+
+Route::get('/second',function(){  
    echo "second route";  
- });  
-Route::get('/third',function()  
- {  
+});  
+
+Route::get('/third',function(){  
    echo "third route";  
- });  
+  });  
 });  
 
 
