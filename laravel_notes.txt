@@ -326,24 +326,18 @@ Route::get('/third',function(){
   });  
 });  
 
-
 Path prefixes are used when we want to provide a common URL structure.
-Route::group(['prefix' => 'tutorial'], function()  
-{  
-   Route::get('/aws',function()  
- {  
+Route::group(['prefix' => 'tutorial'], function(){  
+   Route::get('/aws',function(){  
    echo "aws tutorial";  
  });  
-Route::get('/jira',function()  
- {  
+Route::get('/jira',function(){  
    echo "jira tutorial";  
  });  
-Route::get('/testng',function()  
- {  
+Route::get('/testng',function(){  
    echo "testng tutorial";  
  });  
 });  
-
 
 We can also assign middleware to all the routes within a group.
 
@@ -359,23 +353,18 @@ Route::middleware(['age'])->group(function(){
     });  
 });  
 
-
 The name method is used to prefix each route name with some specified string
 
-Route::name('admin.')->group(function()  
-{  
-   Route::get('users', function()  
-{  
- return "admin.users";  
+Route::name('admin.')->group(function(){  
+  Route::get('users', function(){  
+    return "admin.users";  
 })->name('users');  
 });  
 
-
 Controllers are used to handle the request logic within the single class, and the controllers are defined in the "app/http/Controllers" directory
-php artisan make:Controller PostsController
+php artisan make:Controller controllerName
 
-
-php artisan make:controller --resource PostController (predefined functions)
+php artisan make:controller --resource controllerName (predefined functions)
 
 1.create(): It is used to create a new resource.
 
@@ -390,30 +379,23 @@ routing controller==>Route::get('/post','PostController@index');
 passing data to controller:
 Route::get('/post/{id}','PostController@index');
 
-public function index($id)  
-{  
+public function index($id){  
     return "ID is :". $id;  
 }  
-
 
 As RouteServiceProvider loads all the route files that contain the namespace, we just need to specify the class name that comes after the App/Http/Controllers portion of the namespace.
 Route::get('\post','Post\PostController@index');
 
-
 If we want to use the single method in a controller, then we can use the single __invoke() method on the controller.
 route::get('/post/{id}','PostController');  
-class PostController extends Controller  
-{  
-    //  
- public function __invoke($id)  
-{  
+class PostController extends Controller{  
+ public function __invoke($id){  
   return "id is : ". $id;  
 }  
 }  
 This concludes that we do not need to write the @invoke method for accessing the single action controllers.
 
 If no action is specified, i.e., we forget to write the __invoke() method, then the UnexpectedValueExpression is thrown.
-
 
 Laravel resource controllers provide the CRUD routes to the controller in a single line of code. A resource controller is used to create a controller that handles all the http requests stored by your application.
 
