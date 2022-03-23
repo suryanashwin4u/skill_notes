@@ -1,0 +1,28 @@
+Data Visualization with D3
+D3, or D3.js, stands for Data Driven Documents. It's a JavaScript library for creating dynamic and interactive data visualizations in the browser.
+
+D3 is built to work with common web standards – namely HTML, CSS, and Scalable Vector Graphics (SVG).
+
+D3 supports many different kinds of input data formats. Then, using its powerful built-in methods, you can transform those data into different charts, graphs, and maps.
+
+The select() method selects one element from the document. It takes an argument for the name of the element you want and returns an HTML node for the first element in the document that matches the name.
+const anchor = d3.select("a");
+
+The append() method takes an argument for the element you want to add to the document. It appends an HTML node to a selected item, and returns a handle to that node.
+
+The text() method either sets the text of the selected node, or gets the current text. To set the value, you pass a string as an argument inside the parentheses of the method.
+
+d3.select("ul")
+  .append("li")
+  .text("Very important item");
+
+selectAll() method to select a group of elements. It returns an array of HTML nodes for all the items in the document that match the input string.
+
+const anchors = d3.selectAll("a");
+
+The data() method is used on a selection of DOM elements to attach the data to those elements. The data set is passed as an argument to the method.
+
+to create a new element in the document for each piece of data in the set. D3 has the enter() method for this purpose.
+
+When enter() is combined with the data() method, it looks at the selected elements from the page and compares them to the number of data items in the set. If there are fewer elements than data items, it creates the missing elements.
+

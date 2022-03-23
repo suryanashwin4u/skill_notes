@@ -1,0 +1,93 @@
+                        MYSQL JAVATPOINT
+===========================================================================
+ADVANTAGES:
+
+MySQL is an open-source database, so you don't have to pay a single penny to use it.
+MySQL is a very powerful program that can handle a large set of functionality of the most expensive and powerful database packages.
+MySQL is customizable because it is an open-source database, and the open-source GPL license facilitates programmers to modify the SQL software according to their own specific environment.
+MySQL is quicker than other databases, so it can work well even with the large data set.
+MySQL supports many operating systems with many languages like PHP, PERL, C, C++, JAVA, etc.
+MySQL uses a standard form of the well-known SQL data language.
+MySQL is very friendly with PHP, the most popular language for web development.
+MySQL supports large databases, up to 50 million rows or more in a table. The default file size limit for a table is 4GB, but you can increase this (if your operating system can handle it) to a theoretical limit of 8 million terabytes (TB).
+---------------------------------------------------------------------------
+DISADVANTAGES:
+
+MySQL version less than 5.0 doesn't support ROLE, COMMIT, and stored procedure.
+MySQL does not support a very large database size as efficiently.
+MySQL doesn't handle transactions very efficiently, and it is prone to data corruption.
+MySQL is accused that it doesn't have a good developing and debugging tool compared to paid databases.
+MySQL doesn't support SQL check constraints.
+---------------------------------------------------------------------------
+NUMERIC DATA TYPES:
+
+Data Types	    Description
+TINYINT	        It is a very small integer that can be signed or unsigned. If signed, the allowable range is from -128 to 127. If unsigned, the allowable range is from 0 to 255. We can specify a width of up to 4 digits. It takes 1 byte for storage.
+SMALLINT	    It is a small integer that can be signed or unsigned. If signed, the allowable range is from -32768 to 32767. If unsigned, the allowable range is from 0 to 65535. We can specify a width of up to 5 digits. It requires 2 bytes for storage.
+MEDIUMINT	    It is a medium-sized integer that can be signed or unsigned. If signed, the allowable range is from -8388608 to 8388607. If unsigned, the allowable range is from 0 to 16777215. We can specify a width of up to 9 digits. It requires 3 bytes for storage.
+INT	            It is a normal-sized integer that can be signed or unsigned. If signed, the allowable range is from -2147483648 to 2147483647. If unsigned, the allowable range is from 0 to 4294967295. We can specify a width of up to 11 digits. It requires 4 bytes for storage.
+BIGINT	        It is a large integer that can be signed or unsigned. If signed, the allowable range is from -9223372036854775808 to 9223372036854775807. If unsigned, the allowable range is from 0 to 18446744073709551615. We can specify a width of up to 20 digits. It requires 8 bytes for storage.
+FLOAT(m,d)	    It is a floating-point number that cannot be unsigned. You can define the display length (m) and the number of decimals (d). This is not required and will default to 10,2, where 2 is the number of decimals, and 10 is the total number of digits (including decimals). Decimal precision can go to 24 places for a float type. It requires 2 bytes for storage.
+DOUBLE(m,d)	    It is a double-precision floating-point number that cannot be unsigned. You can define the display length (m) and the number of decimals (d). This is not required and will default to 16,4, where 4 is the number of decimals. Decimal precision can go to 53 places for a double. Real is a synonym for double. It requires 8 bytes for storage.
+DECIMAL(m,d)    An unpacked floating-point number that cannot be unsigned. In unpacked decimals, each decimal corresponds to one byte. Defining the display length (m) and the number of decimals (d) is required. Numeric is a synonym for decimal.
+BIT(m)	        It is used for storing bit values into the table column. Here, M determines the number of bit per value that has a range of 1 to 64.
+BOOL	        It is used only for the true and false condition. It considered numeric value 1 as true and 0 as false.
+BOOLEAN	        It is Similar to the BOOL.
+---------------------------------------------------------------------------
+DATE AND TIME DATA TYPES:
+
+Data Type	    Maximum Size	                                                            Explanation
+YEAR[(2|4)]	    Year value as 2 digits or 4 digits.	                                        The default is 4 digits. It takes 1 byte for storage.
+DATE	        Values range from '1000-01-01' to '9999-12-31'.	                            Displayed as 'yyyy-mm-dd'. It takes 3 bytes for storage.
+TIME	        Values range from '-838:59:59' to '838:59:59'.	                            Displayed as 'HH:MM:SS'. It takes 3 bytes plus fractional seconds for storage.
+DATETIME	    Values range from '1000-01-01 00:00:00' to '9999-12-31 23:59:59'.	        Displayed as 'yyyy-mm-dd hh:mm:ss'. It takes 5 bytes plus fractional seconds for storage.
+TIMESTAMP(m)	Values range from '1970-01-01 00:00:01' UTC to '2038-01-19 03:14:07' TC.	Displayed as 'YYYY-MM-DD HH:MM:SS'. It takes 4 bytes plus fractional seconds for storage.
+---------------------------------------------------------------------------
+STRING DATA TYPE:
+
+Data Type	         Maximum Size	                                                                Explanation
+CHAR(size)	         maximum size of 255 characters.	                                            Fixed-length strings. Space padded on the right to equal size characters.
+VARCHAR(size)	     maximum size of 255 characters.	                                            Variable-length string.
+TINYTEXT(size)	     maximum size of 255 characters.	                                
+TEXT(size)	         maximum size of 65,535 characters.	                                            
+MEDIUMTEXT(size)     maximum size of 16,777,215 characters.	                        
+LONGTEXT(size)	     maximum size of 4GB or 4,294,967,295 characters.	                
+BINARY(size)	     maximum size of 255 characters.	                                            Fixed-length strings. Space padded on the right to equal size characters.
+VARBINARY(size)	     maximum size of 255 characters.	                                            Variable-length string.
+ENUM	             It takes 1 or 2 bytes that depend on the number of enumeration values.         An ENUM can have a maximum of 65,535 values.	It is short for enumeration, which means that each column may have one of the specified possible values. It uses numeric indexes (1, 2, 3…) to represent string values.
+SET	                 It takes 1, 2, 3, 4, or 8 bytes that depends on the number of set members.     It can store a maximum of 64 members.	It can hold zero or more, or any number of string values. They must be chosen from a predefined list of values specified during table creation.
+
+---------------------------------------------------------------------------
+BINARY LARGE OBJECTS TYPES:
+
+Data Type       Maximum Size
+TINYBLOB	    It can hold a maximum size of 255 bytes.
+BLOB(size)	    It can hold the maximum size of 65,535 bytes.
+MEDIUMBLOB	    It can hold the maximum size of 16,777,215 bytes.
+LONGBLOB	    It can hold the maximum size of 4gb or 4,294,967,295 bytes.
+
+---------------------------------------------------------------------------
+SPATIAL DATA TYPES:
+
+Data Types	            Descriptions
+GEOMETRY	            It is a point or aggregate of points that can hold spatial values of any type that has a location.
+POINT	                A point in geometry represents a single location. It stores the values of X, Y coordinates.
+POLYGON	                It is a planar surface that represents multisided geometry. It can be defined by zero or more interior boundary and only one exterior boundary.
+LINESTRING	            It is a curve that has one or more point values. If it contains only two points, it always represents Line.
+GEOMETRYCOLLECTION	    It is a kind of geometry that has a collection of zero or more geometry values.
+MULTILINESTRING	        It is a multi-curve geometry that has a collection of linestring values.
+MULTIPOINT	            It is a collection of multiple point elements. Here, the point cannot be connected or ordered in any way.
+MULTIPLYGON	            It is a multisurface object that represents a collection of multiple polygon elements. It is a type of two-dimensional geometry.
+
+---------------------------------------------------------------------------
+JSON DATA TYPES:
+
+It provides automatic validation of JSON documents. If we stored invalid documents in JSON columns, it would produce an error.
+It provides an optimal storage format.
+
+---------------------------------------------------------------------------
+MySQL can use variables in three different ways, which are given below:
+
+User-Defined Variable
+Local Variable
+System Variable
