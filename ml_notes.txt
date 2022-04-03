@@ -197,7 +197,7 @@ create numpy 3d array                                                           
 
 create numpy Nd array                                                           :       data = np.array([1,2,3,4,5],[1,2,3],[2,3,4].......[],[],[])
 
-check type                                                                      :       type(data)
+check type                                                                      :       type(data)   
 
 check dimension                                                                 :       arr.ndim
 
@@ -434,8 +434,6 @@ make dataframe using list of dictionary : pd.DataFrame([{'id':11,'sn':22},{'sn':
 
 make dataframes from series: pd.DataFrame({'id':pd.Series([1,2,3]),'sn':pd.Series([111,222,333])})
 
-
-
 read csv file and return dataframe: pd.read_csv('file_path')
 
 to import os library: import os
@@ -445,6 +443,8 @@ to get current working directory: os.getcwd()
 to change first row as header in a dataframe which is imported from a csv file: pd.read_csv('file_path',header = 1)
 
 when no header needed then: pd.read_csv('file_path',header = None)
+
+
 
 when no header available in csv file but custom header name is needed: pd.read_csv('file_path', header = None , prefix = 'columns')
 
@@ -709,4 +709,54 @@ df = pd.read_csv('https://sololearn.com/uploads/files/titanic.csv')
 arr = df[['Pclass', 'Fare', 'Age']].values
 print(arr.shape)
 
-29.
+29.to drop dataframe rows carrying NaN: df.dropna() 
+30.to drop dataframe columns carrying NaN: df.dropna(axis=1)
+31.to drop dataframe rows carrying NaN: df.dropna(how='any')
+32.to drop dataframe columns carrying NaN: df.dropna(axis = 1, how='any')
+33.to drop dataframe rows carrying all values as NaN : df.dropna(how='all')
+34.to show rows with atleast 1 Not Null values rest can be NaN: df.dropna(thresh = 1)
+35.to show rows with not null values of column name 'ID' : df.dropna(subset = ['ID'])
+36.to show all rows with not null values: df.dropna(inplace = True) => print(df)
+
+37.to fill NaN with 0 value: df.fillna(0)
+38.to fill NaN column wise: df.fillna({'columne_name_1':'none','column_name_2':0,'column_name_3':0})
+39.to fill previous row values in NaN: df.fillna(method = 'ffill') or df.fillna(method = 'pad')
+40.to fill forward row values in NaN: df.fillna(method = 'bfill') or df.fillna(method = 'pad')
+41.to fill previous row values in NaN rowwise: df.fillna(method = 'ffill', axis = 0)
+42.to fill previous row values in NaN columnwise: df.fillna(method = 'ffill', axis = 1)
+43.to fill forward row values in NaN rowwise: df.fillna(method = 'bfill', axis = 0)
+44.to fill forward row values in NaN columnwise: df.fillna(method = 'bfill', axis = 1)
+45.to fill NaN with value=0 and limit = 1 NaN value in row else dont show: df.fillna(0,limit = 1)
+46.to fill NaN using method and limit: df.fillna(method = 'ffill', limit = 2)
+47.to fill NaN values in all rows:df.fillna(5,inplace = True)
+
+48.to replace values in a dataframe: 
+df.replace(to_replace = 'from_value', value = 'to_value') or
+df.replace('from_value','to_value') 
+df.replace('from_value',method = 'ffill') 
+df.replace('from_value',method = 'bfill')
+df.replace('from_value',method = 'bfill',limit = 1)
+df.replace([1,2,3,4,5,6,7],0) 
+df.replace(100,0)
+df.replace(100,0,inplace = True)
+df.replace([1,2,3,4,5,6],[11,12,13,14,15,16]) 
+df.replace({'col_1':'from_value_1','col_2':'from_value_2'},'to_value')
+df.replace('[A-Za-z]',0,regex = True)
+df.replace({'col_name':'[A-Za-z]'},0,regex = True)
+
+49.to guess numberic pattern and fill in spaces:
+df.interpolate() or df.interpolate(method = 'linear')
+df.interpolate(method = 'time')    //fill as per time   
+df.interpolate(method = 'index')   //fill as per index column
+df.interpolate(method = 'nearest') //fill nearest value
+df.interpolate(method = 'polynomial', order = 1) //fill decimal values
+df.interpolate(method = 'spline', order = 1) 
+
+50.when need to change first column into date datatype and set index column : pd.read_csv('file_path', parse_dates = ['column_name'] , index_col = 'column_name')
+
+51.to check datatype of dataframe column: type(df.column_name[0])
+
+
+
+
+

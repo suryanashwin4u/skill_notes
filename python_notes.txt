@@ -1,174 +1,120 @@
           PYTHON NOTES FROM W3SCHOOLS.COM
 ==================================================
-
-It was created by Guido van Rossum
-
---------------------------------------------------
 # to check version of python from command prompt
-python --version
-
+==>python --version
 --------------------------------------------------
 # to run python file at command prompt
-python file.py
-
+==>python file.py or py file.py
 --------------------------------------------------
-# type python to run python editor at command prompt
-
-python 
-
-or
-
-py
---------------------------------------------------
-# type exit() to come out of cmd editor
+# to come out of python cmd
 exit()
-
 --------------------------------------------------
 # multiline comments in python
 '''helloworld
 aklakakkada
 akalkjakja
 aslkjladskj'''
-
 --------------------------------------------------
 # variables in python
-
-x = 4       # x is of type int
-x = "Sally" # x is now of type str
-
+x = 4       
+x = "Sally" 
 --------------------------------------------------
 # casting in python
-
-x = str(3)    # x will be '3'
-y = int(3)    # y will be 3
-z = float(3)  # z will be 3.0
-
-
+x = str(3)    
+y = int(3)    
+z = float(3)  
 --------------------------------------------------
 # get type of variables
-
 print(type(x))
 print(type(y))
-
 --------------------------------------------------
 # string can be enclosed in single or double quotes
-
 x = "John"
-# is the same as
 x = 'John'
-
 --------------------------------------------------
 # variables are case sensitive
-
 a = 4
 A = "Sally"
-#A will not overwrite a
-
 --------------------------------------------------
-# type of variables we can declare in python
+# Rules to declare variables in python
+1. A variable name must start with a letter or the underscore character.
+2. A variable name cannot start with a number.
+3. A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ ).
+4. Variable names are case-sensitive (age, Age and AGE are three different variables).
 
-
-# A variable name must start with a letter or the underscore character
-# A variable name cannot start with a number
-# A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )
-# Variable names are case-sensitive (age, Age and AGE are three different variables)
-
-
+for example:-
 myvar = "John"
 my_var = "John"
 _my_var = "John"
 myVar = "John"
 MYVAR = "John"
 myvar2 = "John"
-
-
 --------------------------------------------------
 # camelcase declaration
-
 myVariableName = "John"
 
---------------------------------------------------
 # pascal case declaration
-
 MyVariableName = "John"
 
---------------------------------------------------
 # snake case variable declaration
-
 my_variable_name = "John"
 --------------------------------------------------
 # different variable assignments in python
-
 x, y, z = "Orange", "Banana", "Cherry"
 print(x)
 print(y)
 print(z)
-
 --------------------------------------------------
-
 # same variable assignments in python
-
 x = y = z = "Orange"
 print(x)
 print(y)
 print(z)
 --------------------------------------------------
 # list items to variable assignment
-
 fruits = ["apple", "banana", "cherry"]
 x, y, z = fruits
 print(x)
 print(y)
 print(z)
-
 --------------------------------------------------
-# variable as output using plus operator
-
+# plus operator for concatenate to string
 x = "awesome"
-print("Python is " + x)
-
---------------------------------------------------
+print("Python is" + x)
 
 # addition using plus operator
 x = 5
 y = 10
 print(x + y)
-
 --------------------------------------------------
-# x is a global variable
-
+#here x is a global variable
 x = "awesome"
 
 def myfunc():
   print("Python is " + x)
 
 myfunc()
-
 --------------------------------------------------
 # x is global here
-
-x = "awesome"
+x = "awesome"           
 
 def myfunc():
   # x is local here
   x = "fantastic"
-  print("Python is " + x)
+  print("Python is " + x) //local variable works
 
 myfunc()
-
-print("Python is " + x)
-
+print("Python is " + x)   //global variable works 
 --------------------------------------------------
 # x is declared global forcefully inside function scope
 
 def myfunc():
-  global x
+  global x   //forcefully make global variable
   x = "fantastic"
 
 myfunc()
 
 print("Python is " + x)
-
 --------------------------------------------------
 # use global keyword to change the value inside function
 
@@ -180,12 +126,9 @@ def myfunc():
 
 myfunc()
 
-print("Python is " + x)
-
-
+print("Python is " + x)   //fantastic will work
 --------------------------------------------------
-
-# Python has the following data types built-in by default, in these categories:
+# datatypes in python:
 
 # Text Type:	str
 # Numeric Types:	int, float, complex
@@ -195,144 +138,80 @@ print("Python is " + x)
 # Boolean Type:	bool
 # Binary Types:	bytes, bytearray, memoryview
 
-
 x = "Hello World"               	            str	
-x = 20	                                        int	
+x = 20	                                      int	
 x = 20.5	                                    float	
-x = 1j	                                        complex	
+x = 1j	                                      complex	
 x = ["apple", "banana", "cherry"]	            list	
 x = ("apple", "banana", "cherry")	            tuple	
 x = range(6)	                                range	
 x = {"name" : "John", "age" : 36}	            dict	
 x = {"apple", "banana", "cherry"}	            set	
-x = frozenset({"apple", "banana", "cherry"})	frozenset	
+x = frozenset({"apple", "banana", "cherry"})	frozenset	 //immutable sets
 x = True	                                    bool	
 x = b"Hello"	                                bytes	
-x = bytearray(5)	                            bytearray	
-x = memoryview(bytes(5))	                    memoryview
-
-
-
-x = str("Hello World")	                        str	
-x = int(20)	                                    int	
-x = float(20.5)	                                float	
-x = complex(1j)	                                complex	
-x = list(("apple", "banana", "cherry"))	        list	
-x = tuple(("apple", "banana", "cherry"))	    tuple	
-x = range(6)	                                range	
-x = dict(name="John", age=36)	                dict	
-x = set(("apple", "banana", "cherry"))	        set	
-x = frozenset(("apple", "banana", "cherry"))	frozenset	
-x = bool(5)	                                    bool	
-x = bytes(5)	                                bytes	
-x = bytearray(5)	                            bytearray	
-x = memoryview(bytes(5))	                    memoryview	
-
-
+x = bytearray(5)	                            bytearray	//????
+x = memoryview(bytes(5))	                    memoryview //???
 --------------------------------------------------
 # int type
 x = 1
 y = 35656222554887711
 z = -3255522
-
-print(type(x))
-print(type(y))
-print(type(z))
 --------------------------------------------------
 # float types
 x = 1.10
 y = 1.0
 z = -35.59
 
-print(type(x))
-print(type(y))
-print(type(z))
-
 x = 35e3
 y = 12E4
 z = -87.7e100
-
-print(type(x))
-print(type(y))
-print(type(z))
 --------------------------------------------------
 # complex types
 x = 3+5j
 y = 5j
 z = -5j
-
-print(type(x))
-print(type(y))
-print(type(z))
-
-
 --------------------------------------------------
 # type conversion
-
-x = 1    # int
-y = 2.8  # float
-z = 1j   # complex
-
-#convert from int to float:
 a = float(x)
-
-#convert from float to int:
 b = int(y)
-
-#convert from int to complex:
 c = complex(x)
-
-print(a)
-print(b)
-print(c)
-
-print(type(a))
-print(type(b))
-print(type(c))
-
 # Note: You cannot convert complex numbers into another number type.
-
 --------------------------------------------------
 # to output a random number between given range
-
 import random
 print(random.randrange(1, 10))
 --------------------------------------------------
 # convert types
-
-x = int(1)   # x will be 1
-y = int(2.8) # y will be 2
-z = int("3") # z will be 3
-x = float(1)     # x will be 1.0
-y = float(2.8)   # y will be 2.8
-z = float("3")   # z will be 3.0
-w = float("4.2") # w will be 4.2
-x = str("s1") # x will be 's1'
-y = str(2)    # y will be '2'
-z = str(3.0)  # z will be '3.0'
-
+x = int(1)        # x will be 1
+y = int(2.8)      # y will be 2
+z = int("3")      # z will be 3
+x = float(1)      # x will be 1.0
+y = float(2.8)    # y will be 2.8
+z = float("3")    # z will be 3.0
+w = float("4.2")  # w will be 4.2
+x = str("s1")     # x will be 's1'
+y = str(2)        # y will be '2'
+z = str(3.0)      # z will be '3.0'
 --------------------------------------------------
 # string can be single or double quotes
-
 print("Hello")
 print('Hello')
-
 -------------------------------------------------
 # multiline string
-
 a = """Lorem ipsum dolor sit amet,
 consectetur adipiscing elit,
 sed do eiusmod tempor incididunt
 ut labore et dolore magna aliqua."""
-print(a)
 
+print(a)
 
 a = '''Lorem ipsum dolor sit amet,
 consectetur adipiscing elit,
 sed do eiusmod tempor incididunt
 ut labore et dolore magna aliqua.'''
-print(a)
 
+print(a)
 ------------------------------------------------
 # get   character at position 1
 

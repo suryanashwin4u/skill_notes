@@ -94,3 +94,10 @@ start react native project
 ==>npm start
 
 ====================================================================================
+REACT NATIVE PAPER
+
+//to design beautifull UI
+npm install react-native-paper
+
+
+
