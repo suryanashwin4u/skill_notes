@@ -1175,11 +1175,11 @@ const cars = ["Volvo", "BMW"];   // Allowed
   const cars = ["Volvo", "BMW"]; // Allowed
 }
 
-//to know current date and time
-new Date()
-new Date(year, month, day, hours, minutes, seconds, milliseconds)
-new Date(milliseconds)
-new Date(date string) 
+//to create a new date object, but it will be automatically converted to string when displayed
+const dateObj = new Date();
+const dateObj = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+const dateObj = new Date(milliseconds);
+const dateObj = new Date(date string); 
 
 //return a string with date and time
 7 numbers specify year, month, day, hour, minute, second, and millisecond (in that order):
@@ -1188,73 +1188,116 @@ new Date(date string)
 4 numbers specify year, month, day, and hour:
 3 numbers specify year, month, and day:
 2 numbers specify year and month:
-If you supply only one parameter it will be treated as milliseconds.
-const d = new Date(2018, 11, 24, 10, 33, 30, 0);
+1 parameter will be treated as milliseconds.
 
-One and two digit years will be interpreted as 19xx:
+//JavaScript counts months from 0 to 11:
+//Specifying a month higher than 11, will not result in an error but add the overflow to the next year:
+const d = new Date(2018,0 to 11, 24, 10, 33, 30, 0);
+
+//One and two digit years will be interpreted as 19xx:
 const d = new Date(99, 11, 24);
-
 const d = new Date(9, 11, 24);
 
 //create a date object from a string
 const d = new Date("October 13, 2014 11:13:00");
 
 //new Date(milliseconds) creates a new date object as zero time plus milliseconds:
-const d = new Date(0);
-const d = new Date(-100000000000);
+const d = new Date(0); //argument is miliseconds in this case
+const d = new Date(-100000000000); //plus or minus miliseconds in this case
+
+//One day (24 hours) is 86 400 000 milliseconds.
+
 //convert date object to string
-d.toString();
-d.toUTCString();
-d.toDateString();
-d.toISOString();
+d.toString();       //Tue Apr 05 2022 06:50:27 GMT+0530 (India Standard Time)
+d.toUTCString();    //Tue, 05 Apr 2022 01:20:37 GMT
+d.toDateString();   //Tue Apr 05 2022
+d.toISOString();    //2022-04-05T01:21:26.236Z
 
+Type	        Example
+ISO Date	    "2015-03-25" (The International Standard)
+Short Date	  "03/25/2015"
+Long Date	    "Mar 25 2015" or "25 Mar 2015"
 
-Type	Example
-ISO Date	"2015-03-25" (The International Standard)
-Short Date	"03/25/2015"
-Long Date	"Mar 25 2015" or "25 Mar 2015"
+const d = new Date("2015-03-25");             //Wed Mar 25 2015 05:30:00 GMT+0530 (India Standard Time)
+const d = new Date("2015-03");                //Sun Mar 01 2015 05:30:00 GMT+0530 (India Standard Time)
+const d = new Date("2015");                   //Thu Jan 01 2015 05:30:00 GMT+0530 (India Standard Time)
+const d = new Date("2015-03-25T12:00:00Z");   //Wed Mar 25 2015 17:30:00 GMT+0530 (India Standard Time)
 
-const d = new Date("2015-03-25");
-const d = new Date("2015-03");
-const d = new Date("2015");
-const d = new Date("2015-03-25T12:00:00Z");
-If you want to modify the time relative to UTC, remove the Z and add +HH:MM or -HH:MM instead:
-const d = new Date("2015-03-25T12:00:00-06:30");
-const d = new Date("03/25/2015");
+//If you want to modify the time relative to UTC, remove the Z and add +HH:MM or -HH:MM instead:
+const d = new Date("2015-03-25T12:00:00-06:30");    //Wed Mar 25 2015 23:30:00 GMT+0530 (India Standard Time)
+const d = new Date("03/25/2015");                   //Wed Mar 25 2015 00:00:00 GMT+0530 (India Standard Time)
 
+//long dates
+const d = new Date("Mar 25 2015");            //Wed Mar 25 2015 00:00:00 GMT+0530 (India Standard Time)
+const d = new Date("25 Mar 2015");            //Wed Mar 25 2015 00:00:00 GMT+0530 (India Standard Time)
+const d = new Date("January 25 2015");        //Sun Jan 25 2015 00:00:00 GMT+0530 (India Standard Time)
+const d = new Date("Jan 25 2015");            //Sun Jan 25 2015 00:00:00 GMT+0530 (India Standard Time)
+const d = new Date("JANUARY, 25, 2015");      //Sun Jan 25 2015 00:00:00 GMT+0530 (India Standard Time)  
 
+//convert date format into miliseconds
+let msec = Date.parse("March 21, 2012");
 
+getFullYear()	          Get the year as a four digit number (yyyy)
+getMonth()	            Get the month as a number (0-11)
+getDate()	              Get the day as a number (1-31)
+getHours()	            Get the hour (0-23)
+getMinutes()	          Get the minute (0-59)
+getSeconds()	          Get the second (0-59)
+getMilliseconds()	      Get the millisecond (0-999)
+getTime()	              Get the time (milliseconds since January 1, 1970)
+getDay()	              Get the weekday as a number (0-6)
+Date.now()	            Get the time. ECMAScript 5.
+getUTCDate()	          Same as getDate(), but returns the UTC date
+getUTCDay()	            Same as getDay(), but returns the UTC day
+getUTCFullYear()	      Same as getFullYear(), but returns the UTC year
+getUTCHours()	          Same as getHours(), but returns the UTC hour
+getUTCMilliseconds()	  Same as getMilliseconds(), but returns the UTC milliseconds
+getUTCMinutes()	        Same as getMinutes(), but returns the UTC minutes
+getUTCMonth()	          Same as getMonth(), but returns the UTC month
+getUTCSeconds()	        Same as getSeconds(), but returns the UTC seconds
 
-getFullYear()	Get the year as a four digit number (yyyy)
-getMonth()	Get the month as a number (0-11)
-getDate()	Get the day as a number (1-31)
-getHours()	Get the hour (0-23)
-getMinutes()	Get the minute (0-59)
-getSeconds()	Get the second (0-59)
-getMilliseconds()	Get the millisecond (0-999)
-getTime()	Get the time (milliseconds since January 1, 1970)
-getDay()	Get the weekday as a number (0-6)
-Date.now()	Get the time. ECMAScript 5.
-getUTCDate()	Same as getDate(), but returns the UTC date
-getUTCDay()	Same as getDay(), but returns the UTC day
-getUTCFullYear()	Same as getFullYear(), but returns the UTC year
-getUTCHours()	Same as getHours(), but returns the UTC hour
-getUTCMilliseconds()	Same as getMilliseconds(), but returns the UTC milliseconds
-getUTCMinutes()	Same as getMinutes(), but returns the UTC minutes
-getUTCMonth()	Same as getMonth(), but returns the UTC month
-getUTCSeconds()	Same as getSeconds(), but returns the UTC seconds
+//to return month name
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+console.log(months[new Date().getMonth()]);
 
+//In JavaScript, the first day of the week (0) means "Sunday"
 
+//Set the day as a number (1-31)
+d.setDate(15);
+d.setDate(d.getDate() + 50);
 
-setDate()	Set the day as a number (1-31)
-setFullYear()	Set the year (optionally month and day)
-setHours()	Set the hour (0-23)
-setMilliseconds()	Set the milliseconds (0-999)
-setMinutes()	Set the minutes (0-59)
-setMonth()	Set the month (0-11)
-setSeconds()	Set the seconds (0-59)
-setTime()	Set the time (milliseconds since January 1, 1970)
+//Set the year (optionally month and day)
+d.setFullYear(2020);
+d.setFullYear(2020, 11, 3);
 
+//Set the hour (0-23)
+d.setHours(22);
+
+//Set the milliseconds (0-999)
+setMilliseconds()	  
+
+//Set the minutes (0-59)
+d.setMinutes(30);
+
+//Set the month (0-11)
+d.setMonth(11);
+
+//Set the seconds (0-59)
+d.setSeconds(30);
+
+//Set the time (milliseconds since January 1, 1970)
+setTime()	      
+
+//compare dates using date object
+let text = "";
+const today = new Date();
+const someday = new Date();
+someday.setFullYear(2100, 0, 14);
+if (someday > today) {
+  text = "Today is before January 14, 2100.";
+} else {
+  text = "Today is after January 14, 2100.";
+}
 
 Math.E        // returns Euler's number
 Math.PI       // returns PI
@@ -1265,14 +1308,258 @@ Math.LN10     // returns the natural logarithm of 10
 Math.LOG2E    // returns base 2 logarithm of E
 Math.LOG10E   // returns base 10 logarithm of E
 
-Math.round(x)	Returns x rounded to its nearest integer
-Math.ceil(x)	Returns x rounded up to its nearest integer
-Math.floor(x)	Returns x rounded down to its nearest integer
-Math.trunc(x)	Returns the integer part of x (new in ES6)
-Math.sign(x) returns if x is negative, null or positive:
-Math.pow(x, y) returns the value of x to the power of y
-Math.sqrt(x) returns the square root of x:
-Math.abs(x) returns the absolute (positive) value of x
+Math.round(x)	  //Returns x rounded to its nearest integer
+Math.ceil(x)	  //Returns x rounded up to its next integer
+Math.floor(x)	  //Returns x rounded down to its previous integer
+Math.trunc(x)	  //Returns the integer part of x (new in ES6)
+Math.sign(x)    //returns if 1,0,-1 for x is negative, null or positive
+Math.pow(x, y)  //returns the value of x to the power of y
+Math.sqrt(x)    //returns the square root of x
+Math.cbrt(x)	        //Returns the cubic root of x
+Math.abs(x)     //returns the absolute (positive) value of x
+Math.sin(x)     //returns sin of angle (radian)
+Math.cos(x)     //returns cosine of angle (radian)
+Math.min(array) //returns min number in an array
+Math.max(array) //returns max number in an array
+Math.random()   //returns a random number between 0 and 1
+Math.log(x)     //returns the natural logarithm of x
+Math.log2(x)    //returns the base 2 logarithm of x
+Math.log10(x)   //returns the base 10 logarithm of x
+
+//return a random number between range
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+//returns a random number between min and max (both included)
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+//return true or false after checking condition
+Boolean(10 > 9)
+(10 > 9)
+10 > 9
+
+//Everything With a "Value" is True except 0,-0,"",undefined,null,false,NaN for false
+100
+3.14
+-15
+"Hello"
+"false"
+7 + 1 + 3.14
+
+//can be used as objects
+let y = new Boolean(false);
+
+//ternery condition
+variablename = (condition) ? value1:value2
+
+//switch case,break,default
+switch (new Date().getDay()) {
+  case 6:
+    text = "Today is Saturday";
+    break;
+  case 0:
+    text = "Today is Sunday";
+    break;
+  default:
+    text = "Looking forward to the Weekend";
+}
+
+//same switch cases
+switch (new Date().getDay()) {
+  case 4:
+  case 5:
+    text = "Soon it is Weekend";
+    break;
+  case 0:
+  case 6:
+    text = "It is Weekend";
+    break;
+  default:
+    text = "Looking forward to the Weekend";
+}
+
+//JavaScript supports different kinds of loops:
+
+for - loops through a block of code a number of times
+for/in - loops through the properties of an object
+for/of - loops through the values of an iterable object
+while - loops through a block of code while a specified condition is true
+do/while - also loops through a block of code while a specified condition is true
+
+for (let i = 0; i < cars.length; i++) {
+  text += cars[i] + "<br>";
+}
+for (let i = 0, len = cars.length, text = ""; i < len; i++) {
+  text += cars[i] + "<br>";
+}
+for (; i < len; i++) {
+  text += cars[i] + "<br>";
+}
+for (; i < len; ) {
+  text += cars[i] + "<br>";
+  i++;
+}
+for (let i = 0; i < 10; i++) {
+  if (i === 3) 
+  { 
+    break; 
+  }
+  text += "The number is " + i + "<br>";
+}
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { 
+    continue; 
+  }
+  text += "The number is " + i + "<br>";
+}
+
+//scope of var loop
+var i = 5;
+for (var i = 0; i < 10; i++) {
+  // some code
+}
+// Here i is 10
+
+//scope of let loop
+let i = 5;
+for (let i = 0; i < 10; i++) {
+  // some code
+}
+// Here i is 5
+
+//looping objects and arrays using keys,values
+const person = {fname:"John", lname:"Doe", age:25};
+for (let x in person) {
+  text += person[x];
+}
+const numbers = [45, 4, 9, 16, 25];
+for (let x in numbers) {
+  txt += numbers[x];
+}
+
+//looping and mapping using foreach
+const numbers = [45, 4, 9, 16, 25];
+numbers.forEach(myFunction);
+function myFunction(value, index, array) {
+  txt += value;
+}
+
+//looping using of where cars can be an array or string
+for (let x of cars) {
+  text += x;
+}
+
+//looping using while
+while (i < 10) {
+  text += "The number is " + i;
+  i++;
+}
+
+//looping using do while 
+do {
+  text += "The number is " + i;
+  i++;
+}
+while (i < 10);
+
+//break or continue
+1.The continue statement (with or without a label reference) can only be used to skip one loop iteration.
+2.The break statement, without a label reference, can only be used to jump out of a loop or a switch.
+3.With a label reference, the break statement can be used to jump out of any code block:
+const cars = ["BMW", "Volvo", "Saab", "Ford"];
+list: {
+  text += cars[0] + "<br>";
+  text += cars[1] + "<br>";
+  break list;
+  text += cars[2] + "<br>";
+  text += cars[3] + "<br>";
+}
+
+//looping through set
+const letters = new Set(["a","b","c"]);
+for (const x of letters) {
+  // code block to be executed
+}
+
+//looping through map
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+for (const x of fruits) {
+  // code block to be executed
+}
+
+//sets functions
+new Set()	  Creates a new Set
+add()	      Adds a new element to the Set
+delete()	  Removes an element from a Set
+has()	      Returns true if a value exists in the Set
+forEach()	  Invokes a callback for each element in the Set
+values()	  Returns an iterator with all the values in a Set
+size	      Returns the number of elements in a Set
+
+// Create a Set
+const letters = new Set(["a","b","c"]);
+
+// Create a Set
+const letters = new Set();
+// Add Values to the Set
+letters.add("a");
+letters.add("b");
+letters.add("c");
+
+// Create a Set
+const letters = new Set();
+// Create Variables
+const a = "a";
+const b = "b";
+const c = "c";  
+// Add Variables to the Set
+letters.add(a);
+letters.add(b);
+letters.add(c);
+letters.add(c); //If you add equal elements, only the first will be saved
+
+letters.values()   // Returns [object Set Iterator]
+// List all Elements
+let text = "";
+for (const x of letters.values()) {
+  text += x;
+}
+
+// Create a Set
+const letters = new Set(["a","b","c"]);
+// List all Elements
+let text = "";
+letters.forEach (function(value) {
+  text += value;
+})
+
+// List all Elements
+let text = "";
+for (const x of letters.values()) {
+  text += x;
+}
+
+Method	      Description
+new Map()	    Creates a new Map
+set()	        Sets the value for a key in a Map
+get()	        Gets the value for a key in a Map
+delete()	    Removes a Map element specified by the key
+has()	        Returns true if a key exists in a Map
+forEach()	    Calls a function for each key/value pair in a Map
+entries()	    Returns an iterator with the [key, value] pairs in a Map
+
+Property	    Description
+size	        Returns the number of elements in a Map
+
+
+
 
 
 
