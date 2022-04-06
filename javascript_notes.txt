@@ -1809,20 +1809,266 @@ var carName = "Volvo";
 let carName = "Volvo";
 // code here can not use window.carName
 
+//Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function). 
+but this does not work with let and const
+JavaScript only hoists declarations, not initializations.
+x = 5; // Assign 5 to x
+elem = document.getElementById("demo"); // Find an element
+elem.innerHTML = x;                     // Display x in the element
+var x; // Declare x
+
+//Strict mode is declared by adding "use strict"; to the beginning of a script or a function.
+Declared at the beginning of a script, it has global scope
+"use strict";
+let x = 33;
 
 
+//Declared inside a function, it has local scope (only the code inside the function is in strict mode):
+x = 3.14;       // This will not cause an error.
+myFunction();
+function myFunction() {
+  "use strict";
+  y = 3.14;   // This will cause an error
+}
+
+Using a variable, without declaring it, is not allowed:
+"use strict";
+x = 3.14;                // This will cause an error
+
+Using an object, without declaring it, is not allowed:
+"use strict";
+x = {p1:10, p2:20};      // This will cause an error
+
+Deleting a variable (or object) is not allowed.
+"use strict";
+let x = 3.14;
+delete x;                // This will cause an error
+
+Deleting a function is not allowed.
+"use strict";
+function x(p1, p2) {};
+delete x;                // This will cause an error 
+
+Duplicating a parameter name is not allowed:
+"use strict";
+function x(p1, p1) {};   // This will cause an error
 
 
+Octal numeric literals are not allowed:
+"use strict";
+let x = 010;             // This will cause an error
 
 
+Octal escape characters are not allowed:
+"use strict";
+let x = "\010";            // This will cause an error
 
 
+Writing to a read-only property is not allowed:
+"use strict";
+const obj = {};
+Object.defineProperty(obj, "x", {value:0, writable:false});
+obj.x = 3.14;            // This will cause an error
 
 
+Writing to a get-only property is not allowed:
+"use strict";
+const obj = {get x() {return 0} };
+obj.x = 3.14;            // This will cause an error
 
 
+Deleting an undeletable property is not allowed:
+"use strict";
+delete Object.prototype; // This will cause an error
 
 
+The word eval cannot be used as a variable:
+"use strict";
+let eval = 3.14;         // This will cause an error
+
+
+The word arguments cannot be used as a variable:
+"use strict";
+let arguments = 3.14;    // This will cause an error
+
+The with statement is not allowed:
+"use strict";
+with (Math){x = cos(2)}; // This will cause an error
+
+For security reasons, eval() is not allowed to create variables in the scope from which it was called:
+"use strict";
+eval ("let x = 2");
+alert (x);             // This will cause an error
+
+If the object is not specified, functions in strict mode will return undefined and functions in normal mode will return the global object (window):
+"use strict";
+function myFunction() {
+  alert(this); // will alert "undefined"
+}
+myFunction();
+
+
+Keywords reserved for future JavaScript versions can NOT be used as variable names in strict mode.
+These are:
+implements
+interface
+let
+package
+private
+protected
+public
+static
+yield
+"use strict";
+let public = 1500;      // This will cause an error
+
+
+In an object method, this refers to the object.
+Alone, this refers to the global object.
+In a function, this refers to the global object.
+In a function, in strict mode, this is undefined.
+In an event, this refers to the element that received the event.
+Methods like call(), apply(), and bind() can refer this to any object.
+
+//to access object keys
+fullName : function() {
+  return this.firstName + " " + this.lastName;
+}
+
+//to access window object
+let x = this;
+
+//to access window object
+"use strict";
+let x = this;
+
+//return window object
+function myFunction() {
+  return this;
+}
+
+//return undefined
+"use strict";
+function myFunction() {
+  return this;
+}
+
+//to access html attributes
+<button onclick="this.style.display='none'">
+  Click to Remove Me!
+</button>
+
+//this will refer person object reference
+const person = {
+  firstName  : "John",
+  lastName   : "Doe",
+  id         : 5566,
+  myFunction : function() {
+    return this;
+  }
+};
+
+
+//access 2nd object from 1st using call() method
+const person1 = {
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+const person2 = {
+  firstName:"John",
+  lastName: "Doe",
+}
+// Return "John Doe":
+person1.fullName.call(person2);
+
+//objects binding using bind() method
+const person = {
+  firstName:"John",
+  lastName: "Doe",
+  fullName: function () {
+    return this.firstName + " " + this.lastName;
+  }
+}
+const member = {
+  firstName:"Hege",
+  lastName: "Nilsen",
+}
+let fullName = person.fullName.bind(member);
+
+Precedence	Object
+1	          bind()
+2	          apply() and call()
+3	          Object method
+4	          Global scope
+
+//arrow function
+let myFunction = (a, b) => a * b;
+
+//calling function using arrow
+hello = () => {
+  return "Hello World!";
+}
+
+//if single operation needed
+hello = () => "Hello World!";
+
+//Arrow Function With Parameters:
+hello = (val) => "Hello " + val;
+hello = val => "Hello " + val;
+
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+  age() {
+    let date = new Date();
+    return date.getFullYear() - this.year;
+  }
+  age1(x) {
+    let date = new Date();
+    return date.getFullYear() - x;
+  }
+}
+let myCar1 = new Car("Ford", 2014);
+let myCar2 = new Car("Audi", 2019);
+let year1 = myCar2.age();
+let year2 = myCar2.age1(x);
+
+//inline export to other js file
+export const name = "Jesse";
+
+//export all at once to other js file
+const name = "Jesse";
+const age = 40;
+export {name, age};
+
+//You can only have one default export in a file.
+const message = () => {
+const name = "Jesse";
+const age = 40;
+return name + ' is ' + age + 'years old.';
+};
+export default message;
+
+//Import named exports from the file person.js:
+import { name, age } from "./person.js";
+
+//Import a default export from the file message.js:
+import message from "./message.js";
+
+//convert json text to js object
+const obj = JSON.parse(text);
+
+//to print table if data given
+console.table(rowData);
+
+//The debugger keyword stops the execution of JavaScript, and calls (if available) the debugging function.
+With the debugger turned on, this code will stop executing before it executes the third line.
+let x = 15 * 5;
+debugger;
+document.getElementById("demo").innerHTML = x;
 
 
 
@@ -1857,41 +2103,7 @@ An alternative is to use defer="true" in the script tag. The defer attribute spe
 It has a negative effect on speed. It also clutters up JavaScript scopes.
 The with keyword is not allowed in strict mode.
 
-==============================================================
-                    JAVATPOINT.COM NOTES
-==============================================================
-features of JavaScript:
 
-All popular web browsers support JavaScript as they provide built-in execution environments.
-JavaScript follows the syntax and structure of the C programming language. Thus, it is a structured programming language.
-JavaScript is a weakly typed language, where certain types are implicitly cast (depending on the operation).
-JavaScript is an object-oriented programming language that uses prototypes rather than using classes for inheritance.
-It is a light-weighted and interpreted language.
-It is a case-sensitive language.
-JavaScript is supportable in several operating systems including, Windows, macOS, etc.
-It provides good control to the users over the web browsers.
-
-following benefits if a user creates an external javascript:
-
-It helps in the reusability of code in more than one HTML file.
-It allows easy code readability.
-It is time-efficient as web browsers cache the external js files, which further reduces the page loading time.
-It enables both web designers and coders to work with html and js files parallelly and separately, i.e., without facing any code conflictions.
-The length of the code reduces as only we need to specify the location of the js file.
-
-following disadvantages of external files:
-
-The stealer may download the coder's code using the url of the js file.
-If two js files are dependent on one another, then a failure in one file may affect the execution of the other dependent file.
-The web browser needs to make an additional http request to get the js code.
-A tiny to a large change in the js code may cause unexpected results in all its dependent files.
-We need to check each file that depends on the commonly created external javascript file.
-If it is a few lines of code, then better to implement the internal javascript code.
-
-To declare JavaScript global variables inside function, you need to use window object.
-function m(){  
-window.value=100;//declaring global variable by window object  
-}  
 
 
 
