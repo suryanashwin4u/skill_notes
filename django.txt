@@ -23,8 +23,15 @@ To know django admin commands is installed
 For help on a specific subcommand in django admin
 ==>python -m django help
 
+--------------------------------------------------
+To install latest django version
+pip install Django==4.0.3
+
+To upgrade pip version
+pip install --upgrade pip
+
 To create django project
-==>python -m django-admin startproject project-name
+==>django-admin startproject project-name
 
 To start website server at local host
 ==>python manage.py runserver
