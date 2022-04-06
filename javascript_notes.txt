@@ -1558,6 +1558,266 @@ entries()	    Returns an iterator with the [key, value] pairs in a Map
 Property	    Description
 size	        Returns the number of elements in a Map
 
+// Create a Map
+const fruits = new Map();
+
+//to access elements inside map
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+fruits.get("apples");
+
+//to add or set item in map object
+fruits.set("apples", 500);
+
+//return the size of map object 
+fruits.size;
+
+//delete item from map object 
+fruits.delete("apples");
+
+//has returns true or false if key found in map object 
+fruits.has("apples");
+
+//foreach on map object
+fruits.forEach (function(value, key) {
+  text += key + ' = ' + value;
+})
+
+//key value pair using map entries 
+for (const x of fruits.entries()) {
+  text += x;
+}
+
+typeof "John"                 // Returns "string"
+typeof 3.14                   // Returns "number"
+typeof NaN                    // Returns "number"
+typeof false                  // Returns "boolean"
+typeof [1,2,3,4]              // Returns "object"
+typeof {name:'John', age:34}  // Returns "object"
+typeof new Date()             // Returns "object"
+typeof function () {}         // Returns "function"
+typeof myCar                  // Returns "undefined" *
+typeof null                   // Returns "object"
+
+
+"John".constructor                // Returns function String()  {[native code]}
+(3.14).constructor                // Returns function Number()  {[native code]}
+false.constructor                 // Returns function Boolean() {[native code]}
+[1,2,3,4].constructor             // Returns function Array()   {[native code]}
+{name:'John',age:34}.constructor  // Returns function Object()  {[native code]}
+new Date().constructor            // Returns function Date()    {[native code]}
+function () {}.constructor        // Returns function Function(){[native code]}
+
+//to check if an object is an array
+function isArray(myArray) {
+  return myArray.constructor === Array;
+}
+
+//check if the object is a Date function:
+function isDate(myDate) {
+  return myDate.constructor === Date;
+}
+
+//empty object by declaring undefined or null
+let person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+person = undefined;  
+person = null;   
+person = "";
+
+//Converting Strings to Numbers
+Number("3.14")    // returns 3.14
+Number(" ")       // returns 0
+Number("")        // returns 0
+Number("99 88")   // returns NaN
+
+Method	      Description
+Number()	    Returns a number, converted from its argument
+parseFloat()	Parses a string and returns a floating point number
+parseInt()	  Parses a string and returns an integer
+
+//unary + operator can be used to convert a variable to a number otherwise NaN:
+let y = "5";      // y is a string
+let x = + y;      // x is a number
+
+//converting numbers to string
+String(x)         // returns a string from a number variable x
+String(123)       // returns a string from a number literal 123
+String(100 + 23)  // returns a string from a number from an expression
+x.toString()
+(123).toString()
+(100 + 23).toString()
+
+methods	            Description
+toExponential()	    Returns a string, with a number rounded and written using exponential notation.
+toFixed()	          Returns a string, with a number rounded and written with a specified number of decimals.
+toPrecision()	      Returns a string, with a number written with a specified length
+
+//Converting Dates to Numbers
+d = new Date();
+Number(d)          // returns 1404568027739
+d.getTime()        // returns 1404568027739
+
+//convert date to string
+String(Date())  // returns "Thu Jul 17 2014 15:38:19 GMT+0200 (W. Europe Daylight Time)"
+Date().toString()  // returns "Thu Jul 17 2014 15:38:19 GMT+0200 (W. Europe Daylight Time)"
+
+//Converting Booleans to Numbers,strings
+Number(false)     // returns 0
+Number(true)      // returns 1
+String(false)      // returns "false"
+String(true)       // returns "true"
+false.toString()   // returns "false"
+true.toString()    // returns "true"
+
+//automatic type conversion
+5 + null    // returns 5         because null is converted to 0
+"5" + null  // returns "5null"   because null is converted to "null"
+"5" + 2     // returns "52"      because 2 is converted to "2"
+"5" - 2     // returns 3         because "5" is converted to 5
+"5" * "2"   // returns 10        because "5" and "2" are converted to 5 and 2
+
+//Automatic String Conversion
+document.getElementById("demo").innerHTML = myVar;
+// if myVar = {name:"Fjohn"}  // toString converts to "[object Object]"
+// if myVar = [1,2,3,4]       // toString converts to "1,2,3,4"
+// if myVar = new Date()      // toString converts to "Fri Jul 18 2014 09:08:55 GMT+0200"
+// if myVar = 123             // toString converts to "123"
+// if myVar = true            // toString converts to "true"
+// if myVar = false           // toString converts to "false"
+
+i	Perform case-insensitive matching	
+g	Perform a global match (find all matches rather than stopping after the first match)	
+m	Perform multiline matching
+
+//return index of word found
+let text = "Visit W3Schools!";
+let n = text.search("W3Schools");
+//case insensitive search
+let n = text.search(/w3schools/i);
+//replace 
+let result = text.replace("Microsoft", "W3Schools");
+let result = text.replace(/microsoft/i, "W3Schools");
+let result = text.replace(/microsoft/g, "W3Schools");
+let result = text.match(/^is/m);
+let result = text.match(/[h]/g);
+let result = text.match(/[1-4]/g);
+let result = text.match(/(red|green)/g);
+let result = text.match(/\d/g);
+let result = text.match(/\s/g);
+let result = text.search(/\bLO/);
+let result = text.search(/LO\b/);
+let result = text.match(/\u0057/g);
+let result = text.match(/o+/g);
+let result = text.match(/lo*/g);
+let result = text.match(/10?/g);
+
+//test a pattern in a string and return true or false
+const pattern = /e/;
+pattern.test("The best things in life are free!");
+/e/.test("The best things in life are free!");
+
+//It searches a string for a specified pattern, and returns the found text as an object.
+/e/.exec("The best things in life are free!");
+
+//handling errors
+try {
+  adddlert("Welcome guest!");
+}
+catch(err) {
+  document.getElementById("demo").innerHTML = err.message;
+}
+
+throw "Too big";    // throw a text
+throw 500;          // throw a number
+
+ try {
+    if(x == "") throw "is empty";
+    if(isNaN(x)) throw "is not a number";
+    x = Number(x);
+    if(x > 10) throw "is too high";
+    if(x < 5) throw "is too low";
+  }
+  catch(err) {
+    message.innerHTML = "Error: " + err.name + "." + err.value;
+  }
+  finally {
+    document.getElementById("demo").value = "";
+  }
+
+Six different values can be returned by the error name property:
+
+Error Name	      Description
+EvalError	        An error has occurred in the eval() function
+RangeError	      A number "out of range" has occurred
+ReferenceError	  An illegal reference has occurred
+SyntaxError	      A syntax error has occurred
+TypeError	        A type error has occurred
+URIError	        An error in encodeURI() has occurred
+
+let num = 1;
+try {
+  num.toPrecision(500);   // A number cannot have 500 significant digits
+}
+catch(err) {
+  document.getElementById("demo").innerHTML = err.name;
+}
+
+let x = 5;
+try {
+  x = y + 1;   // y cannot be used (referenced)
+}
+catch(err) {
+  document.getElementById("demo").innerHTML = err.name;
+}
+
+try {
+  eval("alert('Hello)");   // Missing ' will produce an error
+}
+catch(err) {
+  document.getElementById("demo").innerHTML = err.name;
+}
+
+let num = 1;
+try {
+  num.toUpperCase();   // You cannot convert a number to upper case
+}
+catch(err) {
+  document.getElementById("demo").innerHTML = err.name;
+}
+
+try {
+  decodeURI("%%%");   // You cannot URI decode percent signs
+}
+catch(err) {
+  document.getElementById("demo").innerHTML = err.name;
+}
+
+//If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
+myFunction();
+
+// code here can use carName
+function myFunction() {
+  carName = "Volvo";
+}
+
+var carName = "Volvo";
+// code here can use window.carName
+
+let carName = "Volvo";
+// code here can not use window.carName
+
+
+
+
+
+
+
+
+
+
 
 
 
