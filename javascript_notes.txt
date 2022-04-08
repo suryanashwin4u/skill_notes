@@ -2070,6 +2070,248 @@ let x = 15 * 5;
 debugger;
 document.getElementById("demo").innerHTML = x;
 
+//camelCase for identifier names (variables and functions).
+All names start with a letter.
+firstName = "John";
+lastName = "Doe";
+price = 19.90;
+tax = 0.20;
+fullPrice = price + (price * tax);
+
+//Always put spaces around operators ( = + - * / ), and after commas:
+let x = y + z;
+const myArray = ["Volvo", "Saab", "Fiat"];
+
+//Always use 2 spaces for indentation of code blocks:
+function toCelsius(fahrenheit) {
+  return (5 / 9) * (fahrenheit - 32);
+}
+
+//Always end a simple statement with a semicolon.
+const cars = ["Volvo", "Saab", "Fiat"];
+
+//General rules for complex (compound) statements:
+1.Put the opening bracket at the end of the first line.
+2.Use one space before the opening bracket.
+3.Put the closing bracket on a new line, without leading spaces.
+4.Do not end a complex statement with a semicolon.
+
+function toCelsius(fahrenheit) {
+  return (5 / 9) * (fahrenheit - 32);
+}
+
+for (let i = 0; i < 5; i++) {
+  x += i;
+}
+
+if (time < 20) {
+  greeting = "Good day";
+} else {
+  greeting = "Good evening";
+}
+
+
+//General rules for object definitions:
+1.Place the opening bracket on the same line as the object name.
+2.Use colon plus one space between each property and its value.
+3.Use quotes around string values, not around numeric values.
+4.Do not add a comma after the last property-value pair.
+5.Place the closing bracket on a new line, without leading spaces.
+6.Always end an object definition with a semicolon.
+
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue"
+};
+
+const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+
+//For readability, avoid lines longer than 80 characters.
+
+//Always use the same naming convention for all your code. For example:
+1.Variable and function names written as camelCase
+2.Global variables written in UPPERCASE (We don't, but it's quite common)
+3.Constants (like PI) written in UPPERCASE
+
+//Hyphens in HTML and CSS:
+HTML5 attributes can start with data- (data-quantity, data-price).
+CSS uses hyphens in property-names (font-size).
+
+//In JavaScript, almost "everything" is an object.
+Booleans can be objects (if defined with the new keyword)
+Numbers can be objects (if defined with the new keyword)
+Strings can be objects (if defined with the new keyword)
+Dates are always objects
+Maths are always objects
+Regular expressions are always objects
+Arrays are always objects
+Functions are always objects
+Objects are always objects
+All JavaScript values, except primitives, are objects.
+
+//JavaScript defines 7 types of primitive data types:
+string
+number
+boolean
+null
+undefined
+symbol
+bigint
+
+
+//Primitive values are immutable (they are hardcoded and cannot be changed).
+if x = 3.14, you can change the value of x, but you cannot change the value of 3.14.
+
+//declare objects with the const keyword.
+const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+
+//Objects written as name value pairs are similar to:
+Associative arrays in PHP
+Dictionaries in Python
+Hash tables in C
+Hash maps in Java
+Hashes in Ruby and Perl
+
+//There are different ways to create new objects:
+1.Create a single object, using an object literal.
+const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+const person = {};
+person.firstName = "John";
+person.lastName = "Doe";
+person.age = 50;
+person.eyeColor = "blue";
+
+2.Create a single object, with the keyword new.
+const person = new Object();
+person.firstName = "John";
+person.lastName = "Doe";
+person.age = 50;
+person.eyeColor = "blue";
+
+Define an object constructor, and then create objects of the constructed type.
+Create an object using Object.create().
+Objects are mutable: They are addressed by reference, not by value.
+
+const person = {
+  firstName:"John",
+  lastName:"Doe",
+  age:50, eyeColor:"blue"
+}
+
+const x = person;
+x.age = 10;
+
+//Accessing JavaScript Properties
+person.firstname + " is " + person.age + " years old.";
+person["firstname"] + " is " + person["age"] + " years old.";
+
+// for...in statement loops through the properties of an object.
+const person = {
+  fname:" John",
+  lname:" Doe",
+  age: 25
+};
+
+for (let x in person) {
+  txt += person[x];
+}
+
+//Adding New Properties
+person.nationality = "English";
+
+//Deleting Properties
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue"
+};
+
+delete person.age;
+delete person["age"];
+
+1.The delete keyword deletes both the value of the property and the property itself.
+2.After deletion, the property cannot be used before it is added back again.
+3.The delete operator is designed to be used on object properties. It has no effect on variables or functions.
+4.The delete operator should not be used on predefined JavaScript object properties. It can crash your application.
+
+//Values in an object can be another object:
+myObj = {
+  name:"John",
+  age:30,
+  cars: {
+    car1:"Ford",
+    car2:"BMW",
+    car3:"Fiat"
+  }
+}
+myObj.cars.car2;
+myObj.cars["car2"];
+myObj["cars"]["car2"];
+
+let p1 = "cars";
+let p2 = "car2";
+myObj[p1][p2];
+
+//Values in objects can be arrays, and values in arrays can be objects:
+const myObj = {
+  name: "John",
+  age: 30,
+  cars: [
+    {name:"Ford", models:["Fiesta", "Focus", "Mustang"]},
+    {name:"BMW", models:["320", "X3", "X5"]},
+    {name:"Fiat", models:["500", "Panda"]}
+  ]
+}
+
+//To access arrays inside arrays, use a for-in loop for each array:
+for (let i in myObj.cars) {
+  x += "<h1>" + myObj.cars[i].name + "</h1>";
+  for (let j in myObj.cars[i].models) {
+    x += myObj.cars[i].models[j];
+  }
+}
+
+//JavaScript objects inherit the properties of their prototype.
+The delete keyword does not delete inherited properties, 
+but if you delete a prototype property, 
+it will affect all objects inherited from the prototype.
+
+//JavaScript Object Methods
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  id: 5566,
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+//The this keyword refers to different objects depending on how it is used:
+
+In an object method, this refers to the object.
+Alone, this refers to the global object.
+In a function, this refers to the global object.
+In a function, in strict mode, this is undefined.
+In an event, this refers to the element that received the event.
+Methods like call(), apply(), and bind() can refer this to any object.
+
+//access objects method
+name = person.fullName();
+name = person.fullName;
+
+//Adding a new method to an object is easy and use built in methods:
+person.name = function () {
+   return (this.firstName + " " + this.lastName).toUpperCase();
+};
+
+
+
+
+
+
 
 
 
