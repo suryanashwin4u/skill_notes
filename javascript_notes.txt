@@ -2307,8 +2307,247 @@ person.name = function () {
    return (this.firstName + " " + this.lastName).toUpperCase();
 };
 
+//to display js objects 
+const person = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};
+document.getElementById("demo").innerHTML = person; //auto conversion to string
+document.getElementById("demo").innerHTML = person.name + "," + person.age + "," + person.city;
+
+//loop for js object
+const person = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};
+let txt = "";
+for (let x in person) {
+txt += person[x] + " ";
+};
+
+//object key values converted into array 
+const person = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};
+
+const myArray = Object.values(person);
+
+//object conversion to string
+let myString = JSON.stringify(person);
+
+//JSON.stringify converts dates into strings:
+const person = {
+  name: "John",
+  today: new Date()
+};
+
+let myString = JSON.stringify(person);
+
+//JSON.stringify will not stringify functions:
+const person = {
+  name: "John",
+  age: function () {return 30;}
+};
+
+let myString = JSON.stringify(person);
+
+//it can be done only when
+const person = {
+  name: "John",
+  age: function () {return 30;}
+};
+person.age = person.age.toString();
+
+let myString = JSON.stringify(person);
+
+//array to string
+const arr = ["John", "Peter", "Sally", "Jane"];
+let myString = JSON.stringify(arr);
+
+//getter 
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  language: "en",
+  get lang() {
+    return this.language;
+  }
+};
+// Display data from the object using a getter:
+document.getElementById("demo").innerHTML = person.lang;
+
+//setter
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  language: "",
+  set lang(lang) {
+    this.language = lang;
+  }
+};
+
+// Set an object property using a setter:
+person.lang = "en";
+
+// Display data from the object:
+document.getElementById("demo").innerHTML = person.language;
+
+//JavaScript can secure better data quality when using getters and setters.
+
+Why Using Getters and Setters?
+It gives simpler syntax
+It allows equal syntax for properties and methods
+It can secure better data quality
+It is useful for doing things behind-the-scenes
+
+//Object.defineProperty() method can also be used to add Getters and Setters:
+// Define object
+const obj = {counter : 0};
+
+// Define setters
+Object.defineProperty(obj, "reset", {
+  get : function () {this.counter = 0;}
+});
+Object.defineProperty(obj, "increment", {
+  get : function () {this.counter++;}
+});
+Object.defineProperty(obj, "decrement", {
+  get : function () {this.counter--;}
+});
+Object.defineProperty(obj, "add", {
+  set : function (value) {this.counter += value;}
+});
+Object.defineProperty(obj, "subtract", {
+  set : function (value) {this.counter -= value;}
+});
+
+// Play with the counter:
+obj.reset;
+obj.add = 5;
+obj.subtract = 1;
+obj.increment;
+obj.decrement;
+
+//constructors
+// Constructor function for Person objects
+function Person(first, last, age, eye) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eye;
+}
+
+// Create a Person object
+const myFather = new Person("John", "Doe", 50, "blue");
+
+function Person(first, last, age, eye) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eye;
+  this.myFunc = () =>{
+    this.firstName + this.lastName;
+  }
+}
+
+// Create 2 Person objects
+const myFather = new Person("John", "Doe", 50, "blue");
+const myMother = new Person("Sally", "Rally", 48, "green");
+
+// Add nationality to first object
+myFather.nationality = "English";
+
+//adding function property to object
+myFather.name = function() {
+  return this.firstName + " " + this.lastName;
+};
+
+//Adding a new method to an existing object is easy:
+myFather.name = function () {
+  return this.firstName + " " + this.lastName;
+};
 
 
+//built in js objects
+const x1 = new String();   // A new String object
+const x2 = new Number();   // A new Number object
+const x3 = new Boolean();  // A new Boolean object
+const x4 = new Object();   // A new Object object
+const x5 = new Array();    // A new Array object
+const x6 = new RegExp();   // A new RegExp object
+const x7 = new Function(); // A new Function object
+const x8 = new Date();     // A new Date object
+
+//Math is a global object. The new keyword cannot be used on Math.
+
+//All JavaScript objects inherit properties and methods from a prototype.
+Date objects inherit from Date.prototype
+Array objects inherit from Array.prototype
+Person objects inherit from Person.prototype
+The Object.prototype is on the top of the prototype inheritance chain:
+
+//change constructor property and function directly using prototype
+function Person(first, last, age, eye) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eye;
+}
+Person.prototype.nationality = "English";
+
+Person.prototype.name = function() {
+  return this.firstName + " " + this.lastName;
+};
+
+//iterate over string
+for (const x of "W3Schools") {
+  // code block to be executed
+}
+
+//iterate over array
+for (const x of [1,2,3,4,5] {
+  // code block to be executed
+}
+
+//An object becomes an iterator when it implements a next() method.
+The next() method must return an object with two properties:
+value (the next value)
+done (true or false)
+
+// Home Made Iterable
+function myNumbers() {
+  let n = 0;
+  return {
+    next: function() {
+      n += 10;
+      return {value:n, done:false};
+    }
+  };
+}
+
+// Create Iterable
+const n = myNumbers();
+n.next(); // Returns 10
+n.next(); // Returns 20
+n.next(); // Returns 30
+
+Method	    Description
+new Set()	  Creates a new Set
+add()	      Adds a new element to the Set
+delete()	  Removes an element from a Set
+has()	      Returns true if a value exists
+clear()	    Removes all elements from a Set
+forEach()	  Invokes a callback for each element
+values()	  Returns an Iterator with all the values in a Set
+keys()	    Same as values()
+entries()	  Returns an Iterator with the [value,value] pairs from a Set
+
+Property	  Description
+size	      Returns the number elements in a Set
 
 
 
