@@ -1176,11 +1176,11 @@ const cars = ["Volvo", "BMW"];   // Allowed
   const cars = ["Volvo", "BMW"]; // Allowed
 }
 
-//to know current date and time
-new Date()
-new Date(year, month, day, hours, minutes, seconds, milliseconds)
-new Date(milliseconds)
-new Date(date string) 
+//to create a new date object, but it will be automatically converted to string when displayed
+const dateObj = new Date();
+const dateObj = new Date(year, month, day, hours, minutes, seconds, milliseconds);
+const dateObj = new Date(milliseconds);
+const dateObj = new Date(date string); 
 
 //return a string with date and time
 7 numbers specify year, month, day, hour, minute, second, and millisecond (in that order):
@@ -1189,73 +1189,116 @@ new Date(date string)
 4 numbers specify year, month, day, and hour:
 3 numbers specify year, month, and day:
 2 numbers specify year and month:
-If you supply only one parameter it will be treated as milliseconds.
-const d = new Date(2018, 11, 24, 10, 33, 30, 0);
+1 parameter will be treated as milliseconds.
 
-One and two digit years will be interpreted as 19xx:
+//JavaScript counts months from 0 to 11:
+//Specifying a month higher than 11, will not result in an error but add the overflow to the next year:
+const d = new Date(2018,0 to 11, 24, 10, 33, 30, 0);
+
+//One and two digit years will be interpreted as 19xx:
 const d = new Date(99, 11, 24);
-
 const d = new Date(9, 11, 24);
 
 //create a date object from a string
 const d = new Date("October 13, 2014 11:13:00");
 
 //new Date(milliseconds) creates a new date object as zero time plus milliseconds:
-const d = new Date(0);
-const d = new Date(-100000000000);
+const d = new Date(0); //argument is miliseconds in this case
+const d = new Date(-100000000000); //plus or minus miliseconds in this case
+
+//One day (24 hours) is 86 400 000 milliseconds.
+
 //convert date object to string
-d.toString();
-d.toUTCString();
-d.toDateString();
-d.toISOString();
+d.toString();       //Tue Apr 05 2022 06:50:27 GMT+0530 (India Standard Time)
+d.toUTCString();    //Tue, 05 Apr 2022 01:20:37 GMT
+d.toDateString();   //Tue Apr 05 2022
+d.toISOString();    //2022-04-05T01:21:26.236Z
 
+Type	        Example
+ISO Date	    "2015-03-25" (The International Standard)
+Short Date	  "03/25/2015"
+Long Date	    "Mar 25 2015" or "25 Mar 2015"
 
-Type	Example
-ISO Date	"2015-03-25" (The International Standard)
-Short Date	"03/25/2015"
-Long Date	"Mar 25 2015" or "25 Mar 2015"
+const d = new Date("2015-03-25");             //Wed Mar 25 2015 05:30:00 GMT+0530 (India Standard Time)
+const d = new Date("2015-03");                //Sun Mar 01 2015 05:30:00 GMT+0530 (India Standard Time)
+const d = new Date("2015");                   //Thu Jan 01 2015 05:30:00 GMT+0530 (India Standard Time)
+const d = new Date("2015-03-25T12:00:00Z");   //Wed Mar 25 2015 17:30:00 GMT+0530 (India Standard Time)
 
-const d = new Date("2015-03-25");
-const d = new Date("2015-03");
-const d = new Date("2015");
-const d = new Date("2015-03-25T12:00:00Z");
-If you want to modify the time relative to UTC, remove the Z and add +HH:MM or -HH:MM instead:
-const d = new Date("2015-03-25T12:00:00-06:30");
-const d = new Date("03/25/2015");
+//If you want to modify the time relative to UTC, remove the Z and add +HH:MM or -HH:MM instead:
+const d = new Date("2015-03-25T12:00:00-06:30");    //Wed Mar 25 2015 23:30:00 GMT+0530 (India Standard Time)
+const d = new Date("03/25/2015");                   //Wed Mar 25 2015 00:00:00 GMT+0530 (India Standard Time)
 
+//long dates
+const d = new Date("Mar 25 2015");            //Wed Mar 25 2015 00:00:00 GMT+0530 (India Standard Time)
+const d = new Date("25 Mar 2015");            //Wed Mar 25 2015 00:00:00 GMT+0530 (India Standard Time)
+const d = new Date("January 25 2015");        //Sun Jan 25 2015 00:00:00 GMT+0530 (India Standard Time)
+const d = new Date("Jan 25 2015");            //Sun Jan 25 2015 00:00:00 GMT+0530 (India Standard Time)
+const d = new Date("JANUARY, 25, 2015");      //Sun Jan 25 2015 00:00:00 GMT+0530 (India Standard Time)  
 
+//convert date format into miliseconds
+let msec = Date.parse("March 21, 2012");
 
+getFullYear()	          Get the year as a four digit number (yyyy)
+getMonth()	            Get the month as a number (0-11)
+getDate()	              Get the day as a number (1-31)
+getHours()	            Get the hour (0-23)
+getMinutes()	          Get the minute (0-59)
+getSeconds()	          Get the second (0-59)
+getMilliseconds()	      Get the millisecond (0-999)
+getTime()	              Get the time (milliseconds since January 1, 1970)
+getDay()	              Get the weekday as a number (0-6)
+Date.now()	            Get the time. ECMAScript 5.
+getUTCDate()	          Same as getDate(), but returns the UTC date
+getUTCDay()	            Same as getDay(), but returns the UTC day
+getUTCFullYear()	      Same as getFullYear(), but returns the UTC year
+getUTCHours()	          Same as getHours(), but returns the UTC hour
+getUTCMilliseconds()	  Same as getMilliseconds(), but returns the UTC milliseconds
+getUTCMinutes()	        Same as getMinutes(), but returns the UTC minutes
+getUTCMonth()	          Same as getMonth(), but returns the UTC month
+getUTCSeconds()	        Same as getSeconds(), but returns the UTC seconds
 
-getFullYear()	Get the year as a four digit number (yyyy)
-getMonth()	Get the month as a number (0-11)
-getDate()	Get the day as a number (1-31)
-getHours()	Get the hour (0-23)
-getMinutes()	Get the minute (0-59)
-getSeconds()	Get the second (0-59)
-getMilliseconds()	Get the millisecond (0-999)
-getTime()	Get the time (milliseconds since January 1, 1970)
-getDay()	Get the weekday as a number (0-6)
-Date.now()	Get the time. ECMAScript 5.
-getUTCDate()	Same as getDate(), but returns the UTC date
-getUTCDay()	Same as getDay(), but returns the UTC day
-getUTCFullYear()	Same as getFullYear(), but returns the UTC year
-getUTCHours()	Same as getHours(), but returns the UTC hour
-getUTCMilliseconds()	Same as getMilliseconds(), but returns the UTC milliseconds
-getUTCMinutes()	Same as getMinutes(), but returns the UTC minutes
-getUTCMonth()	Same as getMonth(), but returns the UTC month
-getUTCSeconds()	Same as getSeconds(), but returns the UTC seconds
+//to return month name
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+console.log(months[new Date().getMonth()]);
 
+//In JavaScript, the first day of the week (0) means "Sunday"
 
+//Set the day as a number (1-31)
+d.setDate(15);
+d.setDate(d.getDate() + 50);
 
-setDate()	Set the day as a number (1-31)
-setFullYear()	Set the year (optionally month and day)
-setHours()	Set the hour (0-23)
-setMilliseconds()	Set the milliseconds (0-999)
-setMinutes()	Set the minutes (0-59)
-setMonth()	Set the month (0-11)
-setSeconds()	Set the seconds (0-59)
-setTime()	Set the time (milliseconds since January 1, 1970)
+//Set the year (optionally month and day)
+d.setFullYear(2020);
+d.setFullYear(2020, 11, 3);
 
+//Set the hour (0-23)
+d.setHours(22);
+
+//Set the milliseconds (0-999)
+setMilliseconds()	  
+
+//Set the minutes (0-59)
+d.setMinutes(30);
+
+//Set the month (0-11)
+d.setMonth(11);
+
+//Set the seconds (0-59)
+d.setSeconds(30);
+
+//Set the time (milliseconds since January 1, 1970)
+setTime()	      
+
+//compare dates using date object
+let text = "";
+const today = new Date();
+const someday = new Date();
+someday.setFullYear(2100, 0, 14);
+if (someday > today) {
+  text = "Today is before January 14, 2100.";
+} else {
+  text = "Today is after January 14, 2100.";
+}
 
 Math.E        // returns Euler's number
 Math.PI       // returns PI
@@ -1266,15 +1309,1246 @@ Math.LN10     // returns the natural logarithm of 10
 Math.LOG2E    // returns base 2 logarithm of E
 Math.LOG10E   // returns base 10 logarithm of E
 
-Math.round(x)	Returns x rounded to its nearest integer
-Math.ceil(x)	Returns x rounded up to its nearest integer
-Math.floor(x)	Returns x rounded down to its nearest integer
-Math.trunc(x)	Returns the integer part of x (new in ES6)
-Math.sign(x) returns if x is negative, null or positive:
-Math.pow(x, y) returns the value of x to the power of y
-Math.sqrt(x) returns the square root of x:
-Math.abs(x) returns the absolute (positive) value of x
+Math.round(x)	  //Returns x rounded to its nearest integer
+Math.ceil(x)	  //Returns x rounded up to its next integer
+Math.floor(x)	  //Returns x rounded down to its previous integer
+Math.trunc(x)	  //Returns the integer part of x (new in ES6)
+Math.sign(x)    //returns if 1,0,-1 for x is negative, null or positive
+Math.pow(x, y)  //returns the value of x to the power of y
+Math.sqrt(x)    //returns the square root of x
+Math.cbrt(x)	        //Returns the cubic root of x
+Math.abs(x)     //returns the absolute (positive) value of x
+Math.sin(x)     //returns sin of angle (radian)
+Math.cos(x)     //returns cosine of angle (radian)
+Math.min(array) //returns min number in an array
+Math.max(array) //returns max number in an array
+Math.random()   //returns a random number between 0 and 1
+Math.log(x)     //returns the natural logarithm of x
+Math.log2(x)    //returns the base 2 logarithm of x
+Math.log10(x)   //returns the base 10 logarithm of x
 
+//return a random number between range
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+//returns a random number between min and max (both included)
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+//return true or false after checking condition
+Boolean(10 > 9)
+(10 > 9)
+10 > 9
+
+//Everything With a "Value" is True except 0,-0,"",undefined,null,false,NaN for false
+100
+3.14
+-15
+"Hello"
+"false"
+7 + 1 + 3.14
+
+//can be used as objects
+let y = new Boolean(false);
+
+//ternery condition
+variablename = (condition) ? value1:value2
+
+//switch case,break,default
+switch (new Date().getDay()) {
+  case 6:
+    text = "Today is Saturday";
+    break;
+  case 0:
+    text = "Today is Sunday";
+    break;
+  default:
+    text = "Looking forward to the Weekend";
+}
+
+//same switch cases
+switch (new Date().getDay()) {
+  case 4:
+  case 5:
+    text = "Soon it is Weekend";
+    break;
+  case 0:
+  case 6:
+    text = "It is Weekend";
+    break;
+  default:
+    text = "Looking forward to the Weekend";
+}
+
+//JavaScript supports different kinds of loops:
+
+for - loops through a block of code a number of times
+for/in - loops through the properties of an object
+for/of - loops through the values of an iterable object
+while - loops through a block of code while a specified condition is true
+do/while - also loops through a block of code while a specified condition is true
+
+for (let i = 0; i < cars.length; i++) {
+  text += cars[i] + "<br>";
+}
+for (let i = 0, len = cars.length, text = ""; i < len; i++) {
+  text += cars[i] + "<br>";
+}
+for (; i < len; i++) {
+  text += cars[i] + "<br>";
+}
+for (; i < len; ) {
+  text += cars[i] + "<br>";
+  i++;
+}
+for (let i = 0; i < 10; i++) {
+  if (i === 3) 
+  { 
+    break; 
+  }
+  text += "The number is " + i + "<br>";
+}
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { 
+    continue; 
+  }
+  text += "The number is " + i + "<br>";
+}
+
+//scope of var loop
+var i = 5;
+for (var i = 0; i < 10; i++) {
+  // some code
+}
+// Here i is 10
+
+//scope of let loop
+let i = 5;
+for (let i = 0; i < 10; i++) {
+  // some code
+}
+// Here i is 5
+
+//looping objects and arrays using keys,values
+const person = {fname:"John", lname:"Doe", age:25};
+for (let x in person) {
+  text += person[x];
+}
+const numbers = [45, 4, 9, 16, 25];
+for (let x in numbers) {
+  txt += numbers[x];
+}
+
+//looping and mapping using foreach
+const numbers = [45, 4, 9, 16, 25];
+numbers.forEach(myFunction);
+function myFunction(value, index, array) {
+  txt += value;
+}
+
+//looping using of where cars can be an array or string
+for (let x of cars) {
+  text += x;
+}
+
+//looping using while
+while (i < 10) {
+  text += "The number is " + i;
+  i++;
+}
+
+//looping using do while 
+do {
+  text += "The number is " + i;
+  i++;
+}
+while (i < 10);
+
+//break or continue
+1.The continue statement (with or without a label reference) can only be used to skip one loop iteration.
+2.The break statement, without a label reference, can only be used to jump out of a loop or a switch.
+3.With a label reference, the break statement can be used to jump out of any code block:
+const cars = ["BMW", "Volvo", "Saab", "Ford"];
+list: {
+  text += cars[0] + "<br>";
+  text += cars[1] + "<br>";
+  break list;
+  text += cars[2] + "<br>";
+  text += cars[3] + "<br>";
+}
+
+//looping through set
+const letters = new Set(["a","b","c"]);
+for (const x of letters) {
+  // code block to be executed
+}
+
+//looping through map
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+for (const x of fruits) {
+  // code block to be executed
+}
+
+//sets functions
+new Set()	  Creates a new Set
+add()	      Adds a new element to the Set
+delete()	  Removes an element from a Set
+has()	      Returns true if a value exists in the Set
+forEach()	  Invokes a callback for each element in the Set
+values()	  Returns an iterator with all the values in a Set
+size	      Returns the number of elements in a Set
+
+// Create a Set
+const letters = new Set(["a","b","c"]);
+
+// Create a Set
+const letters = new Set();
+// Add Values to the Set
+letters.add("a");
+letters.add("b");
+letters.add("c");
+
+// Create a Set
+const letters = new Set();
+// Create Variables
+const a = "a";
+const b = "b";
+const c = "c";  
+// Add Variables to the Set
+letters.add(a);
+letters.add(b);
+letters.add(c);
+letters.add(c); //If you add equal elements, only the first will be saved
+
+letters.values()   // Returns [object Set Iterator]
+// List all Elements
+let text = "";
+for (const x of letters.values()) {
+  text += x;
+}
+
+// Create a Set
+const letters = new Set(["a","b","c"]);
+// List all Elements
+let text = "";
+letters.forEach (function(value) {
+  text += value;
+})
+
+// List all Elements
+let text = "";
+for (const x of letters.values()) {
+  text += x;
+}
+
+Method	      Description
+new Map()	    Creates a new Map
+set()	        Sets the value for a key in a Map
+get()	        Gets the value for a key in a Map
+delete()	    Removes a Map element specified by the key
+has()	        Returns true if a key exists in a Map
+forEach()	    Calls a function for each key/value pair in a Map
+entries()	    Returns an iterator with the [key, value] pairs in a Map
+
+Property	    Description
+size	        Returns the number of elements in a Map
+
+// Create a Map
+const fruits = new Map();
+
+//to access elements inside map
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+fruits.get("apples");
+
+//to add or set item in map object
+fruits.set("apples", 500);
+
+//return the size of map object 
+fruits.size;
+
+//delete item from map object 
+fruits.delete("apples");
+
+//has returns true or false if key found in map object 
+fruits.has("apples");
+
+//foreach on map object
+fruits.forEach (function(value, key) {
+  text += key + ' = ' + value;
+})
+
+//key value pair using map entries 
+for (const x of fruits.entries()) {
+  text += x;
+}
+
+typeof "John"                 // Returns "string"
+typeof 3.14                   // Returns "number"
+typeof NaN                    // Returns "number"
+typeof false                  // Returns "boolean"
+typeof [1,2,3,4]              // Returns "object"
+typeof {name:'John', age:34}  // Returns "object"
+typeof new Date()             // Returns "object"
+typeof function () {}         // Returns "function"
+typeof myCar                  // Returns "undefined" *
+typeof null                   // Returns "object"
+
+
+"John".constructor                // Returns function String()  {[native code]}
+(3.14).constructor                // Returns function Number()  {[native code]}
+false.constructor                 // Returns function Boolean() {[native code]}
+[1,2,3,4].constructor             // Returns function Array()   {[native code]}
+{name:'John',age:34}.constructor  // Returns function Object()  {[native code]}
+new Date().constructor            // Returns function Date()    {[native code]}
+function () {}.constructor        // Returns function Function(){[native code]}
+
+//to check if an object is an array
+function isArray(myArray) {
+  return myArray.constructor === Array;
+}
+
+//check if the object is a Date function:
+function isDate(myDate) {
+  return myDate.constructor === Date;
+}
+
+//empty object by declaring undefined or null
+let person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+person = undefined;  
+person = null;   
+person = "";
+
+//Converting Strings to Numbers
+Number("3.14")    // returns 3.14
+Number(" ")       // returns 0
+Number("")        // returns 0
+Number("99 88")   // returns NaN
+
+Method	      Description
+Number()	    Returns a number, converted from its argument
+parseFloat()	Parses a string and returns a floating point number
+parseInt()	  Parses a string and returns an integer
+
+//unary + operator can be used to convert a variable to a number otherwise NaN:
+let y = "5";      // y is a string
+let x = + y;      // x is a number
+
+//converting numbers to string
+String(x)         // returns a string from a number variable x
+String(123)       // returns a string from a number literal 123
+String(100 + 23)  // returns a string from a number from an expression
+x.toString()
+(123).toString()
+(100 + 23).toString()
+
+methods	            Description
+toExponential()	    Returns a string, with a number rounded and written using exponential notation.
+toFixed()	          Returns a string, with a number rounded and written with a specified number of decimals.
+toPrecision()	      Returns a string, with a number written with a specified length
+
+//Converting Dates to Numbers
+d = new Date();
+Number(d)          // returns 1404568027739
+d.getTime()        // returns 1404568027739
+
+//convert date to string
+String(Date())  // returns "Thu Jul 17 2014 15:38:19 GMT+0200 (W. Europe Daylight Time)"
+Date().toString()  // returns "Thu Jul 17 2014 15:38:19 GMT+0200 (W. Europe Daylight Time)"
+
+//Converting Booleans to Numbers,strings
+Number(false)     // returns 0
+Number(true)      // returns 1
+String(false)      // returns "false"
+String(true)       // returns "true"
+false.toString()   // returns "false"
+true.toString()    // returns "true"
+
+//automatic type conversion
+5 + null    // returns 5         because null is converted to 0
+"5" + null  // returns "5null"   because null is converted to "null"
+"5" + 2     // returns "52"      because 2 is converted to "2"
+"5" - 2     // returns 3         because "5" is converted to 5
+"5" * "2"   // returns 10        because "5" and "2" are converted to 5 and 2
+
+//Automatic String Conversion
+document.getElementById("demo").innerHTML = myVar;
+// if myVar = {name:"Fjohn"}  // toString converts to "[object Object]"
+// if myVar = [1,2,3,4]       // toString converts to "1,2,3,4"
+// if myVar = new Date()      // toString converts to "Fri Jul 18 2014 09:08:55 GMT+0200"
+// if myVar = 123             // toString converts to "123"
+// if myVar = true            // toString converts to "true"
+// if myVar = false           // toString converts to "false"
+
+i	Perform case-insensitive matching	
+g	Perform a global match (find all matches rather than stopping after the first match)	
+m	Perform multiline matching
+
+//return index of word found
+let text = "Visit W3Schools!";
+let n = text.search("W3Schools");
+//case insensitive search
+let n = text.search(/w3schools/i);
+//replace 
+let result = text.replace("Microsoft", "W3Schools");
+let result = text.replace(/microsoft/i, "W3Schools");
+let result = text.replace(/microsoft/g, "W3Schools");
+let result = text.match(/^is/m);
+let result = text.match(/[h]/g);
+let result = text.match(/[1-4]/g);
+let result = text.match(/(red|green)/g);
+let result = text.match(/\d/g);
+let result = text.match(/\s/g);
+let result = text.search(/\bLO/);
+let result = text.search(/LO\b/);
+let result = text.match(/\u0057/g);
+let result = text.match(/o+/g);
+let result = text.match(/lo*/g);
+let result = text.match(/10?/g);
+
+//test a pattern in a string and return true or false
+const pattern = /e/;
+pattern.test("The best things in life are free!");
+/e/.test("The best things in life are free!");
+
+//It searches a string for a specified pattern, and returns the found text as an object.
+/e/.exec("The best things in life are free!");
+
+//handling errors
+try {
+  adddlert("Welcome guest!");
+}
+catch(err) {
+  document.getElementById("demo").innerHTML = err.message;
+}
+
+throw "Too big";    // throw a text
+throw 500;          // throw a number
+
+ try {
+    if(x == "") throw "is empty";
+    if(isNaN(x)) throw "is not a number";
+    x = Number(x);
+    if(x > 10) throw "is too high";
+    if(x < 5) throw "is too low";
+  }
+  catch(err) {
+    message.innerHTML = "Error: " + err.name + "." + err.value;
+  }
+  finally {
+    document.getElementById("demo").value = "";
+  }
+
+Six different values can be returned by the error name property:
+
+Error Name	      Description
+EvalError	        An error has occurred in the eval() function
+RangeError	      A number "out of range" has occurred
+ReferenceError	  An illegal reference has occurred
+SyntaxError	      A syntax error has occurred
+TypeError	        A type error has occurred
+URIError	        An error in encodeURI() has occurred
+
+let num = 1;
+try {
+  num.toPrecision(500);   // A number cannot have 500 significant digits
+}
+catch(err) {
+  document.getElementById("demo").innerHTML = err.name;
+}
+
+let x = 5;
+try {
+  x = y + 1;   // y cannot be used (referenced)
+}
+catch(err) {
+  document.getElementById("demo").innerHTML = err.name;
+}
+
+try {
+  eval("alert('Hello)");   // Missing ' will produce an error
+}
+catch(err) {
+  document.getElementById("demo").innerHTML = err.name;
+}
+
+let num = 1;
+try {
+  num.toUpperCase();   // You cannot convert a number to upper case
+}
+catch(err) {
+  document.getElementById("demo").innerHTML = err.name;
+}
+
+try {
+  decodeURI("%%%");   // You cannot URI decode percent signs
+}
+catch(err) {
+  document.getElementById("demo").innerHTML = err.name;
+}
+
+//If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
+myFunction();
+
+// code here can use carName
+function myFunction() {
+  carName = "Volvo";
+}
+
+var carName = "Volvo";
+// code here can use window.carName
+
+let carName = "Volvo";
+// code here can not use window.carName
+
+//Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function). 
+but this does not work with let and const
+JavaScript only hoists declarations, not initializations.
+x = 5; // Assign 5 to x
+elem = document.getElementById("demo"); // Find an element
+elem.innerHTML = x;                     // Display x in the element
+var x; // Declare x
+
+//Strict mode is declared by adding "use strict"; to the beginning of a script or a function.
+Declared at the beginning of a script, it has global scope
+"use strict";
+let x = 33;
+
+
+//Declared inside a function, it has local scope (only the code inside the function is in strict mode):
+x = 3.14;       // This will not cause an error.
+myFunction();
+function myFunction() {
+  "use strict";
+  y = 3.14;   // This will cause an error
+}
+
+Using a variable, without declaring it, is not allowed:
+"use strict";
+x = 3.14;                // This will cause an error
+
+Using an object, without declaring it, is not allowed:
+"use strict";
+x = {p1:10, p2:20};      // This will cause an error
+
+Deleting a variable (or object) is not allowed.
+"use strict";
+let x = 3.14;
+delete x;                // This will cause an error
+
+Deleting a function is not allowed.
+"use strict";
+function x(p1, p2) {};
+delete x;                // This will cause an error 
+
+Duplicating a parameter name is not allowed:
+"use strict";
+function x(p1, p1) {};   // This will cause an error
+
+
+Octal numeric literals are not allowed:
+"use strict";
+let x = 010;             // This will cause an error
+
+
+Octal escape characters are not allowed:
+"use strict";
+let x = "\010";            // This will cause an error
+
+
+Writing to a read-only property is not allowed:
+"use strict";
+const obj = {};
+Object.defineProperty(obj, "x", {value:0, writable:false});
+obj.x = 3.14;            // This will cause an error
+
+
+Writing to a get-only property is not allowed:
+"use strict";
+const obj = {get x() {return 0} };
+obj.x = 3.14;            // This will cause an error
+
+
+Deleting an undeletable property is not allowed:
+"use strict";
+delete Object.prototype; // This will cause an error
+
+
+The word eval cannot be used as a variable:
+"use strict";
+let eval = 3.14;         // This will cause an error
+
+
+The word arguments cannot be used as a variable:
+"use strict";
+let arguments = 3.14;    // This will cause an error
+
+The with statement is not allowed:
+"use strict";
+with (Math){x = cos(2)}; // This will cause an error
+
+For security reasons, eval() is not allowed to create variables in the scope from which it was called:
+"use strict";
+eval ("let x = 2");
+alert (x);             // This will cause an error
+
+If the object is not specified, functions in strict mode will return undefined and functions in normal mode will return the global object (window):
+"use strict";
+function myFunction() {
+  alert(this); // will alert "undefined"
+}
+myFunction();
+
+
+Keywords reserved for future JavaScript versions can NOT be used as variable names in strict mode.
+These are:
+implements
+interface
+let
+package
+private
+protected
+public
+static
+yield
+"use strict";
+let public = 1500;      // This will cause an error
+
+
+In an object method, this refers to the object.
+Alone, this refers to the global object.
+In a function, this refers to the global object.
+In a function, in strict mode, this is undefined.
+In an event, this refers to the element that received the event.
+Methods like call(), apply(), and bind() can refer this to any object.
+
+//to access object keys
+fullName : function() {
+  return this.firstName + " " + this.lastName;
+}
+
+//to access window object
+let x = this;
+
+//to access window object
+"use strict";
+let x = this;
+
+//return window object
+function myFunction() {
+  return this;
+}
+
+//return undefined
+"use strict";
+function myFunction() {
+  return this;
+}
+
+//to access html attributes
+<button onclick="this.style.display='none'">
+  Click to Remove Me!
+</button>
+
+//this will refer person object reference
+const person = {
+  firstName  : "John",
+  lastName   : "Doe",
+  id         : 5566,
+  myFunction : function() {
+    return this;
+  }
+};
+
+
+//access 2nd object from 1st using call() method
+const person1 = {
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+}
+const person2 = {
+  firstName:"John",
+  lastName: "Doe",
+}
+// Return "John Doe":
+person1.fullName.call(person2);
+
+//objects binding using bind() method
+const person = {
+  firstName:"John",
+  lastName: "Doe",
+  fullName: function () {
+    return this.firstName + " " + this.lastName;
+  }
+}
+const member = {
+  firstName:"Hege",
+  lastName: "Nilsen",
+}
+let fullName = person.fullName.bind(member);
+
+Precedence	Object
+1	          bind()
+2	          apply() and call()
+3	          Object method
+4	          Global scope
+
+//arrow function
+let myFunction = (a, b) => a * b;
+
+//calling function using arrow
+hello = () => {
+  return "Hello World!";
+}
+
+//if single operation needed
+hello = () => "Hello World!";
+
+//Arrow Function With Parameters:
+hello = (val) => "Hello " + val;
+hello = val => "Hello " + val;
+
+class Car {
+  constructor(name, year) {
+    this.name = name;
+    this.year = year;
+  }
+  age() {
+    let date = new Date();
+    return date.getFullYear() - this.year;
+  }
+  age1(x) {
+    let date = new Date();
+    return date.getFullYear() - x;
+  }
+}
+let myCar1 = new Car("Ford", 2014);
+let myCar2 = new Car("Audi", 2019);
+let year1 = myCar2.age();
+let year2 = myCar2.age1(x);
+
+//inline export to other js file
+export const name = "Jesse";
+
+//export all at once to other js file
+const name = "Jesse";
+const age = 40;
+export {name, age};
+
+//You can only have one default export in a file.
+const message = () => {
+const name = "Jesse";
+const age = 40;
+return name + ' is ' + age + 'years old.';
+};
+export default message;
+
+//Import named exports from the file person.js:
+import { name, age } from "./person.js";
+
+//Import a default export from the file message.js:
+import message from "./message.js";
+
+//convert json text to js object
+const obj = JSON.parse(text);
+
+//to print table if data given
+console.table(rowData);
+
+//The debugger keyword stops the execution of JavaScript, and calls (if available) the debugging function.
+With the debugger turned on, this code will stop executing before it executes the third line.
+let x = 15 * 5;
+debugger;
+document.getElementById("demo").innerHTML = x;
+
+//camelCase for identifier names (variables and functions).
+All names start with a letter.
+firstName = "John";
+lastName = "Doe";
+price = 19.90;
+tax = 0.20;
+fullPrice = price + (price * tax);
+
+//Always put spaces around operators ( = + - * / ), and after commas:
+let x = y + z;
+const myArray = ["Volvo", "Saab", "Fiat"];
+
+//Always use 2 spaces for indentation of code blocks:
+function toCelsius(fahrenheit) {
+  return (5 / 9) * (fahrenheit - 32);
+}
+
+//Always end a simple statement with a semicolon.
+const cars = ["Volvo", "Saab", "Fiat"];
+
+//General rules for complex (compound) statements:
+1.Put the opening bracket at the end of the first line.
+2.Use one space before the opening bracket.
+3.Put the closing bracket on a new line, without leading spaces.
+4.Do not end a complex statement with a semicolon.
+
+function toCelsius(fahrenheit) {
+  return (5 / 9) * (fahrenheit - 32);
+}
+
+for (let i = 0; i < 5; i++) {
+  x += i;
+}
+
+if (time < 20) {
+  greeting = "Good day";
+} else {
+  greeting = "Good evening";
+}
+
+
+//General rules for object definitions:
+1.Place the opening bracket on the same line as the object name.
+2.Use colon plus one space between each property and its value.
+3.Use quotes around string values, not around numeric values.
+4.Do not add a comma after the last property-value pair.
+5.Place the closing bracket on a new line, without leading spaces.
+6.Always end an object definition with a semicolon.
+
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue"
+};
+
+const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+
+//For readability, avoid lines longer than 80 characters.
+
+//Always use the same naming convention for all your code. For example:
+1.Variable and function names written as camelCase
+2.Global variables written in UPPERCASE (We don't, but it's quite common)
+3.Constants (like PI) written in UPPERCASE
+
+//Hyphens in HTML and CSS:
+HTML5 attributes can start with data- (data-quantity, data-price).
+CSS uses hyphens in property-names (font-size).
+
+//In JavaScript, almost "everything" is an object.
+Booleans can be objects (if defined with the new keyword)
+Numbers can be objects (if defined with the new keyword)
+Strings can be objects (if defined with the new keyword)
+Dates are always objects
+Maths are always objects
+Regular expressions are always objects
+Arrays are always objects
+Functions are always objects
+Objects are always objects
+All JavaScript values, except primitives, are objects.
+
+//JavaScript defines 7 types of primitive data types:
+string
+number
+boolean
+null
+undefined
+symbol
+bigint
+
+
+//Primitive values are immutable (they are hardcoded and cannot be changed).
+if x = 3.14, you can change the value of x, but you cannot change the value of 3.14.
+
+//declare objects with the const keyword.
+const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+
+//Objects written as name value pairs are similar to:
+Associative arrays in PHP
+Dictionaries in Python
+Hash tables in C
+Hash maps in Java
+Hashes in Ruby and Perl
+
+//There are different ways to create new objects:
+1.Create a single object, using an object literal.
+const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+const person = {};
+person.firstName = "John";
+person.lastName = "Doe";
+person.age = 50;
+person.eyeColor = "blue";
+
+2.Create a single object, with the keyword new.
+const person = new Object();
+person.firstName = "John";
+person.lastName = "Doe";
+person.age = 50;
+person.eyeColor = "blue";
+
+Define an object constructor, and then create objects of the constructed type.
+Create an object using Object.create().
+Objects are mutable: They are addressed by reference, not by value.
+
+const person = {
+  firstName:"John",
+  lastName:"Doe",
+  age:50, eyeColor:"blue"
+}
+
+const x = person;
+x.age = 10;
+
+//Accessing JavaScript Properties
+person.firstname + " is " + person.age + " years old.";
+person["firstname"] + " is " + person["age"] + " years old.";
+
+// for...in statement loops through the properties of an object.
+const person = {
+  fname:" John",
+  lname:" Doe",
+  age: 25
+};
+
+for (let x in person) {
+  txt += person[x];
+}
+
+//Adding New Properties
+person.nationality = "English";
+
+//Deleting Properties
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue"
+};
+
+delete person.age;
+delete person["age"];
+
+1.The delete keyword deletes both the value of the property and the property itself.
+2.After deletion, the property cannot be used before it is added back again.
+3.The delete operator is designed to be used on object properties. It has no effect on variables or functions.
+4.The delete operator should not be used on predefined JavaScript object properties. It can crash your application.
+
+//Values in an object can be another object:
+myObj = {
+  name:"John",
+  age:30,
+  cars: {
+    car1:"Ford",
+    car2:"BMW",
+    car3:"Fiat"
+  }
+}
+myObj.cars.car2;
+myObj.cars["car2"];
+myObj["cars"]["car2"];
+
+let p1 = "cars";
+let p2 = "car2";
+myObj[p1][p2];
+
+//Values in objects can be arrays, and values in arrays can be objects:
+const myObj = {
+  name: "John",
+  age: 30,
+  cars: [
+    {name:"Ford", models:["Fiesta", "Focus", "Mustang"]},
+    {name:"BMW", models:["320", "X3", "X5"]},
+    {name:"Fiat", models:["500", "Panda"]}
+  ]
+}
+
+//To access arrays inside arrays, use a for-in loop for each array:
+for (let i in myObj.cars) {
+  x += "<h1>" + myObj.cars[i].name + "</h1>";
+  for (let j in myObj.cars[i].models) {
+    x += myObj.cars[i].models[j];
+  }
+}
+
+//JavaScript objects inherit the properties of their prototype.
+The delete keyword does not delete inherited properties, 
+but if you delete a prototype property, 
+it will affect all objects inherited from the prototype.
+
+//JavaScript Object Methods
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  id: 5566,
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+
+//The this keyword refers to different objects depending on how it is used:
+
+In an object method, this refers to the object.
+Alone, this refers to the global object.
+In a function, this refers to the global object.
+In a function, in strict mode, this is undefined.
+In an event, this refers to the element that received the event.
+Methods like call(), apply(), and bind() can refer this to any object.
+
+//access objects method
+name = person.fullName();
+name = person.fullName;
+
+//Adding a new method to an object is easy and use built in methods:
+person.name = function () {
+   return (this.firstName + " " + this.lastName).toUpperCase();
+};
+
+//to display js objects 
+const person = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};
+document.getElementById("demo").innerHTML = person; //auto conversion to string
+document.getElementById("demo").innerHTML = person.name + "," + person.age + "," + person.city;
+
+//loop for js object
+const person = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};
+let txt = "";
+for (let x in person) {
+txt += person[x] + " ";
+};
+
+//object key values converted into array 
+const person = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};
+
+const myArray = Object.values(person);
+
+//object conversion to string
+let myString = JSON.stringify(person);
+
+//JSON.stringify converts dates into strings:
+const person = {
+  name: "John",
+  today: new Date()
+};
+
+let myString = JSON.stringify(person);
+
+//JSON.stringify will not stringify functions:
+const person = {
+  name: "John",
+  age: function () {return 30;}
+};
+
+let myString = JSON.stringify(person);
+
+//it can be done only when
+const person = {
+  name: "John",
+  age: function () {return 30;}
+};
+person.age = person.age.toString();
+
+let myString = JSON.stringify(person);
+
+//array to string
+const arr = ["John", "Peter", "Sally", "Jane"];
+let myString = JSON.stringify(arr);
+
+//getter 
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  language: "en",
+  get lang() {
+    return this.language;
+  }
+};
+// Display data from the object using a getter:
+document.getElementById("demo").innerHTML = person.lang;
+
+//setter
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  language: "",
+  set lang(lang) {
+    this.language = lang;
+  }
+};
+
+// Set an object property using a setter:
+person.lang = "en";
+
+// Display data from the object:
+document.getElementById("demo").innerHTML = person.language;
+
+//JavaScript can secure better data quality when using getters and setters.
+
+Why Using Getters and Setters?
+It gives simpler syntax
+It allows equal syntax for properties and methods
+It can secure better data quality
+It is useful for doing things behind-the-scenes
+
+//Object.defineProperty() method can also be used to add Getters and Setters:
+// Define object
+const obj = {counter : 0};
+
+// Define setters
+Object.defineProperty(obj, "reset", {
+  get : function () {this.counter = 0;}
+});
+Object.defineProperty(obj, "increment", {
+  get : function () {this.counter++;}
+});
+Object.defineProperty(obj, "decrement", {
+  get : function () {this.counter--;}
+});
+Object.defineProperty(obj, "add", {
+  set : function (value) {this.counter += value;}
+});
+Object.defineProperty(obj, "subtract", {
+  set : function (value) {this.counter -= value;}
+});
+
+// Play with the counter:
+obj.reset;
+obj.add = 5;
+obj.subtract = 1;
+obj.increment;
+obj.decrement;
+
+//constructors
+// Constructor function for Person objects
+function Person(first, last, age, eye) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eye;
+}
+
+// Create a Person object
+const myFather = new Person("John", "Doe", 50, "blue");
+
+function Person(first, last, age, eye) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eye;
+  this.myFunc = () =>{
+    this.firstName + this.lastName;
+  }
+}
+
+// Create 2 Person objects
+const myFather = new Person("John", "Doe", 50, "blue");
+const myMother = new Person("Sally", "Rally", 48, "green");
+
+// Add nationality to first object
+myFather.nationality = "English";
+
+//adding function property to object
+myFather.name = function() {
+  return this.firstName + " " + this.lastName;
+};
+
+//Adding a new method to an existing object is easy:
+myFather.name = function () {
+  return this.firstName + " " + this.lastName;
+};
+
+
+//built in js objects
+const x1 = new String();   // A new String object
+const x2 = new Number();   // A new Number object
+const x3 = new Boolean();  // A new Boolean object
+const x4 = new Object();   // A new Object object
+const x5 = new Array();    // A new Array object
+const x6 = new RegExp();   // A new RegExp object
+const x7 = new Function(); // A new Function object
+const x8 = new Date();     // A new Date object
+
+//Math is a global object. The new keyword cannot be used on Math.
+
+//All JavaScript objects inherit properties and methods from a prototype.
+Date objects inherit from Date.prototype
+Array objects inherit from Array.prototype
+Person objects inherit from Person.prototype
+The Object.prototype is on the top of the prototype inheritance chain:
+
+//change constructor property and function directly using prototype
+function Person(first, last, age, eye) {
+  this.firstName = first;
+  this.lastName = last;
+  this.age = age;
+  this.eyeColor = eye;
+}
+Person.prototype.nationality = "English";
+
+Person.prototype.name = function() {
+  return this.firstName + " " + this.lastName;
+};
+
+//iterate over string
+for (const x of "W3Schools") {
+  // code block to be executed
+}
+
+//iterate over array
+for (const x of [1,2,3,4,5] {
+  // code block to be executed
+}
+
+//An object becomes an iterator when it implements a next() method.
+The next() method must return an object with two properties:
+value (the next value)
+done (true or false)
+
+// Home Made Iterable
+function myNumbers() {
+  let n = 0;
+  return {
+    next: function() {
+      n += 10;
+      return {value:n, done:false};
+    }
+  };
+}
+
+// Create Iterable
+const n = myNumbers();
+n.next(); // Returns 10
+n.next(); // Returns 20
+n.next(); // Returns 30
+
+Method	    Description
+new Set()	  Creates a new Set
+add()	      Adds a new element to the Set
+delete()	  Removes an element from a Set
+has()	      Returns true if a value exists
+clear()	    Removes all elements from a Set
+forEach()	  Invokes a callback for each element
+values()	  Returns an Iterator with all the values in a Set
+keys()	    Same as values()
+entries()	  Returns an Iterator with the [value,value] pairs from a Set
+
+Property	  Description
+size	      Returns the number elements in a Set
 
 
 
@@ -1311,41 +2585,6 @@ An alternative is to use defer="true" in the script tag. The defer attribute spe
 It has a negative effect on speed. It also clutters up JavaScript scopes.
 The with keyword is not allowed in strict mode.
 
-==============================================================
-                    JAVATPOINT.COM NOTES
-==============================================================
-features of JavaScript:
-
-All popular web browsers support JavaScript as they provide built-in execution environments.
-JavaScript follows the syntax and structure of the C programming language. Thus, it is a structured programming language.
-JavaScript is a weakly typed language, where certain types are implicitly cast (depending on the operation).
-JavaScript is an object-oriented programming language that uses prototypes rather than using classes for inheritance.
-It is a light-weighted and interpreted language.
-It is a case-sensitive language.
-JavaScript is supportable in several operating systems including, Windows, macOS, etc.
-It provides good control to the users over the web browsers.
-
-following benefits if a user creates an external javascript:
-
-It helps in the reusability of code in more than one HTML file.
-It allows easy code readability.
-It is time-efficient as web browsers cache the external js files, which further reduces the page loading time.
-It enables both web designers and coders to work with html and js files parallelly and separately, i.e., without facing any code conflictions.
-The length of the code reduces as only we need to specify the location of the js file.
-
-following disadvantages of external files:
-
-The stealer may download the coder's code using the url of the js file.
-If two js files are dependent on one another, then a failure in one file may affect the execution of the other dependent file.
-The web browser needs to make an additional http request to get the js code.
-A tiny to a large change in the js code may cause unexpected results in all its dependent files.
-We need to check each file that depends on the commonly created external javascript file.
-If it is a few lines of code, then better to implement the internal javascript code.
-
-To declare JavaScript global variables inside function, you need to use window object.
-function m(){  
-window.value=100;//declaring global variable by window object  
-}  
 
 
 
