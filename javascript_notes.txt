@@ -2550,6 +2550,29 @@ entries()	  Returns an Iterator with the [value,value] pairs from a Set
 Property	  Description
 size	      Returns the number elements in a Set
 
+const letters = new Set(["a","b","c"]);
+
+// Create a Set
+const letters = new Set();
+
+// Add Values to the Set
+letters.add("a");
+letters.add("b");
+letters.add("c");
+
+// Create Variables
+const a = "a";
+const b = "b";
+const c = "c";
+
+// Create a Set
+const letters = new Set();
+
+// Add Variables to the Set
+letters.add(a);
+letters.add(b);
+letters.add(c);
+
 
 
 
