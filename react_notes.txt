@@ -6,8 +6,10 @@
 //install extension bracket pair colorizer
 //install live server to start local server
 //install prettier code formatter
+
 // it is javascript library for UI building, it follows component based approach,declarative approach, reusable code,speed,simplicity and scalability
 // install latest node js 
+
 // to install react js ==> npm install -g create-react-app
 // to check react version ==> create-react-app --version
 // to create react app ==> create-react-app <project-name> (permanent files in local database)
@@ -26,6 +28,8 @@ or
 
 //to install react-bootstrap in the react app
 ==>npm install react-bootstrap bootstrap
+
+
 
 //importing bootstrap file
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -46,3 +50,132 @@ https://cdnjs.cloudflare.com/ajax/libs/reactstrap/4.8.0/reactstrap.min.js
 //constructor runs first then render(){} then componentDidMount(){}
 ===========================================================
 start from 31th video https://www.youtube.com/watch?v=y9ns0Cpp2do&list=PLu0W_9lII9agx66oZnT6IyhcMIbUMNMdt&index=31
+
+
+-----------------------------------------------------------------------------------
+create a react app and connect to firebase 
+
+1.npx create-react-app myapp
+2.go to project folder
+3.go to firebase account , create a new web project....
+4.npm install firebase
+4.npm install -g firebase-tools
+5.copy firebase sdk object 
+
+---------------------------------------------------------------------------
+							w3schools.com
+---------------------------------------------------------------------------
+React creates a VIRTUAL DOM in memory.
+
+Instead of manipulating the browser's DOM directly, 
+React creates a virtual DOM in memory, 
+where it does all the necessary manipulating, 
+before making the changes in the browser DOM.
+
+Current version of React.JS is V18.0.0 (April 2022).
+
+Current version of create-react-app is v5.0.1 (April 2022).
+
+create-react-app includes built tools such as webpack, Babel, and ESLint.
+
+Include three CDN's in your HTML file:
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+first two let us write React code in our JavaScripts, 
+and the third, Babel, allows us to write JSX syntax and ES6 in older browsers.
+
+<div id="mydiv"></div>
+<script type="text/babel">
+	function Hello() {
+	return <h1>Hello World!</h1>;
+	}
+	ReactDOM.render(<Hello />, document.getElementById('mydiv'))
+</script>
+
+To uninstall previous versions, run this command: npm uninstall -g create-react-app.
+
+create react app:npx create-react-app my-react-app
+
+change the folder:cd my-react-app
+
+run the app:npm start
+
+web app will run at localhost:3000
+
+ARROW FUNCTIONS:
+hello = () => {
+  return "Hello World!";
+}
+
+hello = () => "Hello World!";
+
+hello = (val) => "Hello " + val;
+
+hello = val => "Hello " + val;
+
+VAR KEYWORD:
+If you use var outside of a function, it belongs to the global scope.
+If you use var inside of a function, it belongs to that function.
+If you use var inside of a block, i.e. a for loop, the variable is still available outside of that block.
+var has a function scope, not a block scope.
+
+LET KEYWORD:
+let is the block scoped version of var, and is limited to the block (or expression) where it is defined.
+If you use let inside of a block, i.e. a for loop, the variable is only available inside of that loop.
+
+CONSTANT KEYWORD:
+const is a variable that once it has been created, its value can never change.
+const has a block scope.
+
+It does not define a constant value. 
+It defines a constant reference to a value.
+
+Because of this you can NOT:
+Reassign a constant value
+Reassign a constant array
+Reassign a constant object
+
+But you CAN:
+Change the elements of constant array
+Change the properties of constant object
+
+MAP FUNCTION:
+The .map() method allows you to run a function on each item in the array, 
+returning a new array as the result.
+
+In React, map() can be used to generate lists.
+
+const myArray = ['apple', 'banana', 'orange'];
+const myList = myArray.map((item) => <p>{item}</p>);
+
+DESTRUCTRING ARRAYS:
+const vehicles = ['mustang', 'f-150', 'expedition'];
+const [car, truck, suv] = vehicles;
+const [car,, suv] = vehicles;
+
+function calculate(a, b) {
+  const add = a + b;
+  const subtract = a - b;
+  const multiply = a * b;
+  const divide = a / b;
+  return [add, subtract, multiply, divide];
+}
+const [add, subtract, multiply, divide] = calculate(4, 7);
+
+DESTRUCTRING OBJECTS:
+const vehicleOne = {
+  brand: 'Ford',
+  model: 'Mustang',
+  type: 'car',
+  year: 2021, 
+  color: 'red'
+}
+myVehicle(vehicleOne);
+function myVehicle({type, color, brand, model}) {
+  const message = 'My ' + type + ' is a ' + color + ' ' + brand + ' ' + model + '.';
+}
+
+
+

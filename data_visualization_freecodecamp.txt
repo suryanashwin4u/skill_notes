@@ -1,26 +1,30 @@
-Data Visualization with D3
-D3, or D3.js, stands for Data Driven Documents. It's a JavaScript library for creating dynamic and interactive data visualizations in the browser.
+                              Data Visualization with D3
+===========================================================================================
+D3, or D3.js, stands for Data Driven Documents. 
 
-D3 is built to work with common web standards – namely HTML, CSS, and Scalable Vector Graphics (SVG).
+It's a JavaScript library for creating dynamic and interactive data visualizations in the browser.
 
-D3 supports many different kinds of input data formats. Then, using its powerful built-in methods, you can transform those data into different charts, graphs, and maps.
+d3.select('<tag>') 
+=>selects html tag from the document and returns node 
 
-The select() method selects one element from the document. It takes an argument for the name of the element you want and returns an HTML node for the first element in the document that matches the name.
-const anchor = d3.select("a");
+.append('<tag>')
+=>It appends an HTML tag to selected tag and returns node
 
-The append() method takes an argument for the element you want to add to the document. It appends an HTML node to a selected item, and returns a handle to that node.
+.text('xyz...')
+=>sets the text or gets the current text.
 
-The text() method either sets the text of the selected node, or gets the current text. To set the value, you pass a string as an argument inside the parentheses of the method.
+for example:
+<script>
+  d3.select("ul")
+    .append("li")
+    .text("Very important item");
+</script>
 
-d3.select("ul")
-  .append("li")
-  .text("Very important item");
+.selectAll('<tag>')
+=>select a group of elements and returns its node
 
-selectAll() method to select a group of elements. It returns an array of HTML nodes for all the items in the document that match the input string.
-
-const anchors = d3.selectAll("a");
-
-The data() method is used on a selection of DOM elements to attach the data to those elements. The data set is passed as an argument to the method.
+.data()
+=>used on a selection of DOM elements to attach the data to those elements. The data set is passed as an argument to the method.
 
 to create a new element in the document for each piece of data in the set. D3 has the enter() method for this purpose.
 
