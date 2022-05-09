@@ -1510,6 +1510,7 @@ It can be used to store a mutable value that does not cause a re-render when upd
 
 It can be used to access a DOM element directly.
 
+//Use useRef to track application renders.
 import { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom/client";
 
@@ -1552,3 +1553,122 @@ function App() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 
+useRef() only returns one item. It returns an Object called current
+
+In React, we can add a ref attribute to an element to access it directly in the DOM.
+
+import { useRef } from "react";
+import ReactDOM from "react-dom/client";
+
+function App() {
+  const inputElement = useRef();
+  const focusInput = () => {
+    inputElement.current.focus();
+  };
+  return (
+    <>
+      <input type="text" ref={inputElement} />
+      <button onClick={focusInput}>Focus Input</button>
+    </>
+  );
+}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
+The useRef Hook can also be used to keep track of previous state values.
+
+This is because we are able to persist useRef values between renders.
+
+import { useState, useEffect, useRef } from "react";
+import ReactDOM from "react-dom/client";
+
+function App() {
+  const [inputValue, setInputValue] = useState("");
+  const previousInputValue = useRef("");
+
+  useEffect(() => {
+    previousInputValue.current = inputValue;
+  }, [inputValue]);
+
+  return (
+    <>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <h2>Current Value: {inputValue}</h2>
+      <h2>Previous Value: {previousInputValue.current}</h2>
+    </>
+  );
+}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
+-----------------------------------------------------------------
+USEREDUCER:
+
+The useReducer Hook is similar to the useState Hook.
+
+It allows for custom state logic.
+
+If you find yourself keeping track of multiple pieces of state that rely on complex logic, 
+useReducer may be useful.
+
+import { useReducer } from "react";
+import ReactDOM from "react-dom/client";
+
+const initialTodos = [
+  {
+    id: 1,
+    title: "Todo 1",
+    complete: false,
+  },
+  {
+    id: 2,
+    title: "Todo 2",
+    complete: false,
+  },
+];
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "COMPLETE":
+      return state.map((todo) => {
+        if (todo.id === action.id) {
+          return { ...todo, complete: !todo.complete };
+        } else {
+          return todo;
+        }
+      });
+    default:
+      return state;
+  }
+};
+
+function Todos() {
+  const [todos, dispatch] = useReducer(reducer, initialTodos);
+  const handleComplete = (todo) => {
+    dispatch({ type: "COMPLETE", id: todo.id });
+  };
+  return (
+    <>
+      {todos.map((todo) => (
+        <div key={todo.id}>
+          <label>
+            <input
+              type="checkbox"
+              checked={todo.complete}
+              onChange={() => handleComplete(todo)}
+            />
+            {todo.title}
+          </label>
+        </div>
+      ))}
+    </>
+  );
+}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Todos />);
+
+----------------------------------------------------------------
