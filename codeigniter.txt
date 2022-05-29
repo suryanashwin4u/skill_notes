@@ -1,0 +1,217 @@
+CODEIGNITER CHARACTERISTICS:
+1.zero configuration,
+2.no need of command line knowledge, 
+3.it is completely re-written
+
+advantages of a framework:
+1.mvc,singleton,factory method
+2.secured code
+3.duplicate and redundant code can be avoided
+4.reduced time
+5.less cost
+
+prerequisite server requirements:
+1.php version 7.2 or more
+2.check installed extension :intl and mbstring (check in php.ini file and remove semicolon to enable these extension)
+3.check enabled extensions: php-json,php-mysqlnd, php-xml (check using executing phpinfo(); on localhost)
+4.check for curlrequest: libcurl, 
+5.supported database:mysql,postgresql,sqlite3
+
+installation:
+1.manually:download->extract->copy to htdocs
+2.composer create-project codeigniter4/appstarter <project-folder-name> (need to install composer)
+
+directory structure:
+1.app – this is the directory that will contain your application logic. All of your application code will be contained in this directory
+    Config/         Stores the configuration files
+    Controllers/    Controllers determine the program flow
+    Database/       Stores the database migrations and seeds files
+    Filters/        Stores filter classes that can run before and after controller
+    Helpers/        Helpers store collections of standalone functions
+    Language/       Multiple language support reads the language strings from here
+    Libraries/      Useful classes that don't fit in another category
+    Models/         Models work with the database to represent the business entities
+    ThirdParty/     ThirdParty libraries that can be used in application
+    Views/          Views make up the HTML that is displayed to the client
+
+2.system – this folder contains the framework core files. It is not advised to make changes in this directory or put your own application code into this directory.
+
+note:If you install CodeIgniter with Composer, the system is located in vendor/codeigniter4/framework/system.
+
+    core – this is like the heart of the CodeIgniter Framework. All of the core file that makes up the framework are located in here. If you would like to extend the functionality of the core file then you need to create a custom core file in the application directory. After that, you can override or add a new behavior that you wish. You should never make changes directly in here.
+    database – database drivers, cache and other files need for database operations are provided in here.
+    fonts – as the name suggests, this directory contains fonts and information relating to fonts
+    helpers – this directory in CodeIgniter structure folder contains helper functions that come out of the box
+    language – contains language files that are used by the framework
+    libraries – contains the source files for the various libraries that come with CodeIgniter out of the box.
+
+3.public - The public folder holds the browser-accessible portion of your web application, preventing direct access to your source code. It contains the main .htaccess file, index.php, and any application assets that you add, like CSS, javascript, or images.
+
+4.writable - This directory holds any directories that might need to be written to in the course of an application’s life. This includes directories for storing cache files, logs, and any uploads a user might send
+
+5.tests - This directory is set up to hold your test files
+
+3 types of url in codeigniter:
+1.query strings urls: https://www.xyz.com/view.php?a=boy&b=girl
+2.segment based urls(base url + remaining url): https://www.xyz.com/view/20/hello/world
+3.class/method urls: https://www.xyz.com/class/method/id1/id2
+
+Controller:
+1.name of the controller filename(starting with a capital letter) ex:Helloworld.php
+2.class name must start with a capital letter
+
+Remove public and index.php from URL:
+1.open app.php file(change to public $baseURL='http://localhost/<project_name>/' and public $uriProtocol = 'PATH_INFO')
+2.In public/ directory, copy index.php and .htaccess to your root directory
+3.open index.php (change to $pathsPath = FCPATH.'app/Config/Paths.php')
+
+index method is default method in controller
+
+Remapping method calls in controller using _remap() method
+for example:
+inside controller class:
+public function _remap($method,$param1 = null,$param2 = null){
+    if($method=='method name'){
+        return $this->$method($param1,$param2);    
+    }else{
+        return $this->default_method(); //index()
+        return $this->index();
+    }
+}
+
+
+View:
+create a view php file inside views folder
+create a controller php file inside controller folder
+inside public function index(){
+    echo view("header");
+    echo view("myview");
+    echo view("footer");
+}
+
+Passing data to the view:
+$data = [
+    'title'    => 'My title',
+    'heading'  => 'My Heading',
+    'my_array' => ['abc','abd']
+    ];
+
+echo view('view_name',$data);
+
+To access passed data in the view:
+<h1><?php echo $data['title'];?></h1>
+<h1><?= $data['title']; ?></h1>
+<h1>{ $data['title']; }</h1>
+<ul>
+    <?php 
+        if(!empty($subjects)){
+            foreach($subjects as $sub){
+                echo "<li>.$sub.</li>";
+            }
+        }
+        or
+        if(count($subjects)>0){
+            foreach($subjects as $sub){
+                echo "<li>.$sub.</li>";
+            }
+        }else{
+            echo "sorry data not found";
+        }
+        or
+        <?php
+            if(!empty($subjects)):
+                foreach($subjects as $sub):
+        ?>
+                <?= $sub ?>;
+        <?php
+            endforeach;
+            else:
+                
+            endif;
+        ?>
+    ?>
+</ul>
+
+Create a table using Table():
+$table = new \CodeIgniter\View\Table();
+$data = [
+    ['Name','Color','Size'],
+    ['ashwani','blue','small'],
+    ['sumti','red','small'],
+    ['sonu','yellow','small'],
+];
+echo $table->generate($data);
+
+or
+
+$table = new \CodeIgniter\View\Table();
+$query = $db->query('select * from my_table');
+$records['users'] = $table->generate($query);
+echo view("view_name",$records);
+
+$table->setHeading(['Name','City','State']); //add header manually
+$table->addRow(['Ram','Hyd','Ts']);     //add row manually
+
+or 
+
+$template = [
+    'table_open'=>'<table border="1" cellpadding="10" cellspacing="10" class="table">',
+    .
+    .
+    .
+    .
+    .
+    .
+];
+
+$table->setTemplate($template);
+
+View Parser Class:
+
+$parser = \Config\Services::parser();
+$data = [
+    'page_title'=>'asdfasd',
+    'page_heading'=>'asdfasd'
+    'sub_list' => [
+        ['subject'=>'html','abbr'=>'hyper text markup language'],
+        ['subject'=>'html','abbr'=>'hyper text markup language'],
+        ['subject'=>'html','abbr'=>'hyper text markup language'],
+        ['subject'=>'html','abbr'=>'hyper text markup language'],
+        ['subject'=>'html','abbr'=>'hyper text markup language']
+    ];
+];
+
+return $parser->setData($data)->render("view_name");
+
+looping in view:
+<body>
+    {sub_list}
+        <h1>{subject}</h1>
+        <p>{abbr}</p>
+    {/sub_list}
+    {if $status}
+    <p>welcome</p>
+    {endif}
+</body>
+
+or
+$template='<head><title>{blog_title}</title></head>';
+echo $parser->setData($data)->renderString($template);
+
+Filters in view parser class:
+<title>{page_title|lower}</title>
+<title>{page_title|upper|limit_chars(5)}</title>
+<title>{date|date(Y-m-d)}</title>
+<title>{date|date(l dS F Y)}</title>
+<title>{date|date_modify(+5days)|date(l dS F Y)}</title>
+<title>{price|local_currency(INR)|highlight_code}</title>
+<title>{price|round(ceil)}</title>
+
+
+
+
+
+
+
+
+
