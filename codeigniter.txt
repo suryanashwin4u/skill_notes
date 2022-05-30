@@ -195,6 +195,7 @@ looping in view:
 </body>
 
 or
+
 $template='<head><title>{blog_title}</title></head>';
 echo $parser->setData($data)->renderString($template);
 
@@ -207,9 +208,57 @@ Filters in view parser class:
 <title>{price|local_currency(INR)|highlight_code}</title>
 <title>{price|round(ceil)}</title>
 
+or 
+
+Custom Filters in Views:
+In View.php and adding new entries to the $filters array
+each key is the name of the filter is called by in the view,
+and its value is any valid php callable:
+
+public $filters = [
+    'myfilterone'=> '\CodeIgniter\View\Filters::myFilterOne',
+    'myfiltertwo'=> '\CodeIgniter\View\Filters::myFilterTwo',
+];
+
+then define the same name function inside view/filters.php
+
+Now in view:
+<p>My Name is:{some_variable|myfilterone}</p>
+
+View Layouts:
+layouts files:header,footer,sidebars....etc
+and we include these mentioned layouts in every page of views using extend
+<?php 
+    $this->extend("layouts/main.php");
+?>
+
+To include widgets : features,latestarticles,calender,search....
+<?= $this->include("widgets/search.php")?>
+
+
+create a layout folder inside views folder
+inside layouts: use 
+<?= $this->renderSection("mycontent") ?>
+
+in view, homeview:
+<?php 
+    $this->extend("layouts/main.php");
+?>
+<?php 
+    $this->section("mycontent");
+?>
+<?= $page_title ?>
+<?= $this->include("partials/features")
+<?php
+    $this->endSection();
+?>
 
 
 
+
+Theme integration:
+to link css and script in template
+use <?= base_url(); ?>/jasd/......
 
 
 
