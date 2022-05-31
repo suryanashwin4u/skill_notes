@@ -9,13 +9,81 @@ check on command prompt
 compiler can be configured using a tsconfig.json file.
 
 three main primitives in JavaScript and TypeScript.
-boolean - true or false values
-number - whole numbers and floating point values
-string - text values like "TypeScript Rocks"
+1.boolean - true or false values
+2.number - whole numbers and floating point values
+3.string - text values like "TypeScript Rocks"
+
+two main ways TypeScript assigns a type:
+1.Explicit
+let firstName: string = "Dylan"; (explicit declaration)
+firstName = 33 // error
+2.Implicit
+let firstName = "Dylan";         (implicit declaration)
+firstName = 33 // error
+
+JavaScript will not throw an error for mismatched types but typescript does it
+
+TypeScript may not always properly infer what the type of a variable may be. In such cases, it will set the type to any which disables type checking.
+const json = JSON.parse("55"); //type converted to 'any'
+console.log(typeof json);
+
+This behavior can be disabled by enabling noImplicitAny as an option in a TypeScript's project tsconfig.json
+
+Type: any
+any is a type that disables type checking and effectively allows all types to be used.
+
+let v: any = true;
+v = "string"; // no error as it can be "any" type
+Math.round(v); // no error as it can be "any" type
+
+Type: unknown
+unknown is a similar, but safer alternative to any.
+
+let w: unknown = 1;
+w = "string"; // no error
+w = {
+  runANonExistentMethod: () => {
+    console.log("I think therefore I am");
+  }
+} as { runANonExistentMethod: () => void}
+// How can we avoid the error for the code commented out below when we don't know the type?
+// w.runANonExistentMethod(); // Error: Object is of type 'unknown'.
+if(typeof w === 'object' && w !== null) {
+  (w as { runANonExistentMethod: Function }).runANonExistentMethod();
+}
+// Although we have to cast multiple times we can do a check in the if to secure our type and have a safer casting
 
 
+Type: never
+never effectively throws an error whenever it is defined.
+let x: never = true; // Error: Type 'boolean' is not assignable to type 'never'.
+
+Type: undefined & null
+undefined and null are types that refer to the JavaScript primitives undefined and null respectively.
+let y: undefined = undefined;
+let z: null = null;
+
+Typescript array:
+const names: string[] = [];
+names.push("Dylan"); // no error
+
+Readonly
+The readonly keyword can prevent arrays from being changed.
+const names: readonly string[] = ["Dylan"];
+
+Type Inference
+TypeScript can infer the type of an array if it has values.
+
+const numbers = [1, 2, 3]; // inferred to type number[]
+numbers.push(4); // no error
+// comment line below out to see the successful assignment
+numbers.push("2"); // Error: Argument of type 'string' is not assignable to parameter of type 'number'.
+let head: number = numbers[0]; // no error
 
 
+Typed Arrays
+A tuple is a typed array with a pre-defined length and types for each index.
+Tuples are great because they allow each element in the array to be a known type of value.
 
 
 

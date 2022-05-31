@@ -1,3 +1,5 @@
+                            CODEIGNITER TUTORIALS
+===========================================================================
 CODEIGNITER CHARACTERISTICS:
 1.zero configuration,
 2.no need of command line knowledge, 
@@ -252,8 +254,6 @@ in view, homeview:
 <?php
     $this->endSection();
 ?>
-
-
 
 
 Theme integration:
