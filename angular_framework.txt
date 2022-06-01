@@ -40,4 +40,36 @@ run a angular project(first go inside angular project)
 -----------------------------
 listening at localhost:4200
 -----------------------------
+it will show all the available commands 
+=>ng help
+-----------------------------
+to generate component 
+=>ng generate component <name>/ng g c <name>
+-----------------------------
+to generate module
+=>ng g m <module-name>
+
+create a component inside module
+=>ng g c <module-name>/<component-name>
+-----------------------------
+create a class 
+=>ng generate class <class-name>
+-----------------------------
+create an interface
+=>ng g interface <interface-name>
+-----------------------------
+create a build
+=>ng build
+-----------------------------
+to create inline style component (it does not create css file)
+=>ng generate component <component-name> --inline-style
+-----------------------------
+to create inline template (it does not create html file)
+=>ng generate component <component-name> --inline-template
+-----------------------------
+to create inline template and style (it does not create html,css file)
+=>ng generate component <component-name> --inline-template --inline-style
+-----------------------------
+
+
 
