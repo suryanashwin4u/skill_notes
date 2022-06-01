@@ -1,0 +1,43 @@
+to install typeorm to deal with database
+=>npm install typeorm
+-----------------------------
+Reflect metadata is required by TypeORM so that we can use its decorators.
+=>npm install reflect-metadata
+-----------------------------
+install nest.js for backend development
+=>npm i -g @nestjs/cli
+-----------------------------
+create a new nestjs project
+=>nest new <project-name>  //scaffoldling
+-----------------------------
+start a server at local host
+=>npm run start
+nest.jx server will run at localhost:3000
+-----------------------------
+to create a new route:
+=>nest generate route <route-name>
+-----------------------------
+install postgresql database driver
+=>npm install pg
+-----------------------------
+installation latest version command:
+=>npm install -g @angular/cli
+
+install specific version:
+=>npm install -g@angular/cli@10.0.0
+-----------------------------
+check version:
+=>ng version
+
+latest version 2022 june:
+13.3.7
+-----------------------------
+create a new angular project:
+=>ng new <project-name>
+-----------------------------
+run a angular project(first go inside angular project)
+=>ng serve
+-----------------------------
+listening at localhost:4200
+-----------------------------
+
