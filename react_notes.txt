@@ -1,37 +1,37 @@
 							React Notes
 -------------------------------------------------------------------------
-//react developer tools plugin to be installed in the browser
-//install extension thunder client to test api http request
-//install extension ES7 to type short codes for long text
-//install extension bracket pair colorizer
-//install live server to start local server
-//install prettier code formatter
+react developer tools plugin to be installed in the browser
+install extension thunder client to test api http request
+install extension ES7 to type short codes for long text
+install extension bracket pair colorizer
+install live server to start local server
+install prettier code formatter
 
-// it is javascript library for UI building, it follows component based approach,declarative approach, reusable code,speed,simplicity and scalability
-// install latest node js 
+it is javascript library for UI building, it follows component based approach,declarative approach, reusable code,speed,simplicity and scalability
+install latest node js 
 
-// to install react js ==> npm install -g create-react-app
-// to check react version ==> create-react-app --version
-// to create react app ==> create-react-app <project-name> (permanent files in local database)
+to install react js ==> npm install -g create-react-app
+to check react version ==> create-react-app --version
+to create react app ==> create-react-app <project-name> (permanent files in local database)
 or
-// to create react app ==>npx create-react-app <project-name> (temporary files in local database)
-//change to reactjs directory then start react js
-// to run react app ==> npm start
-//server will start at localhost:3000
+ to create react app ==>npx create-react-app <project-name> (temporary files in local database)
+change to reactjs directory then start react js
+ to run react app ==> npm start
+server will start at localhost:3000
 
-//package.json file contains all the dependencies information
+package.json file contains all the dependencies information
 
-//two let us write React code in our JavaScripts, and the third, Babel, allows us to write JSX syntax and ES6 in older browsers.
+two let us write React code in our JavaScripts, and the third, Babel, allows us to write JSX syntax and ES6 in older browsers.
 <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 
-//to install react-bootstrap in the react app
+to install react-bootstrap in the react app
 ==>npm install react-bootstrap bootstrap
 
 
 
-//importing bootstrap file
+importing bootstrap file
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 npm install --save bootstrap
@@ -41,13 +41,13 @@ import { Button } from 'reactstrap';
 
 https://cdnjs.cloudflare.com/ajax/libs/reactstrap/4.8.0/reactstrap.min.js
 
-//single html tags like <hr>,<img>,<input> must be closed with / like <hr/>,<img/>,<input/>
-//class should be className
-//href='#' should be converted to href='/'
-//template literal ${props.variable}
-//javascript object {{color: prop.variable}}
+single html tags like <hr>,<img>,<input> must be closed with / like <hr/>,<img/>,<input/>
+class should be className
+href='#' should be converted to href='/'
+template literal ${props.variable}
+javascript object {{color: prop.variable}}
 
-//constructor runs first then render(){} then componentDidMount(){}
+constructor runs first then render(){} then componentDidMount(){}
 ===========================================================
 start from 31th video https://www.youtube.com/watch?v=y9ns0Cpp2do&list=PLu0W_9lII9agx66oZnT6IyhcMIbUMNMdt&index=31
 
@@ -1671,4 +1671,4 @@ function Todos() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Todos />);
 
-----------------------------------------------------------------
+

@@ -1,0 +1,10 @@
+What is MySQL?
+relational database management system
+open-source
+free
+ideal for both small and large applications
+very fast, reliable, scalable, and easy to use
+cross-platform
+compliant with the ANSI SQL standard
+developed, distributed, and supported by Oracle Corporation
+

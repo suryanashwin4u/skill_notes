@@ -70,6 +70,26 @@ to create inline template (it does not create html file)
 to create inline template and style (it does not create html,css file)
 =>ng generate component <component-name> --inline-template --inline-style
 -----------------------------
+to add bootstrap 
+=>ng add @ng-bootstrap/ng-bootstrap
+-----------------------------
+to add material UI
+=>ng add @angular/material
+-----------------------------
+create custom pipes
+=>ng g p pipes/<custom-pipe-name>
+-----------------------------
+create directive 
+=>ng g directive <directive-name>
+-----------------------------
+create a service
+=>ng g service <service-name>
 
+or
 
-
+create a service inside a folder
+=>ng g service folder/<service-name>
+-----------------------------
+upgrade angular to latest version
+=>ng upgrade
+-----------------------------
