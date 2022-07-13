@@ -1,0 +1,58 @@
+docker is a ecosystem that contain all the packages and os to run applications in an independent container
+it includes docker client, server, machine, hub, compose
+
+docker client(CLI) is a tool we issue commands for reaching out to docker server(daemon)
+docker daemon is a service that runs on your host operating system. it is responsible for running containers
+
+image is a file that has all information about packages or dependencies to build a container in memory
+
+check docker version
+==>docker version
+
+either download from docker hub or run hello world image locally
+==>docker run hello-world
+
+either download from docker hub or run redis image locally
+==>docker run redis
+
+either download from docker hub or run busybox image locally
+==>docker run busybox
+
+print hello world inside busy box
+==> docker run busybox echo hello world
+
+ping website inside busy box
+==>docker run busybox ping www.xyz.com
+
+type control + c to come out of the ping loop
+
+list all directories inside busybox
+==>docker run busybox ls
+
+run shell and exit
+==>docker run busybox sh
+
+to list all containers running right now
+==>docker ps
+
+to list all containers that ran before (exited) and running(up) right now
+==>docker ps --all
+
+to stop specific docker container
+==>docker stop <container_id>
+
+to create a container
+==>docker create <container_name>
+
+to start a container and display output (-a=attach and output)
+==>docker start -a <hash-string>
+
+to check logs about container
+==>docker logs <container-id>
+
+to forcefully stop container
+==>docker kill <container-id>
+
+to open a specific container shell and execute commands, use ctrl + d to come out of it
+==>docker exec -i -t <container-id> sh
+
