@@ -4,6 +4,108 @@ it includes docker client, server, machine, hub, compose
 docker client(CLI) is a tool we issue commands for reaching out to docker server(daemon)
 docker daemon is a service that runs on your host operating system. it is responsible for running containers
 
+docker is a platform for developers and sysadmins to build, run, and share applications with containers
+the use of containers to deploy applications is called containerization
+
+features of containerization:
+flexible,lightweight,portable,loosely coupled,scalable,secure
+
+Pros Of Virtual Machine
+1.Multiple operating system environments can be used on the same computer.
+2.VM improves system reliability and prevents system crashes. Even if it crashes, the host OS will not be affected because of isolation.
+3.Provides a layer of security, if the VM is affected by some malware it will not result in a breach of security in the host OS.
+
+Cons Of VM
+1.Running multiple virtual machines can lead to an unstable output.
+2.Virtual machines are less efficient and slow compared to a physical machine.
+3.A virtual machine can be infected with the weaknesses of the host machine.
+
+Pros Of Container
+1.Containers can be as small as 10MB and you can easily limit their memory and CPU usage. So, they are lightweight.
+2.Since they are small in size, they can boot up faster and can be quickly scaled too.
+3.Containers are exemplary when it comes to Continous Integration and Continous Deployment (CI/CD) implementation.
+
+Cons Of Container
+1.Since the containers run on host OS, it has a dependency on the host underlying host Operating System.
+2.Containers cannot all by themselves cannot provide security at a commendable level.
+3.When the container is deleted if the data inside the container is lost. You will have to add Data Volumes in order to store the data.
+
+installation of docker:
+==>sudo apt instal docker.io
+==>sudo snap install docker
+
+check docker version:
+==>docker --version
+
+to run docker image
+==>sudo docker run helloworld
+
+to create docker image
+==>sudo docker build -t docker_image_name
+
+to check all images
+==>sudo docker images
+
+to check running docker
+==>sudo docker ps -a
+==>sudo docker ps
+
+to stop docker
+==>sudo docker stop
+
+to stop forcefully docker
+==>sudo docker kill
+
+to take docker help
+==>sudo docker --help
+
+dockerfile
+==>a dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.
+
+using docker build users can create an automated build that executes several command line instructions in succession.
+
+docker image
+==>it is a read-only template that contains a set of instructions for creating a container that can run on the docker platform
+
+docker container
+==>it is a lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools,
+system libraries and settings.
+
+steps to make docker container:
+1.create a docker file without any extension and write following text inside it:
+FROM ubuntu:18.04
+RUN apt-get update
+RUN apt-get install -y python3-pip
+RUN pip3 install numpy
+RUN pip3 install pandas
+COPY run.py run.py
+CMd ["python3","run.py"]
+
+2.convert docker file into image in the same directory
+==>docker build -t <docker-image-name> .
+
+3.check images
+==>docker images
+
+4.run images or create container
+docker run --name <new-image-name> <image-id>
+
+5.check running containers list:
+docker ps
+
+6.run container and open its shell
+docker run -it --name <new-image-name> <image-id> 
+or
+docker run -it --name <new-image-name> <repository-name>:<tag-name> 
+
+7. ctrl + D to come out of infinite loop inside shell
+
+8. if changes happened in docker file then we can rebuild that image to overlap previous one in the same directory
+docker build -t <docker-image-name> .
+
+
+
+
 image is a file that has all information about packages or dependencies to build a container in memory
 
 check docker version

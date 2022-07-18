@@ -1,0 +1,50 @@
+                                  linux commands
+================================================================================
+
+to open command prompt in linux
+==>ctrl + alt + T
+
+to know the present working directory
+==>pwd
+
+to change directory
+==>cd
+
+to list all directories in current working directory
+==>ls
+
+to list folders and files inside directory
+==>ls /<directory-name>
+
+to list all directories inside home
+==>ls ~
+
+to list all directories inside root
+==>ls /
+
+to list all directories and folders of previous directory
+==>ls ..
+
+to list all directories and folders of root directory
+==>ls ../..
+
+to show more details(permissions,size,date and time of creation) about listed directories inside a directory
+==>ls -l
+
+to show hidden files in current directory
+==>ls -a
+
+to show hidden files with more details
+==>ls -al
+
+to sort directories according to size(descending order)
+==>ls -lS
+
+to list all the files that ends with a particular extension
+==>ls /*.<extension>
+
+to list all the files with some extensions in a particular directory
+==>ls /*.*
+
+
+
