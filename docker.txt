@@ -34,8 +34,25 @@ installation of docker:
 ==>sudo apt instal docker.io
 ==>sudo snap install docker
 
+to know docker is installed or not:
+==>docker
+
+start docker service
+==>sudo service docker start
+
+stop docker service
+==>sudo service docker stop
+
+check all images,containers,other system docker information
+==>docker info
+
+uninstallation of docker
+==>sudo yum remove docker
+
+
 check docker version:
 ==>docker --version
+==>docker -v
 
 to run docker image
 ==>sudo docker run helloworld
@@ -56,8 +73,45 @@ to stop docker
 to stop forcefully docker
 ==>sudo docker kill
 
-to take docker help
+to view all commands in docker
 ==>sudo docker --help
+
+to view all commands related to images
+==>sudo docker images --help
+
+to view all commands related to run
+==>sudo docker run --help
+
+to view all commands related to rmi
+==>sudo docker rmi --help
+
+to view all commands related to  ps
+==>sudo docker ps --help
+
+to run shell of image name
+==>docker run -it <image-name>
+
+to start container having container id
+==>docker start <container-id>
+
+to stop container having container id
+==>docker stop <container-id>
+
+to check running containers and memory usages
+==>docker stats
+
+to check running containers,images and local memory usages
+==>docker system df
+
+to remove unused data
+==>docker system prune
+
+to login into docker
+==>docker login
+
+
+
+
 
 dockerfile
 ==>a dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.
@@ -87,6 +141,12 @@ CMd ["python3","run.py"]
 3.check images
 ==>docker images
 
+check images quiet
+==>docker images -q 
+
+check images using filter
+==>docker images -f "dangling=false" -q
+
 4.run images or create container
 docker run --name <new-image-name> <image-id>
 
@@ -104,9 +164,49 @@ docker run -it --name <new-image-name> <repository-name>:<tag-name>
 docker build -t <docker-image-name> .
 
 
+to pull an image from dockerhub
+==>docker pull <docker-image-name>
 
+to remove an image
+==>docker rmi <docker-image-id>
+
+docker compose
+==>tool for defining & running multi-container docker applications
+
+use yaml files to configure application services:docker-compose.yml
+
+check the validtity of file
+==>docker-compose config
+
+can start all services with a single command
+==>docker compose up
+
+can stop all services with a single command
+==>docker compose down
+
+can scale up selected services when required
+
+to inspect a specific image
+==>docker inspect <image-name | id>
+
+to check history of a specific installation of images
+==>docker history <image-name | id>
+
+to pause running container
+==>docker pause <image-name>
+
+to unpause running container
+==>docker unpause <image-name>
+
+
+==>docker top <container-name | container-id>
+
+==>docker stats <container-name | container-id>
+
+==>docker attach <container-name | container-id>
 
 image is a file that has all information about packages or dependencies to build a container in memory
+
 
 check docker version
 ==>docker version
