@@ -24,13 +24,6 @@ git status
 =>to know the changes happen and currently unstagged files in the local project directory
 --------------------------------------------------------
 
-Note: Short status flags are:
-?? - Untracked files
-A - Files added to stage
-M - Modified files
-D - Deleted files
-
-
 git status --short
 =>compact view to get idea of changes
 
@@ -39,20 +32,8 @@ git status --short
 git add file_name
 =>to stage file where changes happened
 
-git add --all
-=>to stage all files where changes happened
-or
 git add .
 =>to stage all files where changes happened
-or
-git add -A
-=>to stage all files where changes happened
-
-git add --ignore-removal 
-=>Git allows us to stage only updated and newly created files at once
-
-git add -u  
-=> To stage all modified and deleted files only
 
 git add *.java 
 => to add all the same pattern files at once. 
@@ -88,6 +69,7 @@ git reset <filename>
 git reset -hard <remote>/<branch_name>  
 ->to reset the master branch with updates that you fetched from remote. The hard option is used to forcefully change all the files in the local repository with a remote repository.
 
+--------------------------------------------------
 git rm <file Name>  
 ->to remove file from directory
 
@@ -153,20 +135,11 @@ git Commit
 => it will commit but ask message to enter
 Press the Esc key and after that 'I' for insert mode. Type a commit message whatever you want. Press Esc after that ':wq' to save and exit from the editor
 
-git commit -a
-=>This process will only commit the already added files. It will not commit the files that have not been staged.
-
 git commit -am "Commit message." 
 =>This command will immediately make a commit for already staged files with a commit message
 
 git commit -amend  
 => to edit the last commit.
-
-git commit -m "type changes happend in the file"
-=>declare save point with message
-
-git commit -a -m "type changes happend in the file"
-=>declare save point with message for all files
 =====================================================
 git show HEAD  
 ->to check the status of the Head. This command will show the location of the Head.
@@ -175,9 +148,7 @@ git show commit_id
 ->returns commited stats
 
 When Head doesn't point to most recent commit, such state is called detached Head. If you checkout with an older commit, it will stand the detached head condition. 
-
 ======================================================
-
 git log
 =>to view the commits happens till now for a particular project
 ->type 'q' to come out again
@@ -214,7 +185,6 @@ $ git log --author="Author name"
 
 $ git log --grep=" Commit message."  
 =>show all the commits by choosing from commit message of specific type
-
 ======================================================
 
 git command_name -help
@@ -254,9 +224,6 @@ git branch -d <branch name>
 
 git push origin -delete <branch name>  
 ->delete a remote branch
-
-git branch -m master  
-->move to master Branch
 
 git branch -m <old branch name><new branch name>  
 -> rename the branch
