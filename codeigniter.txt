@@ -1,270 +1,327 @@
-                            CODEIGNITER TUTORIALS
+         CODEIGNITER TUTORIALS FROM ORIGINAL DOCUMENTATION:
 ===========================================================================
 
+CodeIgniter is right for you if:
+--------------------------------
+Framework with a small footprint.
+Exceptional performance.
+Zero configuration.
+NO use of command line.
+No restrictive coding rules.
+No big libraries like PEAR.
+Optional templating language.
 
 
+PHP version 7.4 or newer is required, with the *intl* extension and *mbstring* extension installed.
 
-CODEIGNITER CHARACTERISTICS:
-1.zero configuration,
-2.no need of command line knowledge, 
-3.it is completely re-written
+The following PHP extensions should be enabled on your server:
+=>php-json,php-mysqlnd (if you use MySQL),php-xml
 
-advantages of a framework:
-1.mvc,singleton,factory method
-2.secured code
-3.duplicate and redundant code can be avoided
-4.reduced time
-5.less cost
+To use the CURLRequest, you will need libcurl installed.
 
-prerequisite server requirements:
-1.php version 7.2 or more
-2.check installed extension :intl and mbstring (check in php.ini file and remove semicolon to enable these extension)
-3.check enabled extensions: php-json,php-mysqlnd, php-xml (check using executing phpinfo(); on localhost)
-4.check for curlrequest: libcurl, 
-5.supported database:mysql,postgresql,sqlite3
+Currently supported databases are:
+MySQL via the MySQLi driver (version 5.1 and above only)
+PostgreSQL via the Postgre driver
+SQLite3 via the SQLite3 driver
+MSSQL via the SQLSRV driver (version 2005 and above only)
+Oracle via the OCI8 driver (version 12.1 and above only)
 
-installation:
-1.manually:download->extract->copy to htdocs
-2.composer create-project codeigniter4/appstarter <project-folder-name> (need to install composer)
+CodeIgniter4 can be installed in a number of different ways: manually, using Composer, or using Git.
+We recommend the Composer installation because it keeps CodeIgniter up to date easily.
+If you would like the simple “download & go” install that CodeIgniter3 is known for, choose the manual installation.
 
-directory structure:
-1.app – this is the directory that will contain your application logic. All of your application code will be contained in this directory
-    Config/         Stores the configuration files
-    Controllers/    Controllers determine the program flow
-    Database/       Stores the database migrations and seeds files
-    Filters/        Stores filter classes that can run before and after controller
-    Helpers/        Helpers store collections of standalone functions
-    Language/       Multiple language support reads the language strings from here
-    Libraries/      Useful classes that don't fit in another category
-    Models/         Models work with the database to represent the business entities
-    ThirdParty/     ThirdParty libraries that can be used in application
-    Views/          Views make up the HTML that is displayed to the client
+Before using CodeIgniter 4, make sure that your server meets the requirements, in particular the PHP version and the PHP extensions that are needed. You may find that you have to uncomment the php.ini “extension” lines to enable “curl” and “intl”, for instance.
 
-2.system – this folder contains the framework core files. It is not advised to make changes in this directory or put your own application code into this directory.
+If you are using a Git repository to store your code, or for collaboration with others, then the vendor folder would normally be “git ignored”. In such a case, you will need to do a composer update when you clone the repository to a new system.
 
-note:If you install CodeIgniter with Composer, the system is located in vendor/codeigniter4/framework/system.
+Install codeigniter using composer command:
+==>composer create-project codeigniter4/appstarter <project-name>
 
-    core – this is like the heart of the CodeIgniter Framework. All of the core file that makes up the framework are located in here. If you would like to extend the functionality of the core file then you need to create a custom core file in the application directory. After that, you can override or add a new behavior that you wish. You should never make changes directly in here.
-    database – database drivers, cache and other files need for database operations are provided in here.
-    fonts – as the name suggests, this directory contains fonts and information relating to fonts
-    helpers – this directory in CodeIgniter structure folder contains helper functions that come out of the box
-    language – contains language files that are used by the framework
-    libraries – contains the source files for the various libraries that come with CodeIgniter out of the box.
+If you omit the “project-root” argument, the command will create an “appstarter” folder, which can be renamed as appropriate.
 
-3.public - The public folder holds the browser-accessible portion of your web application, preventing direct access to your source code. It contains the main .htaccess file, index.php, and any application assets that you add, like CSS, javascript, or images.
+Whenever there is a new release, then from the command line in your project root:
+>composer update
 
-4.writable - This directory holds any directories that might need to be written to in the course of an application’s life. This includes directories for storing cache files, logs, and any uploads a user might send
+In your project root:
 
-5.tests - This directory is set up to hold your test files
+php builds development
+The command above will update composer.json to point to the develop branch of the working repository, and update the corresponding paths in config and XML files. To revert these changes run:
 
-3 types of url in codeigniter:
-1.query strings urls: https://www.xyz.com/view.php?a=boy&b=girl
-2.segment based urls(base url + remaining url): https://www.xyz.com/view/20/hello/world
-3.class/method urls: https://www.xyz.com/class/method/id1/id2
+php builds release
 
-Controller:
-1.name of the controller filename(starting with a capital letter) ex:Helloworld.php
-2.class name must start with a capital letter
+After using the builds command be sure to run composer update to sync your vendor folder with the latest target build.
 
-Remove public and index.php from URL:
-1.open app.php file(change to public $baseURL='http://localhost/<project_name>/' and public $uriProtocol = 'PATH_INFO')
-2.In public/ directory, copy index.php and .htaccess to your root directory
-3.open index.php (change to $pathsPath = FCPATH.'app/Config/Paths.php')
+Initial Configuration & Set Up
+Open the app/Config/App.php file with a text editor and set your base URL. If you need more flexibility, the baseURL may be set within the .env file as app.baseURL="http://example.com/". (Always use a trailing slash on your base URL!)
+If you intend to use a database, open the app/Config/Database.php file with a text editor and set your database settings. Alternately, these could be set in your .env file.
 
-index method is default method in controller
+By default, the application will run using the “production” environment. To take advantage of the debugging tools provided, you should set the environment to “development”.
 
-Remapping method calls in controller using _remap() method
-for example:
-inside controller class:
-public function _remap($method,$param1 = null,$param2 = null){
-    if($method=='method name'){
-        return $this->$method($param1,$param2);    
-    }else{
-        return $this->default_method(); //index()
-        return $this->index();
+If you will be running your site using a web server (e.g., Apache or Nginx), you will need to modify the permissions for the writable folder inside your project, so that it is writable by the user or account used by your web server.
+
+CodeIgniter 4 comes with a local development server, leveraging PHP’s built-in web server with CodeIgniter routing
+==>php spark serve
+
+This will launch the server and you can now view your application in your browser at http://localhost:8080.
+
+The built-in development server should only be used on local development machines. It should NEVER be used on a production server.
+
+If you need to run the site on a host other than simply localhost, you’ll first need to add the host to your hosts file. The exact location of the file varies in each of the main operating systems, though all unix-type systems (include OS X) will typically keep the file at /etc/hosts.
+
+The local development server can be customized with three command line options:
+
+You can use the --host CLI option to specify a different host to run the application at:
+
+> php spark serve --host example.dev
+By default, the server runs on port 8080 but you might have more than one site running, or already have another application using that port. You can use the --port CLI option to specify a different one:
+
+> php spark serve --port 8081
+You can also specify a specific version of PHP to use, with the --php CLI option, with its value set to the path of the PHP executable you want to use:
+
+> php spark serve --php /usr/bin/php7.6.5.4
+
+
+Hosting with Apache
+A CodeIgniter4 webapp is normally hosted on a web server. Apache’s httpd is the “standard” platform, and assumed in much of our documentation.
+
+Apache is bundled with many platforms, but can also be downloaded in a bundle with a database engine and PHP from Bitnami.
+
+.htaccess
+The “mod_rewrite” module enables URLs without “index.php” in them, and is assumed in our user guide.
+
+Make sure that the rewrite module is enabled (uncommented) in the main configuration file, e.g., apache2/conf/httpd.conf:
+
+LoadModule rewrite_module modules/mod_rewrite.so
+Also make sure that the default document root’s <Directory> element enables this too, in the “AllowOverride” setting:
+
+<Directory "/opt/lamp/apache2/htdocs">
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+Virtual Hosting
+We recommend using “virtual hosting” to run your apps. You can set up different aliases for each of the apps you work on,
+
+Make sure that the virtual hosting module is enabled (uncommented) in the main configuration file, e.g., apache2/conf/httpd.conf:
+
+LoadModule vhost_alias_module modules/mod_vhost_alias.so
+Add a host alias in your “hosts” file, typically /etc/hosts on unix-type platforms, or c:/Windows/System32/drivers/etc/hosts on Windows. Add a line to the file. This could be “myproject.local” or “myproject.test”, for instance:
+
+127.0.0.1 myproject.local
+Add a <VirtualHost> element for your webapp inside the virtual hosting configuration, e.g., apache2/conf/extra/httpd-vhost.conf:
+
+<VirtualHost *:80>
+    DocumentRoot "/opt/lamp/apache2/htdocs/myproject/public"
+    ServerName myproject.local
+    ErrorLog "logs/myproject-error_log"
+    CustomLog "logs/myproject-access_log" common
+</VirtualHost>
+If your project folder is not a subfolder of the Apache document root, then your <VirtualHost> element may need a nested <Directory> element to grant the web server access to the files.
+
+Hosting with Nginx
+Nginx is the second most widely used HTTP server for web hosting. Here you can find an example configuration using PHP 7.3 FPM (unix sockets) under Ubuntu Server.
+
+This configuration enables URLs without “index.php” in them and using CodeIgniter’s “404 - File Not Found” for URLs ending with “.php”.
+
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name example.com;
+
+    root  /var/www/example.com/public;
+    index index.php index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ /index.php$is_args$args;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+
+        # With php-fpm:
+        fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+        # With php-cgi:
+        # fastcgi_pass 127.0.0.1:9000;
+    }
+
+    error_page 404 /index.php;
+
+    # deny access to hidden files such as .htaccess
+    location ~ /\. {
+        deny all;
     }
 }
 
 
-View:
-create a view php file inside views folder
-create a controller php file inside controller folder
-inside public function index(){
-    echo view("header");
-    echo view("myview");
-    echo view("footer");
-}
+Bootstrapping the App:
+In some scenarios you will want to load the framework without actually running the whole application. This is particularly useful for unit testing your project, but may also be handy for using third-party tools to analyze and modify your code. The framework comes with a separate bootstrap script specifically for this scenario: system/Test/bootstrap.php.
+Most of the paths to your project are defined during the bootstrap process. You may use pre-defined constants to override these, but when using the defaults be sure that your paths align with the expected directory structure for your installation method.
 
-Passing data to the view:
-$data = [
-    'title'    => 'My title',
-    'heading'  => 'My Heading',
-    'my_array' => ['abc','abd']
-    ];
+updates in 4.2 codeigniter:
 
-echo view('view_name',$data);
+Behavior Changes:
+Guessing the file extension from the MIME type has been changed if the proposed extension is not valid. Previously, the guessing will early terminate and return null. Now, if a proposed extension is given and is invalid, the MIME guessing will continue checking using the mapping of extension to MIME types.
+If there is a cookie with a prefixed name and a cookie with the same name without a prefix, the previous get_cookie() had the tricky behavior of returning the cookie without the prefix. Now the behavior has been fixed as a bug, and has been changed.
 
-To access passed data in the view:
-<h1><?php echo $data['title'];?></h1>
-<h1><?= $data['title']; ?></h1>
-<h1>{ $data['title']; }</h1>
-<ul>
-    <?php 
-        if(!empty($subjects)){
-            foreach($subjects as $sub){
-                echo "<li>.$sub.</li>";
-            }
-        }
-        or
-        if(count($subjects)>0){
-            foreach($subjects as $sub){
-                echo "<li>.$sub.</li>";
-            }
-        }else{
-            echo "sorry data not found";
-        }
-        or
-        <?php
-            if(!empty($subjects)):
-                foreach($subjects as $sub):
-        ?>
-                <?= $sub ?>;
-        <?php
-            endforeach;
-            else:
-                
-            endif;
-        ?>
-    ?>
-</ul>
-
-Create a table using Table():
-$table = new \CodeIgniter\View\Table();
-$data = [
-    ['Name','Color','Size'],
-    ['ashwani','blue','small'],
-    ['sumti','red','small'],
-    ['sonu','yellow','small'],
-];
-echo $table->generate($data);
-
-or
-
-$table = new \CodeIgniter\View\Table();
-$query = $db->query('select * from my_table');
-$records['users'] = $table->generate($query);
-echo view("view_name",$records);
-
-$table->setHeading(['Name','City','State']); //add header manually
-$table->addRow(['Ram','Hyd','Ts']);     //add row manually
-
-or 
-
-$template = [
-    'table_open'=>'<table border="1" cellpadding="10" cellspacing="10" class="table">',
-    .
-    .
-    .
-    .
-    .
-    .
-];
-
-$table->setTemplate($template);
-
-View Parser Class:
-
-$parser = \Config\Services::parser();
-$data = [
-    'page_title'=>'asdfasd',
-    'page_heading'=>'asdfasd'
-    'sub_list' => [
-        ['subject'=>'html','abbr'=>'hyper text markup language'],
-        ['subject'=>'html','abbr'=>'hyper text markup language'],
-        ['subject'=>'html','abbr'=>'hyper text markup language'],
-        ['subject'=>'html','abbr'=>'hyper text markup language'],
-        ['subject'=>'html','abbr'=>'hyper text markup language']
-    ];
-];
-
-return $parser->setData($data)->render("view_name");
-
-looping in view:
-<body>
-    {sub_list}
-        <h1>{subject}</h1>
-        <p>{abbr}</p>
-    {/sub_list}
-    {if $status}
-    <p>welcome</p>
-    {endif}
-</body>
-
-or
-
-$template='<head><title>{blog_title}</title></head>';
-echo $parser->setData($data)->renderString($template);
-
-Filters in view parser class:
-<title>{page_title|lower}</title>
-<title>{page_title|upper|limit_chars(5)}</title>
-<title>{date|date(Y-m-d)}</title>
-<title>{date|date(l dS F Y)}</title>
-<title>{date|date_modify(+5days)|date(l dS F Y)}</title>
-<title>{price|local_currency(INR)|highlight_code}</title>
-<title>{price|round(ceil)}</title>
-
-or 
-
-Custom Filters in Views:
-In View.php and adding new entries to the $filters array
-each key is the name of the filter is called by in the view,
-and its value is any valid php callable:
-
-public $filters = [
-    'myfilterone'=> '\CodeIgniter\View\Filters::myFilterOne',
-    'myfiltertwo'=> '\CodeIgniter\View\Filters::myFilterTwo',
-];
-
-then define the same name function inside view/filters.php
-
-Now in view:
-<p>My Name is:{some_variable|myfilterone}</p>
-
-View Layouts:
-layouts files:header,footer,sidebars....etc
-and we include these mentioned layouts in every page of views using extend
-<?php 
-    $this->extend("layouts/main.php");
-?>
-
-To include widgets : features,latestarticles,calender,search....
-<?= $this->include("widgets/search.php")?>
+The CodeIgniter\CodeIgniter class has a new property $context and it must have the correct context at runtime. So the following files have been changed:
+public/index.php
+spark
+The system/bootstrap.php file has been modified to easily implement Preloading. Returning a CodeIgniter instance and loading .env file have been moved to index.php and spark.
+The CodeIgniter\Autoloader\Autoloader::initialize() has changed the behavior to fix a bug. It used to use Composer classmap only when $modules->discoverInComposer is true. Now it always uses the Composer classmap if Composer is available.
+The color code output by CLI::color() has been changed to fix a bug.
+To prevent unexpected access from the web browser, if a controller is added to a cli route ($routes->cli()), all methods of that controller are no longer accessible via auto-routing.
+There is a possible backward compatibility break for those users extending the History Collector and they should probably update History::setFiles() method.
+The dot_array_search’s unexpected behavior has been fixed. Now dot_array_search('foo.bar.baz', ['foo' => ['bar' => 23]]) returns null. The previous versions returned 23.
+The CodeIgniter::storePreviousURL() has been changed to store only the URLs whose Content-Type was text/html. It also affects the behavior of previous_url and redirect()->back().
 
 
-create a layout folder inside views folder
-inside layouts: use 
-<?= $this->renderSection("mycontent") ?>
+Highlights:
+Update minimal PHP requirement to 7.4.
+OCI8 Driver for Oracle Database
+Improved Auto Routing (opt-in)
+Query Builder Subqueries and UNION support
 
-in view, homeview:
-<?php 
-    $this->extend("layouts/main.php");
-?>
-<?php 
-    $this->section("mycontent");
-?>
-<?= $page_title ?>
-<?= $this->include("partials/features")
+Method Signature Changes:
+The method signature of CodeIgniter\Database\BaseBuilder::join() and CodeIgniter\Database\*\Builder::join() have been changed.
+The method signature of Validation::setRule() has been changed. The string typehint on the $rules parameter was removed. Extending classes should likewise remove the parameter so as not to break LSP.
+The method signature of CodeIgniter\CLI\CommandRunner::_remap() has been changed to fix a bug.
+The default parameter values for Service::reset() and CIUnitTestCase::resetServices() have been changed from false to true. This is to eliminate unexpected problems during testing, such as lang() not getting translated messages.
+
+New Improved Auto Routing:
+Added an optional new more secure auto router. These are the changes from the legacy auto-routing:
+
+A controller method needs HTTP verb prefix like getIndex(), postCreate().
+Developers always know the HTTP method, so requests by an unexpected HTTP method does not pass.
+The Default Controller (Home by default) and the Default Method (index by default) must be omitted in the URI.
+It restricts one-to-one correspondence between controller methods and URIs.
+E.g. by default, you can access /, but /home and /home/index will be 404.
+It checks method parameter count.
+If there are more parameters in the URI than the method parameters, it results in 404.
+It does not support _remap() method.
+It restricts one-to-one correspondence between controller methods and URIs.
+Can’t access controllers in Defined Routes.
+It completely separates controllers accessible via Auto Routes from those accessible via Defined Routes.
+
+
+Added new OCI8 driver for database:
+It can access Oracle Database and supports SQL and PL/SQL statements.
+QueryBuilder
+Added Subqueries in the FROM section. See Subqueries.
+Added Subqueries in the SELECT section. See Select.
+The BaseBuilder::buildSubquery() method can take an optional third argument string $alias.
+Union queries. See Union queries.
+Raw SQL string support
+Added the class CodeIgniter\Database\RawSql which expresses raw SQL strings.
+select(), where(), like(), join() accept the CodeIgniter\Database\RawSql instance.
+DBForge::addField() default value raw SQL string support. See Raw Sql Strings as Default Values.
+
+
+Helpers and Functions:
+HTML helper script_tag() now uses null values to write boolean attributes in minimized form: <script src="..." defer />. See the sample code for script_tag.
+Added 4th parameter $includeDir to get_filenames(). See get_filenames.
+Exception information logged through log_message() has now improved. It now includes the file and line where the exception originated. It also does not truncate the message anymore.
+The log format has also changed. If users are depending on the log format in their apps, the new log format is “<1-based count> <cleaned filepath>(<line>): <class><function><args>”
+
+
+Commands:
+Added spark db:table command. See Database Commands for the details.
+You can now see the names of all the tables in the database you are currently connected in the terminal.
+spark db:table --show
+Or you can see the field names and the records of a table.
+spark db:table my_table
+spark db:table my_table --limit-rows 50 --limit-field-value 20 --desc
+Or you can see metadata like the column type, max length of a table.
+spark db:table my_table --metadata
+The spark routes command now shows closure routes, auto routes, and filters.
+
+Others:
+Content Security Policy (CSP) enhancements
+Added the configs $scriptNonceTag and $styleNonceTag in Config\ContentSecurityPolicy to customize the CSP placeholders ({csp-script-nonce} and {csp-style-nonce})
+Added the config $autoNonce in Config\ContentSecurityPolicy to disable the CSP placeholder replacement
+Added the functions csp_script_nonce() and csp_style_nonce() to get nonce attributes
+See Content Security Policy for details.
+New View Decorators allow modifying the generated HTML prior to caching.
+Added Validation Strict Rules. See Traditional and Strict Rules.
+Added support for webp files to app/Config/Mimes.php.
+RouteCollection::addRedirect() can now use placeholders. See Redirecting Routes for details.
+Debugbar enhancements
+Debug toolbar is now using microtime() instead of time().
+Added a sample file for Preloading.
+
+
+Changes:
+Update minimal PHP requirement to 7.4.
+The current version of Content Security Policy (CSP) outputs one nonce for script and one for style tags. The previous version outputted one nonce for each tag.
+The process of sending cookies has been moved to the Response class. Now the Session class doesn’t send cookies, set them to the Response.
+Validation. Changed generation of errors when using fields with a wildcard (*). Now the error key contains the full path. See Getting All Errors.
+Validation::getError() when using a wildcard will return all found errors matching the mask as a string.
+To make the default configuration more secure, auto-routing has been changed to disabled by default.
+
+
+Depriciation:
+CodeIgniter\Database\SQLSRV\Connection::getError() is deprecated. Use CodeIgniter\Database\SQLSRV\Connection::error() instead.
+CodeIgniter\Debug\Exceptions::cleanPath() and CodeIgniter\Debug\Toolbar\Collectors\BaseCollector::cleanPath() are deprecated. Use the clean_path() function instead.
+CodeIgniter\Log\Logger::cleanFilenames() and CodeIgniter\Test\TestLogger::cleanup() are both deprecated. Use the clean_path() function instead.
+CodeIgniter\Router\Router::setDefaultController() is deprecated.
+The constant SPARKED in spark is deprecated. Use the $context property in CodeIgniter\CodeIgniter instead.
+CodeIgniter\Autoloader\Autoloader::discoverComposerNamespaces() is deprecated, and no longer used.
+The constants EVENT_PRIORITY_LOW, EVENT_PRIORITY_NORMAL and EVENT_PRIORITY_HIGH are deprecated. Use the class constants CodeIgniter\Events\Events::PRIORITY_LOW, CodeIgniter\Events\Events::PRIORITY_NORMAL and CodeIgniter\Events\Events::PRIORITY_HIGH instead.
+
+Bugs Fixed:
+The SQLSRV driver ignores the port value from the config.
+
+
+CodeIgniter Error Logs
+CodeIgniter logs error messages, according to the settings in app/Config/Logger.php.
+
+You can adjust the error threshold to see more or fewer messages.
+
+The default configuration has daily log files stored in writable/logs. It would be a good idea to check them if things aren’t working the way you expect!
+
+
+What’s with an unhelpful “Whoops!” page?
+You find that your app is displaying a page with “Whoops!” and then the text line “We seem to have hit a snag. Please try again later…”.
+
+That is a sign that you are in production mode and have hit an unrecoverable error, which we don’t want to show to the viewer of the webapp, for better security.
+
+You can see the error in the debug toolbar display by setting your environment to “development” (in .env), and reloading the page.
+
+Don’t forget to reset the environment to “production” once you fix the problem!
+
+I have to include index.php in my URL
+If a URL like /mypage/find/apple doesn’t work, but the similar URL /index.php/mypage/find/apple does, that sounds like your .htaccess rules (for Apache) are not set up properly, or the mod_rewrite extension in Apache’s httpd.conf is commented out.
+
+
+Only the default page loads
+---------------------------------
+If you find that no matter what you put in your URL only your default page is loading, it might be that your server does not support the REQUEST_URI variable needed to serve search-engine friendly URLs. As a first step, open your app/Config/App.php file and look for the URI Protocol information. It will recommend that you try a couple of alternate settings. If it still doesn’t work after you’ve tried this you’ll need to force CodeIgniter to add a question mark to your URLs. To do this open your app/Config/App.php file and change this:
 <?php
-    $this->endSection();
-?>
 
+namespace Config;
 
-Theme integration:
-to link css and script in template
-use <?= base_url(); ?>/jasd/......
+use CodeIgniter\Config\BaseConfig;
 
+class App extends BaseConfig
+{
+    // ...
 
+    public $indexPage = 'index.php';
 
+    // ...
+}
+To this:
 
+<?php
 
+namespace Config;
+
+use CodeIgniter\Config\BaseConfig;
+
+class App extends BaseConfig
+{
+    // ...
+
+    public $indexPage = 'index.php?';
+    // ...
+}
