@@ -325,3 +325,10 @@ class App extends BaseConfig
     public $indexPage = 'index.php?';
     // ...
 }
+
+By default, CodeIgniter starts up in production mode.
+
+This means you never will need to commit any sensitive information to your version control system. It includes some of the most common ones you want to enter already, though they are all commented out. So uncomment the line with CI_ENVIRONMENT on it, and change production to development:
+
+CI_ENVIRONMENT = development
+
