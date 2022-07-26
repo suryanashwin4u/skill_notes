@@ -223,7 +223,98 @@ perturbed
 break-in
 ==>to enter without taking permission to steal
 
+lackadaisical
+==>lukewarm,unenthusiastic
 
+indifferent
+==>
+
+jocular
+==>
+
+commotion
+==>uproar
+
+pandora's box
+==>pack of complicated problems
+
+uproar
+==>excited,outcry
+
+furious
+==>very angry
+
+indignant
+==>unfriendly,unworthy
+
+resentful
+==>unfriendly,indignant
+
+unruly
+==>
+
+congenial
+==>friendly,pleasant
+
+congenital
+==>janm jaath(hindi)
+
+malady
+==>wickedness,evil
+
+wickedness
+==>evil
+
+clandestine
+==>secret
+
+overt
+==>open way
+
+furtive
+==>
+
+futile
+==>
+
+covert
+==>open
+
+wary
+==>cautious
+
+illicit
+==>illegal
+
+extol
+==> to praise
+
+censure
+==>criticize,rebuke
+
+censor
+==>
+
+sensor
+==>
+
+boorish
+==>unpleasant
+
+sanguine
+==>blood red
+
+consanguinity
+==>
+
+pessimistic
+==>negative attitude
+
+humorous
+==>
+
+rebellious
+==>
 
 
 ---------------------------------------
