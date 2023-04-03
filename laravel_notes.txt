@@ -1485,8 +1485,6 @@ return response()->json(['status' => 'success', 'msg' => 'Course cloned successf
 php artisan make:import UpdateCourseLinkImport
 
 
-jkljlkj
-
 
 
 
