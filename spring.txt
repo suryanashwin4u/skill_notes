@@ -1,0 +1,76 @@
+spring tutorials from javatpoint
+--------------------------------
+developed by Rod Johnson in 2003.
+
+The Spring framework comprises several modules such as IOC, AOP, DAO, Context, ORM, WEB MVC etc.
+
+Inversion Of Control (IOC) and Dependency Injection:
+1.These are the design patterns that are used to remove dependency from the programming code.
+2.They make the code easier to test and maintain.
+3.IOC makes the code loosely coupled.
+4.In such case, there is no need to modify the code if our logic is moved to new environment.
+5.IOC container is responsible to inject the dependency. 
+6.We provide metadata to the IOC container either by XML file or annotation.
+
+Advantage of Dependency Injection:
+1.loosely coupled
+2.easy to test
+3.easy to maintain
+
+In the Inversion of Control scenario, we do this something like this:
+
+example: loosely coupling
+class Employee{  
+    Address address;  
+    Employee(Address address){  
+        this.address=address;  
+    }  
+}  
+
+example: tightly coupling
+class Employee{  
+    Address address;  
+    Employee(){  
+        address=new Address();  
+    }  
+}  
+
+Advantages of Spring Framework:
+1.Spring framework provides templates for JDBC, Hibernate, JPA etc. technologies. So there is no need to write too much code. It hides the basic steps of these technologies.
+2.Spring applications are loosely coupled because of dependency injection.
+3.Dependency Injection makes easier to test the application.
+4.Spring framework is lightweight because of its POJO implementation. The Spring Framework doesn't force the programmer to inherit any class or implement any interface.
+5.The Dependency Injection feature of Spring Framework and it support to various frameworks makes the easy development of JavaEE application.
+6.It provides powerful abstraction to JavaEE specifications such as JMS, JDBC, JPA and JTA.
+7.It provides declarative support for caching, validation, transactions and formatting.
+
+The Spring framework comprises of many modules such as core, beans, context, expression language, AOP, Aspects, Instrumentation, JDBC, ORM, OXM, JMS, Transaction, Web, Servlet, Struts etc. 
+These modules are grouped into Test, Core Container, AOP, Aspects, Instrumentation, Data Access / Integration, Web (MVC / Remoting).
+
+Test
+->This layer provides support of testing with JUnit and TestNG.
+
+Spring Core Container
+->The Spring Core container contains core, beans, context and expression language (EL) modules.
+
+Core and Beans
+->These modules provide IOC and Dependency Injection features.
+
+Context
+->This module supports internationalization (I18N), EJB, JMS, Basic Remoting.
+
+Expression Language
+->It is an extension to the EL defined in JSP. It provides support to setting and getting property values, method invocation, accessing collections and indexers, named variables, logical and arithmetic operators, retrieval of objects by name etc.
+
+AOP, Aspects and Instrumentation
+These modules support aspect oriented programming implementation where you can use Advices, Pointcuts etc. to decouple the code.
+
+The aspects module provides support to integration with AspectJ.
+
+The instrumentation module provides support to class instrumentation and classloader implementations.
+
+Data Access / Integration
+This group comprises of JDBC, ORM, OXM, JMS and Transaction modules. These modules basically provide support to interact with the database.
+
+Web
+This group comprises of Web, Web-Servlet, Web-Struts and Web-Portlet. These modules provide support to create web application.
