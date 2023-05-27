@@ -1,5 +1,5 @@
 spring tutorials from javatpoint
---------------------------------
+====================================================================
 developed by Rod Johnson in 2003.
 
 The Spring framework comprises several modules such as IOC, AOP, DAO, Context, ORM, WEB MVC etc.
@@ -11,12 +11,12 @@ Inversion Of Control (IOC) and Dependency Injection:
 4.In such case, there is no need to modify the code if our logic is moved to new environment.
 5.IOC container is responsible to inject the dependency. 
 6.We provide metadata to the IOC container either by XML file or annotation.
-
+====================================================================
 Advantage of Dependency Injection:
 1.loosely coupled
 2.easy to test
 3.easy to maintain
-
+====================================================================
 In the Inversion of Control scenario, we do this something like this:
 
 example: loosely coupling
@@ -34,7 +34,7 @@ class Employee{
         address=new Address();  
     }  
 }  
-
+======================================================================================================
 Advantages of Spring Framework:
 1.Spring framework provides templates for JDBC, Hibernate, JPA etc. technologies. So there is no need to write too much code. It hides the basic steps of these technologies.
 2.Spring applications are loosely coupled because of dependency injection.
@@ -44,6 +44,7 @@ Advantages of Spring Framework:
 6.It provides powerful abstraction to JavaEE specifications such as JMS, JDBC, JPA and JTA.
 7.It provides declarative support for caching, validation, transactions and formatting.
 
+======================================================================================================
 The Spring framework comprises of many modules such as core, beans, context, expression language, AOP, Aspects, Instrumentation, JDBC, ORM, OXM, JMS, Transaction, Web, Servlet, Struts etc. 
 These modules are grouped into Test, Core Container, AOP, Aspects, Instrumentation, Data Access / Integration, Web (MVC / Remoting).
 
@@ -63,14 +64,233 @@ Expression Language
 ->It is an extension to the EL defined in JSP. It provides support to setting and getting property values, method invocation, accessing collections and indexers, named variables, logical and arithmetic operators, retrieval of objects by name etc.
 
 AOP, Aspects and Instrumentation
-These modules support aspect oriented programming implementation where you can use Advices, Pointcuts etc. to decouple the code.
+->These modules support aspect oriented programming implementation where you can use Advices, Pointcuts etc. to decouple the code.
 
-The aspects module provides support to integration with AspectJ.
+->The aspects module provides support to integration with AspectJ.
 
-The instrumentation module provides support to class instrumentation and classloader implementations.
+->The instrumentation module provides support to class instrumentation and classloader implementations.
 
 Data Access / Integration
-This group comprises of JDBC, ORM, OXM, JMS and Transaction modules. These modules basically provide support to interact with the database.
+->This group comprises of JDBC, ORM, OXM, JMS and Transaction modules. These modules basically provide support to interact with the database.
 
 Web
-This group comprises of Web, Web-Servlet, Web-Struts and Web-Portlet. These modules provide support to create web application.
+->This group comprises of Web, Web-Servlet, Web-Struts and Web-Portlet. These modules provide support to create web application.
+====================================================================
+Steps to create spring application:
+1. Create Java class
+2. Create the xml file
+3. Create the test class
+4. Load the jar files required for spring framework
+5. Run the test class
+
+====================================================================
+IoC Container:
+
+tasks performed by IoC container are:
+1.to instantiate the application class
+2.to configure the object
+3.to assemble the dependencies between the objects
+
+There are two types of IoC containers. They are:
+1.BeanFactory
+2.ApplicationContext
+
+Difference between BeanFactory and the ApplicationContext:
+->It adds some extra functionality than BeanFactory such as simple integration with Spring's AOP, message resource handling (for I18N), event propagation, application layer specific context (e.g. WebApplicationContext) for web application. 
+
+Using BeanFactory:
+Resource resource = new ClassPathResource("applicationContext.xml");  
+BeanFactory factory = new XmlBeanFactory(resource);  
+
+Using ApplicationContext: 
+ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");  
+
+Dependency Injection:
+->Dependency Injection (DI) is a design pattern that removes the dependency from the programming code so that it can be easy to manage and test the application. Dependency Injection makes our programming code loosely coupled
+
+Dependency Lookup:
+->The Dependency Lookup is an approach where we get the resource after demand.
+
+There can be various ways to get the resource for example:
+1.A obj = new AImpl();
+2.A obj = A.getA();  
+3.Context ctx = new InitialContext();  
+Context environmentCtx = (Context) ctx.lookup("java:comp/env");  
+A obj = (A)environmentCtx.lookup("A"); 
+
+two problems of dependency lookup:
+1.tight coupling: 
+The dependency lookup approach makes the code tightly coupled. If resource is changed, we need to perform a lot of modification in the code.
+2.Not easy for testing: 
+This approach creates a lot of problems while testing the application especially in black box testing.
+
+==============================================
+
+Dependency Injection:
+The Dependency Injection is a design pattern that removes the dependency of the programs. 
+In such case we provide the information from the external source such as XML file. 
+It makes our code loosely coupled and easier for testing. 
+
+two ways to inject dependency:
+1.By Constructor
+2.By Setter method
+
+Dependency Injection by Constructor:
+The <constructor-arg> subelement of <bean> is used for constructor injection.
+
+Here we are going to inject:
+1.primitive and String-based values:
+<bean id="e" class="com.javatpoint.Employee">  
+    <constructor-arg value="10" type="int"></constructor-arg>  
+</bean>  
+
+If you don't specify the type attribute in the constructor-arg element, 
+by default string type constructor will be invoked:
+<bean id="e" class="com.javatpoint.Employee">  
+    <constructor-arg value="10"></constructor-arg>  
+</bean>  
+Output: 0 10
+
+<bean id="e" class="com.javatpoint.Employee">  
+    <constructor-arg value="Sonoo"></constructor-arg>  
+</bean> 
+Output:0 Sonoo
+
+<bean id="e" class="com.javatpoint.Employee">  
+    <constructor-arg value="10" type="int" ></constructor-arg>  
+    <constructor-arg value="Sonoo"></constructor-arg>  
+</bean>
+Output:10 Sonoo
+
+2.Dependent object (contained object)
+
+->If there is HAS-A relationship between the classes, we create the instance of dependent object (contained object) first then pass it as an argument of the main class constructor.
+->The ref attribute is used to define the reference of another object, such way we are passing the dependent object as an constructor argument.
+
+<bean id="a1" class="com.javatpoint.Address">  
+    <constructor-arg value="ghaziabad"></constructor-arg>  
+    <constructor-arg value="UP"></constructor-arg>  
+    <constructor-arg value="India"></constructor-arg>  
+</bean>  
+  
+<bean id="e" class="com.javatpoint.Employee">  
+    <constructor-arg value="12" type="int"></constructor-arg>  
+    <constructor-arg value="Sonoo"></constructor-arg>  
+    <constructor-arg>  
+    <ref bean="a1"/>  
+    </constructor-arg>  
+</bean>  
+
+3.Collection values:
+
+Constructor Injection with Collection:
+There can be used three elements inside the constructor-arg element.
+It can be: list,set,map
+Each collection can have string based and non-string based values.
+
+<bean id="q" class="com.javatpoint.Question">  
+    <constructor-arg value="111"></constructor-arg>  
+    <constructor-arg value="What is java?"></constructor-arg>  
+    <constructor-arg>  
+        <list>  
+            <value>Java is a programming language</value>  
+            <value>Java is a Platform</value>  
+            <value>Java is an Island of Indonasia</value>  
+        </list>  
+    </constructor-arg>  
+</bean>
+
+Constructor Injection with Non-String Collection (having Dependent Object):
+If we have dependent object in the collection, we can inject these information by using the ref element inside the list, set or map.
+
+<bean id="ans1" class="com.javatpoint.Answer">  
+    <constructor-arg value="1"></constructor-arg>  
+    <constructor-arg value="Java is a programming language"></constructor-arg>  
+    <constructor-arg value="John"></constructor-arg>  
+</bean>  
+  
+<bean id="ans2" class="com.javatpoint.Answer">  
+    <constructor-arg value="2"></constructor-arg>  
+    <constructor-arg value="Java is a Platform"></constructor-arg>  
+    <constructor-arg value="Ravi"></constructor-arg>  
+</bean>  
+  
+<bean id="q" class="com.javatpoint.Question">  
+    <constructor-arg value="111"></constructor-arg>  
+    <constructor-arg value="What is java?"></constructor-arg>  
+    <constructor-arg>  
+        <list>  
+            <ref bean="ans1"/>  
+            <ref bean="ans2"/>  
+        </list>  
+    </constructor-arg>  
+</bean>  
+
+Constructor Injection with Map:
+<bean id="q" class="com.javatpoint.Question">  
+    <constructor-arg value="11"></constructor-arg>  
+    <constructor-arg value="What is Java?"></constructor-arg>  
+    <constructor-arg>  
+    <map>  
+        <entry key="Java is a Programming Language"  value="Ajay Kumar"></entry>  
+        <entry key="Java is a Platform" value="John Smith"></entry>  
+        <entry key="Java is an Island" value="Raj Kumar"></entry>  
+    </map>  
+    </constructor-arg>  
+</bean>  
+
+Constructor Injection with Non-String Map (having dependent Object):
+<bean id="answer1" class="com.javatpoint.Answer">  
+    <constructor-arg value="1"></constructor-arg>  
+    <constructor-arg value="Java is a Programming Language"></constructor-arg>  
+    <constructor-arg value="12/12/2001"></constructor-arg>  
+</bean>  
+<bean id="answer2" class="com.javatpoint.Answer">  
+    <constructor-arg value="2"></constructor-arg>  
+    <constructor-arg value="Java is a Platform"></constructor-arg>  
+    <constructor-arg value="12/12/2003"></constructor-arg>  
+</bean>  
+  
+<bean id="user1" class="com.javatpoint.User">  
+    <constructor-arg value="1"></constructor-arg>  
+    <constructor-arg value="Arun Kumar"></constructor-arg>  
+    <constructor-arg value="arun@gmail.com"></constructor-arg>  
+</bean>  
+<bean id="user2" class="com.javatpoint.User">  
+    <constructor-arg value="2"></constructor-arg>  
+    <constructor-arg value="Varun Kumar"></constructor-arg>  
+    <constructor-arg value="Varun@gmail.com"></constructor-arg>  
+</bean>  
+  
+<bean id="q" class="com.javatpoint.Question">  
+    <constructor-arg value="1"></constructor-arg>  
+    <constructor-arg value="What is Java?"></constructor-arg>  
+    <constructor-arg>  
+        <map>  
+            <entry key-ref="answer1" value-ref="user1"></entry>  
+            <entry key-ref="answer2" value-ref="user2"></entry>  
+        </map>  
+    </constructor-arg>  
+</bean>  
+
+
+Inheriting Bean:
+By using the parent attribute of bean, we can specify the inheritance relation between the beans. 
+In such case, parent bean values will be inherited to the current bean.
+
+<bean id="e1" class="com.javatpoint.Employee">  
+    <constructor-arg value="101"></constructor-arg>  
+    <constructor-arg  value="Sachin"></constructor-arg>  
+</bean>  
+  
+<bean id="address1" class="com.javatpoint.Address">  
+    <constructor-arg value="21,Lohianagar"></constructor-arg>  
+    <constructor-arg value="Ghaziabad"></constructor-arg>  
+    <constructor-arg value="UP"></constructor-arg>  
+    <constructor-arg value="USA"></constructor-arg>  
+</bean>  
+  
+<bean id="e2" class="com.javatpoint.Employee" parent="e1">  
+    <constructor-arg ref="address1"></constructor-arg>  
+</bean>
+
