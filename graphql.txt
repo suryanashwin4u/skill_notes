@@ -1,0 +1,69 @@
+GraphQL is a new API standard invented and developed by Facebook. 
+It is an open-source server-side technology.
+It is also an execution engine that works as a data query language and used to fetch declarative data.
+It was developed to optimize RESTful API calls and provides a flexible, robust, and more efficient alternative to REST.
+GraphQL is data query and manipulation language for your API and a server-side runtime for executing queries when you define a type system for your data.
+Unlike the REST APIs, a GraphQL server provides only a single endpoint and responds with the precise data that a client asked for.
+GraphQL is a cross-platform, open-source, data query, and manipulation language for APIs. 
+
+Advantages of using GraphQL:
+1. GraphQL is more precise, accurate, and efficient.
+2. Retrieve many resources from a single request
+3. GraphQL queries are simple and human-readable.
+4. GraphQL is best suited for microservices and complex systems because of using a simple query.
+5. It facilitates you to deal with many databases efficiently.
+6. Data can be fetched using a single API call.
+7. You don't face over fetching and under fetching issues in GraphQL.
+8. Using GraphQL, you can discover the schema in the appropriate format.
+9. GraphQL provides rich and powerful developer tools for testing queries and documentation.
+
+
+There are two ways to execute GraphQL queries:
+1.Execute GraphQL query with a command-line tool
+2.Run an Express GraphQL Server to execute query
+
+There are three important components for GraphQL application. 
+i.e. schema, query, and resolver. 
+When we write a query for the GraphQL server, then to handle GraphQL queries, we need a schema. 
+The schema is used to define the Query type. 
+We also require an API root with a function called a "resolver" for each API endpoint.
+
+Execute GraphQL query with a command-line tool:
+Let's make an API to simple return "Hello World". 
+Create a server.js file in the current folder where node.js is installed and write the following code:
+var { graphql, buildSchema } = require('graphql');  
+// A schema is constructed using GraphQL schema language  
+var schema = buildSchema(`  
+  type Query {  
+    hello: String  
+  }  
+`);  
+
+// The root provides a resolver function for each API endpoint  
+var root = {  
+  hello: () => {  
+    return 'Hello world! This is the first GrapghQL query';  
+  },  
+};  
+  
+// Run the GraphQL query '{ hello }' and print out the response  
+graphql(schema, '{ hello }', root).then((response) => {  
+  console.log(response);  
+});
+
+run this using the following command:
+
+node server.js
+
+
+Client-Server flow in GraphQL
+The GraphQL query is not written in JSON. 
+When a client makes a 'POST' request to send a GraphQL query to the server, this query is sent as a string.
+The server receives and extracts the query string. 
+After that, the server processes and validates the GraphQL query according to the GraphQL syntax and the graph data model (GraphQL schema).
+Like the other API servers, the GraphQL API server also makes calls to a database or other services and retrieves the data requested by the client.
+After that, the server takes the data and returns it to the client in a JSON object.
+
+Apollo Server: Apollo Server is an open-source, spec-compliant GraphQL server which can be used easily with any GraphQL client, such as Apollo Client. 
+Apollo Server is the most preferred server to build a production-ready, self-documenting GraphQL API that can able to retrieve data from any source.
+
