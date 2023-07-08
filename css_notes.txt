@@ -65,7 +65,8 @@ opacity:0.0-1.0;
 color: color_name;
 
 /*text alignments*/
-text-align: center/left/right/justify;
+text-align: left/center/right/justify;
+justify?
 
 /*align contents*/
 justify-content: left/center/right;
@@ -165,6 +166,7 @@ font: 20px Arial, sans-serif;
 font: italic small-caps bold 12px/30px Georgia, serif;
 
 --------------------------------------------------
+>CSS BACKGROUND PROPERTY:
 
 background: color_name image_path repeat_xy position;
 
@@ -252,6 +254,7 @@ background: url(img_flwr.gif) right bottom no-repeat, url(paper.gif) left top re
 background: url(img_tree.gif) left top no-repeat, url(img_flwr.gif) right bottom no-repeat, url(paper.gif) left top repeat;
 
 -------------------------------------------------
+>BORDER PROPERTY
 
 border-top-left-radius: 5px;
 
