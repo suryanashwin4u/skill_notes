@@ -1672,3 +1672,121 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Todos />);
 
 
+===============================================================
+                        javatpoint.com
+
+To set an initial state before any interaction occurs, we need to use the getInitialState() method.
+
+To set the state, it is required to call the super() method in the constructor. It is because this.state is uninitialized before the super() method has been called.
+
+You can also set default props directly on the component constructor.
+
+App.defaultProps = {  
+   name: "JavaTpoint"  
+}
+
+You can set the state in the parent component and pass it in the child component using props.
+
+import React, { Component } from 'react';  
+class App extends React.Component {  
+   constructor(props) {  
+      super(props);  
+      this.state = {  
+         name: "JavaTpoint",         
+      }  
+   }  
+   render() {  
+      return (  
+         <div>  
+            <JTP jtpProp = {this.state.name}/>             
+         </div>  
+      );  
+   }  
+}
+
+import PropTypes from 'prop-types';  
+React components used special property PropTypes that help you to catch bugs by validating data types of values passed through props, although it is not necessary to define components with propTypes.
+
+App.propTypes is used for props validation in react component. When some of the props are passed with an invalid type, you will get the warnings on JavaScript console. After specifying the validation patterns, you will set the App.defaultProps.
+
+class App extends React.Component {  
+          render() {}  
+}  
+Component.propTypes = { /*Definition */};  
+
+ReactJS props validator contains the following list of validators.
+
+SN	PropsType	                                                    Description
+1.	PropTypes.any	                                            The props can be of any data type.
+2.	PropTypes.array	                                          The props should be an array.
+3.	PropTypes.bool	                                          The props should be a boolean.
+4.	PropTypes.func	                                          The props should be a function.
+5.	PropTypes.number	                                        The props should be a number.
+6.	PropTypes.object	                                        The props should be an object.
+7.	PropTypes.string	                                        The props should be a string.
+8.	PropTypes.symbol	                                        The props should be a symbol.
+9.	PropTypes.instanceOf	                                    The props should be an instance of a particular JavaScript class.
+10.	PropTypes.isRequired	                                    The props must be provided.
+11.	PropTypes.element	                                        The props must be an element.
+12.	PropTypes.node	                                          The props can render anything: numbers, strings, elements or an array (or fragment) containing these types.
+13.	PropTypes.oneOf()	                                        The props should be one of several types of specific values.
+14.	PropTypes.oneOfType([PropTypes.string,PropTypes.number])	The props should be an object that could be one of many types.
+
+import React, { Component } from 'react';  
+import PropTypes from 'prop-types';  
+class App extends React.Component {  
+   render() {  
+      return (  
+          <div>  
+              <h1>ReactJS Props validation example</h1>  
+              <table>  
+                  <tr>  
+                      <th>Type</th>  
+                      <th>Value</th>  
+                      <th>Valid</th>  
+                  </tr>  
+                <tr>  
+                      <td>Array</td>  
+                      <td>{this.props.propArray}</td>  
+                      <td>{this.props.propArray ? "true" : "False"}</td>  
+                  </tr>  
+                  <tr>  
+                      <td>Boolean</td>  
+                      <td>{this.props.propBool ? "true" : "False"}</td>  
+                      <td>{this.props.propBool ? "true" : "False"}</td>  
+                  </tr>  
+                  <tr>  
+                      <td>Function</td>  
+                      <td>{this.props.propFunc(5)}</td>  
+                      <td>{this.props.propFunc(5) ? "true" : "False"}</td>  
+                  </tr>  
+                  <tr>  
+                      <td>String</td>  
+                      <td>{this.props.propString}</td>  
+                      <td>{this.props.propString ? "true" : "False"}</td>  
+                  </tr>  
+                  <tr>  
+                      <td>Number</td>  
+                      <td>{this.props.propNumber}</td>  
+                      <td>{this.props.propNumber ? "true" : "False"}</td>  
+                  </tr>  
+             </table>  
+        </div>  
+        );  
+   }  
+}  
+App.propTypes = {  
+    propArray: PropTypes.array.isRequired,  
+    propBool: PropTypes.bool.isRequired,  
+    propFunc: PropTypes.func,  
+    propNumber: PropTypes.number,  
+    propString: PropTypes.string,   
+}  
+App.defaultProps = {  
+    propArray: [1,2,3,4,5],  
+    propBool: true,  
+    propFunc: function(x){return x+5},  
+    propNumber: 1,  
+    propString: "JavaTpoint",  
+}  
+export default App;
