@@ -150,8 +150,8 @@ x = {"apple", "banana", "cherry"}	            set
 x = frozenset({"apple", "banana", "cherry"})	frozenset	 //immutable sets
 x = True	                                    bool	
 x = b"Hello"	                                bytes	
-x = bytearray(5)	                            bytearray	//????
-x = memoryview(bytes(5))	                    memoryview //???
+x = bytearray(5)	                            bytearray	 //doubt
+x = memoryview(bytes(5))	                    memoryview //doubt
 --------------------------------------------------
 # int type
 x = 1
@@ -218,17 +218,28 @@ print(a)
 a = "Hello, World!"
 print(a[1])
 
+output: e
+
 ------------------------------------------------
 # looping thru every character in a string
 
 for x in "banana":
   print(x)
+
+output:
+b
+a
+n
+a
+n
+a
 ------------------------------------------------
 # check the length of the string
 
 a = "Hello, World!"
 print(len(a))
 
+output: 13
 -----------------------------------------------
 
 # to check string in a long string
@@ -236,32 +247,46 @@ print(len(a))
 txt = "The best things in life are free!"
 print("free" in txt)
 
+output: True
 
 txt = "The best things in life are free!"
 if "free" in txt:
   print("Yes, 'free' is present.")
 
+output: Yes, 'free' is present.
 
 txt = "The best things in life are free!"
 print("expensive" not in txt)
 
+output: True
+
 txt = "The best things in life are free!"
 if "expensive" not in txt:
   print("Yes, 'expensive' is NOT present.")
+
+output: Yes, 'expensive' is NOT present.
 -----------------------------------------------
 # to return a range of characters from a string
 
 b = "Hello, World!"
 print(b[2:5])
 
+output: llo
+
 b = "Hello, World!"
 print(b[:5])
+
+output: Hello
 
 b = "Hello, World!"
 print(b[2:])
 
+output: llo, World!
+
 b = "Hello, World!"
 print(b[-5:-2])
+
+output: orl
 
 ----------------------------------------------
 # change into upper case
@@ -269,12 +294,15 @@ print(b[-5:-2])
 a = "Hello, World!"
 print(a.upper())
 
+output: HELLO, WORLD
+
 ---------------------------------------------------
 # change into lower case
 
 a = "Hello, World!"
 print(a.lower())
 
+output: hello, world!
 ---------------------------------------------------
 
 # remove space around string
@@ -282,12 +310,14 @@ print(a.lower())
 a = " Hello, World! "
 print(a.strip())
 
+output: Hello, World!
 ---------------------------------------------------
 # replace string characters
 
 a = "Hello, World!"
 print(a.replace("H", "J"))
 
+output: Jello, World
 ---------------------------------------------------
 
 # split into list
@@ -295,6 +325,7 @@ print(a.replace("H", "J"))
 a = "Hello, World!"
 print(a.split(",")) 
 
+output: ['Hello', ' World!']
 ----------------------------------------------------
 
 # change only first letter of the string to uppercase
@@ -303,6 +334,7 @@ txt = "hello, and welcome to my world."
 x = txt.capitalize()
 print (x)
 
+output: Hello, and welcome to my world.
 ----------------------------------------------------
 
 # similar to string.lower() but more powerfull
@@ -311,24 +343,35 @@ txt = "Hello, And Welcome To My World!"
 x = txt.casefold()
 print(x)
 
-
+output: hello, and welcome to my world!
 -----------------------------------------------------
 # to align txt into center taking up 20 spaces
 
 txt = "banana"
 x = txt.center(20)
+print(x)
+output:        banana       
+
+txt = "banana"
 x = txt.center(20, "O") #fill O in spaces
 print(x)
 
+output: OOOOOOObananaOOOOOOO
 -----------------------------------------------------
 
 # return number of string matching
 
 txt = "I love apples, apple are my favorite fruit"
 x = txt.count("apple")
+print(x)
+
+output: 1
+
+txt = "I love apples, apple are my favorite fruit"
 x = txt.count("apple", 10, 24) #start search from 10th and ends at 24th position
 print(x)
 
+output: 1
 -----------------------------------------------------
 
 # UTF-8 encode by default
@@ -338,21 +381,27 @@ x = txt.encode()
 print(x)
 
 # 'strict'	- Default, raises an error on failure
+output: b'My name is St\xc3\xa5le'
 
 # 'backslashreplace'	- uses a backslash instead of the character that could not be encoded
 print(txt.encode(encoding="ascii",errors="backslashreplace"))
+output: b'My name is St\\xe5le'
 
 # 'ignore'	- ignores the characters that cannot be encoded
 print(txt.encode(encoding="ascii",errors="ignore"))
+output: b'My name is Stle'
 
 # 'namereplace'	- replaces the character with a text explaining the character
 print(txt.encode(encoding="ascii",errors="namereplace"))
+output: b'My name is St\\N{LATIN SMALL LETTER A WITH RING ABOVE}le'
 
 # 'replace'	- replaces the character with a questionmark
 print(txt.encode(encoding="ascii",errors="replace"))
+output: b'My name is St?le'
 
 # 'xmlcharrefreplace'	- replaces the character with an xml character
 print(txt.encode(encoding="ascii",errors="xmlcharrefreplace"))
+output: b'My name is Ståle'
 
 --------------------------------------------------------
 
@@ -362,13 +411,17 @@ txt = "Hello, welcome to my world."
 # ends with dot
 x = txt.endswith(".")
 
+output: True
+
 # ends with text
 x = txt.endswith("my world.")
+
+output: True
 
 # check the ending text from the given position
 x = txt.endswith("my world.", 5, 11)
 
-print(x)
+output: False
 
 --------------------------------------------------
 # give spaces between each character where \t is given
@@ -377,6 +430,7 @@ txt = "H\te\tl\tl\to"
 # Default tabsize is 8
 x =  txt.expandtabs(2)
 print(x)
+output: H e l l o
 
 
 txt = "H\te\tl\tl\to"
@@ -386,21 +440,34 @@ print(txt.expandtabs(2))
 print(txt.expandtabs(4))
 print(txt.expandtabs(10))
 
+output:
+H	e	l	l	o
+H       e       l       l       o
+H e l l o
+H   e   l   l   o
+H         e         l         l         o
 -------------------------------------------------
 # return location of the text
 txt = "Hello, welcome to my world."
-x = txt.find("welcome")
-x = txt.find("e")
+print(txt.find("welcome"))
+output: 7
+
+print(txt.find("e"))
+output: 1
 
 # start and ending search position
-x = txt.find("e", 5, 10) 
+print(txt.find("e", 5, 10)) 
+output: 8
 
 # If the value is not found, the find() method returns -1, but the index() method will raise an exception
 print(txt.find("q"))
+output: -1
+
 print(txt.index("q"))
-
-print(x)
-
+output: 
+Traceback (most recent call last):
+  File "./prog.py", line 3, in <module>
+ValueError: substring not found
 -------------------------------------------------
 # 2 digits of decimals
 txt = "For only {price:.2f} dollars!"
@@ -411,7 +478,7 @@ txt3 = "My name is {}, I'm {}".format("John",36)
 
 -------------------------------------------------
 
-#setting space to 8 characters and Use ">" to left-align the value:
+#setting space to 8 characters and Use "<" to left-align the value:
 txt = "We have {:<8} chickens."
 print(txt.format(49))
 

@@ -158,6 +158,27 @@ var _lastName = "Johnson";
 var _x = 2;
 var _100 = 5;
 
+Difference Between var, let and const
+      Scope	Redeclare	Reassign	Hoisted	Binds_this
+var	  No	  Yes	      Yes	      Yes	    Yes
+let	  Yes	  No	      Yes	      No	    No
+const	Yes	  No	      No	      No	    No
+
+
+What is Good?
+->let and const have block scope.
+->let and const can not be redeclared.
+->let and const must be declared before use.
+->let and const does not bind to this.
+->let and const are not hoisted.
+
+What is Not Good?
+->var does not have to be declared.
+->var is hoisted.
+->var binds to this.
+
+
+
 //var variables cannot restrict access outside the block
 var x = 10;
 // Here x is 10
